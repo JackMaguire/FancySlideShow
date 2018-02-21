@@ -19,7 +19,9 @@ public class CenterPanelView extends JPanel {
 	private EdgeLine[] lines;
 	private NodeCircle[] circles;
 	
-	private final static Color default_ = Color.BLACK;
+	private final static Color text_ = Color.BLACK;
+	
+	private final static Color default_ = Color.GRAY;
 	private final static Color forward_ = Color.GREEN;
 	private final static Color backward_ = Color.RED;
 	private final static Color selected_ = Color.BLUE;
@@ -33,7 +35,7 @@ public class CenterPanelView extends JPanel {
 		NodeType[] all_nodes = model.getGraph().getNodes();
 		circles = new NodeCircle[ all_nodes.length ];
 		for( int i=0; i<all_nodes.length; ++i ) {
-			circles[i] = createNodeCircle( i, all_nodes.length );
+			circles[i] = createNodeCircle( i, all_nodes.length, all_nodes[i].name() );
 		}
 		
 		EdgeType[] all_edges = model.getGraph().getEdges();
@@ -41,7 +43,7 @@ public class CenterPanelView extends JPanel {
 		for( int i=0; i<all_edges.length; ++i ) {
 			int index0 = all_edges[i].outgoingNodeIndex();
 			int index1 = all_edges[i].incomingNodeIndex();
-			lines[i] = createEdgeLine( circles[ index0 ], circles[ index1 ] );
+			lines[i] = new EdgeLine( circles[ index0 ], circles[ index1 ], all_edges[i].name() );
 		}
 	}
 	
@@ -71,23 +73,21 @@ public class CenterPanelView extends JPanel {
 		}
 	}
 	
-	private static NodeCircle createNodeCircle( int index, int num_points ) {
+	private static NodeCircle createNodeCircle( int index, int num_points, String name ) {
 		double radians = Math.PI * 2 * index / ((double) num_points);//uses radians
 		double dx = Math.cos(radians);
 		double dy = Math.sin(radians);
-		return new NodeCircle(dx,dy);
+		return new NodeCircle(dx,dy,name);
 	}
-	
-	private static EdgeLine createEdgeLine( NodeCircle nc1, NodeCircle nc2 ) {
-		return new EdgeLine( nc1, nc2 );
-	}
-	
+		
 	@Override
 	protected void paintComponent(Graphics g) {
+		recolorAllObjects();
+		
 		super.paintComponent(g);
 		Graphics2D g2D = (Graphics2D) g;      
 	    g2D.setStroke(new BasicStroke(10F));  // set stroke width of 10
-	    
+
 		final int width = this.getWidth();
 		final int height = this.getHeight();
 		
@@ -95,13 +95,17 @@ public class CenterPanelView extends JPanel {
 		final int big_circle_R = min_dim / 2 - diameter_ - 30; //30 is just a buffer for good measure
 
 	    for( NodeCircle circle : circles ) {
-    			circle.draw(g2D, diameter_, width, height, big_circle_R );
+    			circle.draw(g2D, diameter_, width, height, big_circle_R, true );
 	    }
 	   
 	    for( EdgeLine line : lines ) {
 	    		line.draw(g2D, radius_ );
 	    }
 	    
+	    //quickly draw circles again so they are on top
+	    for( NodeCircle circle : circles ) {
+			circle.draw(g2D, diameter_, width, height, big_circle_R, false );
+	    }
 	}
 	
 	private static class NodeCircle {
@@ -111,25 +115,34 @@ public class CenterPanelView extends JPanel {
 		
 		public int most_recent_x = 0;
 		public int most_recent_y = 0;
+		private final String name_;
 		
 		private Color color_;
 		
-		public NodeCircle( double dx, double dy ) {
+		public NodeCircle( double dx, double dy, String name ) {
 			this.dx = dx;
 			this.dy = dy;
+			name_ = name;
 		}
 		
 		public void setColor( Color color ) {
 			color_ = color;
 		}
 		
-		public void draw( Graphics g, int diameter, int width, int height, int big_circle_R ) {
+		public void draw( Graphics g, int diameter, int width, int height, int big_circle_R, boolean recalculate ) {
 			g.setColor( color_ );
 			
-			most_recent_x = (width / 2) + (int) ( dx * big_circle_R );
-			most_recent_y = (height / 2) + (int) ( dy * big_circle_R );
+			if( recalculate ) {
+				most_recent_x = (width / 2) + (int) ( dx * big_circle_R );
+				most_recent_y = (height / 2) + (int) ( dy * big_circle_R );
+			}
 			
 			g.fillOval(most_recent_x, most_recent_y, diameter, diameter);
+			
+			if( name_.length() > 0 ) {
+				g.setColor( text_ );
+				g.drawString(name_, most_recent_x, most_recent_y);
+			}
 		}
 	}
 	
@@ -137,12 +150,14 @@ public class CenterPanelView extends JPanel {
 		//public int x1, y1, x2, y2;
 		
 		private final NodeCircle circle1, circle2;
-	
+		private final String name_;
+		
 		private Color color_;
 		
-		public EdgeLine( NodeCircle circle1, NodeCircle circle2 ) {
+		public EdgeLine( NodeCircle circle1, NodeCircle circle2, String name ) {
 			this.circle1 = circle1;
 			this.circle2 = circle2;
+			name_ = name;
 		}
 		
 		public void setColor( Color color ) {
@@ -153,6 +168,13 @@ public class CenterPanelView extends JPanel {
 			g.setColor( color_ );
 			g.drawLine( circle1.most_recent_x + radius, circle1.most_recent_y + radius,
 					circle2.most_recent_x + radius, circle2.most_recent_y + radius );
+			
+			if( name_.length() > 0 ) {
+				g.setColor( text_ );
+				final int string_x = (circle1.most_recent_x + circle2.most_recent_x ) / 2;
+				final int string_y = (circle1.most_recent_y + circle2.most_recent_y ) / 2;
+				g.drawString(name_, string_x, string_y);
+			}
 		}
 	}
 	

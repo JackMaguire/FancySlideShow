@@ -9,7 +9,7 @@ public class SouthPanelView extends JPanel {
 	private JTextArea notes_ = new JTextArea("Notes");
 	
 	public SouthPanelView() {
-		notes_.setPreferredSize( new Dimension(200, 200 ) );
+		notes_.setPreferredSize( new Dimension(700, 200 ) );
 		add(notes_);
 		Runtime.getRuntime().addShutdownHook( new shutdown_hook(notes_) );
 	}
