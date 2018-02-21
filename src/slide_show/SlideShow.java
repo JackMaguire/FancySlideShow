@@ -10,28 +10,34 @@ import util.*;
 public class SlideShow implements SlideShowType{
 
 	//Starts at Node 0
-	private Node[] nodes_;
+	private Graph graph_;
+	private Node current_node_;
 	
-	public SlideShow( Node[] nodes ) {
-		nodes_ = nodes;
+	public SlideShow( Graph graph ) {
+		graph_ = graph;
 	}
 	
 	//Getters and setters
-	protected Node[] nodes() {
-		return nodes_;
+	protected Graph graph() {
+		return graph_;
 	}
 	
+	public void setGraph( Graph g ) {
+		graph_ = g;
+	}
 	
 	//run
 	public void run() {
 		GraphicsEnvironment ge =
 				GraphicsEnvironment.getLocalGraphicsEnvironment();
 		p( ge.toString() );
+		
+		JFrame slideshow_frame = createSlideshowJFrame();
 	}
 	
-	private JFrame create_slideshow_jframe() {
+	private JFrame createSlideshowJFrame() {
 		JFrame F = new JFrame("SlideShow");
-		
+		F.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		return F;
 	}
 	

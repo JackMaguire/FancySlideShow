@@ -2,7 +2,7 @@ package graph;
 
 public class Edge implements EdgeType {
 
-	public boolean has_images() {
+	public boolean hasImages() {
 		return false;
 	}
 	

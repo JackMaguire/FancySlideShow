@@ -4,15 +4,17 @@ import java.awt.image.BufferedImage;
 
 public class Node implements NodeType {
 
-	public EdgeType[] get_upstream_edges() {
+	public EdgeType[] getUpstreamEdges() {
 		return null;
 	}
 	
-	public EdgeType[] get_downstream_edges() {
+	public EdgeType[] getDownstreamEdges() {
 		return null;
 	}
 	
-	public BufferedImage get_next_image() {
+	public BufferedImage getNextImage() {
 		return null;
 	}
+	
+	
 }

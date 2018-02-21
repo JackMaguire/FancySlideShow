@@ -4,9 +4,9 @@ import java.awt.image.BufferedImage;
 
 public interface NodeType {
 
-	EdgeType[] get_upstream_edges();
-	EdgeType[] get_downstream_edges();
+	EdgeType[] getUpstreamEdges();
+	EdgeType[] getDownstreamEdges();
 	
-	BufferedImage get_next_image();
+	BufferedImage getNextImage();
 	
 }

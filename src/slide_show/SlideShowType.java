@@ -1,7 +1,11 @@
 package slide_show;
 
-public interface SlideShowType {
+import graph.Graph;
 
+public interface SlideShowType {
+	
+	void setGraph( Graph g );
+	
 	void run();
 	
 }
