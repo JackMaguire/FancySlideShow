@@ -1,6 +1,7 @@
 package graph;
 
 import java.awt.image.BufferedImage;
+//import java.util.Arrays;
 
 public class Node implements NodeType {
 
@@ -31,6 +32,7 @@ public class Node implements NodeType {
 		}
 		upstream_edges_new[ upstream_edges_.length ] = E;
 		upstream_edges_ = upstream_edges_new;
+		//Arrays.sort(upstream_edges_);
 	}
 
 	@Override
@@ -42,6 +44,7 @@ public class Node implements NodeType {
 		}
 		downstream_edges_new[ downstream_edges_.length ] = E;
 		downstream_edges_ = downstream_edges_new;
+		//Arrays.sort(downstream_edges_);
 	}
 	
 	

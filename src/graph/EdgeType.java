@@ -1,6 +1,7 @@
 package graph;
 
-public interface EdgeType {
+//Comparable methods will only be used for sorting!
+public interface EdgeType extends Comparable<EdgeType> {
 
 	int outgoingNodeIndex();
 	int incomingNodeIndex();

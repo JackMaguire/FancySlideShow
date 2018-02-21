@@ -1,5 +1,7 @@
 package graph;
 
+import java.util.Arrays;
+
 public class Graph implements GraphType {
 
 	NodeType[] nodes_;
