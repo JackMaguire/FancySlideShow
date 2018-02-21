@@ -1,5 +1,7 @@
 package graph;
 
+import java.awt.image.BufferedImage;
+
 public class Node implements NodeType {
 
 	public EdgeType[] get_upstream_edges() {
@@ -10,4 +12,7 @@ public class Node implements NodeType {
 		return null;
 	}
 	
+	public BufferedImage get_next_image() {
+		return null;
+	}
 }
