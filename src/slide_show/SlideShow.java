@@ -31,6 +31,10 @@ public class SlideShow implements SlideShowType{
 		GraphicsEnvironment ge =
 				GraphicsEnvironment.getLocalGraphicsEnvironment();
 		p( ge.toString() );
+
+		GraphicsDevice[] devices = ge.getScreenDevices();
+		Window w = devices[0].getFullScreenWindow();
+		
 		
 		JFrame slideshow_frame = createSlideshowJFrame();
 	}
@@ -38,6 +42,9 @@ public class SlideShow implements SlideShowType{
 	private JFrame createSlideshowJFrame() {
 		JFrame F = new JFrame("SlideShow");
 		F.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		F.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		F.setUndecorated(true);
+		F.setVisible(true);
 		return F;
 	}
 	
@@ -46,7 +53,7 @@ public class SlideShow implements SlideShowType{
 		System.out.println(s);
 	}
 	
-	void p( Object...objects ) {
+	/*void p( Object...objects ) {
 		System.out.println(objects);
-	}
+	}*/
 }
