@@ -1,5 +1,5 @@
 package graph;
 
-public class Graph {
+public class Graph implements GraphType {
 
 }
