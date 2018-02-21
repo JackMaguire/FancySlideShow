@@ -4,9 +4,16 @@ import java.awt.image.BufferedImage;
 
 public interface NodeType {
 
+	//Graph Logic
 	EdgeType[] getUpstreamEdges();
 	EdgeType[] getDownstreamEdges();
 	
-	BufferedImage getNextImage();
+	void addUpstreamEdge( EdgeType E );
+	void addDownstreamEdge( EdgeType E );
 	
+	//Image Logic
+	BufferedImage getNextImage();
+	//void loadImagesIntoMemory();
+	//void eraseImagesFromMemory();
+	//int  numBytesRequiredForImages();//You can assume/enforce that the images are loaded into memory when this is called.
 }
