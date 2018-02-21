@@ -11,16 +11,14 @@ public class ControlPanelView extends JPanel{
 	
 	BorderLayout layout_ = new BorderLayout();
 	WestPanelView west_view_ = new WestPanelView();
-	JTextField notes_ = new JTextField("Notes");
+	SouthPanelView south_view_ = new SouthPanelView();
 	
 	public ControlPanelView( ControlPanelModel model ) {
 		model_ = model;
 		setLayout( layout_ );
 		//layout_.addLayoutComponent( west_view_, BorderLayout.WEST );
-		
-		JPanel south = new JPanel();
-		south.add(notes_);
-		add( south, BorderLayout.SOUTH );
+
+		add( south_view_, BorderLayout.SOUTH );
 
 		setVisible(true);
 	}
