@@ -4,6 +4,8 @@ import java.awt.image.BufferedImage;
 
 public interface NodeType {
 
+	String name();
+	
 	//Graph Logic
 	EdgeType[] getUpstreamEdges();
 	EdgeType[] getDownstreamEdges();

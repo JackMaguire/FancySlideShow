@@ -5,8 +5,19 @@ import java.awt.image.BufferedImage;
 
 public class Node implements NodeType {
 
+	final String name_;
+	
 	private EdgeType[] upstream_edges_;
 	private EdgeType[] downstream_edges_;
+	
+	public Node( String name ) {
+		name_ = name;
+	}
+	
+	@Override
+	public String name() {
+		return name_;
+	}
 	
 	@Override
 	public EdgeType[] getUpstreamEdges() {

@@ -2,12 +2,21 @@ package graph;
 
 public class Edge implements EdgeType {
 
+	final String name_;
 	final int outgoing_node_index_;
 	final int incoming_node_index_;
 	
-	public Edge( int outgoing_node_index, int incoming_node_index ) {
+	public Edge( String name,
+			int outgoing_node_index,
+			int incoming_node_index ) {
+		name_ = name;
 		outgoing_node_index_ = outgoing_node_index;
 		incoming_node_index_ = incoming_node_index;
+	}
+	
+	@Override
+	public String name() {
+		return name_;
 	}
 	
 	@Override
@@ -35,5 +44,7 @@ public class Edge implements EdgeType {
 			return first_comparison;
 		}
 	}
+
+
 	
 }
