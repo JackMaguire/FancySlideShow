@@ -2,7 +2,7 @@ package slide_show;
 
 import graph.*;
 
-public class SlideShow {
+public class SlideShow implements SlideShowType{
 
 	//Starts at Node 0
 	private Node[] nodes_;
@@ -16,4 +16,9 @@ public class SlideShow {
 		return nodes_;
 	}
 	
+	
+	//run
+	public void run() {
+		
+	}
 }
