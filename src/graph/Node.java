@@ -35,8 +35,7 @@ public class Node implements NodeType {
 	}
 
 	@Override
-	public void addUpstreamEdge(EdgeType E) {
-		// TODO insert to sorted position 
+	public void addUpstreamEdge(EdgeType E) { 
 		EdgeType[] upstream_edges_new = new EdgeType[ upstream_edges_.length + 1 ];
 		for( int i=0; i < upstream_edges_.length; ++i ) {
 			upstream_edges_new[i] = upstream_edges_[i];
@@ -48,7 +47,6 @@ public class Node implements NodeType {
 
 	@Override
 	public void addDownstreamEdge(EdgeType E) {
-		// TODO insert to sorted position 
 		EdgeType[] downstream_edges_new = new EdgeType[ downstream_edges_.length + 1 ];
 		for( int i=0; i < downstream_edges_.length; ++i ) {
 			downstream_edges_new[i] = downstream_edges_[i];
