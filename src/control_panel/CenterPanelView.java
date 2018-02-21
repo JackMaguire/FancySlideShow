@@ -1,7 +1,9 @@
 package control_panel;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
@@ -92,7 +94,16 @@ public class CenterPanelView extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
+		Graphics2D g2D = (Graphics2D) g;      
+	    g2D.setStroke(new BasicStroke(10F));  // set stroke width of 10
+	    
+	    for( EdgeLine line : lines ) {
+	    		line.draw(g2D);
+	    }
+	    
+	    for( NodeCircle circle : circles ) {
+	    		circle.draw(g2D, diameter_);
+	    }
 	}
 	
 	private static class NodeCircle {
