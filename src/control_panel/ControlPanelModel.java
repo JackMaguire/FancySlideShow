@@ -6,6 +6,16 @@ public class ControlPanelModel {
 	private CenterPanelModel center_;
 	private EastPanelModel east_;
 	
+	public WestPanelModel getWestPanelModel() {
+		return west_;
+	}
 	
+	public CenterPanelModel getCenterPanelModel() {
+		return center_;
+	}
+	
+	public EastPanelModel getEastPanelModel() {
+		return east_;
+	}
 
 }

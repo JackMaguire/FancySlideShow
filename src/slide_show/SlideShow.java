@@ -4,6 +4,7 @@ import java.awt.*;
 
 import javax.swing.*;
 
+import control_panel.*;
 import graph.*;
 import util.*;
 
@@ -12,6 +13,8 @@ public class SlideShow implements SlideShowType{
 	//Starts at Node 0
 	private Graph graph_;
 	private Node current_node_;
+	
+	private ControlPanelModel control_panel_;
 	
 	public SlideShow( Graph graph ) {
 		graph_ = graph;
@@ -36,7 +39,8 @@ public class SlideShow implements SlideShowType{
 		Window w = devices[0].getFullScreenWindow();
 		
 		
-		JFrame slideshow_frame = createSlideshowJFrame();
+		//JFrame slideshow_frame = createSlideshowJFrame();
+		JFrame control_panel = createControlPanelJFrame();
 	}
 	
 	private JFrame createSlideshowJFrame() {
@@ -44,6 +48,17 @@ public class SlideShow implements SlideShowType{
 		F.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		F.setExtendedState(JFrame.MAXIMIZED_BOTH); 
 		F.setUndecorated(true);
+		F.setVisible(true);
+		return F;
+	}
+	
+	private JFrame createControlPanelJFrame() {
+		JFrame F = new JFrame("Control Panel");
+		F.setSize(400, 400);
+		F.add( new ControlPanelView( control_panel_ ) );
+		F.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		F.setExtendedState(JFrame.NORMAL); 
+		F.setUndecorated(false);
 		F.setVisible(true);
 		return F;
 	}
