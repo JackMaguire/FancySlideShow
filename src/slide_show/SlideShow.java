@@ -12,12 +12,13 @@ public class SlideShow implements SlideShowType{
 
 	//Starts at Node 0
 	private Graph graph_;
-	private Node current_node_;
+	//private Node current_node_;
 	
 	private ControlPanelModel control_panel_;
 	
 	public SlideShow( Graph graph ) {
 		graph_ = graph;
+		control_panel_ = new ControlPanelModel( graph_ );
 	}
 	
 	//Getters and setters

@@ -8,8 +8,8 @@ public class Node implements NodeType {
 	final String name_;
 	int index_ = 0;
 	
-	private EdgeType[] upstream_edges_;
-	private EdgeType[] downstream_edges_;
+	private EdgeType[] upstream_edges_= new EdgeType[ 0 ];
+	private EdgeType[] downstream_edges_= new EdgeType[ 0 ];
 	
 	public Node( String name ) {
 		name_ = name;

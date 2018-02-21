@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Graph implements GraphType {
 
 	NodeType[] nodes_;
-	EdgeType[] edges_;
+	EdgeType[] edges_ = new EdgeType[ 0 ];
 	
 	public Graph( int num_nodes ) {
 		nodes_ = new NodeType[ num_nodes ];
