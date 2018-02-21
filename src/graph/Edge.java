@@ -5,6 +5,7 @@ public class Edge implements EdgeType {
 	final String name_;
 	final int outgoing_node_index_;
 	final int incoming_node_index_;
+	int index_ = 0;
 	
 	public Edge( String name,
 			int outgoing_node_index,
@@ -43,6 +44,16 @@ public class Edge implements EdgeType {
 		} else {
 			return first_comparison;
 		}
+	}
+
+	@Override
+	public int index() {
+		return index_;
+	}
+
+	@Override
+	public void setIndex(int index) {
+		index_ = index;
 	}
 
 

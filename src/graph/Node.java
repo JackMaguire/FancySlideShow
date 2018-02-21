@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 public class Node implements NodeType {
 
 	final String name_;
+	int index_ = 0;
 	
 	private EdgeType[] upstream_edges_;
 	private EdgeType[] downstream_edges_;
@@ -56,5 +57,14 @@ public class Node implements NodeType {
 		//Arrays.sort(downstream_edges_);
 	}
 	
+	@Override
+	public int index() {
+		return index_;
+	}
+
+	@Override
+	public void setIndex(int index) {
+		index_ = index;
+	}
 	
 }

@@ -10,4 +10,7 @@ public interface EdgeType extends Comparable<EdgeType> {
 	
 	boolean hasImages();
 	
+	int index();
+	void setIndex( int index );
+	
 }

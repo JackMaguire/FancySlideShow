@@ -5,6 +5,8 @@ import java.awt.image.BufferedImage;
 public interface NodeType {
 
 	String name();
+	int index();
+	void setIndex( int index );
 	
 	//Graph Logic
 	EdgeType[] getUpstreamEdges();

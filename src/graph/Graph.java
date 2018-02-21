@@ -55,6 +55,7 @@ public class Graph implements GraphType {
 			edges_new[i] = edges_[i];
 		}
 		edges_new[ edges_.length ] = E;
+		E.setIndex( edges_.length );
 		edges_ = edges_new;
 	}
 }
