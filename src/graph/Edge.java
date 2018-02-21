@@ -1,5 +1,5 @@
 package graph;
 
-public class Edge {
+public class Edge implements EdgeType {
 
 }

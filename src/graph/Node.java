@@ -1,5 +1,5 @@
 package graph;
 
-public class Node {
+public class Node implements NodeType {
 
 }
