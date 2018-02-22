@@ -6,7 +6,6 @@ import javax.swing.*;
 
 import control_panel.*;
 import graph.*;
-import util.*;
 
 public class SlideShow implements SlideShowType{
 
