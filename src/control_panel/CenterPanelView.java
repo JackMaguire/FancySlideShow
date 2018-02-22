@@ -16,8 +16,8 @@ public class CenterPanelView extends JPanel {
 
 	private final CenterPanelModel model_;
 	
-	private EdgeLine[] lines;
-	private NodeCircle[] circles;
+	private EdgeLine[] lines_;
+	private NodeCircle[] circles_;
 	
 	private final static Color text_ = Color.BLACK;
 	
@@ -43,7 +43,7 @@ public class CenterPanelView extends JPanel {
 		for( int i=0; i<all_edges.length; ++i ) {
 			int index0 = all_edges[i].outgoingNodeIndex();
 			int index1 = all_edges[i].incomingNodeIndex();
-			lines[i] = new EdgeLine( circles[ index0 ], circles[ index1 ], all_edges[i].name() );
+			lines[i] = new EdgeLine( circles_[ index0 ], circles_[ index1 ], all_edges[i].name() );
 		}
 	}
 	
@@ -86,7 +86,7 @@ public class CenterPanelView extends JPanel {
 		
 		super.paintComponent(g);
 		Graphics2D g2D = (Graphics2D) g;      
-	    g2D.setStroke(new BasicStroke(10F));  // set stroke width of 10
+		g2D.setStroke(new BasicStroke(10F));  // set stroke width of 10
 
 		final int width = this.getWidth();
 		final int height = this.getHeight();
@@ -94,22 +94,22 @@ public class CenterPanelView extends JPanel {
 		final int min_dim = ( width < height ? width : height );
 		final int big_circle_R = min_dim / 2 - diameter_ - 30; //30 is just a buffer for good measure
 
-	    for( NodeCircle circle : circles ) {
-    			circle.draw(g2D, diameter_, width, height, big_circle_R, true );
+	    for( NodeCircle circle : circles_ ) {
+		circle.draw(g2D, diameter_, width, height, big_circle_R, true );
 	    }
 	   
-	    for( EdgeLine line : lines ) {
-	    		line.draw(g2D, radius_ );
+	    for( EdgeLine line : lines_ ) {
+		line.draw(g2D, radius_ );
 	    }
 	    
 	    //quickly draw circles again so they are on top
-	    for( NodeCircle circle : circles ) {
-			circle.draw(g2D, diameter_, width, height, big_circle_R, false );
+	    for( NodeCircle circle : circles_ ) {
+		circle.draw(g2D, diameter_, width, height, big_circle_R, false );
 	    }
 	}
 
     public NodeCircle get_circle( int x, int y, int max_distance_1D ){
-	for( NodeCircle circle : circles ){
+	for( NodeCircle circle : circles_ ){
 	    if( circle.most_recent_x - x < max_distance_1D && circle.most_recent_y - y < max_distance_1D ){
 		return circle;
 	    }
