@@ -86,7 +86,7 @@ public class CenterPanelView extends JPanel {
 		
 		super.paintComponent(g);
 		Graphics2D g2D = (Graphics2D) g;      
-		g2D.setStroke(new BasicStroke(10F));  // set stroke width of 10
+		g2D.setStroke(new BasicStroke(8F));  // set stroke width
 
 		final int width = this.getWidth();
 		final int height = this.getHeight();
