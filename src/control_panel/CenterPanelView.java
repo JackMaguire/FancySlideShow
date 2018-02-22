@@ -107,6 +107,15 @@ public class CenterPanelView extends JPanel {
 			circle.draw(g2D, diameter_, width, height, big_circle_R, false );
 	    }
 	}
+
+    public NodeCircle get_circle( int x, int y, int max_distance_1D ){
+	for( NodeCircle circle : circles ){
+	    if( circle.most_recent_x - x < max_distance_1D && circle.most_recent_y - y < max_distance_1D ){
+		return circle;
+	    }
+	}
+	return null;
+    }
 	
 	private static class NodeCircle {
 
