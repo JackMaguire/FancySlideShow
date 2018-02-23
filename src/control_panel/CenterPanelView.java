@@ -33,17 +33,17 @@ public class CenterPanelView extends JPanel {
 		model_ = model;
 		
 		NodeType[] all_nodes = model.getGraph().getNodes();
-		circles = new NodeCircle[ all_nodes.length ];
+		circles_ = new NodeCircle[ all_nodes.length ];
 		for( int i=0; i<all_nodes.length; ++i ) {
-			circles[i] = createNodeCircle( i, all_nodes.length, all_nodes[i].name() );
+			circles_[i] = createNodeCircle( i, all_nodes.length, all_nodes[i].name() );
 		}
 		
 		EdgeType[] all_edges = model.getGraph().getEdges();
-		lines = new EdgeLine[ all_edges.length ];
+		lines_ = new EdgeLine[ all_edges.length ];
 		for( int i=0; i<all_edges.length; ++i ) {
 			int index0 = all_edges[i].outgoingNodeIndex();
 			int index1 = all_edges[i].incomingNodeIndex();
-			lines[i] = new EdgeLine( circles_[ index0 ], circles_[ index1 ], all_edges[i].name() );
+			lines_[i] = new EdgeLine( circles_[ index0 ], circles_[ index1 ], all_edges[i].name() );
 		}
 	}
 	
@@ -51,24 +51,24 @@ public class CenterPanelView extends JPanel {
 		final int node_index = model_.currentNode().index();
 		final int edge_index = model_.selectedEdge().index();
 		
-		for( int i=0; i<circles.length; ++i ) {
+		for( int i=0; i<circles_.length; ++i ) {
 			if ( i == node_index ) {
-				circles[i].setColor( selected_ );
+				circles_[i].setColor( selected_ );
 			} else {
-				circles[i].setColor( default_ );
+				circles_[i].setColor( default_ );
 			}
 		}
 		
-		for( int i=0; i<lines.length; ++i ) {
+		for( int i=0; i<lines_.length; ++i ) {
 			EdgeType[] all_edges = model_.getGraph().getEdges();
 			if ( all_edges[ i ].index() == edge_index ) {
-				lines[i].setColor( selected_ );
+				lines_[i].setColor( selected_ );
 			} else if ( all_edges[ i ].outgoingNodeIndex() == node_index ) {
-				lines[i].setColor( forward_ );
+				lines_[i].setColor( forward_ );
 			} else if ( all_edges[ i ].incomingNodeIndex() == node_index ) {
-				lines[i].setColor( backward_ );
+				lines_[i].setColor( backward_ );
 			} else {
-				lines[i].setColor( default_ );
+				lines_[i].setColor( default_ );
 			}
 		}
 	}
