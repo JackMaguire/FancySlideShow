@@ -21,7 +21,8 @@ public class Node implements NodeType {
 	private EdgeType[] upstream_edges_ = new EdgeType[0];
 	private EdgeType[] downstream_edges_ = new EdgeType[0];
 
-	String image_filename_;
+	private String image_filename_;
+	private BufferedImage image_;
 	
 	public Node( String name ) {
 		name_ = name;
@@ -36,11 +37,26 @@ public class Node implements NodeType {
 	public Node( String name, boolean is_hard, String image_filename ) {
 		name_ = name;
 		hard_ = is_hard;
-		image_filename_ = image_filename;
+		setImageFilename( image_filename );
 	}
 
 	public void setImageFilename( String filename ) {
 		image_filename_ = filename;
+		
+		File img = new File( image_filename_ );
+		try {
+			image_ = ImageIO.read( img );
+			
+			
+			if( CompileTimeSettings.DEBUG_FRAME_GRAPH ) {
+				DataBuffer dataBuffer = image_.getData().getDataBuffer();
+				long sizeBytes = ((long) dataBuffer.getSize()) * 4l;
+				usage_statistics.MemoryCounter.getInstance().addBytesForToken( "PrimaryFGNodes", sizeBytes );
+			}
+		}
+		catch( IOException e ) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
@@ -60,7 +76,7 @@ public class Node implements NodeType {
 
 	@Override
 	public BufferedImage getThumbnailImage() {
-		return null;
+		return image_;
 	}
 
 	@Override
@@ -107,23 +123,8 @@ public class Node implements NodeType {
 
 	@Override
 	public void applyToFrameGraph( FrameGraph fg ) {
-		fg.getPrimaryNode( index_ ).setStop( hard_ );
-		
-		File img = new File( image_filename_ );
-		BufferedImage in;
-		try {
-			in = ImageIO.read( img );
-			fg.getPrimaryNode( index_ ).setImage( in );
-			
-			if( CompileTimeSettings.DEBUG_FRAME_GRAPH ) {
-				DataBuffer dataBuffer = in.getData().getDataBuffer();
-				long sizeBytes = ((long) dataBuffer.getSize()) * 4l;
-				usage_statistics.MemoryCounter.getInstance().addBytesForToken( "PrimaryFGNodes", sizeBytes );
-			}
-		}
-		catch( IOException e ) {
-			e.printStackTrace();
-		}
+		fg.getPrimaryNode( index_ ).setStop( hard_ );		
+		fg.getPrimaryNode( index_ ).setImage( image_ );
 	}
 
 }
