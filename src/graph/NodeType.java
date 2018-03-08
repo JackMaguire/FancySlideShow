@@ -19,6 +19,9 @@ public interface NodeType {
 
 	void addDownstreamEdge( EdgeType E );
 
+	void toggle_hardness();
+	boolean is_hard();
+	
 	// Image Logic
 	BufferedImage getNextImage();
 	// void loadImagesIntoMemory();

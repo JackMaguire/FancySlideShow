@@ -5,14 +5,22 @@ import java.awt.image.BufferedImage;
 
 public class Node implements NodeType {
 
-	final String name_;
-	int index_ = 0;
+	final private String name_;
+	private int index_ = 0;
+
+	private boolean hard_;
 
 	private EdgeType[] upstream_edges_ = new EdgeType[0];
 	private EdgeType[] downstream_edges_ = new EdgeType[0];
 
 	public Node( String name ) {
 		name_ = name;
+		hard_ = true;
+	}
+
+	public Node( String name, boolean is_hard ) {
+		name_ = name;
+		hard_ = is_hard;
 	}
 
 	@Override
@@ -65,6 +73,16 @@ public class Node implements NodeType {
 	@Override
 	public void setIndex( int index ) {
 		index_ = index;
+	}
+
+	@Override
+	public void toggle_hardness() {
+		hard_ = !hard_;
+	}
+
+	@Override
+	public boolean is_hard() {
+		return hard_;
 	}
 
 }
