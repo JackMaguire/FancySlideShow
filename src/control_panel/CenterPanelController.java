@@ -10,40 +10,42 @@ public class CenterPanelController implements MouseListener {
 
 	final private CenterPanelModel model_;
 	final private CenterPanelView view_;
-	
+
 	public CenterPanelController( CenterPanelModel model, CenterPanelView view ) {
 		model_ = model;
 		view_ = view;
 	}
-	
+
 	private void handle_click_on_node( MouseEvent e, NodeCircle node_circle ) {
-		NodeType node = model_.getGraph().getNode( node_circle.ID );
+		NodeType node = node_circle.node();
 		if( e.getButton() == 1 ) {
-			//select node
+			// select node
 			model_.select( node );
 			view_.repaint();
-			if( CompileTimeSettings.DEBUG ) {
-				System.out.println( "selected node " + node_circle.ID );
+			if( CompileTimeSettings.DEBUG_CONTROL_PANEL ) {
+				System.out.println( "selected node " + node.name() );
 			}
-		} else {
-			//change hardness of node
+		}
+		else {
+			// change hardness of node
 			node.toggle_hardness();
-			if( CompileTimeSettings.DEBUG ) {
-				System.out.println( "toggled node " + node_circle.ID );
+			view_.repaint();
+			if( CompileTimeSettings.DEBUG_CONTROL_PANEL ) {
+				System.out.println( "toggled node " + node.name() );
 			}
 		}
 	}
-	
+
 	@Override
 	public void mouseClicked( MouseEvent e ) {
-		//#1 check for node
+		// #1 check for node
 		NodeCircle node_circle = view_.get_circle( e.getX(), e.getY() );
 		if( node_circle != null ) {
 			handle_click_on_node( e, node_circle );
 			return;
 		}
 
-		//#2 check for edge
+		// #2 check for edge
 	}
 
 	@Override

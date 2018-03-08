@@ -95,11 +95,11 @@ public class CenterPanelView extends JPanel {
 		}
 	}
 
-	private static NodeCircle createNodeCircle( int index, int num_points, String name ) {
+	private NodeCircle createNodeCircle( int index, int num_points, String name ) {
 		double radians = Math.PI * 2 * index / ( (double) num_points );// uses radians
 		double dx = Math.cos( radians );
 		double dy = Math.sin( radians );
-		return new NodeCircle( index, dx, dy, name );
+		return new NodeCircle( model_.getGraph().getNode( index ), dx, dy, name );
 	}
 
 	@Override
@@ -135,7 +135,7 @@ public class CenterPanelView extends JPanel {
 	}
 
 	public NodeCircle get_circle( int x, int y, int max_distance_1D ) {
-		if( CompileTimeSettings.DEBUG ) {
+		if( CompileTimeSettings.DEBUG_CONTROL_PANEL ) {
 			for( int i=0 ;i<circles_.length; ++i ) {
 				NodeCircle circle = circles_[ i ];
 				System.out.println( i + "\t" + (circle.most_recent_x - x) + "\t" + (circle.most_recent_y - y) + "\t" +
@@ -153,7 +153,8 @@ public class CenterPanelView extends JPanel {
 
 	static class NodeCircle {
 
-		final public int ID;
+		//final public int ID;
+		private final NodeType node_;
 		
 		final public double dx;
 		final public double dy;
@@ -164,26 +165,40 @@ public class CenterPanelView extends JPanel {
 
 		private Color color_;
 
-		public NodeCircle( int id, double dx, double dy, String name ) {
-			ID = id;
+		public NodeCircle( NodeType node, double dx, double dy, String name ) {
+			node_ = node;
 			this.dx = dx;
 			this.dy = dy;
 			name_ = name;
 		}
 
+		public int ID() {
+			return node_.index();
+		}
+		
+		public NodeType node() {
+			return node_;
+		}
+		
 		public void setColor( Color color ) {
 			color_ = color;
 		}
 
 		public void draw( Graphics g, int diameter, int width, int height, int big_circle_R, boolean recalculate ) {
-			g.setColor( color_ );
-
+			
 			if( recalculate ) {
 				most_recent_x = ( width / 2 ) + (int) ( dx * big_circle_R );
 				most_recent_y = ( height / 2 ) + (int) ( dy * big_circle_R );
 			}
 
-			g.fillOval( most_recent_x, most_recent_y, diameter, diameter );
+			g.setColor( color_ );
+			if( node_.is_hard() ) {
+				g.fillRect( most_recent_x, most_recent_y, diameter, diameter );
+				//g.fillOval( most_recent_x, most_recent_y, diameter, diameter );
+			}
+			else {
+				g.fillOval( most_recent_x, most_recent_y, diameter, diameter );
+			}
 
 			if( name_.length() > 0 ) {
 				g.setColor( text_ );
