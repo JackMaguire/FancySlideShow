@@ -25,7 +25,7 @@ public class ControlPanelView extends JPanel {
 		center_view_ = new CenterPanelView( model_.getCenterPanelModel() );
 		add( center_view_, BorderLayout.CENTER );
 
-		center_controller_ = new CenterPanelController( model_.getCenterPanelModel(), center_view_ );
+		center_controller_ = new CenterPanelController( this, model_.getCenterPanelModel(), center_view_ );
 		center_view_.addMouseListener( center_controller_ );
 
 		add( south_view_, BorderLayout.SOUTH );
