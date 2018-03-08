@@ -48,13 +48,13 @@ public class EastPanelView extends JPanel {
 
 		private double getScale( int panelWidth, int panelHeight, int imageWidth, int imageHeight ) {
 
-			if( imageWidth > panelWidth || imageHeight > panelHeight ) {
+			if( imageWidth < panelWidth || imageHeight < panelHeight ) {
 				double xScale = ( (double) imageWidth ) / panelWidth;
 				double yScale = ( (double) imageHeight ) / panelHeight;
 				return Math.min( xScale, yScale );
 			}
 
-			if( imageWidth < panelWidth && imageHeight < panelHeight ) {
+			if( imageWidth > panelWidth && imageHeight > panelHeight ) {
 				double xScale = ( (double) panelWidth ) / imageWidth;
 				double yScale = ( (double) panelHeight ) / imageHeight;
 				return Math.min( xScale, yScale );
@@ -90,19 +90,11 @@ public class EastPanelView extends JPanel {
 
 			//int panelWidth = this.getWidth();
 			//int panelHeight = this.getHeight();
-			int imageWidth = image.getWidth();
-			int imageHeight = image.getHeight();
-			final double scale = 1.0 / getScale( previous_width_, previous_height_, imageWidth, imageHeight );
+			final int imageWidth = image.getWidth();
+			final int imageHeight = image.getHeight();
+			final double scale = getScale( previous_width_, previous_height_, imageWidth, imageHeight );
 
-			// Calculate the center position of the panel -- with scale
-			double xPos = ( previous_width_ - scale * imageWidth ) / 2;
-			double yPos = ( previous_height_ - scale * imageHeight ) / 2;
-
-			// Locate, scale and draw image
-			AffineTransform at = AffineTransform.getTranslateInstance( xPos, yPos );
-			at.scale( scale, scale );
-			g2.drawRenderedImage( image, at );
-			// g2.fillRect( 0, 0, previous_width_, previous_height_ );
+			g2.drawImage( image, 0, 0, (int) (imageWidth * scale), (int) (imageHeight * scale), null );
 
 			if( CompileTimeSettings.DEBUG_VIEW ) {
 				System.out.println( "---North East---" );
