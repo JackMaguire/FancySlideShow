@@ -8,16 +8,16 @@ public interface NodeType {
 
 	int index();
 
-	void setIndex(int index);
+	void setIndex( int index );
 
 	// Graph Logic
 	EdgeType[] getUpstreamEdges();
 
 	EdgeType[] getDownstreamEdges();
 
-	void addUpstreamEdge(EdgeType E);
+	void addUpstreamEdge( EdgeType E );
 
-	void addDownstreamEdge(EdgeType E);
+	void addDownstreamEdge( EdgeType E );
 
 	// Image Logic
 	BufferedImage getNextImage();

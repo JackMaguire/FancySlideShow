@@ -11,7 +11,7 @@ public class Node implements NodeType {
 	private EdgeType[] upstream_edges_ = new EdgeType[0];
 	private EdgeType[] downstream_edges_ = new EdgeType[0];
 
-	public Node(String name) {
+	public Node( String name ) {
 		name_ = name;
 	}
 
@@ -36,23 +36,23 @@ public class Node implements NodeType {
 	}
 
 	@Override
-	public void addUpstreamEdge(EdgeType E) {
+	public void addUpstreamEdge( EdgeType E ) {
 		EdgeType[] upstream_edges_new = new EdgeType[upstream_edges_.length + 1];
-		for (int i = 0; i < upstream_edges_.length; ++i) {
-			upstream_edges_new[i] = upstream_edges_[i];
+		for( int i = 0; i < upstream_edges_.length; ++i ) {
+			upstream_edges_new[ i ] = upstream_edges_[ i ];
 		}
-		upstream_edges_new[upstream_edges_.length] = E;
+		upstream_edges_new[ upstream_edges_.length ] = E;
 		upstream_edges_ = upstream_edges_new;
 		// Arrays.sort(upstream_edges_);
 	}
 
 	@Override
-	public void addDownstreamEdge(EdgeType E) {
+	public void addDownstreamEdge( EdgeType E ) {
 		EdgeType[] downstream_edges_new = new EdgeType[downstream_edges_.length + 1];
-		for (int i = 0; i < downstream_edges_.length; ++i) {
-			downstream_edges_new[i] = downstream_edges_[i];
+		for( int i = 0; i < downstream_edges_.length; ++i ) {
+			downstream_edges_new[ i ] = downstream_edges_[ i ];
 		}
-		downstream_edges_new[downstream_edges_.length] = E;
+		downstream_edges_new[ downstream_edges_.length ] = E;
 		downstream_edges_ = downstream_edges_new;
 		// Arrays.sort(downstream_edges_);
 	}
@@ -63,7 +63,7 @@ public class Node implements NodeType {
 	}
 
 	@Override
-	public void setIndex(int index) {
+	public void setIndex( int index ) {
 		index_ = index;
 	}
 

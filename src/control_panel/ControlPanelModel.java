@@ -6,9 +6,9 @@ public class ControlPanelModel {
 	private CenterPanelModel center_;
 	private EastPanelModel east_;
 
-	public ControlPanelModel(graph.Graph graph) {
+	public ControlPanelModel( graph.Graph graph ) {
 		west_ = new WestPanelModel();
-		center_ = new CenterPanelModel(graph);
+		center_ = new CenterPanelModel( graph );
 		east_ = new EastPanelModel();
 	}
 

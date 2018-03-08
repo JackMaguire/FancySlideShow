@@ -7,7 +7,7 @@ public class Edge implements EdgeType {
 	final int incoming_node_index_;
 	int index_ = 0;
 
-	public Edge(String name, int outgoing_node_index, int incoming_node_index) {
+	public Edge( String name, int outgoing_node_index, int incoming_node_index ) {
 		name_ = name;
 		outgoing_node_index_ = outgoing_node_index;
 		incoming_node_index_ = incoming_node_index;
@@ -34,12 +34,13 @@ public class Edge implements EdgeType {
 	}
 
 	@Override
-	public int compareTo(EdgeType other) {
+	public int compareTo( EdgeType other ) {
 		// first compare by outgoing node, then incoming node.
 		final int first_comparison = outgoing_node_index_ - other.outgoingNodeIndex();
-		if (first_comparison == 0) {
+		if( first_comparison == 0 ) {
 			return incoming_node_index_ - other.incomingNodeIndex();
-		} else {
+		}
+		else {
 			return first_comparison;
 		}
 	}
@@ -50,7 +51,7 @@ public class Edge implements EdgeType {
 	}
 
 	@Override
-	public void setIndex(int index) {
+	public void setIndex( int index ) {
 		index_ = index;
 	}
 
