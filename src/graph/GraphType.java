@@ -15,6 +15,6 @@ public interface GraphType {
 	void addEdge( EdgeType edge );
 
 	EdgeType[] getEdges();
-	
+
 	FrameGraph createFrameGraph();
 }

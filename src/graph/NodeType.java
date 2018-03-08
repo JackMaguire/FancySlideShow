@@ -22,10 +22,11 @@ public interface NodeType {
 	void addDownstreamEdge( EdgeType E );
 
 	void toggle_hardness();
+
 	boolean is_hard();
-	
+
 	void applyToFrameGraph( FrameGraph fg );
-	
+
 	// Image Logic
 	BufferedImage getThumbnailImage();
 	// void loadImagesIntoMemory();

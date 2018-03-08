@@ -25,7 +25,7 @@ public class Edge implements EdgeType {
 		outgoing_node_index_ = outgoing_node_index;
 		incoming_node_index_ = incoming_node_index;
 	}
-	
+
 	public Edge( String name, int outgoing_node_index, int incoming_node_index, String[] image_filenames ) {
 		name_ = name;
 		outgoing_node_index_ = outgoing_node_index;
@@ -93,16 +93,16 @@ public class Edge implements EdgeType {
 		FrameNode[] my_edge_nodes = new FrameNode[image_filenames_.length];
 		for( int i = 0; i < my_edge_nodes.length; ++i ) {
 			my_edge_nodes[ i ] = new FrameNode( false, incoming_node_index_, outgoing_node_index_ );
-			
-			File img = new File( image_filenames_[i] );
+
+			File img = new File( image_filenames_[ i ] );
 			BufferedImage in;
 			try {
 				in = ImageIO.read( img );
 				my_edge_nodes[ i ].setImage( in );
-				
+
 				if( CompileTimeSettings.DEBUG_FRAME_GRAPH ) {
 					DataBuffer dataBuffer = in.getData().getDataBuffer();
-					long sizeBytes = ((long) dataBuffer.getSize()) * 4l;
+					long sizeBytes = ( (long) dataBuffer.getSize() ) * 4l;
 					usage_statistics.MemoryCounter.getInstance().addBytesForToken( "SecondaryFGNodes", sizeBytes );
 				}
 			}
@@ -113,19 +113,19 @@ public class Edge implements EdgeType {
 
 		begin_primary.addForwardNode( my_edge_nodes[ 0 ] );
 		my_edge_nodes[ 0 ].addReverseNode( begin_primary );
-		
-		for( int i=0; i < my_edge_nodes.length; ++i ) {
+
+		for( int i = 0; i < my_edge_nodes.length; ++i ) {
 			if( i != 0 ) {
 				my_edge_nodes[ i ].addReverseNode( my_edge_nodes[ i - 1 ] );
 			}
-			if( i != image_filenames_.length-1 ) {
+			if( i != image_filenames_.length - 1 ) {
 				my_edge_nodes[ i ].addForwardNode( my_edge_nodes[ i + 1 ] );
 			}
 		}
-		
-		my_edge_nodes[ image_filenames_.length-1 ].addForwardNode( final_primary );
-		final_primary.addReverseNode( my_edge_nodes[ image_filenames_.length-1 ] );
-		
+
+		my_edge_nodes[ image_filenames_.length - 1 ].addForwardNode( final_primary );
+		final_primary.addReverseNode( my_edge_nodes[ image_filenames_.length - 1 ] );
+
 	}
 
 }

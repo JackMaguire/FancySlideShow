@@ -15,8 +15,8 @@ public class FrameNode {
 
 	public final boolean IS_PRIMARY;
 	public final int UPSTREAM_PRIMARY_ID;
-	public final int DOWNSTREAM_PRIMARY_ID;//==UPSTREAM_PRIMARY_ID if primary
-	
+	public final int DOWNSTREAM_PRIMARY_ID;// ==UPSTREAM_PRIMARY_ID if primary
+
 	public FrameNode( boolean is_primary, int upstream_id, int downstream_id ) {
 		IS_PRIMARY = is_primary;
 		UPSTREAM_PRIMARY_ID = upstream_id;

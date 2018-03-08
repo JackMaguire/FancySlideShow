@@ -23,7 +23,7 @@ public class Node implements NodeType {
 
 	private String image_filename_;
 	private BufferedImage image_;
-	
+
 	public Node( String name ) {
 		name_ = name;
 		hard_ = true;
@@ -33,7 +33,7 @@ public class Node implements NodeType {
 		name_ = name;
 		hard_ = is_hard;
 	}
-	
+
 	public Node( String name, boolean is_hard, String image_filename ) {
 		name_ = name;
 		hard_ = is_hard;
@@ -42,15 +42,14 @@ public class Node implements NodeType {
 
 	public void setImageFilename( String filename ) {
 		image_filename_ = filename;
-		
+
 		File img = new File( image_filename_ );
 		try {
 			image_ = ImageIO.read( img );
-			
-			
+
 			if( CompileTimeSettings.DEBUG_FRAME_GRAPH ) {
 				DataBuffer dataBuffer = image_.getData().getDataBuffer();
-				long sizeBytes = ((long) dataBuffer.getSize()) * 4l;
+				long sizeBytes = ( (long) dataBuffer.getSize() ) * 4l;
 				usage_statistics.MemoryCounter.getInstance().addBytesForToken( "PrimaryFGNodes", sizeBytes );
 			}
 		}
@@ -58,7 +57,7 @@ public class Node implements NodeType {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	public String name() {
 		return name_;
@@ -123,7 +122,7 @@ public class Node implements NodeType {
 
 	@Override
 	public void applyToFrameGraph( FrameGraph fg ) {
-		fg.getPrimaryNode( index_ ).setStop( hard_ );		
+		fg.getPrimaryNode( index_ ).setStop( hard_ );
 		fg.getPrimaryNode( index_ ).setImage( image_ );
 	}
 

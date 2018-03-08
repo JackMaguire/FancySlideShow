@@ -26,7 +26,7 @@ public class CenterPanelView extends JPanel {
 	private final static Color backward_ = Color.RED;
 	private final static Color current_ = Color.BLUE;
 	private final static Color selected_ = Color.ORANGE;
-	
+
 	private final static int radius_ = 10;
 	private final static int diameter_ = 2 * radius_;
 
@@ -50,12 +50,12 @@ public class CenterPanelView extends JPanel {
 
 	public void recolorAllObjects() {
 		final int current_node_index = model_.currentNode().index();
-		
+
 		int selected_node_index = -1;
 		if( model_.selectedNode() != null ) {
 			selected_node_index = model_.selectedNode().index();
 		}
-		
+
 		final int next_edge_index = model_.nextEdge().index();
 		int selected_edge_index = -1;
 		if( model_.selectedEdge() != null ) {
@@ -67,7 +67,7 @@ public class CenterPanelView extends JPanel {
 			if( i == current_node_index ) {
 				circles_[ i ].setColor( current_ );
 			}
-			else if ( i == selected_node_index ) {
+			else if( i == selected_node_index ) {
 				circles_[ i ].setColor( selected_ );
 			}
 			else {
@@ -136,15 +136,17 @@ public class CenterPanelView extends JPanel {
 
 	public NodeCircle get_circle( int x, int y, int max_distance_1D ) {
 		if( CompileTimeSettings.DEBUG_CONTROL_PANEL ) {
-			for( int i=0 ;i<circles_.length; ++i ) {
+			for( int i = 0; i < circles_.length; ++i ) {
 				NodeCircle circle = circles_[ i ];
-				System.out.println( i + "\t" + (circle.most_recent_x - x) + "\t" + (circle.most_recent_y - y) + "\t" +
-						( Math.abs(circle.most_recent_x - x) < max_distance_1D && Math.abs(circle.most_recent_y - y) < max_distance_1D) );
+				System.out.println( i + "\t" + ( circle.most_recent_x - x ) + "\t" + ( circle.most_recent_y - y ) + "\t"
+						+ ( Math.abs( circle.most_recent_x - x ) < max_distance_1D
+								&& Math.abs( circle.most_recent_y - y ) < max_distance_1D ) );
 			}
 		}
-		
+
 		for( NodeCircle circle : circles_ ) {
-			if( Math.abs( circle.most_recent_x - x ) < max_distance_1D && Math.abs( circle.most_recent_y - y ) < max_distance_1D ) {
+			if( Math.abs( circle.most_recent_x - x ) < max_distance_1D
+					&& Math.abs( circle.most_recent_y - y ) < max_distance_1D ) {
 				return circle;
 			}
 		}
@@ -153,9 +155,9 @@ public class CenterPanelView extends JPanel {
 
 	static class NodeCircle {
 
-		//final public int ID;
+		// final public int ID;
 		private final NodeType node_;
-		
+
 		final public double dx;
 		final public double dy;
 
@@ -175,17 +177,17 @@ public class CenterPanelView extends JPanel {
 		public int ID() {
 			return node_.index();
 		}
-		
+
 		public NodeType node() {
 			return node_;
 		}
-		
+
 		public void setColor( Color color ) {
 			color_ = color;
 		}
 
 		public void draw( Graphics g, int diameter, int width, int height, int big_circle_R, boolean recalculate ) {
-			
+
 			if( recalculate ) {
 				most_recent_x = ( width / 2 ) + (int) ( dx * big_circle_R );
 				most_recent_y = ( height / 2 ) + (int) ( dy * big_circle_R );
@@ -194,7 +196,7 @@ public class CenterPanelView extends JPanel {
 			g.setColor( color_ );
 			if( node_.is_hard() ) {
 				g.fillRect( most_recent_x, most_recent_y, diameter, diameter );
-				//g.fillOval( most_recent_x, most_recent_y, diameter, diameter );
+				// g.fillOval( most_recent_x, most_recent_y, diameter, diameter );
 			}
 			else {
 				g.fillOval( most_recent_x, most_recent_y, diameter, diameter );
