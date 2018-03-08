@@ -48,7 +48,7 @@ public class CenterPanelView extends JPanel {
 
 	public void recolorAllObjects() {
 		final int node_index = model_.currentNode().index();
-		final int edge_index = model_.selectedEdge().index();
+		final int edge_index = model_.nextEdge().index();
 
 		for( int i = 0; i < circles_.length; ++i ) {
 			if( i == node_index ) {
@@ -80,7 +80,7 @@ public class CenterPanelView extends JPanel {
 		double radians = Math.PI * 2 * index / ( (double) num_points );// uses radians
 		double dx = Math.cos( radians );
 		double dy = Math.sin( radians );
-		return new NodeCircle( dx, dy, name );
+		return new NodeCircle( index, dx, dy, name );
 	}
 
 	@Override
@@ -111,6 +111,10 @@ public class CenterPanelView extends JPanel {
 		}
 	}
 
+	public NodeCircle get_circle( int x, int y ) {
+		return get_circle( x, y, diameter_ );
+	}
+
 	public NodeCircle get_circle( int x, int y, int max_distance_1D ) {
 		for( NodeCircle circle : circles_ ) {
 			if( circle.most_recent_x - x < max_distance_1D && circle.most_recent_y - y < max_distance_1D ) {
@@ -120,8 +124,10 @@ public class CenterPanelView extends JPanel {
 		return null;
 	}
 
-	private static class NodeCircle {
+	static class NodeCircle {
 
+		final public int ID;
+		
 		final public double dx;
 		final public double dy;
 
@@ -131,7 +137,8 @@ public class CenterPanelView extends JPanel {
 
 		private Color color_;
 
-		public NodeCircle( double dx, double dy, String name ) {
+		public NodeCircle( int id, double dx, double dy, String name ) {
+			ID = id;
 			this.dx = dx;
 			this.dy = dy;
 			name_ = name;
@@ -158,7 +165,7 @@ public class CenterPanelView extends JPanel {
 		}
 	}
 
-	private static class EdgeLine {
+	static class EdgeLine {
 		// public int x1, y1, x2, y2;
 
 		private final NodeCircle circle1, circle2;
