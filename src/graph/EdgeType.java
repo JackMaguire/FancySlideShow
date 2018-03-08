@@ -4,13 +4,15 @@ package graph;
 public interface EdgeType extends Comparable<EdgeType> {
 
 	String name();
-	
+
 	int outgoingNodeIndex();
+
 	int incomingNodeIndex();
-	
+
 	boolean hasImages();
-	
+
 	int index();
-	void setIndex( int index );
-	
+
+	void setIndex(int index);
+
 }
