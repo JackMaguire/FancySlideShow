@@ -2,6 +2,8 @@ package graph;
 
 import java.awt.image.BufferedImage;
 
+import frame_graph.FrameGraph;
+
 public interface NodeType {
 
 	String name();
@@ -21,6 +23,8 @@ public interface NodeType {
 
 	void toggle_hardness();
 	boolean is_hard();
+	
+	void applyToFrameGraph( FrameGraph fg );
 	
 	// Image Logic
 	BufferedImage getThumbnailImage();

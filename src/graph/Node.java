@@ -3,6 +3,8 @@ package graph;
 import java.awt.image.BufferedImage;
 //import java.util.Arrays;
 
+import frame_graph.FrameGraph;
+
 public class Node implements NodeType {
 
 	final private String name_;
@@ -83,6 +85,11 @@ public class Node implements NodeType {
 	@Override
 	public boolean is_hard() {
 		return hard_;
+	}
+
+	@Override
+	public void applyToFrameGraph( FrameGraph fg ) {
+		fg.getPrimaryNode( index_ ).setStop( hard_ );
 	}
 
 }
