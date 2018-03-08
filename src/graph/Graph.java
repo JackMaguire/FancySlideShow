@@ -1,5 +1,8 @@
 package graph;
 
+import java.awt.image.DataBuffer;
+
+import compile_time_settings.CompileTimeSettings;
 import frame_graph.FrameGraph;
 
 public class Graph implements GraphType {
@@ -61,9 +64,23 @@ public class Graph implements GraphType {
 
 	@Override
 	public FrameGraph createFrameGraph() {
-		// TODO Auto-generated method stub
 		FrameGraph fg = new FrameGraph( nodes_.length );
-		
+
+		for( NodeType node : nodes_ ) {
+			node.applyToFrameGraph( fg );
+		}
+
+		for( EdgeType edge : edges_ ) {
+			edge.applyToFrameGraph( fg );
+		}
+
+		if( CompileTimeSettings.DEBUG_FRAME_GRAPH ) {
+			final long primary = usage_statistics.MemoryCounter.getInstance().getBytesForToken( "PrimaryFGNodes" );
+			final long secondary = usage_statistics.MemoryCounter.getInstance().getBytesForToken( "SecondaryFGNodes" );
+			System.out.println( "Bytes required for FG: " + ( primary + secondary ) );
+			System.out.println( "\tPrimary:" + primary );
+			System.out.println( "\tSecondary:" + secondary );
+		}
 		return fg;
 	}
 }

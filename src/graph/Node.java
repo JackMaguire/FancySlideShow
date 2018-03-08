@@ -1,12 +1,14 @@
 package graph;
 
 import java.awt.image.BufferedImage;
+import java.awt.image.DataBuffer;
 //import java.util.Arrays;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import compile_time_settings.CompileTimeSettings;
 import frame_graph.FrameGraph;
 
 public class Node implements NodeType {
@@ -106,6 +108,12 @@ public class Node implements NodeType {
 		try {
 			in = ImageIO.read( img );
 			fg.getPrimaryNode( index_ ).setImage( in );
+			
+			if( CompileTimeSettings.DEBUG_FRAME_GRAPH ) {
+				DataBuffer dataBuffer = in.getData().getDataBuffer();
+				long sizeBytes = ((long) dataBuffer.getSize()) * 4l;
+				usage_statistics.MemoryCounter.getInstance().addBytesForToken( "PrimaryFGNodes", sizeBytes );
+			}
 		}
 		catch( IOException e ) {
 			e.printStackTrace();

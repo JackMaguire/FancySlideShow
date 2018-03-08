@@ -5,15 +5,15 @@ public class MemoryCounter {
 	private final static MemoryCounter instance_ = new MemoryCounter();
 	
 	//private long bytes_for_buffered_images_; 
-	private final Map< String, Integer > bytes_for_token_ = new HashMap< String, Integer >();
+	private final Map< String, Long > bytes_for_token_ = new HashMap< String, Long >();
 	
 	public MemoryCounter() {}
 	
-	public MemoryCounter getInstance() {
+	public static MemoryCounter getInstance() {
 		return instance_;
 	}
 	
-	public void addBytesForToken( String token, int bytes ) {
+	public void addBytesForToken( String token, long bytes ) {
 		if( ! bytes_for_token_.containsKey( token ) ) {
 			bytes_for_token_.put( token, bytes );
 		} else {
@@ -21,7 +21,7 @@ public class MemoryCounter {
 		}
 	}
 	
-	public int getBytesForToken( String token ) {
+	public long getBytesForToken( String token ) {
 		return bytes_for_token_.get( token );
 	}
 	
