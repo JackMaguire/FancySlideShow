@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
+import compile_time_settings.CompileTimeSettings;
 import graph.*;
 
 public class CenterPanelView extends JPanel {
@@ -49,10 +50,18 @@ public class CenterPanelView extends JPanel {
 
 	public void recolorAllObjects() {
 		final int current_node_index = model_.currentNode().index();
-		final int selected_node_index = model_.selectedNode().index();
+		
+		int selected_node_index = -1;
+		if( model_.selectedNode() != null ) {
+			selected_node_index = model_.selectedNode().index();
+		}
 		
 		final int next_edge_index = model_.nextEdge().index();
-		final int selected_edge_index = model_.selectedEdge().index();
+		int selected_edge_index = -1;
+		if( model_.selectedEdge() != null ) {
+			selected_edge_index = model_.selectedEdge().index();
+		}
+		System.out.println( selected_node_index );
 
 		for( int i = 0; i < circles_.length; ++i ) {
 			if( i == current_node_index ) {
@@ -126,8 +135,16 @@ public class CenterPanelView extends JPanel {
 	}
 
 	public NodeCircle get_circle( int x, int y, int max_distance_1D ) {
+		if( CompileTimeSettings.DEBUG ) {
+			for( int i=0 ;i<circles_.length; ++i ) {
+				NodeCircle circle = circles_[ i ];
+				System.out.println( i + "\t" + (circle.most_recent_x - x) + "\t" + (circle.most_recent_y - y) + "\t" +
+						( Math.abs(circle.most_recent_x - x) < max_distance_1D && Math.abs(circle.most_recent_y - y) < max_distance_1D) );
+			}
+		}
+		
 		for( NodeCircle circle : circles_ ) {
-			if( circle.most_recent_x - x < max_distance_1D && circle.most_recent_y - y < max_distance_1D ) {
+			if( Math.abs( circle.most_recent_x - x ) < max_distance_1D && Math.abs( circle.most_recent_y - y ) < max_distance_1D ) {
 				return circle;
 			}
 		}

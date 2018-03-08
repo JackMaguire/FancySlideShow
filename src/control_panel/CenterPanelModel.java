@@ -16,6 +16,8 @@ public class CenterPanelModel {
 	public CenterPanelModel( Graph graph ) {
 		graph_ = graph;
 		current_node_ = graph.getNode( 0 );
+		selected_node_ = null;
+		selected_edge_ = null;
 		next_edge_ = current_node_.getDownstreamEdges()[ 0 ];
 	}
 

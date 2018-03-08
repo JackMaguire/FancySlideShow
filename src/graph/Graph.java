@@ -11,6 +11,7 @@ public class Graph implements GraphType {
 
 	@Override
 	public void addNode( NodeType node, int node_index ) {
+		node.setIndex( node_index );
 		nodes_[ node_index ] = node;
 	}
 
