@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import compile_time_settings.CompileTimeSettings;
+import compile_time_settings.ControlPanelMonitorSettings;
 
 public class EastPanelView extends JPanel {
 
@@ -21,8 +22,9 @@ public class EastPanelView extends JPanel {
 	private final EastPanelModel model_;
 
 	public EastPanelView( EastPanelModel model ) {
-		this.setMinimumSize( new Dimension( 100, 100 ) );
-
+		this.setMinimumSize( new Dimension( ControlPanelMonitorSettings.EAST_WIDTH, 100 ) );
+		this.setPreferredSize( new Dimension( ControlPanelMonitorSettings.EAST_WIDTH, 100 ) );
+		
 		model_ = model;
 		topside_ = new TopSide( model_.centerModel() );
 

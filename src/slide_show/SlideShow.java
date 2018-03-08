@@ -4,6 +4,7 @@ import java.awt.*;
 
 import javax.swing.*;
 
+import compile_time_settings.ControlPanelMonitorSettings;
 import control_panel.*;
 import graph.*;
 
@@ -52,7 +53,7 @@ public class SlideShow implements SlideShowType {
 
 	private JFrame createControlPanelJFrame() {
 		JFrame F = new JFrame( "Control Panel" );
-		F.setSize( 900, 600 );
+		F.setSize( ControlPanelMonitorSettings.CP_WIDTH, ControlPanelMonitorSettings.CP_HEIGHT );
 		F.add( new ControlPanelView( control_panel_ ) );
 		F.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		F.setExtendedState( JFrame.NORMAL );
