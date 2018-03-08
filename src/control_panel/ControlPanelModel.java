@@ -2,14 +2,14 @@ package control_panel;
 
 public class ControlPanelModel {
 
-	private WestPanelModel west_;
-	private CenterPanelModel center_;
-	private EastPanelModel east_;
+	private final WestPanelModel west_;
+	private final CenterPanelModel center_;
+	private final EastPanelModel east_;
 
 	public ControlPanelModel( graph.Graph graph ) {
-		west_ = new WestPanelModel();
 		center_ = new CenterPanelModel( graph );
-		east_ = new EastPanelModel();
+		west_ = new WestPanelModel();
+		east_ = new EastPanelModel( center_ );
 	}
 
 	public WestPanelModel getWestPanelModel() {

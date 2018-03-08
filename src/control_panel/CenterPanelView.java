@@ -61,7 +61,6 @@ public class CenterPanelView extends JPanel {
 		if( model_.selectedEdge() != null ) {
 			selected_edge_index = model_.selectedEdge().index();
 		}
-		System.out.println( selected_node_index );
 
 		for( int i = 0; i < circles_.length; ++i ) {
 			if( i == current_node_index ) {

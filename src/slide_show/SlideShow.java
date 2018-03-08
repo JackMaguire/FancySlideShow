@@ -32,7 +32,7 @@ public class SlideShow implements SlideShowType {
 	// run
 	public void run() {
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		p( ge.toString() );
+		//p( ge.toString() );
 
 		GraphicsDevice[] devices = ge.getScreenDevices();
 		Window w = devices[ 0 ].getFullScreenWindow();
@@ -52,7 +52,7 @@ public class SlideShow implements SlideShowType {
 
 	private JFrame createControlPanelJFrame() {
 		JFrame F = new JFrame( "Control Panel" );
-		F.setSize( 400, 400 );
+		F.setSize( 900, 600 );
 		F.add( new ControlPanelView( control_panel_ ) );
 		F.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		F.setExtendedState( JFrame.NORMAL );
