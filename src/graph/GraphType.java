@@ -1,5 +1,7 @@
 package graph;
 
+import frame_graph.FrameGraph;
+
 public interface GraphType {
 
 	NodeType getNode( int node_index );
@@ -13,4 +15,6 @@ public interface GraphType {
 	void addEdge( EdgeType edge );
 
 	EdgeType[] getEdges();
+	
+	FrameGraph createFrameGraph();
 }

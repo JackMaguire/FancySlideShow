@@ -1,5 +1,7 @@
 package graph;
 
+import frame_graph.FrameGraph;
+
 public class Graph implements GraphType {
 
 	NodeType[] nodes_;
@@ -55,5 +57,13 @@ public class Graph implements GraphType {
 		edges_new[ edges_.length ] = E;
 		E.setIndex( edges_.length );
 		edges_ = edges_new;
+	}
+
+	@Override
+	public FrameGraph createFrameGraph() {
+		// TODO Auto-generated method stub
+		FrameGraph fg = new FrameGraph( nodes_.length );
+		
+		return fg;
 	}
 }
