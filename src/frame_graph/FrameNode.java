@@ -10,11 +10,17 @@ public class FrameNode {
 	private FrameNode forward_node_ = null;
 	private FrameNode[] possible_forward_nodes_ = new FrameNode[0];
 
-	private FrameNode reverse_node_;
+	private FrameNode reverse_node_ = null;
 	private FrameNode[] possible_reverse_nodes_ = new FrameNode[0];
 
-	public FrameNode() {
-
+	public final boolean IS_PRIMARY;
+	public final int UPSTREAM_PRIMARY_ID;
+	public final int DOWNSTREAM_PRIMARY_ID;//==UPSTREAM_PRIMARY_ID if primary
+	
+	public FrameNode( boolean is_primary, int upstream_id, int downstream_id ) {
+		IS_PRIMARY = is_primary;
+		UPSTREAM_PRIMARY_ID = upstream_id;
+		DOWNSTREAM_PRIMARY_ID = downstream_id;
 	}
 
 	public void setImage( BufferedImage image ) {
