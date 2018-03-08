@@ -6,7 +6,7 @@ public interface GraphType {
 
 	NodeType getNode( int node_index );
 
-	void addNode( NodeType node, int node_index );
+	void setNode( NodeType node, int node_index );
 
 	NodeType[] getNodes();
 

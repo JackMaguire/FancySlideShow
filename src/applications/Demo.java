@@ -3,19 +3,20 @@ package applications;
 import slide_show.*;
 import graph.*;
 
-public class Debug {
+public class Demo {
 
 	public static void main( String[] args ) {
-		final int num_nodes = 20;
+		final int num_nodes = 4;
 		Graph my_graph = new Graph( num_nodes );
-		for( int i = 1; i <= num_nodes; ++i ) {
-			my_graph.setNode( new Node( "" + i ), i - 1 );
-			if( i != 1 && i != 5 ) {
-				my_graph.addEdge( new Edge( "normal", i - 2, i - 1 ) );
-			}
-		}
 
-		my_graph.addEdge( new Edge( "special", 3, 9 ) );
+		Node start_node = new Node( "start" );
+		my_graph.setNode( start_node, 0 );
+		
+		my_graph.setNode( new Node( "branch" ), 1 );
+		my_graph.setNode( new Node( "end1" ), 2 );
+		my_graph.setNode( new Node( "end2" ), 3 );
+		
+		//my_graph.addEdge( new Edge( "special", 3, 9 ) );
 
 		// my_graph.addEdge( new Edge( "0_1", 0, 1 ) );
 		// my_graph.addEdge( new Edge( "1_2", 1, 2 ) );
