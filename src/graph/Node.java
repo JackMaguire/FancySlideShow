@@ -32,6 +32,12 @@ public class Node implements NodeType {
 		name_ = name;
 		hard_ = is_hard;
 	}
+	
+	public Node( String name, boolean is_hard, String image_filename ) {
+		name_ = name;
+		hard_ = is_hard;
+		image_filename_ = image_filename;
+	}
 
 	public void setImageFilename( String filename ) {
 		image_filename_ = filename;

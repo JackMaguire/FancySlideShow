@@ -2,7 +2,7 @@ package compile_time_settings;
 
 public class CompileTimeSettings {
 
-	private final static boolean DEBUG_ALL = true;
+	private final static boolean DEBUG_ALL = false;
 
 	public final static boolean DEBUG_APPLICATIONS = DEBUG_ALL || false;
 	public final static boolean DEBUG_CONTROL_PANEL = DEBUG_ALL || false;

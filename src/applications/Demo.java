@@ -1,6 +1,9 @@
 package applications;
 
 import slide_show.*;
+
+import java.io.File;
+
 import graph.*;
 
 public class Demo {
@@ -9,21 +12,33 @@ public class Demo {
 		final int num_nodes = 4;
 		Graph my_graph = new Graph( num_nodes );
 
-		Node start_node = new Node( "start" );
+		Node start_node = new Node( "start", true );
+		start_node.setImageFilename( "src/PicsForDemo/Track1/0001.png" );
+		//File f = new File("src/PicsForDemo/Track1/0001.png");
 		my_graph.setNode( start_node, 0 );
-		
-		my_graph.setNode( new Node( "branch" ), 1 );
-		my_graph.setNode( new Node( "end1" ), 2 );
-		my_graph.setNode( new Node( "end2" ), 3 );
-		
-		//my_graph.addEdge( new Edge( "special", 3, 9 ) );
 
-		// my_graph.addEdge( new Edge( "0_1", 0, 1 ) );
-		// my_graph.addEdge( new Edge( "1_2", 1, 2 ) );
-		// my_graph.addEdge( new Edge( "2_3", 2, 3 ) );
-		// my_graph.addEdge( new Edge( "1_3", 1, 3 ) );
-		// my_graph.addEdge( new Edge( "0_2", 0, 2 ) );
+		my_graph.setNode( new Node( "branch", true, "src/PicsForDemo/Track1/0130.png" ), 1 );
+		my_graph.setNode( new Node( "end1", true, "src/PicsForDemo/Track1/0250.png" ), 2 );
+		my_graph.setNode( new Node( "end2", true, "src/PicsForDemo/Track2/0250.png" ), 3 );
+		
+		String[] filenames_for_start_to_branch = new String[ 128 ];
+		for( int i=0; i<128; ++i ) {
+			filenames_for_start_to_branch[ i ] = "src/PicsForDemo/Track1/0" + String.format("%03d", i+2 ) + ".png";
+		}
+		my_graph.addEdge( new Edge( "", 0, 1, filenames_for_start_to_branch ) );
 
+		String[] filenames_for_branch_to_end1 = new String[ 119 ];
+		for( int i=0; i<119; ++i ) {
+			filenames_for_branch_to_end1[ i ] = "src/PicsForDemo/Track1/0" + String.format("%03d", i+131 ) + ".png";
+		}
+		my_graph.addEdge( new Edge( "", 1, 2, filenames_for_branch_to_end1 ) );
+		
+		String[] filenames_for_branch_to_end2 = new String[ 119 ];
+		for( int i=0; i<119; ++i ) {
+			filenames_for_branch_to_end2[ i ] = "src/PicsForDemo/Track2/0" + String.format("%03d", i+131 ) + ".png";
+		}
+		my_graph.addEdge( new Edge( "", 1, 3, filenames_for_branch_to_end2 ) );
+		
 		SlideShow ss = new SlideShow( my_graph );
 		ss.run();
 	}
