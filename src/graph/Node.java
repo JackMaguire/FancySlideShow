@@ -2,6 +2,10 @@ package graph;
 
 import java.awt.image.BufferedImage;
 //import java.util.Arrays;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 import frame_graph.FrameGraph;
 
@@ -15,6 +19,8 @@ public class Node implements NodeType {
 	private EdgeType[] upstream_edges_ = new EdgeType[0];
 	private EdgeType[] downstream_edges_ = new EdgeType[0];
 
+	String image_filename_;
+	
 	public Node( String name ) {
 		name_ = name;
 		hard_ = true;
@@ -25,6 +31,10 @@ public class Node implements NodeType {
 		hard_ = is_hard;
 	}
 
+	public void setImageFilename( String filename ) {
+		image_filename_ = filename;
+	}
+	
 	@Override
 	public String name() {
 		return name_;
@@ -90,6 +100,16 @@ public class Node implements NodeType {
 	@Override
 	public void applyToFrameGraph( FrameGraph fg ) {
 		fg.getPrimaryNode( index_ ).setStop( hard_ );
+		
+		File img = new File( image_filename_ );
+		BufferedImage in;
+		try {
+			in = ImageIO.read( img );
+			fg.getPrimaryNode( index_ ).setImage( in );
+		}
+		catch( IOException e ) {
+			e.printStackTrace();
+		}
 	}
 
 }
