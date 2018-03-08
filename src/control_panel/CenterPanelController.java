@@ -3,7 +3,6 @@ package control_panel;
 import java.awt.event.*;
 
 import control_panel.CenterPanelView.*;
-import graph.Node;
 import graph.NodeType;
 import compile_time_settings.CompileTimeSettings;
 
@@ -18,22 +17,20 @@ public class CenterPanelController implements MouseListener {
 	}
 	
 	private void handle_click_on_node( MouseEvent e, NodeCircle node_circle ) {
+		NodeType node = model_.getGraph().getNode( node_circle.ID );
 		if( e.getButton() == 1 ) {
 			//select node
-			model_.select( model_.getGraph().getNode( node_circle.ID ) );
+			model_.select( node );
 			view_.repaint();
 			if( CompileTimeSettings.DEBUG ) {
 				System.out.println( "selected node " + node_circle.ID );
 			}
-			//TODO
 		} else {
 			//change hardness of node
-			NodeType node_type = model_.getGraph().getNode( node_circle.ID );
-			if( node_type instanceof Node ) {
-				Node node = (Node) node_type;
-				
+			node.toggle_hardness();
+			if( CompileTimeSettings.DEBUG ) {
+				System.out.println( "toggled node " + node_circle.ID );
 			}
-			//TODO
 		}
 	}
 	
