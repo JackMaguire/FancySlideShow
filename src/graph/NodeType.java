@@ -23,7 +23,7 @@ public interface NodeType {
 	boolean is_hard();
 	
 	// Image Logic
-	BufferedImage getNextImage();
+	BufferedImage getThumbnailImage();
 	// void loadImagesIntoMemory();
 	// void eraseImagesFromMemory();
 	// int numBytesRequiredForImages();//You can assume/enforce that the images are

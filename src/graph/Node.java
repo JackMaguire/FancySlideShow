@@ -39,7 +39,7 @@ public class Node implements NodeType {
 	}
 
 	@Override
-	public BufferedImage getNextImage() {
+	public BufferedImage getThumbnailImage() {
 		return null;
 	}
 
