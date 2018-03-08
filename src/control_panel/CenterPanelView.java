@@ -23,8 +23,9 @@ public class CenterPanelView extends JPanel {
 	private final static Color default_ = Color.GRAY;
 	private final static Color forward_ = Color.GREEN;
 	private final static Color backward_ = Color.RED;
-	private final static Color selected_ = Color.BLUE;
-
+	private final static Color current_ = Color.BLUE;
+	private final static Color selected_ = Color.ORANGE;
+	
 	private final static int radius_ = 10;
 	private final static int diameter_ = 2 * radius_;
 
@@ -47,11 +48,17 @@ public class CenterPanelView extends JPanel {
 	}
 
 	public void recolorAllObjects() {
-		final int node_index = model_.currentNode().index();
-		final int edge_index = model_.nextEdge().index();
+		final int current_node_index = model_.currentNode().index();
+		final int selected_node_index = model_.selectedNode().index();
+		
+		final int next_edge_index = model_.nextEdge().index();
+		final int selected_edge_index = model_.selectedEdge().index();
 
 		for( int i = 0; i < circles_.length; ++i ) {
-			if( i == node_index ) {
+			if( i == current_node_index ) {
+				circles_[ i ].setColor( current_ );
+			}
+			else if ( i == selected_node_index ) {
 				circles_[ i ].setColor( selected_ );
 			}
 			else {
@@ -61,13 +68,16 @@ public class CenterPanelView extends JPanel {
 
 		for( int i = 0; i < lines_.length; ++i ) {
 			EdgeType[] all_edges = model_.getGraph().getEdges();
-			if( all_edges[ i ].index() == edge_index ) {
+			if( all_edges[ i ].index() == next_edge_index ) {
+				lines_[ i ].setColor( current_ );
+			}
+			else if( i == selected_edge_index ) {
 				lines_[ i ].setColor( selected_ );
 			}
-			else if( all_edges[ i ].outgoingNodeIndex() == node_index ) {
+			else if( all_edges[ i ].outgoingNodeIndex() == current_node_index ) {
 				lines_[ i ].setColor( forward_ );
 			}
-			else if( all_edges[ i ].incomingNodeIndex() == node_index ) {
+			else if( all_edges[ i ].incomingNodeIndex() == current_node_index ) {
 				lines_[ i ].setColor( backward_ );
 			}
 			else {

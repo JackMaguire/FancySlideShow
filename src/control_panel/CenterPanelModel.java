@@ -52,7 +52,7 @@ public class CenterPanelModel {
 	}
 	
 	
-	public EdgeType selectedEode() {
+	public EdgeType selectedEdge() {
 		return selected_edge_;
 	}
 
