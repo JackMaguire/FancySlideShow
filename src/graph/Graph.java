@@ -1,6 +1,6 @@
 package graph;
 
-import java.awt.image.DataBuffer;
+//import java.awt.image.DataBuffer;
 
 import compile_time_settings.CompileTimeSettings;
 import frame_graph.FrameGraph;
@@ -14,6 +14,11 @@ public class Graph implements GraphType {
 		nodes_ = new NodeType[num_nodes];
 	}
 
+	@Override
+	public int numNodes() {
+		return nodes_.length;
+	}
+	
 	@Override
 	public void setNode( NodeType node, int node_index ) {
 		node.setIndex( node_index );

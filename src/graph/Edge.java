@@ -80,8 +80,8 @@ public class Edge implements EdgeType {
 
 	@Override
 	public void applyToFrameGraph( FrameGraph fg ) {
-		FrameNode begin_primary = fg.getPrimaryNode( incoming_node_index_ );
-		FrameNode final_primary = fg.getPrimaryNode( outgoing_node_index_ );
+		FrameNode begin_primary = fg.getPrimaryNode( outgoing_node_index_ );
+		FrameNode final_primary = fg.getPrimaryNode( incoming_node_index_ );
 
 		if( image_filenames_.length == 0 ) {
 			begin_primary.addForwardNode( final_primary );

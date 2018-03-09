@@ -15,6 +15,8 @@ public class SlideShowPanel extends JPanel {
 
 	private BufferedImage image_;
 
+	private boolean first_paint_ = true;
+
 	public SlideShowPanel() {
 
 	}
@@ -33,11 +35,14 @@ public class SlideShowPanel extends JPanel {
 
 		super.paintComponent( g );
 
-		g.setColor( SlideShowPanelSettings.BACKGROUND );
-
 		int panelWidth = this.getWidth();
 		int panelHeight = this.getHeight();
-		g.fillRect( 0, 0, panelWidth, panelHeight );
+		
+		/*if( first_paint_ ) {
+			first_paint_ = false;
+			g.setColor( SlideShowPanelSettings.BACKGROUND );
+			g.fillRect( 0, 0, panelWidth, panelHeight );
+		}*/
 
 		if( image_ == null )
 			return;

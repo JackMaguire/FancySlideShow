@@ -3,9 +3,9 @@ package engine;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import control_panel.CenterPanelView;
 import frame_graph.FrameGraph;
 import frame_graph.FrameNode;
 import slide_show.SlideShowPanel;
@@ -27,12 +27,16 @@ public class Engine implements ActionListener {
 
 	private boolean reverse_ = false;
 
-	private boolean go_at_next_tick_ = false;
+	private boolean go_at_next_tick_ = true;
+	
+	private final CenterPanelView center_panel_view_;
 
-	public Engine( SlideShowPanel panel, FrameGraph frame_graph ) {
+	public Engine( SlideShowPanel panel, FrameGraph frame_graph, CenterPanelView center_panel_view ) {
 		slide_show_panel_ = panel;
 		frame_graph_ = frame_graph;
 		current_node_ = frame_graph_.getPrimaryNode( 0 );
+		center_panel_view_ = center_panel_view;
+		
 		timer_ = new Timer( delay_, this );
 	}
 
@@ -50,6 +54,23 @@ public class Engine implements ActionListener {
 				return;
 			}
 		}
+		
+		if( reverse_ ) {
+			if	( current_node_.reverseNode() != null ) {
+				current_node_ = current_node_.reverseNode();
+			}
+		} else {
+			if	( current_node_.forwardNode() != null ) {
+				current_node_ = current_node_.forwardNode();
+			}
+		}
+		
+		slide_show_panel_.setImage( current_node_.image() );
+		slide_show_panel_.repaint();
+		if( current_node_.IS_PRIMARY ) {
+			center_panel_view_.model().setCurrentNode( current_node_.UPSTREAM_PRIMARY_ID );
+			center_panel_view_.repaint();
+		}
 	}
 
 	public void setReverse( boolean setting ) {
@@ -62,6 +83,14 @@ public class Engine implements ActionListener {
 
 	public boolean reverse() {
 		return reverse_;
+	}
+	
+	public FrameNode currentNode() {
+		return current_node_;
+	}
+	
+	public void setCurrentNode( int index ) {
+		current_node_ = frame_graph_.getPrimaryNode( index );
 	}
 
 }

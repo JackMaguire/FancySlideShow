@@ -40,6 +40,10 @@ public class CenterPanelModel {
 	public void setCurrentNode( NodeType node ) {
 		current_node_ = node;
 	}
+	
+	public void setCurrentNode( int index ) {
+		current_node_ = graph_.getNode( index );
+	}
 
 	public NodeType selectedNode() {
 		return selected_node_;

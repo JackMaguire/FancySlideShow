@@ -146,6 +146,10 @@ public class CenterPanelView extends JPanel {
 		return null;
 	}
 
+	public CenterPanelModel model() {
+		return model_;
+	}
+	
 	static class NodeCircle {
 
 		// final public int ID;

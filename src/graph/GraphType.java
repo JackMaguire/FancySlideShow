@@ -17,4 +17,6 @@ public interface GraphType {
 	EdgeType[] getEdges();
 
 	FrameGraph createFrameGraph();
+	
+	int numNodes();
 }

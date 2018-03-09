@@ -6,6 +6,8 @@ import javax.swing.*;
 
 import compile_time_settings.ControlPanelMonitorSettings;
 import control_panel.*;
+import engine.Engine;
+import frame_graph.FrameGraph;
 import graph.*;
 
 public class SlideShow implements SlideShowType {
@@ -14,13 +16,15 @@ public class SlideShow implements SlideShowType {
 	private Graph graph_;
 	// private Node current_node_;
 
-	private ControlPanelModel control_panel_;
+	private final ControlPanelModel control_panel_model_;
+	private final ControlPanelView control_panel_view_;
 	private final SlideShowPanel slide_show_panel_;
 
 	public SlideShow( Graph graph ) {
 		graph_ = graph;
-		control_panel_ = new ControlPanelModel( graph_ );
-		slide_show_panel_ = new SlideShowPanel( control_panel_.getCenterPanelModel().currentNode().getThumbnailImage() );
+		control_panel_model_ = new ControlPanelModel( graph_ );
+		control_panel_view_ = new ControlPanelView( control_panel_model_ );
+		slide_show_panel_ = new SlideShowPanel( control_panel_model_.getCenterPanelModel().currentNode().getThumbnailImage() );
 	}
 
 	// Getters and setters
@@ -44,6 +48,11 @@ public class SlideShow implements SlideShowType {
 		devices[ 1 ].setFullScreenWindow( slideshow_frame );
 
 		JFrame control_panel = createControlPanelJFrame();
+		
+		FrameGraph frame_graph = graph_.createFrameGraph();
+		
+		Engine engine = new Engine( slide_show_panel_, frame_graph, control_panel_view_.getCenterPanelView() );
+		engine.start();
 	}
 
 	private JFrame createSlideshowJFrame() {
@@ -59,7 +68,7 @@ public class SlideShow implements SlideShowType {
 	private JFrame createControlPanelJFrame() {
 		JFrame F = new JFrame( "Control Panel" );
 		F.setSize( ControlPanelMonitorSettings.CP_WIDTH, ControlPanelMonitorSettings.CP_HEIGHT );
-		F.add( new ControlPanelView( control_panel_ ) );
+		F.add( control_panel_view_ );
 		F.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		F.setExtendedState( JFrame.NORMAL );
 		F.setUndecorated( false );

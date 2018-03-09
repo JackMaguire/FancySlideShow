@@ -41,5 +41,9 @@ public class ControlPanelView extends JPanel {
 		setVisible( true );
 	}
 
+	public CenterPanelView getCenterPanelView() {
+		return center_view_;
+	}
+	
 	// public void paint(Graphics g) {}
 }
