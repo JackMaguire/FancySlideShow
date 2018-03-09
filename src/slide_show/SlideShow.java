@@ -67,7 +67,8 @@ public class SlideShow implements SlideShowType {
 			jp.addKeyListener( center_panel_key_listener );
 		}
 		if( DebugToggles.DEBUG_KEYS ) {
-			System.out.println( "Key listener added to " + ( JPanelWithKeyListener.allInstances().size() + 1 ) + " jpanels!" );
+			System.out
+					.println( "Key listener added to " + ( JPanelWithKeyListener.allInstances().size() + 1 ) + " jpanels!" );
 		}
 	}
 

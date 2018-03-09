@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
-import control_panel.CenterPanelKeyListener;
 import control_panel.CenterPanelView;
 import frame_graph.FrameGraph;
 import frame_graph.FrameNode;
@@ -37,8 +36,8 @@ public class Engine implements ActionListener {
 		frame_graph_ = frame_graph;
 		current_node_ = frame_graph_.getPrimaryNode( 0 );
 		center_panel_view_ = center_panel_view;
-		//center_panel_view_.addKeyListener( new CenterPanelKeyListener( this ) );
-		
+		// center_panel_view_.addKeyListener( new CenterPanelKeyListener( this ) );
+
 		timer_ = new Timer( delay_, this );
 	}
 
@@ -98,5 +97,5 @@ public class Engine implements ActionListener {
 	public void goAtNextTick() {
 		go_at_next_tick_ = true;
 	}
-	
+
 }

@@ -41,13 +41,10 @@ public class DrawingBufferedImageToScreen {
 			for( int j = 0; j < 250; ++j ) {
 				slide_show_panel.setImage( images[ j ] );
 				slide_show_panel.repaint();
-				/*try {
-					Thread.sleep( 10 );
-				}
-				catch( InterruptedException e ) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}*/
+				/*
+				 * try { Thread.sleep( 10 ); } catch( InterruptedException e ) { // TODO
+				 * Auto-generated catch block e.printStackTrace(); }
+				 */
 			}
 		}
 
@@ -57,12 +54,10 @@ public class DrawingBufferedImageToScreen {
 		final double time_per_frame = time_elapsed / ( 250 * num_outerloops );
 		System.out.println( "Milliseconds per frame: " + time_per_frame );
 		System.out.println( "Total time elapsed: " + time_elapsed + " ms" );
-		
+
 		/*
-		 * This is just stupid
-		 * iMac:
-		 * Milliseconds per frame: 0.0048
-		 * Total time elapsed: 12.0 ms
+		 * This is just stupid iMac: Milliseconds per frame: 0.0048 Total time elapsed:
+		 * 12.0 ms
 		 */
 	}
 

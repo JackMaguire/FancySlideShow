@@ -27,8 +27,8 @@ public class Node implements NodeType {
 	private String image_filename_;
 	private BufferedImage thumbnail_image_;
 
-	private FrameNode corresponding_fnode_ = null; 
-	
+	private FrameNode corresponding_fnode_ = null;
+
 	public Node( String name ) {
 		name_ = name;
 		hard_ = true;
@@ -54,17 +54,18 @@ public class Node implements NodeType {
 
 			final int native_width = thumbnail_image_.getWidth();
 			if( native_width > ControlPanelMonitorSettings.EAST_WIDTH ) {
-				final double scale = ((double) ControlPanelMonitorSettings.EAST_WIDTH ) / native_width;
-				final int new_height = (int) (scale * thumbnail_image_.getHeight());
-				
-				//thumbnail_image_ = thumbnail_image_.getScaledInstance( width, height, hints )
-				
-				BufferedImage smaller_version = new BufferedImage( ControlPanelMonitorSettings.EAST_WIDTH, new_height, thumbnail_image_.getType() );
+				final double scale = ( (double) ControlPanelMonitorSettings.EAST_WIDTH ) / native_width;
+				final int new_height = (int) ( scale * thumbnail_image_.getHeight() );
+
+				// thumbnail_image_ = thumbnail_image_.getScaledInstance( width, height, hints )
+
+				BufferedImage smaller_version = new BufferedImage( ControlPanelMonitorSettings.EAST_WIDTH, new_height,
+						thumbnail_image_.getType() );
 				Graphics2D g2d = (Graphics2D) smaller_version.createGraphics();
-				g2d.drawImage( smaller_version, 0, 0, ControlPanelMonitorSettings.EAST_WIDTH, new_height, null);
+				g2d.drawImage( smaller_version, 0, 0, ControlPanelMonitorSettings.EAST_WIDTH, new_height, null );
 				thumbnail_image_ = smaller_version;
 			}
-			
+
 			if( DebugToggles.DEBUG_FRAME_GRAPH ) {
 				DataBuffer dataBuffer = thumbnail_image_.getData().getDataBuffer();
 				long sizeBytes = ( (long) dataBuffer.getSize() ) * 4l;
