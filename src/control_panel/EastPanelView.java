@@ -84,7 +84,7 @@ public class EastPanelView extends JPanel {
 			previous_node_ = center_panel_model_.selectedNode().index();
 
 			super.paintComponent( g );
-			super.paint( g );
+			//super.paint( g );
 
 			Graphics2D g2 = (Graphics2D) g;
 

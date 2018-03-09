@@ -1,0 +1,79 @@
+package slide_show;
+
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+
+import javax.swing.JPanel;
+
+import compile_time_settings.CompileTimeSettings;
+
+public class SlideShowPanel extends JPanel {
+
+	private static final long serialVersionUID = -7189726966653966497L;
+
+	private BufferedImage image_;
+
+	public SlideShowPanel() {
+
+	}
+
+	public SlideShowPanel( BufferedImage image ) {
+		image_ = image;
+	}
+
+	public void setImage( BufferedImage image ) {
+		image_ = image;
+		repaint();
+		revalidate();
+	}
+
+	public void paintComponent( Graphics g ) {
+
+		super.paintComponent( g );
+
+		Graphics2D g2 = (Graphics2D) g;
+
+		int panelWidth = this.getWidth();
+		int panelHeight = this.getHeight();
+		final int imageWidth = image_.getWidth();
+		final int imageHeight = image_.getHeight();
+		final double scale = getScale( panelWidth, panelHeight, imageWidth, imageHeight );
+
+		final int scaled_image_width = (int) ( imageWidth * scale );
+		final int scaled_image_height = (int) ( imageHeight * scale );
+
+		if( panelHeight - scaled_image_height > 1 ) {
+			// whitespace on top and bottom
+			final int buffersize = ( panelHeight - scaled_image_height ) / 2;
+			g2.drawImage( image_, 0, buffersize, scaled_image_width, scaled_image_height + buffersize, null );
+		}
+		else if( panelWidth - scaled_image_width > 1 ) {
+			// whitespace on sides
+			final int buffersize = ( panelWidth - scaled_image_width ) / 2;
+			g2.drawImage( image_, buffersize, 0, scaled_image_width+buffersize, scaled_image_height, null );
+		}
+		else {
+			g2.drawImage( image_, 0, 0, scaled_image_width, scaled_image_height, null );
+		}
+
+	}
+
+	private double getScale( int panelWidth, int panelHeight, int imageWidth, int imageHeight ) {
+
+		if( imageWidth < panelWidth || imageHeight < panelHeight ) {
+			double xScale = ( (double) imageWidth ) / panelWidth;
+			double yScale = ( (double) imageHeight ) / panelHeight;
+			return Math.min( xScale, yScale );
+		}
+
+		if( imageWidth > panelWidth && imageHeight > panelHeight ) {
+			double xScale = ( (double) panelWidth ) / imageWidth;
+			double yScale = ( (double) panelHeight ) / imageHeight;
+			return Math.min( xScale, yScale );
+		}
+
+		return 1;
+	}
+
+}
