@@ -155,25 +155,27 @@ public class EastPanelView extends JPanel {
 		private void initComponents() {
 			setLayout( new GridLayout( 3, 2 ) );
 			add( jlabel_ );
-			add( new JLabel(" ") );
-			
-			add( new JLabel("Forward: ") );
+			add( new JLabel( " " ) );
+
+			add( new JLabel( "Forward: " ) );
 			add( forward_ );
-			
-			add( new JLabel("Reverse: ") );
+
+			add( new JLabel( "Reverse: " ) );
 			add( reverse_ );
+
+			forward_.addItemListener( new ForwardJComboBoxListener( forward_, model_ ) );
 		}
 
 		public void reinit( NodeType node ) {
 			model_.setNode( node );
 			jlabel_.setText( model_.getTitle() );
-			
+
 			forward_.removeAllItems();
 			for( String s : model_.getForwardChoices() ) {
 				forward_.addItem( s );
 			}
 			forward_.setSelectedIndex( model_.getForwardChoice() );
-			
+
 			reverse_.removeAllItems();
 			for( String s : model_.getReverseChoices() ) {
 				reverse_.addItem( s );
@@ -182,16 +184,24 @@ public class EastPanelView extends JPanel {
 		}
 
 	}
-	
+
 	protected static class ForwardJComboBoxListener implements ItemListener {
+
+		private final BottomSideModel model_;
+		private final JComboBox< String > forward_;
+
+		public ForwardJComboBoxListener( JComboBox< String > forward, BottomSideModel model ) {
+			model_ = model;
+			forward_ = forward;
+		}
 
 		@Override
 		public void itemStateChanged( ItemEvent e ) {
 			if( e.getStateChange() == ItemEvent.SELECTED ) {
-				//TODO
+				model_.setForwardChoice( forward_.getSelectedIndex() );
 			}
 		}
-		
+
 	}
 
 }
