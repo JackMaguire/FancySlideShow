@@ -3,6 +3,8 @@ package control_panel;
 import java.awt.*;
 import javax.swing.*;
 
+import slide_show.SlideShowPanel;
+
 public class ControlPanelView extends JPanel {
 
 	private static final long serialVersionUID = 8381231028726842942L;
@@ -10,7 +12,7 @@ public class ControlPanelView extends JPanel {
 	private final ControlPanelModel model_;
 
 	private final BorderLayout layout_ = new BorderLayout();
-	private final WestPanelView west_view_ = new WestPanelView();
+	private final WestPanelView west_view_;
 	private final SouthPanelView south_view_ = new SouthPanelView();
 	private final EastPanelView east_view_;	
 	
@@ -32,6 +34,9 @@ public class ControlPanelView extends JPanel {
 
 		east_view_ = new EastPanelView( model_.getEastPanelModel() );
 		add( east_view_, BorderLayout.EAST );
+		
+		west_view_ = new WestPanelView();
+		add( west_view_, BorderLayout.WEST );
 		
 		setVisible( true );
 	}
