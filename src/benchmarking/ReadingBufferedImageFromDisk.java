@@ -1,13 +1,10 @@
 package benchmarking;
 
 import java.awt.image.BufferedImage;
-import java.awt.image.DataBuffer;
 import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
-
-import compile_time_settings.CompileTimeSettings;
 
 public class ReadingBufferedImageFromDisk {
 
