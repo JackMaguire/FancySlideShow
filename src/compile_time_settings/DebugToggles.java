@@ -1,6 +1,6 @@
 package compile_time_settings;
 
-public class CompileTimeSettings {
+public class DebugToggles {
 
 	private final static boolean DEBUG_ALL = false;
 

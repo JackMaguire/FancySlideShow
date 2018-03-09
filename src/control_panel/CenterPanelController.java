@@ -4,7 +4,7 @@ import java.awt.event.*;
 
 import control_panel.CenterPanelView.*;
 import graph.NodeType;
-import compile_time_settings.CompileTimeSettings;
+import compile_time_settings.DebugToggles;
 
 public class CenterPanelController implements MouseListener {
 
@@ -25,14 +25,14 @@ public class CenterPanelController implements MouseListener {
 			// select node
 			model_.select( node );
 			view_.repaint();
-			if( CompileTimeSettings.DEBUG_CONTROL_PANEL ) {
+			if( DebugToggles.DEBUG_CONTROL_PANEL ) {
 				System.out.println( "selected node " + node.name() );
 			}
 		} else {
 			// change hardness of node
 			node.toggle_hardness();
 			view_.repaint();
-			if( CompileTimeSettings.DEBUG_CONTROL_PANEL ) {
+			if( DebugToggles.DEBUG_CONTROL_PANEL ) {
 				System.out.println( "toggled node " + node.name() );
 			}
 		}

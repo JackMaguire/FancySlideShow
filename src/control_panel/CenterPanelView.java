@@ -7,7 +7,7 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-import compile_time_settings.CompileTimeSettings;
+import compile_time_settings.DebugToggles;
 import graph.*;
 
 public class CenterPanelView extends JPanel {
@@ -128,7 +128,7 @@ public class CenterPanelView extends JPanel {
 	}
 
 	public NodeCircle get_circle( int x, int y, int max_distance_1D ) {
-		if( CompileTimeSettings.DEBUG_CONTROL_PANEL ) {
+		if( DebugToggles.DEBUG_CONTROL_PANEL ) {
 			for( int i = 0; i < circles_.length; ++i ) {
 				NodeCircle circle = circles_[ i ];
 				System.out.println( i + "\t" + ( circle.most_recent_x - x ) + "\t" + ( circle.most_recent_y - y ) + "\t"

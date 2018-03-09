@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import compile_time_settings.CompileTimeSettings;
+import compile_time_settings.DebugToggles;
 import frame_graph.FrameGraph;
 import frame_graph.FrameNode;
 
@@ -99,7 +99,7 @@ public class Edge implements EdgeType {
 				in = ImageIO.read( img );
 				my_edge_nodes[ i ].setImage( in );
 
-				if( CompileTimeSettings.DEBUG_FRAME_GRAPH ) {
+				if( DebugToggles.DEBUG_FRAME_GRAPH ) {
 					DataBuffer dataBuffer = in.getData().getDataBuffer();
 					long sizeBytes = ( (long) dataBuffer.getSize() ) * 4l;
 					usage_statistics.MemoryCounter.getInstance().addBytesForToken( "SecondaryFGNodes", sizeBytes );

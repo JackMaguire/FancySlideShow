@@ -8,7 +8,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import compile_time_settings.CompileTimeSettings;
+import compile_time_settings.DebugToggles;
 import frame_graph.FrameGraph;
 
 public class Node implements NodeType {
@@ -47,7 +47,7 @@ public class Node implements NodeType {
 		try {
 			image_ = ImageIO.read( img );
 
-			if( CompileTimeSettings.DEBUG_FRAME_GRAPH ) {
+			if( DebugToggles.DEBUG_FRAME_GRAPH ) {
 				DataBuffer dataBuffer = image_.getData().getDataBuffer();
 				long sizeBytes = ( (long) dataBuffer.getSize() ) * 4l;
 				usage_statistics.MemoryCounter.getInstance().addBytesForToken( "PrimaryFGNodes", sizeBytes );

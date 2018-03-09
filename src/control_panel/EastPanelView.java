@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import compile_time_settings.CompileTimeSettings;
+import compile_time_settings.DebugToggles;
 import compile_time_settings.ControlPanelMonitorSettings;
 
 public class EastPanelView extends JPanel {
@@ -96,7 +96,7 @@ public class EastPanelView extends JPanel {
 
 			g2.drawImage( image, 0, 0, (int) ( imageWidth * scale ), (int) ( imageHeight * scale ), null );
 
-			if( CompileTimeSettings.DEBUG_VIEW ) {
+			if( DebugToggles.DEBUG_VIEW ) {
 				System.out.println( "---North East---" );
 				System.out.println( "width: " + previous_width_ );
 				System.out.println( "height: " + previous_height_ );
