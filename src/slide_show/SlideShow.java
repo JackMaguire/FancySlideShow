@@ -15,10 +15,12 @@ public class SlideShow implements SlideShowType {
 	// private Node current_node_;
 
 	private ControlPanelModel control_panel_;
+	private final SlideShowPanel slide_show_panel_;
 
 	public SlideShow( Graph graph ) {
 		graph_ = graph;
 		control_panel_ = new ControlPanelModel( graph_ );
+		slide_show_panel_ = new SlideShowPanel( control_panel_.getCenterPanelModel().currentNode().getThumbnailImage() );
 	}
 
 	// Getters and setters
@@ -36,15 +38,18 @@ public class SlideShow implements SlideShowType {
 		//p( ge.toString() );
 
 		GraphicsDevice[] devices = ge.getScreenDevices();
-		Window w = devices[ 0 ].getFullScreenWindow();
+		//Window w = devices[ 0 ].getFullScreenWindow();
 
-		// JFrame slideshow_frame = createSlideshowJFrame();
+		JFrame slideshow_frame = createSlideshowJFrame();
+		devices[ 1 ].setFullScreenWindow( slideshow_frame );
+		
 		JFrame control_panel = createControlPanelJFrame();
 	}
 
 	private JFrame createSlideshowJFrame() {
 		JFrame F = new JFrame( "SlideShow" );
 		F.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+		F.add( slide_show_panel_ );
 		F.setExtendedState( JFrame.MAXIMIZED_BOTH );
 		F.setUndecorated( true );
 		F.setVisible( true );
