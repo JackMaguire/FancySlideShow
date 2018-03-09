@@ -59,6 +59,8 @@ public class SlideShow implements SlideShowType {
 
 		Engine engine = new Engine( slide_show_panel_, frame_graph, control_panel_view_.getCenterPanelView() );
 		engine.start();
+
+		slideshow_frame.addKeyListener( new CenterPanelKeyListener( engine ) );
 	}
 
 	private JFrame createSlideshowJFrame() {
