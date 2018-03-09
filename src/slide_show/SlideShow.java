@@ -5,6 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 
 import compile_time_settings.ControlPanelMonitorSettings;
+import compile_time_settings.DebugToggles;
 import compile_time_settings.SlideShowPanelSettings;
 import control_panel.*;
 import engine.Engine;
@@ -60,7 +61,14 @@ public class SlideShow implements SlideShowType {
 		Engine engine = new Engine( slide_show_panel_, frame_graph, control_panel_view_.getCenterPanelView() );
 		engine.start();
 
-		slideshow_frame.addKeyListener( new CenterPanelKeyListener( engine ) );
+		CenterPanelKeyListener center_panel_key_listener = new CenterPanelKeyListener( engine );
+		slideshow_frame.addKeyListener( center_panel_key_listener );
+		for( JPanelWithKeyListener jp : JPanelWithKeyListener.allInstances() ) {
+			jp.addKeyListener( center_panel_key_listener );
+		}
+		if( DebugToggles.DEBUG_KEYS ) {
+			System.out.println( "Key listener added to " + ( JPanelWithKeyListener.allInstances().size() + 1 ) + " jpanels!" );
+		}
 	}
 
 	private JFrame createSlideshowJFrame() {

@@ -5,7 +5,7 @@ import javax.swing.*;
 
 import slide_show.SlideShowPanel;
 
-public class ControlPanelView extends JPanel {
+public class ControlPanelView extends JPanelWithKeyListener {
 
 	private static final long serialVersionUID = 8381231028726842942L;
 

@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 import compile_time_settings.DebugToggles;
 import graph.*;
 
-public class CenterPanelView extends JPanel {
+public class CenterPanelView extends JPanelWithKeyListener {
 
 	private static final long serialVersionUID = -3387525849502002817L;
 

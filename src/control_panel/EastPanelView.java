@@ -33,7 +33,7 @@ public class EastPanelView extends JPanel {
 		add( bottomside_ );
 	}
 
-	public static class TopSide extends JPanel {
+	public static class TopSide extends JPanelWithKeyListener {
 
 		private static final long serialVersionUID = 7212467413352884098L;
 		private final CenterPanelModel center_panel_model_;

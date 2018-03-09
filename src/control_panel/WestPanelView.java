@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 import compile_time_settings.ControlPanelMonitorSettings;
 
-public class WestPanelView extends JPanel {
+public class WestPanelView extends JPanelWithKeyListener {
 
 	private static final long serialVersionUID = 267743378873832055L;
 
