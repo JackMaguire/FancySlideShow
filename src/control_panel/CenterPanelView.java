@@ -65,11 +65,9 @@ public class CenterPanelView extends JPanel {
 		for( int i = 0; i < circles_.length; ++i ) {
 			if( i == current_node_index ) {
 				circles_[ i ].setColor( current_ );
-			}
-			else if( i == selected_node_index ) {
+			} else if( i == selected_node_index ) {
 				circles_[ i ].setColor( selected_ );
-			}
-			else {
+			} else {
 				circles_[ i ].setColor( default_ );
 			}
 		}
@@ -78,17 +76,13 @@ public class CenterPanelView extends JPanel {
 			EdgeType[] all_edges = model_.getGraph().getEdges();
 			if( all_edges[ i ].index() == next_edge_index ) {
 				lines_[ i ].setColor( current_ );
-			}
-			else if( i == selected_edge_index ) {
+			} else if( i == selected_edge_index ) {
 				lines_[ i ].setColor( selected_ );
-			}
-			else if( all_edges[ i ].outgoingNodeIndex() == current_node_index ) {
+			} else if( all_edges[ i ].outgoingNodeIndex() == current_node_index ) {
 				lines_[ i ].setColor( forward_ );
-			}
-			else if( all_edges[ i ].incomingNodeIndex() == current_node_index ) {
+			} else if( all_edges[ i ].incomingNodeIndex() == current_node_index ) {
 				lines_[ i ].setColor( backward_ );
-			}
-			else {
+			} else {
 				lines_[ i ].setColor( default_ );
 			}
 		}
@@ -196,8 +190,7 @@ public class CenterPanelView extends JPanel {
 			if( node_.is_hard() ) {
 				g.fillRect( most_recent_x, most_recent_y, diameter, diameter );
 				// g.fillOval( most_recent_x, most_recent_y, diameter, diameter );
-			}
-			else {
+			} else {
 				g.fillOval( most_recent_x, most_recent_y, diameter, diameter );
 			}
 

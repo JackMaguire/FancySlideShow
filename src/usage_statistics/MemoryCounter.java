@@ -20,8 +20,7 @@ public class MemoryCounter {
 	public void addBytesForToken( String token, long bytes ) {
 		if( !bytes_for_token_.containsKey( token ) ) {
 			bytes_for_token_.put( token, bytes );
-		}
-		else {
+		} else {
 			bytes_for_token_.put( token, bytes_for_token_.get( token ) + bytes );
 		}
 	}

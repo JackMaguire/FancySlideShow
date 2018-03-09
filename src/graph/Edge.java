@@ -63,8 +63,7 @@ public class Edge implements EdgeType {
 		final int first_comparison = outgoing_node_index_ - other.outgoingNodeIndex();
 		if( first_comparison == 0 ) {
 			return incoming_node_index_ - other.incomingNodeIndex();
-		}
-		else {
+		} else {
 			return first_comparison;
 		}
 	}

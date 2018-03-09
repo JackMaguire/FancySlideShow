@@ -73,8 +73,7 @@ public class SlideShowPanel extends JPanel {
 				System.out.println( "scaled_image_height: " + scaled_image_height );
 				System.out.println( "buffersize: " + buffersize );
 			}
-		}
-		else if( panelWidth - scaled_image_width > 1 ) {
+		} else if( panelWidth - scaled_image_width > 1 ) {
 			// whitespace on sides
 			final int buffersize = ( panelWidth - scaled_image_width ) / 2;
 			g2.drawImage( image_, buffersize, 0, scaled_image_width, scaled_image_height, null );
@@ -84,8 +83,7 @@ public class SlideShowPanel extends JPanel {
 				System.out.println( "scaled_image_width: " + scaled_image_width );
 				System.out.println( "buffersize: " + buffersize );
 			}
-		}
-		else {
+		} else {
 			if( CompileTimeSettings.DEBUG_SLIDE_SHOW ) {
 				System.out.println( "no whitespace" );
 			}

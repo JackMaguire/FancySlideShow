@@ -67,11 +67,6 @@ public class SlideShow implements SlideShowType {
 		return F;
 	}
 
-	// util
-	void p( String s ) {
-		System.out.println( s );
-	}
-
 	/*
 	 * void p( Object...objects ) { System.out.println(objects); }
 	 */
