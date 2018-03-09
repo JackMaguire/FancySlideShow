@@ -18,13 +18,21 @@ public class CenterPanelKeyListener implements KeyListener {
 	}
 
 	private void leftButton() {
-		engine_.setReverse( true );
-		engine_.goAtNextTick();
+		if( engine_.getTimer().isRunning() ) {
+			engine_.setReverse( true );
+			engine_.goAtNextTick();
+		} else {
+			engine_.goBackOneImage();
+		}
 	}
 
 	private void rightButton() {
-		engine_.setReverse( false );
-		engine_.goAtNextTick();
+		if( engine_.getTimer().isRunning() ) {
+			engine_.setReverse( false );
+			engine_.goAtNextTick();
+		} else {
+			engine_.advanceOneImage();
+		}
 	}
 	
 	private void spaceBar() {

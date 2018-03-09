@@ -57,21 +57,25 @@ public class Engine implements ActionListener {
 		}
 
 		if( reverse_ ) {
-			if( current_node_.reverseNode() != null ) {
-				current_node_ = current_node_.reverseNode();
-			}
+			goBackOneImage();
 		} else {
-			if( current_node_.forwardNode() != null ) {
-				current_node_ = current_node_.forwardNode();
-			}
+			advanceOneImage();
 		}
 
-		slide_show_panel_.setImage( current_node_.image() );
-		slide_show_panel_.repaint();
-		if( current_node_.IS_PRIMARY ) {
-			center_panel_view_.model().setCurrentNode( current_node_.UPSTREAM_PRIMARY_ID );
-			center_panel_view_.repaint();
+	}
+	
+	public void advanceOneImage() {
+		if( current_node_.forwardNode() != null ) {
+			current_node_ = current_node_.forwardNode();
 		}
+		repaintImage();
+	}
+	
+	public void goBackOneImage() {
+		if( current_node_.reverseNode() != null ) {
+			current_node_ = current_node_.reverseNode();
+		}
+		repaintImage();
 	}
 
 	public void setReverse( boolean setting ) {
@@ -90,8 +94,18 @@ public class Engine implements ActionListener {
 		return current_node_;
 	}
 
+	public void repaintImage() {
+		slide_show_panel_.setImage( current_node_.image() );
+		slide_show_panel_.repaint();
+		if( current_node_.IS_PRIMARY ) {
+			center_panel_view_.model().setCurrentNode( current_node_.UPSTREAM_PRIMARY_ID );
+			center_panel_view_.repaint();
+		}
+	}
+	
 	public void setCurrentNode( int index ) {
 		current_node_ = frame_graph_.getPrimaryNode( index );
+		repaintImage();
 	}
 
 	public void goAtNextTick() {

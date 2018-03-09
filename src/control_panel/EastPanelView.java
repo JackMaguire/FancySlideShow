@@ -4,6 +4,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.geom.AffineTransform;
@@ -14,6 +16,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -131,7 +134,7 @@ public class EastPanelView extends JPanel {
 		}
 	}
 
-	public static class BottomSide extends JPanel {
+	public static class BottomSide extends JPanelWithKeyListener {
 
 		private static final long serialVersionUID = 7222467413252884098L;
 
@@ -153,7 +156,7 @@ public class EastPanelView extends JPanel {
 		}
 
 		private void initComponents() {
-			setLayout( new GridLayout( 3, 2 ) );
+			setLayout( new GridLayout( 4, 2 ) );
 			add( jlabel_ );
 			add( new JLabel( " " ) );
 
@@ -162,6 +165,10 @@ public class EastPanelView extends JPanel {
 
 			add( new JLabel( "Reverse: " ) );
 			add( reverse_ );
+			
+			JButton remove_all_focus = new JButton("Clear Focus");
+			remove_all_focus.addActionListener( new RemoveFocusListener( this ) );
+			add( remove_all_focus );
 
 			forward_.addItemListener( new ForwardJComboBoxListener( forward_, model_ ) );
 			reverse_.addItemListener( new ReverseJComboBoxListener( reverse_, model_ ) );
@@ -222,6 +229,21 @@ public class EastPanelView extends JPanel {
 			}
 		}
 
+	}
+	
+	protected static class RemoveFocusListener implements ActionListener {
+
+		private final JPanelWithKeyListener owner_;
+		
+		public RemoveFocusListener( JPanelWithKeyListener owner ) {
+			owner_ = owner;
+		}
+		
+		@Override
+		public void actionPerformed( ActionEvent e ) {
+			owner_.requestFocus();
+		}
+		
 	}
 
 }
