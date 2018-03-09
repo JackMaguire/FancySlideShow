@@ -5,6 +5,7 @@ import java.awt.*;
 import javax.swing.*;
 
 import compile_time_settings.ControlPanelMonitorSettings;
+import compile_time_settings.SlideShowPanelSettings;
 import control_panel.*;
 import engine.Engine;
 import frame_graph.FrameGraph;
@@ -47,7 +48,7 @@ public class SlideShow implements SlideShowType {
 
 		JFrame slideshow_frame = createSlideshowJFrame();
 		if( devices.length > 1 ) {
-			devices[ 1 ].setFullScreenWindow( slideshow_frame );
+			devices[ SlideShowPanelSettings.MONITOR ].setFullScreenWindow( slideshow_frame );
 		} else {
 			devices[ 0 ].setFullScreenWindow( slideshow_frame );
 		}
