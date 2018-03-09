@@ -5,13 +5,16 @@ import java.awt.event.KeyListener;
 
 import compile_time_settings.DebugToggles;
 import engine.Engine;
+import graph.NodeType;
 
 public class CenterPanelKeyListener implements KeyListener {
 
 	private final Engine engine_;
+	private final CenterPanelModel model_;
 
-	public CenterPanelKeyListener( Engine engine ) {
+	public CenterPanelKeyListener( Engine engine, CenterPanelModel model ) {
 		engine_ = engine;
+		model_ = model;
 	}
 
 	private void leftButton() {
@@ -23,7 +26,22 @@ public class CenterPanelKeyListener implements KeyListener {
 		engine_.setReverse( false );
 		engine_.goAtNextTick();
 	}
+	
+	private void spaceBar() {
+		if( engine_.getTimer().isRunning() ) {
+			engine_.getTimer().stop();
+		} else {
+			engine_.getTimer().start();
+		}
+	}
 
+	private void enter() {
+		final NodeType selected_primary_node = model_.selectedNode();
+		if( selected_primary_node != null ) {
+			engine_.setCurrentNode( selected_primary_node.index() );
+		}
+	}
+	
 	@Override
 	public void keyPressed( KeyEvent e ) {
 
@@ -38,7 +56,12 @@ public class CenterPanelKeyListener implements KeyListener {
 			case ( KeyEvent.VK_RIGHT ):
 				rightButton();
 				break;
-
+			case ( KeyEvent.VK_SPACE ):
+				spaceBar();
+				break;
+			case ( KeyEvent.VK_ENTER ):
+				enter();
+				break;	
 		}
 	}
 

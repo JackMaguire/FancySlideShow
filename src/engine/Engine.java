@@ -98,4 +98,7 @@ public class Engine implements ActionListener {
 		go_at_next_tick_ = true;
 	}
 
+	public Timer getTimer() {
+		return timer_;
+	}
 }

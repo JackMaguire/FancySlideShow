@@ -61,7 +61,7 @@ public class SlideShow implements SlideShowType {
 		Engine engine = new Engine( slide_show_panel_, frame_graph, control_panel_view_.getCenterPanelView() );
 		engine.start();
 
-		CenterPanelKeyListener center_panel_key_listener = new CenterPanelKeyListener( engine );
+		CenterPanelKeyListener center_panel_key_listener = new CenterPanelKeyListener( engine, control_panel_model_.getCenterPanelModel() );
 		slideshow_frame.addKeyListener( center_panel_key_listener );
 		for( JPanelWithKeyListener jp : JPanelWithKeyListener.allInstances() ) {
 			jp.addKeyListener( center_panel_key_listener );
