@@ -1,15 +1,20 @@
 package control_panel;
 
+import frame_graph.FrameNode;
+import graph.GraphType;
 import graph.NodeType;
 
 public class EastPanelModel {
 
 	private final CenterPanelModel parent_model_;
 
-	private final BottomSideModel bottom_model_ = new BottomSideModel();
+	private final BottomSideModel bottom_model_;
+	private final GraphType graph_;
 	
-	public EastPanelModel( CenterPanelModel model ) {
+	public EastPanelModel( CenterPanelModel model, GraphType graph ) {
 		parent_model_ = model;
+		graph_ = graph;
+		bottom_model_ = new BottomSideModel( graph_ );
 	}
 
 	public CenterPanelModel centerModel() {
@@ -22,8 +27,17 @@ public class EastPanelModel {
 	
 	protected static class BottomSideModel {
 		private NodeType node_;
-		String[] forward_choices_ = new String[ 0 ];
-		String[] reverse_choices_ = new String[ 0 ];
+		private String[] forward_choices_ = new String[ 0 ];
+		private int for_choice_ = -1;
+		
+		private String[] reverse_choices_ = new String[ 0 ];
+		private int rev_choice_ = -1;
+
+		private final GraphType graph_;
+		
+		public BottomSideModel(GraphType graph) {
+			graph_ = graph;
+		}
 		
 		public NodeType node() {
 			return node_;
@@ -32,7 +46,40 @@ public class EastPanelModel {
 		public void setNode( NodeType node ) {
 			node_ = node;
 			
-			//forward_choices_ = node.getFrameNode().
+			int[] forward_ints_ = node.getFrameNode().upstreamIDs();
+			forward_choices_ = new String[ forward_ints_.length ];
+			for( int i=0; i<forward_ints_.length; ++i ) {
+				forward_choices_[ i ] = graph_.getNode( forward_ints_[ i ] ).name();
+			}
+			
+			FrameNode fnode = node.getFrameNode().forwardNode();
+			for_choice_ = -1;
+			if( fnode != null ) {
+				int upstream_id = fnode.UPSTREAM_PRIMARY_ID;
+				for( int i = 0; i<forward_ints_.length; ++i ) {
+					if( forward_ints_[ i ] == upstream_id ) {
+						for_choice_ = i;
+					}
+				}
+			}
+			
+			
+			int[] reverse_ints_ = node.getFrameNode().downstreamIDs();
+			reverse_choices_ = new String[ reverse_ints_.length ];
+			for( int i=0; i<reverse_ints_.length; ++i ) {
+				reverse_choices_[ i ] = graph_.getNode( reverse_ints_[ i ] ).name();
+			}
+			
+			FrameNode rnode = node.getFrameNode().reverseNode();
+			rev_choice_ = -1;
+			if( rnode != null ) {
+				int downstream_id = rnode.DOWNSTREAM_PRIMARY_ID;
+				for( int i = 0; i<reverse_ints_.length; ++i ) {
+					if( reverse_ints_[ i ] == downstream_id ) {
+						rev_choice_ = i;
+					}
+				}
+			}
 		}
 		
 		public String getTitle() {

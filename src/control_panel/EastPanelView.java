@@ -11,12 +11,14 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import compile_time_settings.DebugToggles;
 import control_panel.EastPanelModel.BottomSideModel;
 import frame_graph.FrameNode;
+import graph.GraphType;
 import graph.Node;
 import graph.NodeType;
 import compile_time_settings.ControlPanelMonitorSettings;
@@ -28,7 +30,7 @@ public class EastPanelView extends JPanel {
 	private final BottomSide bottomside_;
 
 	private final EastPanelModel model_;
-	
+
 	public EastPanelView( EastPanelModel model ) {
 		this.setMinimumSize( new Dimension( ControlPanelMonitorSettings.EAST_WIDTH, 100 ) );
 		this.setPreferredSize( new Dimension( ControlPanelMonitorSettings.EAST_WIDTH, 100 ) );
@@ -37,12 +39,12 @@ public class EastPanelView extends JPanel {
 		topside_ = new TopSide();
 
 		bottomside_ = new BottomSide( model_.bottomModel() );
-		
+
 		this.setLayout( new GridLayout( 2, 1 ) );
 		add( topside_ );
 		add( bottomside_ );
 	}
-	
+
 	public void setSelectedNode( NodeType node ) {
 		topside_.setNode( node );
 		bottomside_.reinit( node );
@@ -58,13 +60,14 @@ public class EastPanelView extends JPanel {
 		private int previous_node_ = 0;
 
 		private NodeType node_;
-		
-		public TopSide() {}
+
+		public TopSide() {
+		}
 
 		public void setNode( NodeType node ) {
 			node_ = node;
 		}
-		
+
 		private double getScale( int panelWidth, int panelHeight, int imageWidth, int imageHeight ) {
 
 			if( imageWidth < panelWidth || imageHeight < panelHeight ) {
@@ -131,10 +134,11 @@ public class EastPanelView extends JPanel {
 		private static final long serialVersionUID = 7222467413252884098L;
 
 		private final JLabel jlabel_ = new JLabel( "_" );
+		private final JComboBox< String > forward_ = new JComboBox< String >();
+		private final JComboBox< String > reverse_ = new JComboBox< String >();
 
-		//private NodeType node_;
 		private final BottomSideModel model_;
-		
+
 		public BottomSide( BottomSideModel model ) {
 			model_ = model;
 			initComponents();
@@ -147,8 +151,10 @@ public class EastPanelView extends JPanel {
 		}
 
 		private void initComponents() {
-			setLayout( new GridLayout( 1, 1 ) );
+			setLayout( new GridLayout( 3, 1 ) );
 			add( jlabel_ );
+			add( forward_ );
+			add( reverse_ );
 		}
 
 		public void reinit( NodeType node ) {
