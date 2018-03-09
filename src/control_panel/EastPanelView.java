@@ -11,9 +11,13 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import compile_time_settings.DebugToggles;
+import frame_graph.FrameNode;
+import graph.Node;
+import graph.NodeType;
 import compile_time_settings.ControlPanelMonitorSettings;
 
 public class EastPanelView extends JPanel {
@@ -23,32 +27,41 @@ public class EastPanelView extends JPanel {
 	private final BottomSide bottomside_ = new BottomSide();
 
 	private final EastPanelModel model_;
-
+	
 	public EastPanelView( EastPanelModel model ) {
 		this.setMinimumSize( new Dimension( ControlPanelMonitorSettings.EAST_WIDTH, 100 ) );
 		this.setPreferredSize( new Dimension( ControlPanelMonitorSettings.EAST_WIDTH, 100 ) );
 
 		model_ = model;
-		topside_ = new TopSide( model_.centerModel() );
+		topside_ = new TopSide();
 
 		this.setLayout( new GridLayout( 2, 1 ) );
 		add( topside_ );
 		add( bottomside_ );
 	}
+	
+	public void setSelectedNode( NodeType node ) {
+		topside_.setNode( node );
+		bottomside_.reinit( node );
+		repaint();
+	}
 
 	public static class TopSide extends JPanelWithKeyListener {
 
 		private static final long serialVersionUID = 7212467413352884098L;
-		private final CenterPanelModel center_panel_model_;
 
 		private int previous_width_ = 0;
 		private int previous_height_ = 0;
 		private int previous_node_ = 0;
 
-		public TopSide( CenterPanelModel center_panel_model ) {
-			center_panel_model_ = center_panel_model;
-		}
+		private NodeType node_;
+		
+		public TopSide() {}
 
+		public void setNode( NodeType node ) {
+			node_ = node;
+		}
+		
 		private double getScale( int panelWidth, int panelHeight, int imageWidth, int imageHeight ) {
 
 			if( imageWidth < panelWidth || imageHeight < panelHeight ) {
@@ -67,24 +80,17 @@ public class EastPanelView extends JPanel {
 		}
 
 		public void paintComponent( Graphics g ) {
-			// avoid redoing work if possible
-			// g.fillRect( 0, 0, 100, 100 );
-			if( getWidth() == previous_width_ && getHeight() == previous_height_
-					&& center_panel_model_.selectedNode().index() == previous_node_ ) {
-				return;
-			}
-			
-			if( center_panel_model_.selectedNode() == null )
+			if( node_ == null )
 				return;
 
-			final BufferedImage image = center_panel_model_.selectedNode().getThumbnailImage();
-	
+			final BufferedImage image = node_.getThumbnailImage();
+
 			if( image == null )
 				return;
 
 			previous_width_ = getWidth();
 			previous_height_ = getHeight();
-			previous_node_ = center_panel_model_.selectedNode().index();
+			previous_node_ = node_.index();
 
 			super.paintComponent( g );
 			// super.paint( g );
@@ -95,12 +101,14 @@ public class EastPanelView extends JPanel {
 			// int panelHeight = this.getHeight();
 			final int imageWidth = image.getWidth();
 			final int imageHeight = image.getHeight();
-			//final double scale = getScale( previous_width_, previous_height_, imageWidth, imageHeight );
+			// final double scale = getScale( previous_width_, previous_height_, imageWidth,
+			// imageHeight );
 			final double scale = 1;
-			
-			//g2.drawImage( image, 0, 0, (int) ( imageWidth * scale ), (int) ( imageHeight * scale ), null );
+
+			// g2.drawImage( image, 0, 0, (int) ( imageWidth * scale ), (int) ( imageHeight
+			// * scale ), null );
 			g2.drawImage( image, 0, 0, imageWidth, imageHeight, null );
-	    
+
 			if( DebugToggles.DEBUG_CONTROL_PANEL_VIEW ) {
 				System.out.println( "---North East---" );
 				System.out.println( "panel width: " + previous_width_ );
@@ -119,8 +127,27 @@ public class EastPanelView extends JPanel {
 
 		private static final long serialVersionUID = 7222467413252884098L;
 
+		private final JLabel jlabel_ = new JLabel( "_" );
+
+		private NodeType node_;
+
 		public BottomSide() {
-			//this.add( new JButton( "                                    " ) );
+			initComponents();
+		}
+
+		public BottomSide( NodeType node ) {
+			initComponents();
+			reinit( node );
+		}
+
+		private void initComponents() {
+			setLayout( new GridLayout( 1, 1 ) );
+			add( jlabel_ );
+		}
+
+		public void reinit( NodeType node ) {
+			node_ = node;
+			jlabel_.setText( node_.name() );
 		}
 
 	}
