@@ -35,14 +35,14 @@ public class SlideShow implements SlideShowType {
 	// run
 	public void run() {
 		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		//p( ge.toString() );
+		// p( ge.toString() );
 
 		GraphicsDevice[] devices = ge.getScreenDevices();
-		//Window w = devices[ 0 ].getFullScreenWindow();
+		// Window w = devices[ 0 ].getFullScreenWindow();
 
 		JFrame slideshow_frame = createSlideshowJFrame();
 		devices[ 1 ].setFullScreenWindow( slideshow_frame );
-		
+
 		JFrame control_panel = createControlPanelJFrame();
 	}
 

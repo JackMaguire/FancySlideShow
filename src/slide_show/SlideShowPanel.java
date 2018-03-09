@@ -62,7 +62,7 @@ public class SlideShowPanel extends JPanel {
 			System.out.println( "scale: " + scale );
 			System.out.println( "---SlideShowPanel---" );
 		}
-		
+
 		if( panelHeight - scaled_image_height > 1 ) {
 			// whitespace on top and bottom
 			final int buffersize = ( panelHeight - scaled_image_height ) / 2;

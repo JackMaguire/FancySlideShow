@@ -14,8 +14,8 @@ public class ControlPanelView extends JPanel {
 	private final BorderLayout layout_ = new BorderLayout();
 	private final WestPanelView west_view_;
 	private final SouthPanelView south_view_ = new SouthPanelView();
-	private final EastPanelView east_view_;	
-	
+	private final EastPanelView east_view_;
+
 	private final CenterPanelView center_view_;
 	private final CenterPanelController center_controller_;
 
@@ -34,10 +34,10 @@ public class ControlPanelView extends JPanel {
 
 		east_view_ = new EastPanelView( model_.getEastPanelModel() );
 		add( east_view_, BorderLayout.EAST );
-		
+
 		west_view_ = new WestPanelView();
 		add( west_view_, BorderLayout.WEST );
-		
+
 		setVisible( true );
 	}
 

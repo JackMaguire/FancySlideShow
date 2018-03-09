@@ -10,7 +10,7 @@ public class CenterPanelController implements MouseListener {
 
 	final private CenterPanelModel model_;
 	final private CenterPanelView view_;
-	
+
 	final private ControlPanelView parent_view_;
 
 	public CenterPanelController( ControlPanelView parent_view, CenterPanelModel model, CenterPanelView view ) {
@@ -37,7 +37,7 @@ public class CenterPanelController implements MouseListener {
 				System.out.println( "toggled node " + node.name() );
 			}
 		}
-		
+
 		parent_view_.repaint();
 		parent_view_.revalidate();
 	}

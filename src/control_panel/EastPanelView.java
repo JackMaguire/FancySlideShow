@@ -24,7 +24,7 @@ public class EastPanelView extends JPanel {
 	public EastPanelView( EastPanelModel model ) {
 		this.setMinimumSize( new Dimension( ControlPanelMonitorSettings.EAST_WIDTH, 100 ) );
 		this.setPreferredSize( new Dimension( ControlPanelMonitorSettings.EAST_WIDTH, 100 ) );
-		
+
 		model_ = model;
 		topside_ = new TopSide( model_.centerModel() );
 
@@ -84,17 +84,17 @@ public class EastPanelView extends JPanel {
 			previous_node_ = center_panel_model_.selectedNode().index();
 
 			super.paintComponent( g );
-			//super.paint( g );
+			// super.paint( g );
 
 			Graphics2D g2 = (Graphics2D) g;
 
-			//int panelWidth = this.getWidth();
-			//int panelHeight = this.getHeight();
+			// int panelWidth = this.getWidth();
+			// int panelHeight = this.getHeight();
 			final int imageWidth = image.getWidth();
 			final int imageHeight = image.getHeight();
 			final double scale = getScale( previous_width_, previous_height_, imageWidth, imageHeight );
 
-			g2.drawImage( image, 0, 0, (int) (imageWidth * scale), (int) (imageHeight * scale), null );
+			g2.drawImage( image, 0, 0, (int) ( imageWidth * scale ), (int) ( imageHeight * scale ), null );
 
 			if( CompileTimeSettings.DEBUG_VIEW ) {
 				System.out.println( "---North East---" );
