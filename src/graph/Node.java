@@ -12,6 +12,7 @@ import javax.imageio.ImageIO;
 import compile_time_settings.ControlPanelMonitorSettings;
 import compile_time_settings.DebugToggles;
 import frame_graph.FrameGraph;
+import frame_graph.FrameNode;
 
 public class Node implements NodeType {
 
@@ -26,6 +27,8 @@ public class Node implements NodeType {
 	private String image_filename_;
 	private BufferedImage thumbnail_image_;
 
+	private FrameNode corresponding_fnode_ = null; 
+	
 	public Node( String name ) {
 		name_ = name;
 		hard_ = true;
@@ -128,6 +131,7 @@ public class Node implements NodeType {
 	@Override
 	public void toggle_hardness() {
 		hard_ = !hard_;
+		corresponding_fnode_.setStop( hard_ );
 	}
 
 	@Override
@@ -137,6 +141,7 @@ public class Node implements NodeType {
 
 	@Override
 	public void applyToFrameGraph( FrameGraph fg ) {
+		corresponding_fnode_ = fg.getPrimaryNode( index_ );
 		fg.getPrimaryNode( index_ ).setStop( hard_ );
 		fg.getPrimaryNode( index_ ).setImageFilename( image_filename_ );
 	}

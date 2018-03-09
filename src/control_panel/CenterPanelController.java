@@ -31,6 +31,7 @@ public class CenterPanelController implements MouseListener {
 		} else {
 			// change hardness of node
 			node.toggle_hardness();
+			
 			view_.repaint();
 			if( DebugToggles.DEBUG_CONTROL_PANEL ) {
 				System.out.println( "toggled node " + node.name() );
