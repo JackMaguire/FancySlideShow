@@ -57,12 +57,12 @@ public class Node implements NodeType {
 				final double scale = ( (double) ControlPanelMonitorSettings.EAST_WIDTH ) / native_width;
 				final int new_height = (int) ( scale * thumbnail_image_.getHeight() );
 
-				// thumbnail_image_ = thumbnail_image_.getScaledInstance( width, height, hints )
+				//thumbnail_image_ = (BufferedImage) thumbnail_image_.getScaledInstance( ControlPanelMonitorSettings.EAST_WIDTH, new_height, java.awt.Image.SCALE_DEFAULT );
 
 				BufferedImage smaller_version = new BufferedImage( ControlPanelMonitorSettings.EAST_WIDTH, new_height,
 						thumbnail_image_.getType() );
-				Graphics2D g2d = (Graphics2D) smaller_version.createGraphics();
-				g2d.drawImage( smaller_version, 0, 0, ControlPanelMonitorSettings.EAST_WIDTH, new_height, null );
+				Graphics2D g2d = (Graphics2D) smaller_version.getGraphics();
+				g2d.drawImage( thumbnail_image_, 0, 0, ControlPanelMonitorSettings.EAST_WIDTH, new_height, null );
 				thumbnail_image_ = smaller_version;
 			}
 

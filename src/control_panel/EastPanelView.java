@@ -6,7 +6,10 @@ import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -70,12 +73,12 @@ public class EastPanelView extends JPanel {
 					&& center_panel_model_.selectedNode().index() == previous_node_ ) {
 				return;
 			}
-
+			
 			if( center_panel_model_.selectedNode() == null )
 				return;
 
-			BufferedImage image = center_panel_model_.selectedNode().getThumbnailImage();
-
+			final BufferedImage image = center_panel_model_.selectedNode().getThumbnailImage();
+	
 			if( image == null )
 				return;
 
@@ -92,15 +95,21 @@ public class EastPanelView extends JPanel {
 			// int panelHeight = this.getHeight();
 			final int imageWidth = image.getWidth();
 			final int imageHeight = image.getHeight();
-			final double scale = getScale( previous_width_, previous_height_, imageWidth, imageHeight );
-
-			g2.drawImage( image, 0, 0, (int) ( imageWidth * scale ), (int) ( imageHeight * scale ), null );
-
-			if( DebugToggles.DEBUG_VIEW ) {
+			//final double scale = getScale( previous_width_, previous_height_, imageWidth, imageHeight );
+			final double scale = 1;
+			
+			//g2.drawImage( image, 0, 0, (int) ( imageWidth * scale ), (int) ( imageHeight * scale ), null );
+			g2.drawImage( image, 0, 0, imageWidth, imageHeight, null );
+	    
+			if( DebugToggles.DEBUG_CONTROL_PANEL_VIEW ) {
 				System.out.println( "---North East---" );
-				System.out.println( "width: " + previous_width_ );
-				System.out.println( "height: " + previous_height_ );
+				System.out.println( "panel width: " + previous_width_ );
+				System.out.println( "panel height: " + previous_height_ );
+				System.out.println( "image width: " + imageWidth );
+				System.out.println( "image height: " + imageHeight );
 				System.out.println( "scale: " + scale );
+				System.out.println( "scaled image width: " + (int) ( imageWidth * scale ) );
+				System.out.println( "scaled image height: " + (int) ( imageHeight * scale ) );
 				System.out.println( "---North East---" );
 			}
 		}
@@ -111,7 +120,7 @@ public class EastPanelView extends JPanel {
 		private static final long serialVersionUID = 7222467413252884098L;
 
 		public BottomSide() {
-			this.add( new JButton( "                                    " ) );
+			//this.add( new JButton( "                                    " ) );
 		}
 
 	}
