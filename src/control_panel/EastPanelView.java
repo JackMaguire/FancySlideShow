@@ -164,6 +164,7 @@ public class EastPanelView extends JPanel {
 			add( reverse_ );
 
 			forward_.addItemListener( new ForwardJComboBoxListener( forward_, model_ ) );
+			reverse_.addItemListener( new ReverseJComboBoxListener( reverse_, model_ ) );
 		}
 
 		public void reinit( NodeType node ) {
@@ -199,6 +200,25 @@ public class EastPanelView extends JPanel {
 		public void itemStateChanged( ItemEvent e ) {
 			if( e.getStateChange() == ItemEvent.SELECTED ) {
 				model_.setForwardChoice( forward_.getSelectedIndex() );
+			}
+		}
+
+	}
+	
+	protected static class ReverseJComboBoxListener implements ItemListener {
+
+		private final BottomSideModel model_;
+		private final JComboBox< String > reverse_;
+
+		public ReverseJComboBoxListener( JComboBox< String > reverse, BottomSideModel model ) {
+			model_ = model;
+			reverse_ = reverse;
+		}
+
+		@Override
+		public void itemStateChanged( ItemEvent e ) {
+			if( e.getStateChange() == ItemEvent.SELECTED ) {
+				model_.setReverseChoice( reverse_.getSelectedIndex() );
 			}
 		}
 
