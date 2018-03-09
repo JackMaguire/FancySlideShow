@@ -2,6 +2,8 @@ package frame_graph;
 
 import java.awt.image.BufferedImage;
 
+import compile_time_settings.DebugToggles;
+
 public class FrameNode {
 
 	private boolean stop_;
@@ -75,5 +77,41 @@ public class FrameNode {
 		}
 		new_array[ in.length ] = new_element;
 		return new_array;
+	}
+	
+	public void setForwardNode( int primary_node_index ) {
+		
+		if( DebugToggles.DEBUG_FRAME_GRAPH ) {
+			assert( IS_PRIMARY );
+		}
+		
+		for( FrameNode node : possible_forward_nodes_ ) {
+			if( node.UPSTREAM_PRIMARY_ID == primary_node_index ) {
+				forward_node_ = node;
+				return;
+			}
+		}
+		
+		System.err.println( "Node " + UPSTREAM_PRIMARY_ID + " has no forward connection to node " + primary_node_index );
+		Exception e = new Exception("");
+		e.printStackTrace();
+	}
+	
+	public void setReverseNode( int primary_node_index ) {
+		
+		if( DebugToggles.DEBUG_FRAME_GRAPH ) {
+			assert( IS_PRIMARY );
+		}
+		
+		for( FrameNode node : possible_reverse_nodes_ ) {
+			if( node.DOWNSTREAM_PRIMARY_ID == primary_node_index ) {
+				reverse_node_ = node;
+				return;
+			}
+		}
+		
+		System.err.println( "Node " + UPSTREAM_PRIMARY_ID + " has no reverse connection to node " + primary_node_index );
+		Exception e = new Exception("");
+		e.printStackTrace();
 	}
 }
