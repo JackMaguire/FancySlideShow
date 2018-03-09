@@ -3,6 +3,7 @@ package graph;
 import java.awt.image.BufferedImage;
 
 import frame_graph.FrameGraph;
+import frame_graph.FrameNode;
 
 public interface NodeType {
 
@@ -27,6 +28,8 @@ public interface NodeType {
 
 	void applyToFrameGraph( FrameGraph fg );
 
+	FrameNode getFrameNode();
+	
 	// Image Logic
 	BufferedImage getThumbnailImage();
 	// void loadImagesIntoMemory();

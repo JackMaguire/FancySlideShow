@@ -15,6 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import compile_time_settings.DebugToggles;
+import control_panel.EastPanelModel.BottomSideModel;
 import frame_graph.FrameNode;
 import graph.Node;
 import graph.NodeType;
@@ -24,7 +25,7 @@ public class EastPanelView extends JPanel {
 
 	private static final long serialVersionUID = 331403087034827832L;
 	private final TopSide topside_;
-	private final BottomSide bottomside_ = new BottomSide();
+	private final BottomSide bottomside_;
 
 	private final EastPanelModel model_;
 	
@@ -35,6 +36,8 @@ public class EastPanelView extends JPanel {
 		model_ = model;
 		topside_ = new TopSide();
 
+		bottomside_ = new BottomSide( model_.bottomModel() );
+		
 		this.setLayout( new GridLayout( 2, 1 ) );
 		add( topside_ );
 		add( bottomside_ );
@@ -129,13 +132,16 @@ public class EastPanelView extends JPanel {
 
 		private final JLabel jlabel_ = new JLabel( "_" );
 
-		private NodeType node_;
-
-		public BottomSide() {
+		//private NodeType node_;
+		private final BottomSideModel model_;
+		
+		public BottomSide( BottomSideModel model ) {
+			model_ = model;
 			initComponents();
 		}
 
-		public BottomSide( NodeType node ) {
+		public BottomSide( BottomSideModel model, NodeType node ) {
+			model_ = model;
 			initComponents();
 			reinit( node );
 		}
@@ -146,8 +152,8 @@ public class EastPanelView extends JPanel {
 		}
 
 		public void reinit( NodeType node ) {
-			node_ = node;
-			jlabel_.setText( node_.name() );
+			model_.setNode( node );
+			jlabel_.setText( model_.getTitle() );
 		}
 
 	}

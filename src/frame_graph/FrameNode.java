@@ -78,40 +78,56 @@ public class FrameNode {
 		new_array[ in.length ] = new_element;
 		return new_array;
 	}
-	
+
 	public void setForwardNode( int primary_node_index ) {
-		
+
 		if( DebugToggles.DEBUG_FRAME_GRAPH ) {
-			assert( IS_PRIMARY );
+			assert ( IS_PRIMARY );
 		}
-		
+
 		for( FrameNode node : possible_forward_nodes_ ) {
 			if( node.UPSTREAM_PRIMARY_ID == primary_node_index ) {
 				forward_node_ = node;
 				return;
 			}
 		}
-		
+
 		System.err.println( "Node " + UPSTREAM_PRIMARY_ID + " has no forward connection to node " + primary_node_index );
-		Exception e = new Exception("");
+		Exception e = new Exception( "" );
 		e.printStackTrace();
 	}
-	
+
 	public void setReverseNode( int primary_node_index ) {
-		
+
 		if( DebugToggles.DEBUG_FRAME_GRAPH ) {
-			assert( IS_PRIMARY );
+			assert ( IS_PRIMARY );
 		}
-		
+
 		for( FrameNode node : possible_reverse_nodes_ ) {
 			if( node.DOWNSTREAM_PRIMARY_ID == primary_node_index ) {
 				reverse_node_ = node;
 				return;
 			}
 		}
-		
+
 		System.err.println( "Node " + UPSTREAM_PRIMARY_ID + " has no reverse connection to node " + primary_node_index );
-		Exception e = new Exception("");
+		Exception e = new Exception( "" );
 		e.printStackTrace();
+	}
+
+	public int[] upstreamIDs() {
+		int[] allIDs = new int[ possible_forward_nodes_.length ];
+		for( int i = 0; i < possible_forward_nodes_.length; ++i ) {
+			allIDs[ i ] = possible_forward_nodes_[ i ].UPSTREAM_PRIMARY_ID;
+		}
+		return allIDs;
+	}
+
+	public int[] downstreamIDs() {
+		int[] allIDs = new int[ possible_reverse_nodes_.length ];
+		for( int i = 0; i < possible_reverse_nodes_.length; ++i ) {
+			allIDs[ i ] = possible_reverse_nodes_[ i ].DOWNSTREAM_PRIMARY_ID;
+		}
+		return allIDs;
 	}
 }

@@ -45,6 +45,10 @@ public class Node implements NodeType {
 		setImageFilename( image_filename );
 	}
 
+	public FrameNode getFrameNode() {
+		return corresponding_fnode_;
+	}
+	
 	public void setImageFilename( String filename ) {
 		image_filename_ = filename;
 
