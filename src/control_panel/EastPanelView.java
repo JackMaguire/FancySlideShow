@@ -151,15 +151,32 @@ public class EastPanelView extends JPanel {
 		}
 
 		private void initComponents() {
-			setLayout( new GridLayout( 3, 1 ) );
+			setLayout( new GridLayout( 3, 2 ) );
 			add( jlabel_ );
+			add( new JLabel(" ") );
+			
+			add( new JLabel("Forward: ") );
 			add( forward_ );
+			
+			add( new JLabel("Reverse: ") );
 			add( reverse_ );
 		}
 
 		public void reinit( NodeType node ) {
 			model_.setNode( node );
 			jlabel_.setText( model_.getTitle() );
+			
+			forward_.removeAllItems();
+			for( String s : model_.getForwardChoices() ) {
+				forward_.addItem( s );
+			}
+			forward_.setSelectedIndex( model_.getForwardChoice() );
+			
+			reverse_.removeAllItems();
+			for( String s : model_.getReverseChoices() ) {
+				reverse_.addItem( s );
+			}
+			reverse_.setSelectedIndex( model_.getReverseChoice() );
 		}
 
 	}

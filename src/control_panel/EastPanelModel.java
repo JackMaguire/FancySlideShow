@@ -88,6 +88,22 @@ public class EastPanelModel {
 			else
 				return "";
 		}
+		
+		public String[] getForwardChoices() {
+			return forward_choices_;
+		}
+		
+		public int getForwardChoice() {
+			return for_choice_;
+		}
+		
+		public String[] getReverseChoices() {
+			return reverse_choices_;
+		}
+		
+		public int getReverseChoice() {
+			return rev_choice_;
+		}
 	}
 	
 }
