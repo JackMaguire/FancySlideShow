@@ -18,7 +18,7 @@ public class Graph implements GraphType {
 	public int numNodes() {
 		return nodes_.length;
 	}
-	
+
 	@Override
 	public void setNode( NodeType node, int node_index ) {
 		node.setIndex( node_index );

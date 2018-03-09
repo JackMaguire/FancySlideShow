@@ -28,7 +28,7 @@ public class Engine implements ActionListener {
 	private boolean reverse_ = false;
 
 	private boolean go_at_next_tick_ = true;
-	
+
 	private final CenterPanelView center_panel_view_;
 
 	public Engine( SlideShowPanel panel, FrameGraph frame_graph, CenterPanelView center_panel_view ) {
@@ -36,7 +36,7 @@ public class Engine implements ActionListener {
 		frame_graph_ = frame_graph;
 		current_node_ = frame_graph_.getPrimaryNode( 0 );
 		center_panel_view_ = center_panel_view;
-		
+
 		timer_ = new Timer( delay_, this );
 	}
 
@@ -54,17 +54,17 @@ public class Engine implements ActionListener {
 				return;
 			}
 		}
-		
+
 		if( reverse_ ) {
-			if	( current_node_.reverseNode() != null ) {
+			if( current_node_.reverseNode() != null ) {
 				current_node_ = current_node_.reverseNode();
 			}
 		} else {
-			if	( current_node_.forwardNode() != null ) {
+			if( current_node_.forwardNode() != null ) {
 				current_node_ = current_node_.forwardNode();
 			}
 		}
-		
+
 		slide_show_panel_.setImage( current_node_.image() );
 		slide_show_panel_.repaint();
 		if( current_node_.IS_PRIMARY ) {
@@ -84,11 +84,11 @@ public class Engine implements ActionListener {
 	public boolean reverse() {
 		return reverse_;
 	}
-	
+
 	public FrameNode currentNode() {
 		return current_node_;
 	}
-	
+
 	public void setCurrentNode( int index ) {
 		current_node_ = frame_graph_.getPrimaryNode( index );
 	}
