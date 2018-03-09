@@ -4,6 +4,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -179,6 +181,17 @@ public class EastPanelView extends JPanel {
 			reverse_.setSelectedIndex( model_.getReverseChoice() );
 		}
 
+	}
+	
+	protected static class ForwardJComboBoxListener implements ItemListener {
+
+		@Override
+		public void itemStateChanged( ItemEvent e ) {
+			if( e.getStateChange() == ItemEvent.SELECTED ) {
+				//TODO
+			}
+		}
+		
 	}
 
 }
