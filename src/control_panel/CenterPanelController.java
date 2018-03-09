@@ -28,7 +28,7 @@ public class CenterPanelController implements MouseListener {
 
 			parent_view_.getEastPanelView().setSelectedNode( node );
 			parent_view_.getEastPanelView().repaint();
-			
+
 			if( DebugToggles.DEBUG_CONTROL_PANEL ) {
 				System.out.println( "selected node " + node.name() );
 			}

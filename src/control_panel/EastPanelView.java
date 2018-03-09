@@ -204,7 +204,7 @@ public class EastPanelView extends JPanel {
 		}
 
 	}
-	
+
 	protected static class ReverseJComboBoxListener implements ItemListener {
 
 		private final BottomSideModel model_;

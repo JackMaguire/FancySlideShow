@@ -74,11 +74,11 @@ public class CenterPanelView extends JPanelWithKeyListener {
 
 		for( int i = 0; i < lines_.length; ++i ) {
 			EdgeType[] all_edges = model_.getGraph().getEdges();
-			/*if( all_edges[ i ].index() == next_edge_index ) {
-				lines_[ i ].setColor( current_ );
-			} else if( i == selected_edge_index ) {
-				lines_[ i ].setColor( selected_ );
-			} else */if( all_edges[ i ].outgoingNodeIndex() == current_node_index ) {
+			/*
+			 * if( all_edges[ i ].index() == next_edge_index ) { lines_[ i ].setColor(
+			 * current_ ); } else if( i == selected_edge_index ) { lines_[ i ].setColor(
+			 * selected_ ); } else
+			 */if( all_edges[ i ].outgoingNodeIndex() == current_node_index ) {
 				lines_[ i ].setColor( forward_ );
 			} else if( all_edges[ i ].incomingNodeIndex() == current_node_index ) {
 				lines_[ i ].setColor( backward_ );

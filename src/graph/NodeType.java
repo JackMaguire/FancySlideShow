@@ -29,7 +29,7 @@ public interface NodeType {
 	void applyToFrameGraph( FrameGraph fg );
 
 	FrameNode getFrameNode();
-	
+
 	// Image Logic
 	BufferedImage getThumbnailImage();
 	// void loadImagesIntoMemory();

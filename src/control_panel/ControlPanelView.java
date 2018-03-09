@@ -44,7 +44,7 @@ public class ControlPanelView extends JPanelWithKeyListener {
 	public CenterPanelView getCenterPanelView() {
 		return center_view_;
 	}
-	
+
 	public EastPanelView getEastPanelView() {
 		return east_view_;
 	}

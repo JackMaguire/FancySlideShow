@@ -48,7 +48,7 @@ public class Node implements NodeType {
 	public FrameNode getFrameNode() {
 		return corresponding_fnode_;
 	}
-	
+
 	public void setImageFilename( String filename ) {
 		image_filename_ = filename;
 
@@ -61,7 +61,9 @@ public class Node implements NodeType {
 				final double scale = ( (double) ControlPanelMonitorSettings.EAST_WIDTH ) / native_width;
 				final int new_height = (int) ( scale * thumbnail_image_.getHeight() );
 
-				//thumbnail_image_ = (BufferedImage) thumbnail_image_.getScaledInstance( ControlPanelMonitorSettings.EAST_WIDTH, new_height, java.awt.Image.SCALE_DEFAULT );
+				// thumbnail_image_ = (BufferedImage) thumbnail_image_.getScaledInstance(
+				// ControlPanelMonitorSettings.EAST_WIDTH, new_height,
+				// java.awt.Image.SCALE_DEFAULT );
 
 				BufferedImage smaller_version = new BufferedImage( ControlPanelMonitorSettings.EAST_WIDTH, new_height,
 						thumbnail_image_.getType() );

@@ -12,7 +12,7 @@ public class CenterPanelModel {
 	private NodeType selected_node_;
 	private EdgeType selected_edge_;
 	private boolean node_was_selected_more_recently_ = true;
-	
+
 	public CenterPanelModel( Graph graph ) {
 		graph_ = graph;
 		current_node_ = graph.getNode( 0 );
