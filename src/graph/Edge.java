@@ -92,22 +92,7 @@ public class Edge implements EdgeType {
 		FrameNode[] my_edge_nodes = new FrameNode[ image_filenames_.length ];
 		for( int i = 0; i < my_edge_nodes.length; ++i ) {
 			my_edge_nodes[ i ] = new FrameNode( false, incoming_node_index_, outgoing_node_index_ );
-
-			File img = new File( image_filenames_[ i ] );
-			BufferedImage in;
-			try {
-				in = ImageIO.read( img );
-				my_edge_nodes[ i ].setImage( in );
-
-				if( DebugToggles.DEBUG_FRAME_GRAPH ) {
-					DataBuffer dataBuffer = in.getData().getDataBuffer();
-					long sizeBytes = ( (long) dataBuffer.getSize() ) * 4l;
-					usage_statistics.MemoryCounter.getInstance().addBytesForToken( "SecondaryFGNodes", sizeBytes );
-				}
-			}
-			catch( IOException e ) {
-				e.printStackTrace();
-			}
+			my_edge_nodes[ i ].setImageFilename( image_filenames_[ i ] );
 		}
 
 		begin_primary.addForwardNode( my_edge_nodes[ 0 ] );

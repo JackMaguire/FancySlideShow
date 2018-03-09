@@ -1,5 +1,6 @@
 package graph;
 
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBuffer;
 //import java.util.Arrays;
@@ -8,6 +9,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import compile_time_settings.ControlPanelMonitorSettings;
 import compile_time_settings.DebugToggles;
 import frame_graph.FrameGraph;
 
@@ -22,7 +24,7 @@ public class Node implements NodeType {
 	private EdgeType[] downstream_edges_ = new EdgeType[ 0 ];
 
 	private String image_filename_;
-	private BufferedImage image_;
+	private BufferedImage thumbnail_image_;
 
 	public Node( String name ) {
 		name_ = name;
@@ -45,10 +47,23 @@ public class Node implements NodeType {
 
 		File img = new File( image_filename_ );
 		try {
-			image_ = ImageIO.read( img );
+			thumbnail_image_ = ImageIO.read( img );
 
+			final int native_width = thumbnail_image_.getWidth();
+			if( native_width > ControlPanelMonitorSettings.EAST_WIDTH ) {
+				final double scale = ((double) ControlPanelMonitorSettings.EAST_WIDTH ) / native_width;
+				final int new_height = (int) (scale * thumbnail_image_.getHeight());
+				
+				//thumbnail_image_ = thumbnail_image_.getScaledInstance( width, height, hints )
+				
+				BufferedImage smaller_version = new BufferedImage( ControlPanelMonitorSettings.EAST_WIDTH, new_height, thumbnail_image_.getType() );
+				Graphics2D g2d = (Graphics2D) smaller_version.createGraphics();
+				g2d.drawImage( smaller_version, 0, 0, ControlPanelMonitorSettings.EAST_WIDTH, new_height, null);
+				thumbnail_image_ = smaller_version;
+			}
+			
 			if( DebugToggles.DEBUG_FRAME_GRAPH ) {
-				DataBuffer dataBuffer = image_.getData().getDataBuffer();
+				DataBuffer dataBuffer = thumbnail_image_.getData().getDataBuffer();
 				long sizeBytes = ( (long) dataBuffer.getSize() ) * 4l;
 				usage_statistics.MemoryCounter.getInstance().addBytesForToken( "PrimaryFGNodes", sizeBytes );
 			}
@@ -75,7 +90,7 @@ public class Node implements NodeType {
 
 	@Override
 	public BufferedImage getThumbnailImage() {
-		return image_;
+		return thumbnail_image_;
 	}
 
 	@Override
@@ -123,7 +138,7 @@ public class Node implements NodeType {
 	@Override
 	public void applyToFrameGraph( FrameGraph fg ) {
 		fg.getPrimaryNode( index_ ).setStop( hard_ );
-		fg.getPrimaryNode( index_ ).setImage( image_ );
+		fg.getPrimaryNode( index_ ).setImageFilename( image_filename_ );
 	}
 
 }

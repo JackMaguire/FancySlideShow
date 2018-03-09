@@ -26,6 +26,7 @@ public class MemoryCounter {
 	}
 
 	public long getBytesForToken( String token ) {
+		if( ! bytes_for_token_.containsKey( token ) ) return 0;
 		return bytes_for_token_.get( token );
 	}
 

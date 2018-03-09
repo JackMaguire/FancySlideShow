@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 public class FrameNode {
 
 	private boolean stop_;
-	private BufferedImage image_;
+	private String image_filename_;
 
 	private FrameNode forward_node_ = null;
 	private FrameNode[] possible_forward_nodes_ = new FrameNode[ 0 ];
@@ -23,12 +23,12 @@ public class FrameNode {
 		DOWNSTREAM_PRIMARY_ID = downstream_id;
 	}
 
-	public void setImage( BufferedImage image ) {
-		image_ = image;
+	public void setImageFilename( String filename ) {
+		image_filename_ = filename;
 	}
 
 	public BufferedImage image() {
-		return image_;
+		return util.ImageFromFile.imageFromFile( image_filename_ );
 	}
 
 	public void setStop( boolean setting ) {
