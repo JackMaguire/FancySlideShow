@@ -51,7 +51,7 @@ public class SlideShow implements SlideShowType {
 		if( devices.length > 1 ) {
 			devices[ SlideShowPanelSettings.MONITOR ].setFullScreenWindow( slideshow_frame );
 		} else {
-			devices[ 0 ].setFullScreenWindow( slideshow_frame );
+			//devices[ 0 ].setFullScreenWindow( slideshow_frame );
 		}
 
 		JFrame control_panel = createControlPanelJFrame();
