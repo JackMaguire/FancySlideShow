@@ -15,7 +15,7 @@ public class SlideShowPanel extends JPanel {
 
 	private BufferedImage image_;
 
-	private boolean first_paint_ = true;
+	// private boolean first_paint_ = true;
 
 	public SlideShowPanel() {
 		this.setBackground( SlideShowPanelSettings.BACKGROUND );

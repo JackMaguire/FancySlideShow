@@ -34,13 +34,13 @@ public class CenterPanelView extends JPanel {
 		model_ = model;
 
 		NodeType[] all_nodes = model.getGraph().getNodes();
-		circles_ = new NodeCircle[all_nodes.length];
+		circles_ = new NodeCircle[ all_nodes.length ];
 		for( int i = 0; i < all_nodes.length; ++i ) {
 			circles_[ i ] = createNodeCircle( i, all_nodes.length, all_nodes[ i ].name() );
 		}
 
 		EdgeType[] all_edges = model.getGraph().getEdges();
-		lines_ = new EdgeLine[all_edges.length];
+		lines_ = new EdgeLine[ all_edges.length ];
 		for( int i = 0; i < all_edges.length; ++i ) {
 			int index0 = all_edges[ i ].outgoingNodeIndex();
 			int index1 = all_edges[ i ].incomingNodeIndex();

@@ -21,19 +21,19 @@ public class Demo {
 		my_graph.setNode( new Node( "end1", true, "src/PicsForDemo/Track1/0250.png" ), 2 );
 		my_graph.setNode( new Node( "end2", true, "src/PicsForDemo/Track2/0250.png" ), 3 );
 
-		String[] filenames_for_start_to_branch = new String[128];
+		String[] filenames_for_start_to_branch = new String[ 128 ];
 		for( int i = 0; i < 128; ++i ) {
 			filenames_for_start_to_branch[ i ] = "src/PicsForDemo/Track1/0" + String.format( "%03d", i + 2 ) + ".png";
 		}
 		my_graph.addEdge( new Edge( "", 0, 1, filenames_for_start_to_branch ) );
 
-		String[] filenames_for_branch_to_end1 = new String[119];
+		String[] filenames_for_branch_to_end1 = new String[ 119 ];
 		for( int i = 0; i < 119; ++i ) {
 			filenames_for_branch_to_end1[ i ] = "src/PicsForDemo/Track1/0" + String.format( "%03d", i + 131 ) + ".png";
 		}
 		my_graph.addEdge( new Edge( "", 1, 2, filenames_for_branch_to_end1 ) );
 
-		String[] filenames_for_branch_to_end2 = new String[119];
+		String[] filenames_for_branch_to_end2 = new String[ 119 ];
 		for( int i = 0; i < 119; ++i ) {
 			filenames_for_branch_to_end2[ i ] = "src/PicsForDemo/Track2/0" + String.format( "%03d", i + 131 ) + ".png";
 		}

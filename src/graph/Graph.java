@@ -8,10 +8,10 @@ import frame_graph.FrameGraph;
 public class Graph implements GraphType {
 
 	NodeType[] nodes_;
-	EdgeType[] edges_ = new EdgeType[0];
+	EdgeType[] edges_ = new EdgeType[ 0 ];
 
 	public Graph( int num_nodes ) {
-		nodes_ = new NodeType[num_nodes];
+		nodes_ = new NodeType[ num_nodes ];
 	}
 
 	@Override
@@ -58,7 +58,7 @@ public class Graph implements GraphType {
 	}
 
 	private void registerEdge( EdgeType E ) {
-		EdgeType[] edges_new = new EdgeType[edges_.length + 1];
+		EdgeType[] edges_new = new EdgeType[ edges_.length + 1 ];
 		for( int i = 0; i < edges_.length; ++i ) {
 			edges_new[ i ] = edges_[ i ];
 		}

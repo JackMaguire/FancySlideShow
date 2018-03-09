@@ -8,10 +8,10 @@ public class FrameNode {
 	private BufferedImage image_;
 
 	private FrameNode forward_node_ = null;
-	private FrameNode[] possible_forward_nodes_ = new FrameNode[0];
+	private FrameNode[] possible_forward_nodes_ = new FrameNode[ 0 ];
 
 	private FrameNode reverse_node_ = null;
-	private FrameNode[] possible_reverse_nodes_ = new FrameNode[0];
+	private FrameNode[] possible_reverse_nodes_ = new FrameNode[ 0 ];
 
 	public final boolean IS_PRIMARY;
 	public final int UPSTREAM_PRIMARY_ID;
@@ -69,7 +69,7 @@ public class FrameNode {
 	}
 
 	public static FrameNode[] addFrameToArray( FrameNode[] in, FrameNode new_element ) {
-		FrameNode[] new_array = new FrameNode[in.length + 1];
+		FrameNode[] new_array = new FrameNode[ in.length + 1 ];
 		for( int i = 0; i < in.length; ++i ) {
 			new_array[ i ] = in[ i ];
 		}
