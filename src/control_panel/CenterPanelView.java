@@ -66,7 +66,7 @@ public class CenterPanelView extends JPanelWithKeyListener {
 		JPanel grid = new JPanel( new GridLayout( 10, 1 ) );
 		grid.add( panes_ );
 		this.add( grid, BorderLayout.WEST );
-		panes_.addItemListener( new SubgraphListener( this, this ) );
+		panes_.addItemListener( new SubgraphListener( this ) );
 	}
 
 	public void updateCurrentSubgraph() {
@@ -297,8 +297,8 @@ public class CenterPanelView extends JPanelWithKeyListener {
 
 		private final CenterPanelView parent_;
 
-		public SubgraphListener( CenterPanelView parent, JPanelWithKeyListener owner ) {
-			super( owner );
+		public SubgraphListener( CenterPanelView parent ) {
+			super( parent );
 			parent_ = parent;
 		}
 

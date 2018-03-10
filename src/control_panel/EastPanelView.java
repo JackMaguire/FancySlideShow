@@ -8,23 +8,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import compile_time_settings.DebugToggles;
 import control_panel.EastPanelModel.BottomSideModel;
-import frame_graph.FrameNode;
-import graph.GraphType;
-import graph.Node;
 import graph.NodeType;
 import compile_time_settings.ControlPanelMonitorSettings;
 
@@ -104,7 +96,7 @@ public class EastPanelView extends JPanel {
 			final int imageWidth = image.getWidth();
 			final int imageHeight = image.getHeight();
 			final double scale = getScale( previous_width_, previous_height_, imageWidth, imageHeight );
-			//final double scale = 1;
+			// final double scale = 1;
 
 			// g2.drawImage( image, 0, 0, (int) ( imageWidth * scale ), (int) ( imageHeight
 			// * scale ), null );
@@ -163,16 +155,16 @@ public class EastPanelView extends JPanel {
 			add( remove_all_focus );
 
 			JButton garbage_collection = new JButton( "Run Garbage Collection" );
-			garbage_collection.addActionListener( new RunGarbageCollection() );
+			garbage_collection.addActionListener( new RunGarbageCollection( this ) );
 			add( garbage_collection );
 
 			JButton calc_mem = new JButton( "Calc Mem Usage:" );
-			calc_mem.addActionListener( new MemCalc( mem_usage_ ) );
+			calc_mem.addActionListener( new MemCalc( mem_usage_, this ) );
 			add( calc_mem );
 			add( mem_usage_ );
 
-			forward_.addItemListener( new ForwardJComboBoxListener( forward_, model_ ) );
-			reverse_.addItemListener( new ReverseJComboBoxListener( reverse_, model_ ) );
+			forward_.addItemListener( new ForwardJComboBoxListener( forward_, this ) );
+			reverse_.addItemListener( new ReverseJComboBoxListener( reverse_, this ) );
 		}
 
 		public void reinit( NodeType node ) {
@@ -192,15 +184,20 @@ public class EastPanelView extends JPanel {
 			reverse_.setSelectedIndex( model_.getReverseChoice() );
 		}
 
+		public BottomSideModel getModel() {
+			return model_;
+		}
+
 	}
 
-	protected static class ForwardJComboBoxListener implements ItemListener {
+	protected static class ForwardJComboBoxListener extends RemoveFocusListener implements ItemListener {
 
 		private final BottomSideModel model_;
 		private final JComboBox< String > forward_;
 
-		public ForwardJComboBoxListener( JComboBox< String > forward, BottomSideModel model ) {
-			model_ = model;
+		public ForwardJComboBoxListener( JComboBox< String > forward, BottomSide bottomside ) {
+			super( bottomside );
+			model_ = bottomside.getModel();
 			forward_ = forward;
 		}
 
@@ -208,18 +205,20 @@ public class EastPanelView extends JPanel {
 		public void itemStateChanged( ItemEvent e ) {
 			if( e.getStateChange() == ItemEvent.SELECTED ) {
 				model_.setForwardChoice( forward_.getSelectedIndex() );
+				this.actionPerformed( null );
 			}
 		}
 
 	}
 
-	protected static class ReverseJComboBoxListener implements ItemListener {
+	protected static class ReverseJComboBoxListener extends RemoveFocusListener implements ItemListener {
 
 		private final BottomSideModel model_;
 		private final JComboBox< String > reverse_;
 
-		public ReverseJComboBoxListener( JComboBox< String > reverse, BottomSideModel model ) {
-			model_ = model;
+		public ReverseJComboBoxListener( JComboBox< String > reverse, BottomSide bottomside ) {
+			super( bottomside );
+			model_ = bottomside.getModel();
 			reverse_ = reverse;
 		}
 
@@ -227,31 +226,39 @@ public class EastPanelView extends JPanel {
 		public void itemStateChanged( ItemEvent e ) {
 			if( e.getStateChange() == ItemEvent.SELECTED ) {
 				model_.setReverseChoice( reverse_.getSelectedIndex() );
+				this.actionPerformed( null );
 			}
 		}
-
 	}
 
-	protected static class RunGarbageCollection implements ActionListener {
+	protected static class RunGarbageCollection extends RemoveFocusListener {
+
+		public RunGarbageCollection( JPanelWithKeyListener owner ) {
+			super( owner );
+		}
 
 		@Override
 		public void actionPerformed( ActionEvent e ) {
 			System.gc();
+			super.actionPerformed( e );
 		}
 
 	}
 
-	protected static class MemCalc implements ActionListener {
+	protected static class MemCalc extends RemoveFocusListener {
 
 		private final JLabel mem_label_;
 
-		public MemCalc( JLabel mem_label ) {
+		public MemCalc( JLabel mem_label, JPanelWithKeyListener owner ) {
+			super( owner );
 			mem_label_ = mem_label;
 		}
 
 		@Override
 		public void actionPerformed( ActionEvent e ) {
-			mem_label_.setText( "" + ( ( Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory() ) / 1000000 ) + " MB");
+			mem_label_.setText(
+					"" + ( ( Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory() ) / 1000000 ) + " MB" );
+			super.actionPerformed( e );
 		}
 
 	}
