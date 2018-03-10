@@ -73,21 +73,12 @@ public class EastPanelView extends JPanel {
 			node_ = node;
 		}
 
-		private double getScale( int panelWidth, int panelHeight, int imageWidth, int imageHeight ) {
+		private double getScale( int panelD, int imageD ) {
+			return ( (double) panelD ) / imageD;
+		}
 
-			if( imageWidth < panelWidth || imageHeight < panelHeight ) {
-				double xScale = ( (double) imageWidth ) / panelWidth;
-				double yScale = ( (double) imageHeight ) / panelHeight;
-				return Math.min( xScale, yScale );
-			}
-
-			if( imageWidth > panelWidth && imageHeight > panelHeight ) {
-				double xScale = ( (double) panelWidth ) / imageWidth;
-				double yScale = ( (double) panelHeight ) / imageHeight;
-				return Math.min( xScale, yScale );
-			}
-
-			return 1;
+		private double getScale( int panel_width, int panel_height, int image_width, int image_height ) {
+			return Math.min( getScale( panel_width, image_width ), getScale( panel_height, image_height ) );
 		}
 
 		public void paintComponent( Graphics g ) {
@@ -112,9 +103,8 @@ public class EastPanelView extends JPanel {
 			// int panelHeight = this.getHeight();
 			final int imageWidth = image.getWidth();
 			final int imageHeight = image.getHeight();
-			// final double scale = getScale( previous_width_, previous_height_, imageWidth,
-			// imageHeight );
-			final double scale = 1;
+			final double scale = getScale( previous_width_, previous_height_, imageWidth, imageHeight );
+			//final double scale = 1;
 
 			// g2.drawImage( image, 0, 0, (int) ( imageWidth * scale ), (int) ( imageHeight
 			// * scale ), null );

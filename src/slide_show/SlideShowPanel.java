@@ -58,7 +58,8 @@ public class SlideShowPanel extends JPanel {
 		final int image_height = image_.getHeight();
 		final double image_ratio = ( (double) image_height / image_width );
 		//final double scale = getScale( panel_width, panel_height, image_width, image_height );
-		final double scale = Math.min( getScaleAssumingCorrectRatio( panel_width, image_width ), getScaleAssumingCorrectRatio( panel_height, image_height ) );
+		final double scale = Math.min( getScale( panel_width, image_width ),
+				getScale( panel_height, image_height ) );
 		
 		final int scaled_image_width = (int) ( image_width * scale );
 		final int scaled_image_height = (int) ( image_height * scale );
@@ -106,25 +107,12 @@ public class SlideShowPanel extends JPanel {
 
 	}
 
-	private double getScaleAssumingCorrectRatio( int panelD, int imageD ) {
+	private double getScale( int panelD, int imageD ) {
 		return ( (double) panelD ) / imageD;
 	}
 
-	private double getScale( int panelWidth, int panelHeight, int imageWidth, int imageHeight ) {
-
-		if( imageWidth > panelWidth || imageHeight > panelHeight ) {
-			double xScale = ( (double) imageWidth ) / panelWidth;
-			double yScale = ( (double) imageHeight ) / panelHeight;
-			return Math.min( xScale, yScale );
-		}
-
-		if( imageWidth < panelWidth && imageHeight < panelHeight ) {
-			double xScale = ( (double) panelWidth ) / imageWidth;
-			double yScale = ( (double) panelHeight ) / imageHeight;
-			return Math.min( xScale, yScale );
-		}
-
-		return 1;
+	private double getScale( int panel_width, int panel_height, int image_width, int image_height ) {
+		return Math.min( getScale( panel_width, image_width ), getScale( panel_height, image_height ) );
 	}
 
 }
