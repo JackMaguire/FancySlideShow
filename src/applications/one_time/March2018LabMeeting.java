@@ -91,13 +91,13 @@ public class March2018LabMeeting {
 
 		int node_id = offset;
 
-		graph.setNode( new Node( "Title", true, getFilename( "MRS", 60 ), "Good Luck!" ), node_id++, MRS_SUBGRAPH );
-		graph.setNode( new Node( "Title_end", false, getFilename( "MRS", 180 ), "" ), node_id++, MRS_SUBGRAPH );
+		graph.setNode( new Node( "Title", true, getFilename( "MRS/title", 0 ), "Good Luck!" ), node_id++, MRS_SUBGRAPH );
+		graph.setNode( new Node( "Title_end", false, getFilename( "MRS/title", 57 ), "" ), node_id++, MRS_SUBGRAPH );
 
 		{// 0 - 1
-			String[] filenames_for_0_to_1 = new String[ 180 - 61 ];
+			String[] filenames_for_0_to_1 = new String[ 56 ];
 			for( int i = 0; i < filenames_for_0_to_1.length; ++i ) {
-				filenames_for_0_to_1[ i ] = getFilename( "MRS", 61 + i );
+				filenames_for_0_to_1[ i ] = getFilename( "MRS/title", 1 + i );
 			}
 			graph.addEdge( new Edge( "Wrecking Ball!", offset, offset + 1, filenames_for_0_to_1 ) );
 		}

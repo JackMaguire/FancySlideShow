@@ -18,8 +18,13 @@ public class CenterPanelKeyListener implements KeyListener {
 	}
 
 	private void leftButton( boolean shift ) {
+		final boolean was_reversed = engine_.reverse();
 		engine_.setReverse( true );
 
+		if( !was_reversed ) {
+			return;
+		}
+		
 		if( engine_.getTimer().isRunning() ) {
 			engine_.goAtNextTick();
 			engine_.takeNextSecondaryOption( shift );
@@ -29,7 +34,12 @@ public class CenterPanelKeyListener implements KeyListener {
 	}
 
 	private void rightButton( boolean shift ) {
+		final boolean was_forward = ! engine_.reverse();
 		engine_.setReverse( false );
+
+		if( !was_forward ) {
+			return;
+		}
 
 		if( engine_.getTimer().isRunning() ) {
 			engine_.goAtNextTick();
