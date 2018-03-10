@@ -17,6 +17,8 @@ import frame_graph.FrameNode;
 public class Node implements NodeType {
 
 	final private String name_;
+	private String notes_ = "";
+	
 	private int index_ = 0;
 
 	private boolean hard_;
@@ -45,6 +47,19 @@ public class Node implements NodeType {
 		setImageFilename( image_filename );
 	}
 
+	@Override
+	public String getNotes() {
+		return notes_;
+	}
+	
+	public void setNotes( String setting ) {
+		notes_ = setting;
+	}
+	
+	public void appendNotes( String setting ) {
+		notes_ += "\n" + setting;
+	}
+	
 	public FrameNode getFrameNode() {
 		return corresponding_fnode_;
 	}

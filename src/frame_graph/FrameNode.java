@@ -3,6 +3,8 @@ package frame_graph;
 import java.awt.image.BufferedImage;
 
 import compile_time_settings.DebugToggles;
+import graph.Node;
+import graph.NodeType;
 
 public class FrameNode {
 
@@ -19,10 +21,17 @@ public class FrameNode {
 	public final int UPSTREAM_PRIMARY_ID;
 	public final int DOWNSTREAM_PRIMARY_ID;// ==UPSTREAM_PRIMARY_ID if primary
 
-	public FrameNode( boolean is_primary, int upstream_id, int downstream_id ) {
+	private final NodeType corresponding_node_;
+	
+	public FrameNode( boolean is_primary, int upstream_id, int downstream_id, NodeType corresponding_node ) {
 		IS_PRIMARY = is_primary;
 		UPSTREAM_PRIMARY_ID = upstream_id;
 		DOWNSTREAM_PRIMARY_ID = downstream_id;
+		corresponding_node_ = corresponding_node;
+	}
+	
+	public NodeType node() {
+		return corresponding_node_;
 	}
 
 	public void setImageFilename( String filename ) {

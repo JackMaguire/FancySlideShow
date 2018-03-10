@@ -8,6 +8,7 @@ import frame_graph.FrameNode;
 public interface NodeType {
 
 	String name();
+	String getNotes();
 
 	int index();
 

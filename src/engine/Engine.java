@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
 import control_panel.CenterPanelView;
+import control_panel.ControlPanelView;
 import frame_graph.FrameGraph;
 import frame_graph.FrameNode;
 import slide_show.SlideShowPanel;
@@ -29,13 +30,13 @@ public class Engine implements ActionListener {
 
 	private boolean go_at_next_tick_ = false;
 
-	private final CenterPanelView center_panel_view_;
+	private final ControlPanelView control_panel_view_;
 
-	public Engine( SlideShowPanel panel, FrameGraph frame_graph, CenterPanelView center_panel_view ) {
+	public Engine( SlideShowPanel panel, FrameGraph frame_graph, ControlPanelView control_panel_view ) {
 		slide_show_panel_ = panel;
 		frame_graph_ = frame_graph;
 		current_node_ = frame_graph_.getPrimaryNode( 0 );
-		center_panel_view_ = center_panel_view;
+		control_panel_view_ = control_panel_view;
 		// center_panel_view_.addKeyListener( new CenterPanelKeyListener( this ) );
 
 		timer_ = new Timer( delay_, this );
@@ -98,8 +99,10 @@ public class Engine implements ActionListener {
 		slide_show_panel_.setImage( current_node_.image() );
 		slide_show_panel_.repaint();
 		if( current_node_.IS_PRIMARY ) {
-			center_panel_view_.model().setCurrentNode( current_node_.UPSTREAM_PRIMARY_ID );
-			center_panel_view_.repaint();
+			control_panel_view_.getCenterPanelView().model().setCurrentNode( current_node_.UPSTREAM_PRIMARY_ID );
+			control_panel_view_.getCenterPanelView().repaint();
+			
+			control_panel_view_.getWestPanelView().updateNotesForCurrentSlide( current_node_.node().getNotes() );
 		}
 	}
 	

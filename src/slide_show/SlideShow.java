@@ -58,7 +58,7 @@ public class SlideShow implements SlideShowType {
 
 		FrameGraph frame_graph = graph_.createFrameGraph();
 
-		Engine engine = new Engine( slide_show_panel_, frame_graph, control_panel_view_.getCenterPanelView() );
+		Engine engine = new Engine( slide_show_panel_, frame_graph, control_panel_view_ );
 		engine.start();
 
 		CenterPanelKeyListener center_panel_key_listener = new CenterPanelKeyListener( engine,

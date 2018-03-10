@@ -91,7 +91,7 @@ public class Edge implements EdgeType {
 
 		FrameNode[] my_edge_nodes = new FrameNode[ image_filenames_.length ];
 		for( int i = 0; i < my_edge_nodes.length; ++i ) {
-			my_edge_nodes[ i ] = new FrameNode( false, incoming_node_index_, outgoing_node_index_ );
+			my_edge_nodes[ i ] = new FrameNode( false, incoming_node_index_, outgoing_node_index_, null );
 			my_edge_nodes[ i ].setImageFilename( image_filenames_[ i ] );
 		}
 

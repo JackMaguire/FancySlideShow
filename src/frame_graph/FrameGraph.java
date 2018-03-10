@@ -1,13 +1,15 @@
 package frame_graph;
 
+import graph.NodeType;
+
 public class FrameGraph {
 
 	private FrameNode[] primary_nodes_;
 
-	public FrameGraph( int num_primary_nodes ) {
-		primary_nodes_ = new FrameNode[ num_primary_nodes ];
+	public FrameGraph( NodeType[] nodes ) {
+		primary_nodes_ = new FrameNode[ nodes.length ];
 		for( int i = 0; i < primary_nodes_.length; ++i ) {
-			primary_nodes_[ i ] = new FrameNode( true, i, i );
+			primary_nodes_[ i ] = new FrameNode( true, i, i, nodes[ i ] );
 		}
 	}
 

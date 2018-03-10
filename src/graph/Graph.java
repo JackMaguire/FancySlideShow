@@ -69,7 +69,7 @@ public class Graph implements GraphType {
 
 	@Override
 	public FrameGraph createFrameGraph() {
-		FrameGraph fg = new FrameGraph( nodes_.length );
+		FrameGraph fg = new FrameGraph( nodes_ );
 
 		for( NodeType node : nodes_ ) {
 			node.applyToFrameGraph( fg );

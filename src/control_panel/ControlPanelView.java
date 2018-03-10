@@ -49,6 +49,10 @@ public class ControlPanelView extends JPanelWithKeyListener {
 	public EastPanelView getEastPanelView() {
 		return east_view_;
 	}
+	
+	public WestPanelView getWestPanelView() {
+		return west_view_;
+	}
 
 	// public void paint(Graphics g) {}
 }

@@ -21,10 +21,15 @@ public class WestPanelView extends JPanelWithKeyListener {
 		this.setPreferredSize( new Dimension( ControlPanelMonitorSettings.WEST_WIDTH, 100 ) );
 
 		Runtime.getRuntime().addShutdownHook( new shutdown_hook( personal_notes_ ) );
+		notes_for_current_.setEditable( false );
 		
 		this.setLayout( new GridLayout( 2, 1, 10, 10 ) );
 		add( notes_for_current_ );
 		add( personal_notes_ );
+	}
+	
+	public void updateNotesForCurrentSlide( String notes ) {
+		notes_for_current_.setText( notes );
 	}
 
 	/*
