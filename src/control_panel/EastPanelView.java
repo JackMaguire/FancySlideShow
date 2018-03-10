@@ -232,21 +232,6 @@ public class EastPanelView extends JPanel {
 
 	}
 
-	protected static class RemoveFocusListener implements ActionListener {
-
-		private final JPanelWithKeyListener owner_;
-
-		public RemoveFocusListener( JPanelWithKeyListener owner ) {
-			owner_ = owner;
-		}
-
-		@Override
-		public void actionPerformed( ActionEvent e ) {
-			owner_.requestFocus();
-		}
-
-	}
-
 	protected static class RunGarbageCollection implements ActionListener {
 
 		@Override

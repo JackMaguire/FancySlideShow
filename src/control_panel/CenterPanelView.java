@@ -66,7 +66,7 @@ public class CenterPanelView extends JPanelWithKeyListener {
 		JPanel grid = new JPanel( new GridLayout( 10, 1 ) );
 		grid.add( panes_ );
 		this.add( grid, BorderLayout.WEST );
-		panes_.addItemListener( new SubgraphListener( this ) );
+		panes_.addItemListener( new SubgraphListener( this, this ) );
 	}
 
 	public void updateCurrentSubgraph() {
@@ -293,11 +293,12 @@ public class CenterPanelView extends JPanelWithKeyListener {
 		}
 	}
 
-	private final static class SubgraphListener implements ItemListener {
+	private final static class SubgraphListener extends RemoveFocusListener implements ItemListener {
 
 		private final CenterPanelView parent_;
 
-		public SubgraphListener( CenterPanelView parent ) {
+		public SubgraphListener( CenterPanelView parent, JPanelWithKeyListener owner ) {
+			super( owner );
 			parent_ = parent;
 		}
 
@@ -305,6 +306,7 @@ public class CenterPanelView extends JPanelWithKeyListener {
 			if( e.getStateChange() == ItemEvent.SELECTED ) {
 				parent_.updateCurrentSubgraph();
 			}
+			this.actionPerformed( null );
 		}
 
 	}
