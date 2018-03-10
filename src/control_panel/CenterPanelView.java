@@ -123,7 +123,7 @@ public class CenterPanelView extends JPanelWithKeyListener {
 
 	private NodeCircle createNodeCircle( int index, int num_points, String name ) {
 		// TODO change this to -= pi/2
-		double radians = Math.PI * 2 * index / ( (double) num_points );// uses radians
+		double radians = Math.PI * 2 * index / ( (double) num_points ) - (Math.PI/2.0);// uses radians
 		double dx = Math.cos( radians );
 		double dy = Math.sin( radians );
 		return new NodeCircle( model_.getGraph().getNode( index ), dx, dy, name );
