@@ -8,6 +8,6 @@ public class ControlPanelMonitorSettings {
 	public final static int CP_WIDTH = 1920;
 	public final static int CP_HEIGHT = 1060;
 	public final static int EAST_WIDTH = 400;
-	public final static int WEST_WIDTH = 500;
+	public final static int WEST_WIDTH = 400;
 
 }

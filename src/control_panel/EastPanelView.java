@@ -144,6 +144,8 @@ public class EastPanelView extends JPanel {
 
 		private final BottomSideModel model_;
 
+		private final JLabel mem_usage_ = new JLabel( "_ " );
+
 		public BottomSide( BottomSideModel model ) {
 			model_ = model;
 			initComponents();
@@ -156,7 +158,7 @@ public class EastPanelView extends JPanel {
 		}
 
 		private void initComponents() {
-			setLayout( new GridLayout( 4, 2 ) );
+			setLayout( new GridLayout( 5, 2 ) );
 			add( jlabel_ );
 			add( new JLabel( " " ) );
 
@@ -165,10 +167,19 @@ public class EastPanelView extends JPanel {
 
 			add( new JLabel( "Reverse: " ) );
 			add( reverse_ );
-			
-			JButton remove_all_focus = new JButton("Clear Focus");
+
+			JButton remove_all_focus = new JButton( "Clear Focus" );
 			remove_all_focus.addActionListener( new RemoveFocusListener( this ) );
 			add( remove_all_focus );
+
+			JButton garbage_collection = new JButton( "Run Garbage Collection" );
+			garbage_collection.addActionListener( new RunGarbageCollection() );
+			add( garbage_collection );
+
+			JButton calc_mem = new JButton( "Calc Mem Usage:" );
+			calc_mem.addActionListener( new MemCalc( mem_usage_ ) );
+			add( calc_mem );
+			add( mem_usage_ );
 
 			forward_.addItemListener( new ForwardJComboBoxListener( forward_, model_ ) );
 			reverse_.addItemListener( new ReverseJComboBoxListener( reverse_, model_ ) );
@@ -230,20 +241,44 @@ public class EastPanelView extends JPanel {
 		}
 
 	}
-	
+
 	protected static class RemoveFocusListener implements ActionListener {
 
 		private final JPanelWithKeyListener owner_;
-		
+
 		public RemoveFocusListener( JPanelWithKeyListener owner ) {
 			owner_ = owner;
 		}
-		
+
 		@Override
 		public void actionPerformed( ActionEvent e ) {
 			owner_.requestFocus();
 		}
-		
+
+	}
+
+	protected static class RunGarbageCollection implements ActionListener {
+
+		@Override
+		public void actionPerformed( ActionEvent e ) {
+			System.gc();
+		}
+
+	}
+
+	protected static class MemCalc implements ActionListener {
+
+		private final JLabel mem_label_;
+
+		public MemCalc( JLabel mem_label ) {
+			mem_label_ = mem_label;
+		}
+
+		@Override
+		public void actionPerformed( ActionEvent e ) {
+			mem_label_.setText( "" + ( ( Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory() ) / 1000000 ) + " MB");
+		}
+
 	}
 
 }

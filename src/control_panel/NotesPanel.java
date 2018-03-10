@@ -4,12 +4,16 @@ import java.awt.Dimension;
 
 import javax.swing.*;
 
-public class SouthPanelView extends JPanel {
+public class NotesPanel extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8837535643735827491L;
 	private JTextArea notes_ = new JTextArea( "Notes" );
 
-	public SouthPanelView() {
-		notes_.setPreferredSize( new Dimension( 700, 200 ) );
+	public NotesPanel( int width, int height ) {
+		notes_.setPreferredSize( new Dimension( width, height ) );
 		add( notes_ );
 		Runtime.getRuntime().addShutdownHook( new shutdown_hook( notes_ ) );
 	}
