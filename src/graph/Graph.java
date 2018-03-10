@@ -29,6 +29,11 @@ public class Graph implements GraphType {
 	}
 
 	@Override
+	public int numSubgraphs() {
+		return subgraphs_.length;
+	}
+	
+	@Override
 	public ArrayList< Integer > getNodesForSubgraph( int subgraph ){
 		return subgraphs_[ subgraph ];
 	}

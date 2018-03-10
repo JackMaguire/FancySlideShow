@@ -21,6 +21,6 @@ public interface GraphType {
 	FrameGraph createFrameGraph();
 
 	int numNodes();
-	
+	int numSubgraphs();
 	ArrayList< Integer > getNodesForSubgraph( int subgraph );
 }
