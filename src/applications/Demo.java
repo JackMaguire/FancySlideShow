@@ -19,7 +19,7 @@ public class Demo {
 		my_graph.setNode( start_node, 0 );
 
 		my_graph.setNode( new Node( "branch", true, "src/PicsForDemo/Track1/0130.png" ), 1 );
-		my_graph.setNode( new Node( "end1", true, "src/PicsForDemo/Track1/0250.png" ), 2 );
+		my_graph.setNode( new Node( "end1", true, "src/PicsForDemo/Track1/0250.png", "Don't forget to thank Yoda" ), 2 );
 		my_graph.setNode( new Node( "end2", true, "src/PicsForDemo/Track2/0250.png" ), 3 );
 
 		//my_graph.getNode( 0 )

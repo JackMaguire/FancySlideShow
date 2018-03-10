@@ -47,6 +47,13 @@ public class Node implements NodeType {
 		hard_ = is_hard;
 		setImageFilename( image_filename );
 	}
+	
+	public Node( String name, boolean is_hard, String image_filename, String notes ) {
+		name_ = name;
+		hard_ = is_hard;
+		notes_ = notes;
+		setImageFilename( image_filename );
+	}
 
 	@Override
 	public String getNotes() {
