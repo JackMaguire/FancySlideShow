@@ -20,7 +20,8 @@ public class Node implements NodeType {
 	private String notes_ = "";
 	
 	private int index_ = 0;
-
+	private int subgraph_;
+	
 	private boolean hard_;
 
 	private EdgeType[] upstream_edges_ = new EdgeType[ 0 ];
@@ -146,10 +147,16 @@ public class Node implements NodeType {
 	}
 
 	@Override
-	public void setIndex( int index ) {
+	public void setIndex( int index, int subgraph ) {
 		index_ = index;
+		subgraph_ = subgraph;
 	}
 
+	@Override
+	public int subgraph() {
+		return subgraph_;
+	}
+	
 	@Override
 	public void toggle_hardness() {
 		hard_ = !hard_;

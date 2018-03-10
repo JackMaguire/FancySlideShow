@@ -11,8 +11,9 @@ public interface NodeType {
 	String getNotes();
 
 	int index();
-
-	void setIndex( int index );
+	int subgraph();
+	
+	void setIndex( int index, int subgraph );
 
 	// Graph Logic
 	EdgeType[] getUpstreamEdges();

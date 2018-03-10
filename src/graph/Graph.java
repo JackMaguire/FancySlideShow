@@ -49,7 +49,7 @@ public class Graph implements GraphType {
 	
 	@Override
 	public void setNode( NodeType node, int node_index, int subgraph ) {
-		node.setIndex( node_index );
+		node.setIndex( node_index, subgraph );
 		nodes_[ node_index ] = node;
 		subgraphs_[ subgraph ].add( node_index );
 	}
