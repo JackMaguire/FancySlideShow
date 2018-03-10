@@ -78,7 +78,11 @@ public class SlideShowPanel extends JPanel {
 
 		// if( Math.abs( panelHeight - scaled_image_height ) < 1 && )
 
-		if( screen_ratio_ > image_ratio ) {
+		final int side_buffersize = ( panel_width - scaled_image_width ) / 2;
+		final int top_buffersize = ( panel_height - scaled_image_height ) / 2;
+		g2.drawImage( image_, side_buffersize, top_buffersize, scaled_image_width, scaled_image_height, null );
+		
+		/*if( screen_ratio_ > image_ratio ) {
 			// whitespace on top and bottom
 			final int buffersize = ( panel_height - scaled_image_height ) / 2;
 			g2.drawImage( image_, 0, buffersize, scaled_image_width, scaled_image_height, null );
@@ -103,7 +107,7 @@ public class SlideShowPanel extends JPanel {
 				System.out.println( "no whitespace" );
 			}
 			g2.drawImage( image_, 0, 0, scaled_image_width, scaled_image_height, null );
-		}
+		}*/
 
 	}
 
