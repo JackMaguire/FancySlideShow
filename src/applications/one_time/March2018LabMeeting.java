@@ -18,18 +18,23 @@ public class March2018LabMeeting {
 		if( args.length != 0 ) {
 			path_to_top_dir_ = args[ 0 ];
 		}
-
+		
 		final int num_nodes_for_title_slide = 4;
 		final int num_nodes_for_MRS_slide = 2;
 		final int num_nodes = num_nodes_for_title_slide + num_nodes_for_MRS_slide;
 
 		Graph my_graph = new Graph( num_nodes, 2 );
+		my_graph.setSubgraphName( 0, "TITLE" );
+		my_graph.setSubgraphName( 1, "MRS" );
+		
 		int current_offset = 0;
 		
 		setTitleSlideNodesAndEdges( my_graph, current_offset );
 		current_offset += num_nodes_for_title_slide;
 		
 		setMRSNodesAndEdges( my_graph, current_offset );
+		//add edge from title slide to mrs
+		my_graph.addEdge( new Edge( "", current_offset - 1, current_offset ) );
 		current_offset += num_nodes_for_MRS_slide;
 		
 		SlideShow ss = new SlideShow( my_graph );

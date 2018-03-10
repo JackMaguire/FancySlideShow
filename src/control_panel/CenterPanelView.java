@@ -6,6 +6,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
@@ -33,18 +35,26 @@ public class CenterPanelView extends JPanelWithKeyListener {
 	private final static int radius_ = 10;
 	private final static int diameter_ = 2 * radius_;
 
-	private final static JComboBox< String > panes_ = new JComboBox< String >( new String[] { "1", "2", "3" } );
+	private final static JComboBox< String > panes_ = new JComboBox< String >();
+	private static int current_subgraph_ = 0;
 
 	public CenterPanelView( CenterPanelModel model ) {
 		model_ = model;
 
-		NodeType[] all_nodes = model.getGraph().getNodes();
-		circles_ = new NodeCircle[ all_nodes.length ];
-		for( int i = 0; i < all_nodes.length; ++i ) {
-			circles_[ i ] = createNodeCircle( i, all_nodes.length, all_nodes[ i ].name() );
+		final Graph graph = model.getGraph();
+		final int nsubgraphs = graph.numSubgraphs();
+		for( int i = 0; i < nsubgraphs; ++i ) {
+			panes_.addItem( graph.getNamesforSubgraph( i ) );
 		}
 
-		EdgeType[] all_edges = model.getGraph().getEdges();
+		NodeType[] all_nodes = graph.getNodes();
+		circles_ = new NodeCircle[ all_nodes.length ];
+		for( int i = 0; i < all_nodes.length; ++i ) {
+			circles_[ i ] = createNodeCircle( i, graph.numNodesInSubgraph( all_nodes[ i ].subgraph() ),
+					all_nodes[ i ].name() );
+		}
+
+		EdgeType[] all_edges = graph.getEdges();
 		lines_ = new EdgeLine[ all_edges.length ];
 		for( int i = 0; i < all_edges.length; ++i ) {
 			int index0 = all_edges[ i ].outgoingNodeIndex();
@@ -56,6 +66,19 @@ public class CenterPanelView extends JPanelWithKeyListener {
 		JPanel grid = new JPanel( new GridLayout( 10, 1 ) );
 		grid.add( panes_ );
 		this.add( grid, BorderLayout.WEST );
+		panes_.addItemListener( new SubgraphListener( this ) );
+	}
+
+	public void updateCurrentSubgraph() {
+		setCurrentSubgraph( panes_.getSelectedIndex() );
+	}
+
+	public void setCurrentSubgraph( int subgraph ) {
+		if( subgraph != current_subgraph_ ) {
+			current_subgraph_ = subgraph;
+			repaint();
+			// revalidate();
+		}
 	}
 
 	public void recolorAllObjects() {
@@ -84,7 +107,7 @@ public class CenterPanelView extends JPanelWithKeyListener {
 
 		for( int i = 0; i < lines_.length; ++i ) {
 			EdgeType[] all_edges = model_.getGraph().getEdges();
-			/*
+			/*Grrr Eclipse reformatted this
 			 * if( all_edges[ i ].index() == next_edge_index ) { lines_[ i ].setColor(
 			 * current_ ); } else if( i == selected_edge_index ) { lines_[ i ].setColor(
 			 * selected_ ); } else
@@ -99,6 +122,7 @@ public class CenterPanelView extends JPanelWithKeyListener {
 	}
 
 	private NodeCircle createNodeCircle( int index, int num_points, String name ) {
+		// TODO change this to -= pi/2
 		double radians = Math.PI * 2 * index / ( (double) num_points );// uses radians
 		double dx = Math.cos( radians );
 		double dy = Math.sin( radians );
@@ -120,16 +144,24 @@ public class CenterPanelView extends JPanelWithKeyListener {
 		final int big_circle_R = min_dim / 2 - diameter_ - 30; // 30 is just a buffer for good measure
 
 		for( NodeCircle circle : circles_ ) {
-			circle.draw( g2D, diameter_, width, height, big_circle_R, true );
+			if( circle.node().subgraph() == current_subgraph_ )
+				circle.draw( g2D, diameter_, width, height, big_circle_R, true );
 		}
 
 		for( EdgeLine line : lines_ ) {
-			line.draw( g2D, radius_ );
+			if( line.circle1.node().subgraph() == current_subgraph_ ) {
+				if( line.circle2.node().subgraph() == current_subgraph_ ) {
+					line.draw( g2D, radius_ );
+				} else {
+					//line.draw( g2D, radius_, getWidth() / 2, getHeight() / 2 );
+				}
+			}
 		}
 
 		// quickly draw circles again so they are on top
 		for( NodeCircle circle : circles_ ) {
-			circle.draw( g2D, diameter_, width, height, big_circle_R, false );
+			if( circle.node().subgraph() == current_subgraph_ )
+				circle.draw( g2D, diameter_, width, height, big_circle_R, false );
 		}
 	}
 
@@ -148,6 +180,8 @@ public class CenterPanelView extends JPanelWithKeyListener {
 		}
 
 		for( NodeCircle circle : circles_ ) {
+			if( circle.node().subgraph() != current_subgraph_ )
+				continue;
 			if( Math.abs( circle.most_recent_x - x ) < max_distance_1D
 					&& Math.abs( circle.most_recent_y - y ) < max_distance_1D ) {
 				return circle;
@@ -245,6 +279,34 @@ public class CenterPanelView extends JPanelWithKeyListener {
 				g.drawString( name_, string_x, string_y );
 			}
 		}
+
+		public void draw( Graphics g, int radius, int x, int y ) {
+			g.setColor( color_ );
+			g.drawLine( circle1.most_recent_x + radius, circle1.most_recent_y + radius, x, y );
+
+			if( name_.length() > 0 ) {
+				g.setColor( text_ );
+				final int string_x = ( circle1.most_recent_x + circle2.most_recent_x ) / 2;
+				final int string_y = ( circle1.most_recent_y + circle2.most_recent_y ) / 2;
+				g.drawString( name_, string_x, string_y );
+			}
+		}
+	}
+
+	private final static class SubgraphListener implements ItemListener {
+
+		private final CenterPanelView parent_;
+
+		public SubgraphListener( CenterPanelView parent ) {
+			parent_ = parent;
+		}
+
+		public void itemStateChanged( ItemEvent e ) {
+			if( e.getStateChange() == ItemEvent.SELECTED ) {
+				parent_.updateCurrentSubgraph();
+			}
+		}
+
 	}
 
 }

@@ -11,33 +11,52 @@ public class Graph implements GraphType {
 
 	private final NodeType[] nodes_;
 	private EdgeType[] edges_ = new EdgeType[ 0 ];
-	
-	private final ArrayList< Integer >[] subgraphs_; 
-	
+
+	private final ArrayList< Integer >[] subgraphs_;
+	private final String[] subgraph_names_;
+
 	public Graph( int num_nodes ) {
-		nodes_ = new NodeType[ num_nodes ];
-		subgraphs_ = new ArrayList[ 1 ];
-		subgraphs_[ 0 ] = new ArrayList< Integer >();
+		this( num_nodes, 1 );
 	}
-	
+
 	public Graph( int num_nodes, int num_subgraphs ) {
 		nodes_ = new NodeType[ num_nodes ];
 		subgraphs_ = new ArrayList[ num_subgraphs ];
 		for( int i = 0; i < subgraphs_.length; ++i ) {
 			subgraphs_[ i ] = new ArrayList< Integer >();
 		}
+
+		subgraph_names_ = new String[ num_subgraphs ];
+		for( int i = 0; i < subgraph_names_.length; ++i ) {
+			subgraph_names_[ i ] = "" + i;
+		}
+	}
+
+	public void setSubgraphNames( String[] names ) {
+		final int num_elements_to_copy = Math.min( names.length, subgraph_names_.length );
+		for( int i = 0; i < num_elements_to_copy; ++i ) {
+			subgraph_names_[ i ] = names[ i ];
+		}
+	}
+
+	public void setSubgraphName( int subgraph, String name ) {
+		subgraph_names_[ subgraph ] = name;
+	}
+	
+	public String getNamesforSubgraph( int subgraph ) {
+		return subgraph_names_[ subgraph ];
 	}
 
 	@Override
 	public int numSubgraphs() {
 		return subgraphs_.length;
 	}
-	
+
 	@Override
-	public ArrayList< Integer > getNodesForSubgraph( int subgraph ){
+	public ArrayList< Integer > getNodesForSubgraph( int subgraph ) {
 		return subgraphs_[ subgraph ];
 	}
-	
+
 	@Override
 	public int numNodes() {
 		return nodes_.length;
@@ -46,7 +65,7 @@ public class Graph implements GraphType {
 	public void setNode( NodeType node, int node_index ) {
 		setNode( node, node_index, 0 );
 	}
-	
+
 	@Override
 	public void setNode( NodeType node, int node_index, int subgraph ) {
 		node.setIndex( node_index, subgraph );
@@ -116,5 +135,10 @@ public class Graph implements GraphType {
 			System.out.println( "\tSecondary:" + secondary );
 		}
 		return fg;
+	}
+
+	@Override
+	public int numNodesInSubgraph( int subgraph ) {
+		return subgraphs_[ subgraph ].size();
 	}
 }
