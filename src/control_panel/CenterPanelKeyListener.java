@@ -17,7 +17,7 @@ public class CenterPanelKeyListener implements KeyListener {
 		model_ = model;
 	}
 
-	private void leftButton() {
+	private void leftButton( boolean shift ) {
 		if( engine_.getTimer().isRunning() ) {
 			engine_.setReverse( true );
 			engine_.goAtNextTick();
@@ -26,7 +26,7 @@ public class CenterPanelKeyListener implements KeyListener {
 		}
 	}
 
-	private void rightButton() {
+	private void rightButton( boolean shift ) {
 		if( engine_.getTimer().isRunning() ) {
 			engine_.setReverse( false );
 			engine_.goAtNextTick();
@@ -59,10 +59,10 @@ public class CenterPanelKeyListener implements KeyListener {
 
 		switch ( e.getKeyCode() ) {
 			case ( KeyEvent.VK_LEFT ):
-				leftButton();
+				leftButton( e.isShiftDown() );
 				break;
 			case ( KeyEvent.VK_RIGHT ):
-				rightButton();
+				rightButton( e.isShiftDown() );
 				break;
 			case ( KeyEvent.VK_SPACE ):
 				spaceBar();

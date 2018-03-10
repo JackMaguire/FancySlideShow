@@ -22,14 +22,22 @@ public class FrameNode {
 	public final int DOWNSTREAM_PRIMARY_ID;// ==UPSTREAM_PRIMARY_ID if primary
 
 	private final NodeType corresponding_node_;
-	
+
 	public FrameNode( boolean is_primary, int upstream_id, int downstream_id, NodeType corresponding_node ) {
 		IS_PRIMARY = is_primary;
 		UPSTREAM_PRIMARY_ID = upstream_id;
 		DOWNSTREAM_PRIMARY_ID = downstream_id;
 		corresponding_node_ = corresponding_node;
 	}
-	
+
+	public int numForwardOptions() {
+		return possible_forward_nodes_.length;
+	}
+
+	public int numReverseOptions() {
+		return possible_reverse_nodes_.length;
+	}
+
 	public NodeType node() {
 		return corresponding_node_;
 	}
@@ -54,8 +62,34 @@ public class FrameNode {
 		return forward_node_;
 	}
 
+	public FrameNode getSecondaryForwardNode() {
+		if( numForwardOptions() == 1 )
+			return forward_node_;
+		else {
+			for( FrameNode fnode : possible_forward_nodes_ ) {
+				if( fnode != forward_node_ ) {
+					return fnode;
+				}
+			}
+		}
+		return null;
+	}
+
 	public FrameNode reverseNode() {
 		return reverse_node_;
+	}
+	
+	public FrameNode getSecondaryReverseNode() {
+		if( numReverseOptions() == 1 )
+			return reverse_node_;
+		else {
+			for( FrameNode rnode : possible_reverse_nodes_ ) {
+				if( rnode != reverse_node_ ) {
+					return rnode;
+				}
+			}
+		}
+		return null;
 	}
 
 	public FrameNode getNextNode( boolean reverse ) {

@@ -29,6 +29,7 @@ public class Engine implements ActionListener {
 	private boolean reverse_ = false;
 
 	private boolean go_at_next_tick_ = false;
+	private boolean take_next_secondary_option_ = false;
 
 	private final ControlPanelView control_panel_view_;
 
@@ -47,6 +48,10 @@ public class Engine implements ActionListener {
 		timer_.start();
 	}
 
+	public void takeNextSecondaryOption( boolean setting ) {
+		take_next_secondary_option_ = setting;
+	}
+
 	@Override
 	public void actionPerformed( ActionEvent e ) {
 		if( current_node_.stop() ) {
@@ -62,19 +67,28 @@ public class Engine implements ActionListener {
 		} else {
 			advanceOneImage();
 		}
-
 	}
-	
+
 	public void advanceOneImage() {
 		if( current_node_.forwardNode() != null ) {
-			current_node_ = current_node_.forwardNode();
+			if( take_next_secondary_option_ && current_node_.numForwardOptions() > 1 ) {
+				take_next_secondary_option_ = false;
+				current_node_ = current_node_.getSecondaryForwardNode();
+			} else {
+				current_node_ = current_node_.forwardNode();
+			}
 		}
 		repaintImage();
 	}
-	
+
 	public void goBackOneImage() {
 		if( current_node_.reverseNode() != null ) {
-			current_node_ = current_node_.reverseNode();
+			if( take_next_secondary_option_ && current_node_.numReverseOptions() > 1 ) {
+				take_next_secondary_option_ = false;
+				current_node_ = current_node_.getSecondaryReverseNode();
+			} else {
+				current_node_ = current_node_.reverseNode();
+			}
 		}
 		repaintImage();
 	}
@@ -101,11 +115,11 @@ public class Engine implements ActionListener {
 		if( current_node_.IS_PRIMARY ) {
 			control_panel_view_.getCenterPanelView().model().setCurrentNode( current_node_.UPSTREAM_PRIMARY_ID );
 			control_panel_view_.getCenterPanelView().repaint();
-			
+
 			control_panel_view_.getWestPanelView().updateNotesForCurrentSlide( current_node_.node().getNotes() );
 		}
 	}
-	
+
 	public void setCurrentNode( int index ) {
 		current_node_ = frame_graph_.getPrimaryNode( index );
 		repaintImage();
