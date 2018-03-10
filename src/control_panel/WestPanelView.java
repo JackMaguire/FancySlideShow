@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import javax.swing.JTextArea;
 
 import compile_time_settings.ControlPanelMonitorSettings;
+import graph.NodeType;
 
 public class WestPanelView extends JPanelWithKeyListener {
 
@@ -15,13 +16,15 @@ public class WestPanelView extends JPanelWithKeyListener {
 	private JTextArea notes_for_current_ = new JTextArea( "Notes For Current" );
 	private JTextArea personal_notes_ = new JTextArea( "Notes" );
 
-	public WestPanelView() {
+	public WestPanelView( NodeType starting_node ) {
 		// super( ControlPanelMonitorSettings.WEST_WIDTH, 100 );
 		this.setMinimumSize( new Dimension( ControlPanelMonitorSettings.WEST_WIDTH, 100 ) );
 		this.setPreferredSize( new Dimension( ControlPanelMonitorSettings.WEST_WIDTH, 100 ) );
 
 		Runtime.getRuntime().addShutdownHook( new shutdown_hook( personal_notes_ ) );
 		notes_for_current_.setEditable( false );
+		
+		notes_for_current_.setText( starting_node.getNotes() );
 		
 		this.setLayout( new GridLayout( 2, 1, 10, 10 ) );
 		add( notes_for_current_ );

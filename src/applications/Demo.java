@@ -13,6 +13,7 @@ public class Demo {
 		Graph my_graph = new Graph( num_nodes );
 
 		Node start_node = new Node( "start", true );
+		start_node.setNotes( "Don't forget to speak into the microphone please!" );
 		start_node.setImageFilename( "src/PicsForDemo/Track1/0001.png" );
 		// File f = new File("src/PicsForDemo/Track1/0001.png");
 		my_graph.setNode( start_node, 0 );
@@ -21,6 +22,8 @@ public class Demo {
 		my_graph.setNode( new Node( "end1", true, "src/PicsForDemo/Track1/0250.png" ), 2 );
 		my_graph.setNode( new Node( "end2", true, "src/PicsForDemo/Track2/0250.png" ), 3 );
 
+		//my_graph.getNode( 0 )
+		
 		String[] filenames_for_start_to_branch = new String[ 128 ];
 		for( int i = 0; i < 128; ++i ) {
 			filenames_for_start_to_branch[ i ] = "src/PicsForDemo/Track1/0" + String.format( "%03d", i + 2 ) + ".png";
