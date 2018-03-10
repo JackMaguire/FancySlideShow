@@ -132,6 +132,10 @@ public class Engine implements ActionListener {
 	public void goAtNextTick() {
 		go_at_next_tick_ = true;
 	}
+	
+	public void stopAtNextTick() {
+		go_at_next_tick_ = false;
+	}
 
 	public Timer getTimer() {
 		return timer_;

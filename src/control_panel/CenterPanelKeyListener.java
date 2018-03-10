@@ -48,6 +48,7 @@ public class CenterPanelKeyListener implements KeyListener {
 	}
 
 	private void enter() {
+		engine_.stopAtNextTick( );
 		final NodeType selected_primary_node = model_.selectedNode();
 		if( selected_primary_node != null ) {
 			engine_.setCurrentNode( selected_primary_node.index() );
