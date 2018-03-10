@@ -17,7 +17,7 @@ public class Graph implements GraphType {
 	public Graph( int num_nodes ) {
 		nodes_ = new NodeType[ num_nodes ];
 		subgraphs_ = new ArrayList[ 1 ];
-		subgraphs_[ 1 ] = new ArrayList< Integer >();
+		subgraphs_[ 0 ] = new ArrayList< Integer >();
 	}
 	
 	public Graph( int num_nodes, int num_subgraphs ) {
@@ -44,7 +44,7 @@ public class Graph implements GraphType {
 	}
 
 	public void setNode( NodeType node, int node_index ) {
-		setNode( node, node_index, 1 );
+		setNode( node, node_index, 0 );
 	}
 	
 	@Override
