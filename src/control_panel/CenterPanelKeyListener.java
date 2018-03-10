@@ -18,8 +18,9 @@ public class CenterPanelKeyListener implements KeyListener {
 	}
 
 	private void leftButton( boolean shift ) {
+		engine_.setReverse( true );
+
 		if( engine_.getTimer().isRunning() ) {
-			engine_.setReverse( true );
 			engine_.goAtNextTick();
 			engine_.takeNextSecondaryOption( shift );
 		} else {
@@ -28,15 +29,16 @@ public class CenterPanelKeyListener implements KeyListener {
 	}
 
 	private void rightButton( boolean shift ) {
+		engine_.setReverse( false );
+
 		if( engine_.getTimer().isRunning() ) {
-			engine_.setReverse( false );
 			engine_.goAtNextTick();
 			engine_.takeNextSecondaryOption( shift );
 		} else {
 			engine_.advanceOneImage();
 		}
 	}
-	
+
 	private void spaceBar() {
 		if( engine_.getTimer().isRunning() ) {
 			engine_.getTimer().stop();
@@ -51,7 +53,7 @@ public class CenterPanelKeyListener implements KeyListener {
 			engine_.setCurrentNode( selected_primary_node.index() );
 		}
 	}
-	
+
 	@Override
 	public void keyPressed( KeyEvent e ) {
 
@@ -71,7 +73,7 @@ public class CenterPanelKeyListener implements KeyListener {
 				break;
 			case ( KeyEvent.VK_ENTER ):
 				enter();
-				break;	
+				break;
 		}
 	}
 
