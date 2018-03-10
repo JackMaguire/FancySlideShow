@@ -17,6 +17,8 @@ public class SlideShowPanel extends JPanel {
 
 	// private boolean first_paint_ = true;
 
+	private double screen_ratio_ = 0;
+
 	public SlideShowPanel() {
 		this.setBackground( SlideShowPanelSettings.BACKGROUND );
 	}
@@ -35,13 +37,16 @@ public class SlideShowPanel extends JPanel {
 
 		super.paint( g );
 
-		int panelWidth = this.getWidth();
-		int panelHeight = this.getHeight();
+		final int panel_width = this.getWidth();
+		final int panel_height = this.getHeight();
+		if( screen_ratio_ == 0 ) {
+			screen_ratio_ = ( (double) panel_height / panel_width );
+		}
 
 		// if( first_paint_ ) {
 		// first_paint_ = false;
 		g.setColor( SlideShowPanelSettings.BACKGROUND );
-		g.fillRect( 0, 0, panelWidth, panelHeight );
+		g.fillRect( 0, 0, panel_width, panel_height );
 		// }
 
 		if( image_ == null )
@@ -49,42 +54,46 @@ public class SlideShowPanel extends JPanel {
 
 		Graphics2D g2 = (Graphics2D) g;
 
-		final int imageWidth = image_.getWidth();
-		final int imageHeight = image_.getHeight();
-		final double scale = getScale( panelWidth, panelHeight, imageWidth, imageHeight );
-
-		final int scaled_image_width = (int) ( imageWidth * scale );
-		final int scaled_image_height = (int) ( imageHeight * scale );
+		final int image_width = image_.getWidth();
+		final int image_height = image_.getHeight();
+		final double image_ratio = ( (double) image_height / image_width );
+		//final double scale = getScale( panel_width, panel_height, image_width, image_height );
+		final double scale = Math.min( getScaleAssumingCorrectRatio( panel_width, image_width ), getScaleAssumingCorrectRatio( panel_height, image_height ) );
+		
+		final int scaled_image_width = (int) ( image_width * scale );
+		final int scaled_image_height = (int) ( image_height * scale );
 
 		if( DebugToggles.DEBUG_SLIDE_SHOW ) {
 			System.out.println( "---SlideShowPanel---" );
-			System.out.println( "imageWidth: " + imageWidth );
-			System.out.println( "imageHeight: " + imageHeight );
-			System.out.println( "panelWidth: " + panelWidth );
-			System.out.println( "panelHeight: " + panelHeight );
+			System.out.println( "imageWidth: " + image_width );
+			System.out.println( "imageHeight: " + image_height );
+			System.out.println( "panelWidth: " + panel_width );
+			System.out.println( "panelHeight: " + panel_height );
 			System.out.println( "scaled_image_width: " + scaled_image_width );
 			System.out.println( "scaled_image_height: " + scaled_image_height );
 			System.out.println( "scale: " + scale );
 			System.out.println( "---SlideShowPanel---" );
 		}
 
-		if( panelHeight - scaled_image_height > 1 ) {
+		// if( Math.abs( panelHeight - scaled_image_height ) < 1 && )
+
+		if( screen_ratio_ > image_ratio ) {
 			// whitespace on top and bottom
-			final int buffersize = ( panelHeight - scaled_image_height ) / 2;
+			final int buffersize = ( panel_height - scaled_image_height ) / 2;
 			g2.drawImage( image_, 0, buffersize, scaled_image_width, scaled_image_height, null );
 			if( DebugToggles.DEBUG_SLIDE_SHOW ) {
 				System.out.println( "whitespace on top and bottom" );
-				System.out.println( "panelHeight: " + panelHeight );
+				System.out.println( "panelHeight: " + panel_height );
 				System.out.println( "scaled_image_height: " + scaled_image_height );
 				System.out.println( "buffersize: " + buffersize );
 			}
-		} else if( panelWidth - scaled_image_width > 1 ) {
+		} else if( image_ratio > screen_ratio_ ) {
 			// whitespace on sides
-			final int buffersize = ( panelWidth - scaled_image_width ) / 2;
+			final int buffersize = ( panel_width - scaled_image_width ) / 2;
 			g2.drawImage( image_, buffersize, 0, scaled_image_width, scaled_image_height, null );
 			if( DebugToggles.DEBUG_SLIDE_SHOW ) {
 				System.out.println( "whitespace on sides" );
-				System.out.println( "panelWidth: " + panelWidth );
+				System.out.println( "panelWidth: " + panel_width );
 				System.out.println( "scaled_image_width: " + scaled_image_width );
 				System.out.println( "buffersize: " + buffersize );
 			}
@@ -95,6 +104,10 @@ public class SlideShowPanel extends JPanel {
 			g2.drawImage( image_, 0, 0, scaled_image_width, scaled_image_height, null );
 		}
 
+	}
+
+	private double getScaleAssumingCorrectRatio( int panelD, int imageD ) {
+		return ( (double) panelD ) / imageD;
 	}
 
 	private double getScale( int panelWidth, int panelHeight, int imageWidth, int imageHeight ) {
