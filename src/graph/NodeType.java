@@ -8,11 +8,13 @@ import frame_graph.FrameNode;
 public interface NodeType {
 
 	String name();
+
 	String getNotes();
 
 	int index();
+
 	int subgraph();
-	
+
 	void setIndex( int index, int subgraph );
 
 	// Graph Logic

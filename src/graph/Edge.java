@@ -18,7 +18,7 @@ public class Edge implements EdgeType {
 	final int incoming_node_index_;
 	int index_ = 0;
 
-	private String[] image_filenames_ = new String[0];
+	private String[] image_filenames_ = new String[ 0 ];
 
 	public Edge( String name, int outgoing_node_index, int incoming_node_index ) {
 		name_ = name;

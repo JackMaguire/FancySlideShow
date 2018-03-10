@@ -42,7 +42,7 @@ public class Graph implements GraphType {
 	public void setSubgraphName( int subgraph, String name ) {
 		subgraph_names_[ subgraph ] = name;
 	}
-	
+
 	public String getNamesforSubgraph( int subgraph ) {
 		return subgraph_names_[ subgraph ];
 	}

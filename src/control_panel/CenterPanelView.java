@@ -123,7 +123,7 @@ public class CenterPanelView extends JPanelWithKeyListener {
 
 	private NodeCircle createNodeCircle( int index, int num_points, String name ) {
 		// TODO change this to -= pi/2
-		double radians = Math.PI * 2 * index / ( (double) num_points ) - (Math.PI/2.0);// uses radians
+		double radians = Math.PI * 2 * index / ( (double) num_points ) - ( Math.PI / 2.0 );// uses radians
 		double dx = Math.cos( radians );
 		double dy = Math.sin( radians );
 		return new NodeCircle( model_.getGraph().getNode( index ), dx, dy, name );
@@ -153,7 +153,7 @@ public class CenterPanelView extends JPanelWithKeyListener {
 				if( line.circle2.node().subgraph() == current_subgraph_ ) {
 					line.draw( g2D, radius_ );
 				} else {
-					//line.draw( g2D, radius_, getWidth() / 2, getHeight() / 2 );
+					// line.draw( g2D, radius_, getWidth() / 2, getHeight() / 2 );
 				}
 			}
 		}

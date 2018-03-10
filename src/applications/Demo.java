@@ -22,8 +22,8 @@ public class Demo {
 		my_graph.setNode( new Node( "end1", true, "src/PicsForDemo/Track1/0250.png", "Don't forget to thank Yoda" ), 2 );
 		my_graph.setNode( new Node( "end2", true, "src/PicsForDemo/Track2/0250.png" ), 3 );
 
-		//my_graph.getNode( 0 )
-		
+		// my_graph.getNode( 0 )
+
 		String[] filenames_for_start_to_branch = new String[ 128 ];
 		for( int i = 0; i < 128; ++i ) {
 			filenames_for_start_to_branch[ i ] = "src/PicsForDemo/Track1/0" + String.format( "%03d", i + 2 ) + ".png";

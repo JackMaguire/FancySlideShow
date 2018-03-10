@@ -51,7 +51,7 @@ public class Engine implements ActionListener {
 	public void takeNextSecondaryOption( boolean setting ) {
 		take_next_secondary_option_ = setting;
 	}
-	
+
 	public void takeNextSecondaryOption() {
 		take_next_secondary_option_ = true;
 	}
@@ -132,7 +132,7 @@ public class Engine implements ActionListener {
 	public void goAtNextTick() {
 		go_at_next_tick_ = true;
 	}
-	
+
 	public void stopAtNextTick() {
 		go_at_next_tick_ = false;
 	}

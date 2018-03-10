@@ -23,14 +23,14 @@ public class WestPanelView extends JPanelWithKeyListener {
 
 		Runtime.getRuntime().addShutdownHook( new shutdown_hook( personal_notes_ ) );
 		notes_for_current_.setEditable( false );
-		
+
 		notes_for_current_.setText( starting_node.getNotes() );
-		
+
 		this.setLayout( new GridLayout( 2, 1, 10, 10 ) );
 		add( notes_for_current_ );
 		add( personal_notes_ );
 	}
-	
+
 	public void updateNotesForCurrentSlide( String notes ) {
 		notes_for_current_.setText( notes );
 	}
@@ -40,7 +40,7 @@ public class WestPanelView extends JPanelWithKeyListener {
 	 * 
 	 * }
 	 */
-	
+
 	private static class shutdown_hook extends Thread {
 
 		private JTextArea notes_ptr_;

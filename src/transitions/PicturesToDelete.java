@@ -3,12 +3,11 @@ package transitions;
 import java.io.File;
 import java.util.ArrayList;
 
-
 public class PicturesToDelete {
 
 	private final static ArrayList< String > filenames_ = new ArrayList< String >();
 	private static boolean hook_has_been_added_ = false;
-	
+
 	public void registerFile( String filename ) {
 		filenames_.add( filename );
 		if( !hook_has_been_added_ ) {
@@ -16,7 +15,7 @@ public class PicturesToDelete {
 			hook_has_been_added_ = true;
 		}
 	}
-	
+
 	private static class shutdown_hook extends Thread {
 
 		private final ArrayList< String > filenames_;

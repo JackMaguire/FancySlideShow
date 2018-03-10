@@ -18,10 +18,10 @@ public class Node implements NodeType {
 
 	final private String name_;
 	private String notes_ = "";
-	
+
 	private int index_ = 0;
 	private int subgraph_;
-	
+
 	private boolean hard_;
 
 	private EdgeType[] upstream_edges_ = new EdgeType[ 0 ];
@@ -47,7 +47,7 @@ public class Node implements NodeType {
 		hard_ = is_hard;
 		setImageFilename( image_filename );
 	}
-	
+
 	public Node( String name, boolean is_hard, String image_filename, String notes ) {
 		name_ = name;
 		hard_ = is_hard;
@@ -59,15 +59,15 @@ public class Node implements NodeType {
 	public String getNotes() {
 		return notes_;
 	}
-	
+
 	public void setNotes( String setting ) {
 		notes_ = setting;
 	}
-	
+
 	public void appendNotes( String setting ) {
 		notes_ += "\n" + setting;
 	}
-	
+
 	public FrameNode getFrameNode() {
 		return corresponding_fnode_;
 	}
@@ -163,7 +163,7 @@ public class Node implements NodeType {
 	public int subgraph() {
 		return subgraph_;
 	}
-	
+
 	@Override
 	public void toggle_hardness() {
 		hard_ = !hard_;

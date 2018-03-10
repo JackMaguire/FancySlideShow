@@ -13,7 +13,7 @@ public class ControlPanelView extends JPanelWithKeyListener {
 
 	private final BorderLayout layout_ = new BorderLayout();
 	private final WestPanelView west_view_;
-	//private final SouthPanelView south_view_ = new SouthPanelView();
+	// private final SouthPanelView south_view_ = new SouthPanelView();
 	private final EastPanelView east_view_;
 
 	private final CenterPanelView center_view_;
@@ -30,15 +30,15 @@ public class ControlPanelView extends JPanelWithKeyListener {
 		center_controller_ = new CenterPanelController( this, model_.getCenterPanelModel(), center_view_ );
 		center_view_.addMouseListener( center_controller_ );
 
-		//add( south_view_, BorderLayout.SOUTH );
+		// add( south_view_, BorderLayout.SOUTH );
 
 		east_view_ = new EastPanelView( model_.getEastPanelModel() );
 		add( east_view_, BorderLayout.EAST );
 
 		west_view_ = new WestPanelView( model_.getCenterPanelModel().currentNode() );
 		add( west_view_, BorderLayout.WEST );
-		//add( new JTextArea( "Notes" ), BorderLayout.WEST );
-		
+		// add( new JTextArea( "Notes" ), BorderLayout.WEST );
+
 		setVisible( true );
 	}
 
@@ -49,7 +49,7 @@ public class ControlPanelView extends JPanelWithKeyListener {
 	public EastPanelView getEastPanelView() {
 		return east_view_;
 	}
-	
+
 	public WestPanelView getWestPanelView() {
 		return west_view_;
 	}

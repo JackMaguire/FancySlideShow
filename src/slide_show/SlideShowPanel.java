@@ -57,10 +57,10 @@ public class SlideShowPanel extends JPanel {
 		final int image_width = image_.getWidth();
 		final int image_height = image_.getHeight();
 		final double image_ratio = ( (double) image_height / image_width );
-		//final double scale = getScale( panel_width, panel_height, image_width, image_height );
-		final double scale = Math.min( getScale( panel_width, image_width ),
-				getScale( panel_height, image_height ) );
-		
+		// final double scale = getScale( panel_width, panel_height, image_width,
+		// image_height );
+		final double scale = Math.min( getScale( panel_width, image_width ), getScale( panel_height, image_height ) );
+
 		final int scaled_image_width = (int) ( image_width * scale );
 		final int scaled_image_height = (int) ( image_height * scale );
 

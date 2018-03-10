@@ -78,7 +78,7 @@ public class FrameNode {
 	public FrameNode reverseNode() {
 		return reverse_node_;
 	}
-	
+
 	public FrameNode getSecondaryReverseNode() {
 		if( numReverseOptions() == 1 )
 			return reverse_node_;
