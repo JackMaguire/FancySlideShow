@@ -33,8 +33,8 @@ public class CenterPanelView extends JPanelWithKeyListener {
 	private final static int radius_ = 10;
 	private final static int diameter_ = 2 * radius_;
 
-	private final static JComboBox< String > panes_ = new JComboBox< String >( new String[] {"1","2","3"} );
-	
+	private final static JComboBox< String > panes_ = new JComboBox< String >( new String[] { "1", "2", "3" } );
+
 	public CenterPanelView( CenterPanelModel model ) {
 		model_ = model;
 
@@ -51,9 +51,9 @@ public class CenterPanelView extends JPanelWithKeyListener {
 			int index1 = all_edges[ i ].incomingNodeIndex();
 			lines_[ i ] = new EdgeLine( circles_[ index0 ], circles_[ index1 ], all_edges[ i ].name() );
 		}
-		
+
 		this.setLayout( new BorderLayout() );
-		JPanel grid = new JPanel( new GridLayout(10,1) );
+		JPanel grid = new JPanel( new GridLayout( 10, 1 ) );
 		grid.add( panes_ );
 		this.add( grid, BorderLayout.WEST );
 	}

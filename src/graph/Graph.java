@@ -1,5 +1,7 @@
 package graph;
 
+import java.util.ArrayList;
+
 //import java.awt.image.DataBuffer;
 
 import compile_time_settings.DebugToggles;
@@ -7,22 +9,44 @@ import frame_graph.FrameGraph;
 
 public class Graph implements GraphType {
 
-	NodeType[] nodes_;
-	EdgeType[] edges_ = new EdgeType[ 0 ];
-
+	private final NodeType[] nodes_;
+	private EdgeType[] edges_ = new EdgeType[ 0 ];
+	
+	private final ArrayList< Integer >[] subgraphs_; 
+	
 	public Graph( int num_nodes ) {
 		nodes_ = new NodeType[ num_nodes ];
+		subgraphs_ = new ArrayList[ 1 ];
+		subgraphs_[ 1 ] = new ArrayList< Integer >();
+	}
+	
+	public Graph( int num_nodes, int num_subgraphs ) {
+		nodes_ = new NodeType[ num_nodes ];
+		subgraphs_ = new ArrayList[ num_subgraphs ];
+		for( int i = 0; i < subgraphs_.length; ++i ) {
+			subgraphs_[ i ] = new ArrayList< Integer >();
+		}
 	}
 
+	@Override
+	public ArrayList< Integer > getNodesForSubgraph( int subgraph ){
+		return subgraphs_[ subgraph ];
+	}
+	
 	@Override
 	public int numNodes() {
 		return nodes_.length;
 	}
 
-	@Override
 	public void setNode( NodeType node, int node_index ) {
+		setNode( node, node_index, 1 );
+	}
+	
+	@Override
+	public void setNode( NodeType node, int node_index, int subgraph ) {
 		node.setIndex( node_index );
 		nodes_[ node_index ] = node;
+		subgraphs_[ subgraph ].add( node_index );
 	}
 
 	@Override
