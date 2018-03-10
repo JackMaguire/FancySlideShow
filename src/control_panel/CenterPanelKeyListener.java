@@ -21,6 +21,7 @@ public class CenterPanelKeyListener implements KeyListener {
 		if( engine_.getTimer().isRunning() ) {
 			engine_.setReverse( true );
 			engine_.goAtNextTick();
+			engine_.takeNextSecondaryOption( shift );
 		} else {
 			engine_.goBackOneImage();
 		}
@@ -30,6 +31,7 @@ public class CenterPanelKeyListener implements KeyListener {
 		if( engine_.getTimer().isRunning() ) {
 			engine_.setReverse( false );
 			engine_.goAtNextTick();
+			engine_.takeNextSecondaryOption( shift );
 		} else {
 			engine_.advanceOneImage();
 		}
@@ -54,7 +56,7 @@ public class CenterPanelKeyListener implements KeyListener {
 	public void keyPressed( KeyEvent e ) {
 
 		if( DebugToggles.DEBUG_KEYS ) {
-			System.out.println( KeyEvent.getKeyText( e.getKeyCode() ) + " was pushed." );
+			System.out.println( KeyEvent.getKeyText( e.getKeyCode() ) + " was pushed. " + e.isShiftDown() );
 		}
 
 		switch ( e.getKeyCode() ) {

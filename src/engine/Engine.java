@@ -51,6 +51,10 @@ public class Engine implements ActionListener {
 	public void takeNextSecondaryOption( boolean setting ) {
 		take_next_secondary_option_ = setting;
 	}
+	
+	public void takeNextSecondaryOption() {
+		take_next_secondary_option_ = true;
+	}
 
 	@Override
 	public void actionPerformed( ActionEvent e ) {
