@@ -13,15 +13,15 @@ public class March2018LabMeeting {
 	private static int TITLE_SUBGRAPH = 0;
 	private static int MRS_SUBGRAPH = 1;
 
-	public static void main( String[] args ) {
+	private final static int num_nodes_for_title_slide = 4;
+	private final static int num_nodes_for_MRS_slide = 10;
+	private final static int num_nodes = num_nodes_for_title_slide + num_nodes_for_MRS_slide;
+	
+	public static void main( String[] args ) throws Exception {
 
 		if( args.length != 0 ) {
 			path_to_top_dir_ = args[ 0 ];
 		}
-
-		final int num_nodes_for_title_slide = 4;
-		final int num_nodes_for_MRS_slide = 2;
-		final int num_nodes = num_nodes_for_title_slide + num_nodes_for_MRS_slide;
 
 		Graph my_graph = new Graph( num_nodes, 2 );
 		my_graph.setSubgraphName( 0, "TITLE" );
@@ -87,19 +87,85 @@ public class March2018LabMeeting {
 		}
 	}
 
-	private static void setMRSNodesAndEdges( Graph graph, int offset ) {
+	private static void setMRSNodesAndEdges( Graph graph, int offset ) throws Exception {
 
 		int node_id = offset;
 
-		graph.setNode( new Node( "Title", true, getFilename( "MRS/title", 0 ), "Good Luck!" ), node_id++, MRS_SUBGRAPH );
-		graph.setNode( new Node( "Title_end", false, getFilename( "MRS/title", 57 ), "" ), node_id++, MRS_SUBGRAPH );
-
+		final String dir1 = "MRS";
+		
+		graph.setNode( new Node( "Title", true, getFilename( dir1, 0 ), "Good Luck!" ), node_id++, MRS_SUBGRAPH );
+		graph.setNode( new Node( "Protocol", true, getFilename( dir1, 30 ), "" ), node_id++, MRS_SUBGRAPH );
+		graph.setNode( new Node( "StageProtocol", false, getFilename( dir1, 56 ), "" ), node_id++, MRS_SUBGRAPH );
+		
+		graph.setNode( new Node( "StageProtocol_I", false, getFilename( dir1, 57 ), "" ), node_id++, MRS_SUBGRAPH );
+		graph.setNode( new Node( "StageProtocol_II", false, getFilename( dir1, 58 ), "" ), node_id++, MRS_SUBGRAPH );
+		graph.setNode( new Node( "StageProtocol_III", true, getFilename( dir1, 59 ), "" ), node_id++, MRS_SUBGRAPH );
+		
+		//graph.setNode( new Node( "StageProtocol", false, getFilename( dir1, 60 ), "" ), node_id++, MRS_SUBGRAPH );
+		graph.setNode( new Node( "Split", true, getFilename( dir1, 100 ), "" ), node_id++, MRS_SUBGRAPH );
+		graph.setNode( new Node( "Filtered1", true, getFilename( dir1, 101 ), "" ), node_id++, MRS_SUBGRAPH );
+		graph.setNode( new Node( "Fork", true, getFilename( dir1, 130 ), "" ), node_id++, MRS_SUBGRAPH );
+		graph.setNode( new Node( "Filtered2", true, getFilename( dir1, 131 ), "" ), node_id++, MRS_SUBGRAPH );
+		
+		if( node_id - offset != num_nodes_for_MRS_slide ){
+			throw new Exception("node_id - offset != num_nodes_for_MRS_slide");
+		}
+		
 		{// 0 - 1
-			String[] filenames_for_0_to_1 = new String[ 56 ];
-			for( int i = 0; i < filenames_for_0_to_1.length; ++i ) {
-				filenames_for_0_to_1[ i ] = getFilename( "MRS/title", 1 + i );
+			String[] filenames = new String[ 29 ];
+			for( int i = 0; i < filenames.length; ++i ) {
+				filenames[ i ] = getFilename( dir1, 1 + i );
 			}
-			graph.addEdge( new Edge( "Wrecking Ball!", offset, offset + 1, filenames_for_0_to_1 ) );
+			graph.addEdge( new Edge( "Wreck It", offset, offset + 1, filenames ) );
+		}
+		
+		{// 1 - 2
+			String[] filenames = new String[ 55 - 30 ];
+			for( int i = 0; i < filenames.length; ++i ) {
+				filenames[ i ] = getFilename( dir1, 31 + i );
+			}
+			graph.addEdge( new Edge( "", offset + 1, offset + 2, filenames ) );
+		}
+		
+		{// 2 - 3
+			//TODO Dissolve Transition
+			graph.addEdge( new Edge( "", offset + 2, offset + 3 ) );
+		}
+		
+		{// 3 - 4
+			//TODO Dissolve Transition
+			graph.addEdge( new Edge( "", offset + 3, offset + 4 ) );
+		}
+		
+		{// 4 - 5
+			//TODO Dissolve Transition
+			graph.addEdge( new Edge( "", offset + 4, offset + 5 ) );
+		}
+		
+		{// 5 - 6
+			String[] filenames = new String[ 99 - 59 ];
+			for( int i = 0; i < filenames.length; ++i ) {
+				filenames[ i ] = getFilename( dir1, 60 + i );
+			}
+			graph.addEdge( new Edge( "", offset + 5, offset + 6, filenames ) );
+		}
+		
+		{// 6 - 7
+			//TODO Dissolve Transition
+			graph.addEdge( new Edge( "", offset + 6, offset + 7 ) );
+		}
+		
+		{// 7 - 8
+			String[] filenames = new String[ 130 - 102 ];
+			for( int i = 0; i < filenames.length; ++i ) {
+				filenames[ i ] = getFilename( dir1, 102 + i );
+			}
+			graph.addEdge( new Edge( "Fork", offset + 7, offset + 8, filenames ) );
+		}
+		
+		{// 8 - 9
+			//TODO Dissolve Transition
+			graph.addEdge( new Edge( "", offset + 8, offset + 9 ) );
 		}
 	}
 
