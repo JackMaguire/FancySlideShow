@@ -14,7 +14,7 @@ public class March2018LabMeeting {
 	private static int MRS_SUBGRAPH = 1;
 
 	private final static int num_nodes_for_title_slide = 4;
-	private final static int num_nodes_for_MRS_slide = 10;
+	private final static int num_nodes_for_MRS_slide = 11;
 	private final static int num_nodes = num_nodes_for_title_slide + num_nodes_for_MRS_slide;
 	
 	public static void main( String[] args ) throws Exception {
@@ -85,6 +85,8 @@ public class March2018LabMeeting {
 			}
 			graph.addEdge( new Edge( "", 2, 3, filenames_for_2_to_3 ) );
 		}
+		
+		
 	}
 
 	private static void setMRSNodesAndEdges( Graph graph, int offset ) throws Exception {
@@ -106,6 +108,8 @@ public class March2018LabMeeting {
 		graph.setNode( new Node( "Filtered1", true, getFilename( dir1, 101 ), "" ), node_id++, MRS_SUBGRAPH );
 		graph.setNode( new Node( "Fork", true, getFilename( dir1, 130 ), "" ), node_id++, MRS_SUBGRAPH );
 		graph.setNode( new Node( "Filtered2", true, getFilename( dir1, 131 ), "" ), node_id++, MRS_SUBGRAPH );
+		
+		graph.setNode( new Node("AltStart", true, getFilename("MRS/title", 0)), node_id++, MRS_SUBGRAPH );
 		
 		if( node_id - offset != num_nodes_for_MRS_slide ){
 			throw new Exception("node_id - offset != num_nodes_for_MRS_slide");
@@ -166,6 +170,14 @@ public class March2018LabMeeting {
 		{// 8 - 9
 			//TODO Dissolve Transition
 			graph.addEdge( new Edge( "", offset + 8, offset + 9 ) );
+		}
+		
+		{// 10 - 1
+			String[] filenames = new String[ 57 ];
+			for( int i = 0; i < filenames.length; ++i ) {
+				filenames[ i ] = getFilename( "MRS/title", 1 + i );
+			}
+			graph.addEdge( new Edge( "Wrecking Ball", offset + 10, offset + 1, filenames ) );
 		}
 	}
 
