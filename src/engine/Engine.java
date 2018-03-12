@@ -76,11 +76,12 @@ public class Engine implements ActionListener {
 				return;
 			}
 		}
-		
-		final FrameNode next_node = take_next_secondary_option_ ? current_node_.getSecondaryForwardNode() : current_node_.forwardNode();
+
+		final FrameNode next_node = take_next_secondary_option_ ? current_node_.getSecondaryForwardNode()
+				: current_node_.forwardNode();
 		final boolean next_node_is_hard = next_node == null ? true : next_node.stop();
-		
-		if( waiting_at_hard_node_ && ! next_node_is_hard ) {
+
+		if( waiting_at_hard_node_ && !next_node_is_hard ) {
 			slide_show_panel_.setFast( true );
 		}
 

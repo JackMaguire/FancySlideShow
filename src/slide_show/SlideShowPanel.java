@@ -32,7 +32,7 @@ public class SlideShowPanel extends JPanel {
 	public void setFast( boolean setting ) {
 		fast_render_ = setting;
 	}
-	
+
 	public void setImage( BufferedImage image ) {
 		image_ = image;
 		repaint();
