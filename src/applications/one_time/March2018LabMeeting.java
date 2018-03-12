@@ -28,8 +28,8 @@ public class March2018LabMeeting {
 
 		Graph my_graph = new Graph( num_nodes, 3 );
 		my_graph.setSubgraphName( 0, "TITLE" );
-		my_graph.setSubgraphName( 1, "MRS" );
-		my_graph.setSubgraphName( 2, "MCHBNet" );
+		my_graph.setSubgraphName( 1, "MCHBNet" );
+		my_graph.setSubgraphName( 2, "MRS" );
 
 		int current_offset = 0;
 
