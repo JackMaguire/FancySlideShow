@@ -18,7 +18,7 @@ public class Engine implements ActionListener {
 	// 24 41
 	// 30 33.33
 	// 60 16.67
-	private final int delay_ = 41;
+	private final int delay_ = 1;
 
 	private final Timer timer_;
 	private final SlideShowPanel slide_show_panel_;

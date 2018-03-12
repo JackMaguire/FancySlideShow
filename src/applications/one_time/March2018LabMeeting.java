@@ -67,15 +67,15 @@ public class March2018LabMeeting {
 
 		int node_id = offset;
 
-		graph.setNode( new Node( "Title", false, getFilename( "Title", 0 ), "Good Luck!" ), node_id++, TITLE_SUBGRAPH );
-		graph.setNode( new Node( "Title_mid", false, getFilename( "Title", 250 ), "" ), node_id++, TITLE_SUBGRAPH );
-		graph.setNode( new Node( "Title_final_start", false, getFilename( "Title", 501 ), "" ), node_id++, TITLE_SUBGRAPH );
-		graph.setNode( new Node( "Title_final_end", true, getFilename( "Title", 550 ), "" ), node_id++, TITLE_SUBGRAPH );
+		graph.setNode( new Node( "Title", false, getFilename( "Title2", 0 ), "Good Luck!" ), node_id++, TITLE_SUBGRAPH );
+		graph.setNode( new Node( "Title_mid", false, getFilename( "Title2", 250 ), "" ), node_id++, TITLE_SUBGRAPH );
+		graph.setNode( new Node( "Title_final_start", false, getFilename( "Title2", 501 ), "" ), node_id++, TITLE_SUBGRAPH );
+		graph.setNode( new Node( "Title_final_end", true, getFilename( "Title2", 550 ), "" ), node_id++, TITLE_SUBGRAPH );
 
 		{// 0 - 1
 			String[] filenames_for_0_to_1 = new String[ 249 ];
 			for( int i = 0; i < filenames_for_0_to_1.length; ++i ) {
-				filenames_for_0_to_1[ i ] = getFilename( "Title", 1 + i );
+				filenames_for_0_to_1[ i ] = getFilename( "Title2", 1 + i );
 			}
 			graph.addEdge( new Edge( "", 0, 1, filenames_for_0_to_1 ) );
 		}
@@ -83,7 +83,7 @@ public class March2018LabMeeting {
 		{// 1 - 0
 			String[] filenames_for_1_to_0 = new String[ 500 - 250 ];
 			for( int i = 0; i < filenames_for_1_to_0.length; ++i ) {
-				filenames_for_1_to_0[ i ] = getFilename( "Title", 251 + i );
+				filenames_for_1_to_0[ i ] = getFilename( "Title2", 251 + i );
 			}
 			graph.addEdge( new Edge( "", 1, 0, filenames_for_1_to_0 ) );
 		}
@@ -97,7 +97,7 @@ public class March2018LabMeeting {
 		{// 2 - 3
 			String[] filenames_for_2_to_3 = new String[ 550 - 502 ];
 			for( int i = 0; i < filenames_for_2_to_3.length; ++i ) {
-				filenames_for_2_to_3[ i ] = getFilename( "Title", 502 + i );
+				filenames_for_2_to_3[ i ] = getFilename( "Title2", 502 + i );
 			}
 			graph.addEdge( new Edge( "", 2, 3, filenames_for_2_to_3 ) );
 		}
