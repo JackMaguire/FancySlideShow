@@ -2,6 +2,7 @@ package slide_show;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
@@ -14,6 +15,7 @@ public class SlideShowPanel extends JPanel {
 	private static final long serialVersionUID = -7189726966653966497L;
 
 	private BufferedImage image_;
+	private boolean fast_render_ = true;
 
 	// private boolean first_paint_ = true;
 
@@ -56,7 +58,7 @@ public class SlideShowPanel extends JPanel {
 
 		final int image_width = image_.getWidth();
 		final int image_height = image_.getHeight();
-		final double image_ratio = ( (double) image_height / image_width );
+		// final double image_ratio = ( (double) image_height / image_width );
 		// final double scale = getScale( panel_width, panel_height, image_width,
 		// image_height );
 		final double scale = Math.min( getScale( panel_width, image_width ), getScale( panel_height, image_height ) );
@@ -78,6 +80,13 @@ public class SlideShowPanel extends JPanel {
 
 		final int side_buffersize = ( panel_width - scaled_image_width ) / 2;
 		final int top_buffersize = ( panel_height - scaled_image_height ) / 2;
+		if( fast_render_ ) {
+			g2.setRenderingHint( RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_NEAREST_NEIGHBOR );
+			g2.setRenderingHint( RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_SPEED );
+		} else {
+			g2.setRenderingHint( RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC );
+			g2.setRenderingHint( RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY );
+		}
 		g2.drawImage( image_, side_buffersize, top_buffersize, scaled_image_width, scaled_image_height, null );
 
 		/*if( screen_ratio_ > image_ratio ) {
