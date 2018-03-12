@@ -68,23 +68,15 @@ public class FrameCacher {
 
 	private static class shutdown_hook extends Thread {
 		public void run() {
-			File dir = new File( dirname );
-			try {
-				delete( dir );
-			}
-			catch( IOException e ) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			delete( new File( dirname ) );
 		}
 
-		void delete( File f ) throws IOException {
+		void delete( File f ) {
 			if( f.isDirectory() ) {
 				for( File c : f.listFiles() )
 					delete( c );
 			}
-			if( !f.delete() )
-				throw new FileNotFoundException( "Failed to delete file: " + f );
+			f.deleteOnExit();
 		}
 	}
 
