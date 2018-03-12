@@ -10,5 +10,6 @@ public class DebugToggles {
 	public final static boolean DEBUG_GRAPH = DEBUG_ALL || false;
 	public final static boolean DEBUG_KEYS = DEBUG_ALL || false;
 	public final static boolean DEBUG_SLIDE_SHOW = DEBUG_ALL || false;
+	public final static boolean DEBUG_SLIDE_SHOW_RENDER = DEBUG_SLIDE_SHOW || true;
 	public final static boolean DEBUG_CONTROL_PANEL_VIEW = DEBUG_ALL || false;
 }

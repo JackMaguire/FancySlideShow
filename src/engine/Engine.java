@@ -27,6 +27,7 @@ public class Engine implements ActionListener {
 	private FrameNode current_node_;
 
 	private boolean reverse_ = false;
+	private boolean waiting_at_hard_node_;
 
 	private boolean go_at_next_tick_ = false;
 	private boolean take_next_secondary_option_ = false;
@@ -39,8 +40,13 @@ public class Engine implements ActionListener {
 		current_node_ = frame_graph_.getPrimaryNode( 0 );
 		control_panel_view_ = control_panel_view;
 		// center_panel_view_.addKeyListener( new CenterPanelKeyListener( this ) );
+		waiting_at_hard_node_ = current_node_.stop();
 
 		timer_ = new Timer( delay_, this );
+	}
+
+	public boolean isWaitingAtHardNode() {
+		return waiting_at_hard_node_;
 	}
 
 	public void start() {
@@ -62,10 +68,23 @@ public class Engine implements ActionListener {
 			if( go_at_next_tick_ ) {
 				go_at_next_tick_ = false;
 			} else {
+				if( !waiting_at_hard_node_ ) {
+					slide_show_panel_.setFast( false );
+					slide_show_panel_.repaint();
+				}
+				waiting_at_hard_node_ = true;
 				return;
 			}
 		}
+		
+		final FrameNode next_node = take_next_secondary_option_ ? current_node_.getSecondaryForwardNode() : current_node_.forwardNode();
+		final boolean next_node_is_hard = next_node == null ? true : next_node.stop();
+		
+		if( waiting_at_hard_node_ && ! next_node_is_hard ) {
+			slide_show_panel_.setFast( true );
+		}
 
+		waiting_at_hard_node_ = false;
 		if( reverse_ ) {
 			goBackOneImage();
 		} else {

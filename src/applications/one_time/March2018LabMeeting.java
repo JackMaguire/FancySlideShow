@@ -43,9 +43,16 @@ public class March2018LabMeeting {
 
 		setMCHBNetNodesAndEdges( my_graph, current_offset );
 		// add edge from title slide to mrs
-		my_graph.addEdge( new Edge( "", current_offset - 1, current_offset ) );
+		my_graph.addEdge( new Edge( "", current_offset - 2, current_offset ) );
 		current_offset += num_nodes_for_MCHBNet_slide;
-		
+
+		for( int i = 0; i < num_nodes - 1; ++i ) {
+			if( my_graph.getNode( i ).getDownstreamEdges().length == 0 ) {
+				System.err.println( "Node " + i + '\"' + my_graph.getNode( i ).name() + "\" does not have a downstream edge" );
+				System.exit( 1 );
+			}
+		}
+
 		SlideShow ss = new SlideShow( my_graph );
 		ss.run();
 	}
@@ -103,14 +110,17 @@ public class March2018LabMeeting {
 
 		final String dir1 = "MRS";
 
+		// 0-2
 		graph.setNode( new Node( "Title", true, getFilename( dir1, 0 ), "Good Luck!" ), node_id++, MRS_SUBGRAPH );
 		graph.setNode( new Node( "Protocol", true, getFilename( dir1, 30 ), "" ), node_id++, MRS_SUBGRAPH );
 		graph.setNode( new Node( "StageProtocol", false, getFilename( dir1, 56 ), "" ), node_id++, MRS_SUBGRAPH );
 
+		// 3-5
 		graph.setNode( new Node( "StageProtocol_I", false, getFilename( dir1, 57 ), "" ), node_id++, MRS_SUBGRAPH );
 		graph.setNode( new Node( "StageProtocol_II", false, getFilename( dir1, 58 ), "" ), node_id++, MRS_SUBGRAPH );
 		graph.setNode( new Node( "StageProtocol_III", true, getFilename( dir1, 59 ), "" ), node_id++, MRS_SUBGRAPH );
 
+		// 6-9
 		// graph.setNode( new Node( "StageProtocol", false, getFilename( dir1, 60 ), ""
 		// ), node_id++, MRS_SUBGRAPH );
 		graph.setNode( new Node( "Split", true, getFilename( dir1, 100 ), "" ), node_id++, MRS_SUBGRAPH );
@@ -118,6 +128,7 @@ public class March2018LabMeeting {
 		graph.setNode( new Node( "Fork", true, getFilename( dir1, 130 ), "" ), node_id++, MRS_SUBGRAPH );
 		graph.setNode( new Node( "Filtered2", true, getFilename( dir1, 131 ), "" ), node_id++, MRS_SUBGRAPH );
 
+		// 10
 		graph.setNode( new Node( "AltStart", true, getFilename( "MRS/title", 0 ) ), node_id++, MRS_SUBGRAPH );
 
 		if( node_id - offset != num_nodes_for_MRS_slide ) {
