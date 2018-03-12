@@ -57,8 +57,8 @@ public class FrameNode {
 		if( ratio == 1.0 )
 			return;
 		else if( ratio == 0.0 ) {
-			final int width = ( IS_PRIMARY ? PerformanceSettings.PRI_WIDTH : PerformanceSettings.SEC_WIDTH );
-			final int height = ( IS_PRIMARY ? PerformanceSettings.PRI_HEIGHT : PerformanceSettings.SEC_HEIGHT );
+			final int width = ( IS_PRIMARY ? PerformanceSettings.PRI_MAX_WIDTH : PerformanceSettings.SEC_MAX_WIDTH );
+			final int height = ( IS_PRIMARY ? PerformanceSettings.PRI_MAX_HEIGHT : PerformanceSettings.SEC_MAX_HEIGHT );
 
 			BufferedImage image = image();
 			final int image_width = image.getWidth();
