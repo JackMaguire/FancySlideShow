@@ -25,8 +25,6 @@ public interface GraphType {
 	int numSubgraphs();
 
 	int numNodesInSubgraph( int subgraph );
-
-	ArrayList< Integer > getNodesForSubgraph( int subgraph );
-
+	
 	String getNamesforSubgraph( int subgraph );
 }

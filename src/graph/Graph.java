@@ -1,6 +1,7 @@
 package graph;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 //import java.awt.image.DataBuffer;
 
@@ -12,7 +13,8 @@ public class Graph implements GraphType {
 	private final NodeType[] nodes_;
 	private EdgeType[] edges_ = new EdgeType[ 0 ];
 
-	private final ArrayList< ArrayList< Integer > > subgraphs_;
+	//private final ArrayList< ArrayList< Integer > > subgraph_ids_;
+	private final int[] num_nodes_in_subgraph_;
 	private final String[] subgraph_names_;
 
 	public Graph( int num_nodes ) {
@@ -21,9 +23,14 @@ public class Graph implements GraphType {
 
 	public Graph( int num_nodes, int num_subgraphs ) {
 		nodes_ = new NodeType[ num_nodes ];
-		subgraphs_ = new ArrayList< ArrayList< Integer > >( num_subgraphs );
-		for( int i = 0; i < subgraphs_.size(); ++i ) {
-			subgraphs_.set( i, new ArrayList< Integer >() );
+		/*subgraph_ids_ = new ArrayList< ArrayList< Integer > >( num_subgraphs );
+		for( int i = 0; i < subgraph_ids_.size(); ++i ) {
+			subgraph_ids_.set( i, new ArrayList< Integer >() );
+		}*/
+
+		num_nodes_in_subgraph_ = new int[ num_subgraphs ];
+		for( int i=0; i < num_subgraphs; ++i ) {
+			num_nodes_in_subgraph_[ i ] = 0;
 		}
 
 		subgraph_names_ = new String[ num_subgraphs ];
@@ -49,12 +56,7 @@ public class Graph implements GraphType {
 
 	@Override
 	public int numSubgraphs() {
-		return subgraphs_.size();
-	}
-
-	@Override
-	public ArrayList< Integer > getNodesForSubgraph( int subgraph ) {
-		return subgraphs_.get( subgraph );
+		return num_nodes_in_subgraph_.length;
 	}
 
 	@Override
@@ -70,7 +72,7 @@ public class Graph implements GraphType {
 	public void setNode( NodeType node, int node_index, int subgraph ) {
 		node.setIndex( node_index, subgraph );
 		nodes_[ node_index ] = node;
-		subgraphs_.get( subgraph ).add( node_index );
+		++num_nodes_in_subgraph_[ subgraph ];
 	}
 
 	@Override
@@ -139,6 +141,6 @@ public class Graph implements GraphType {
 
 	@Override
 	public int numNodesInSubgraph( int subgraph ) {
-		return subgraphs_.get( subgraph ).size();
+		return num_nodes_in_subgraph_[ subgraph ];
 	}
 }
