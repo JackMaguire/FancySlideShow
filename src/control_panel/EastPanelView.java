@@ -27,14 +27,14 @@ public class EastPanelView extends JPanel {
 
 	private final EastPanelModel model_;
 
-	public EastPanelView( EastPanelModel model ) {
+	public EastPanelView( EastPanelModel model, CenterPanelView cpv ) {
 		this.setMinimumSize( new Dimension( ControlPanelMonitorSettings.EAST_WIDTH, 100 ) );
 		this.setPreferredSize( new Dimension( ControlPanelMonitorSettings.EAST_WIDTH, 100 ) );
 
 		model_ = model;
 		topside_ = new TopSide();
 
-		bottomside_ = new BottomSide( model_.bottomModel() );
+		bottomside_ = new BottomSide( model_.bottomModel(), cpv.subgraphs() );
 
 		this.setLayout( new GridLayout( 2, 1 ) );
 		add( topside_ );
@@ -53,7 +53,7 @@ public class EastPanelView extends JPanel {
 
 		private int previous_width_ = 0;
 		private int previous_height_ = 0;
-		private int previous_node_ = 0;
+		//private int previous_node_ = 0;
 
 		private NodeType node_;
 
@@ -83,7 +83,7 @@ public class EastPanelView extends JPanel {
 
 			previous_width_ = getWidth();
 			previous_height_ = getHeight();
-			previous_node_ = node_.index();
+			//previous_node_ = node_.index();
 
 			super.paintComponent( g );
 			// super.paint( g );
@@ -127,21 +127,22 @@ public class EastPanelView extends JPanel {
 
 		private final JLabel mem_usage_ = new JLabel( "_ " );
 
-		public BottomSide( BottomSideModel model ) {
+		public BottomSide( BottomSideModel model, JComboBox< String > subgraphs ) {
 			model_ = model;
-			initComponents();
+			initComponents(subgraphs);
 		}
 
-		public BottomSide( BottomSideModel model, NodeType node ) {
+		public BottomSide( BottomSideModel model, JComboBox< String > subgraphs, NodeType node ) {
 			model_ = model;
-			initComponents();
+			initComponents(subgraphs);
 			reinit( node );
 		}
 
-		private void initComponents() {
+		private void initComponents(JComboBox< String > subgraphs) {
 			setLayout( new GridLayout( 5, 2 ) );
 			add( jlabel_ );
-			add( new JLabel( " " ) );
+			//add( new JLabel( " " ) );
+			add( subgraphs );
 
 			add( new JLabel( "Forward: " ) );
 			add( forward_ );

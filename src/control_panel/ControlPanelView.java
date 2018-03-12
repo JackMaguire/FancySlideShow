@@ -32,7 +32,7 @@ public class ControlPanelView extends JPanelWithKeyListener {
 
 		// add( south_view_, BorderLayout.SOUTH );
 
-		east_view_ = new EastPanelView( model_.getEastPanelModel() );
+		east_view_ = new EastPanelView( model_.getEastPanelModel(), center_view_ );
 		add( east_view_, BorderLayout.EAST );
 
 		west_view_ = new WestPanelView( model_.getCenterPanelModel().currentNode() );
