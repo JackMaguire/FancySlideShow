@@ -1,9 +1,6 @@
 package control_panel;
 
 import java.awt.*;
-import javax.swing.*;
-
-import slide_show.SlideShowPanel;
 
 public class ControlPanelView extends JPanelWithKeyListener {
 

@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
-import control_panel.CenterPanelView;
 import control_panel.ControlPanelView;
 import frame_graph.FrameGraph;
 import frame_graph.FrameNode;
