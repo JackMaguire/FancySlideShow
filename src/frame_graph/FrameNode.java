@@ -57,11 +57,8 @@ public class FrameNode {
 		if( ratio == 1.0 )
 			return;
 		else if( ratio == 0.0 ) {
-			final GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-			final GraphicsDevice[] devices = ge.getScreenDevices();
-			final int device = devices.length > 1 ? SlideShowPanelSettings.MONITOR : 0;
-			final int width = devices[ device ].getFullScreenWindow().getWidth();
-			final int height = devices[ device ].getFullScreenWindow().getHeight();
+			final int width = SlideShowPanelSettings.WIDTH;
+			final int height = SlideShowPanelSettings.HEIGHT;
 
 			BufferedImage image = image();
 			final int image_width = image.getWidth();
