@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import compile_time_settings.DebugToggles;
 import compile_time_settings.SlideShowPanelSettings;
+import test.FrameRateMeasurer;
 
 public class SlideShowPanel extends JPanel {
 
@@ -123,6 +124,9 @@ public class SlideShowPanel extends JPanel {
 			g2.drawImage( image_, 0, 0, scaled_image_width, scaled_image_height, null );
 		}*/
 
+		if( DebugToggles.DEBUG_FRAME_RATE ) {
+			FrameRateMeasurer.measure();
+		}
 	}
 
 	private double getScale( int panelD, int imageD ) {
