@@ -1,12 +1,16 @@
 package frame_graph;
 
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.image.BufferedImage;
 
 import compile_time_settings.DebugToggles;
 import compile_time_settings.PerformanceSettings;
+import compile_time_settings.SlideShowPanelSettings;
 import frame_cache.FrameCacher;
 import graph.Node;
 import graph.NodeType;
+import slide_show.SlideShowPanel;
 
 public class FrameNode {
 
@@ -46,9 +50,26 @@ public class FrameNode {
 
 	public void setImageFilename( String filename ) {
 		image_filename_ = filename;
-		if( !IS_PRIMARY && PerformanceSettings.SECONDARY_NODE_CACHE_RATIO != 1.0 ) {
-			image_filename_ = FrameCacher.getInstance().createSmallerVersionPlease( image(),
-					PerformanceSettings.SECONDARY_NODE_CACHE_RATIO );
+
+		final double ratio = ( IS_PRIMARY ? PerformanceSettings.PRIMARY_NODE_CACHE_RATIO
+				: PerformanceSettings.SECONDARY_NODE_CACHE_RATIO );
+		
+		if( ratio == 1.0 )
+			return;
+		else if( ratio == 0.0 ) {
+			final GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			final GraphicsDevice[] devices = ge.getScreenDevices();
+			final int device = devices.length > 1 ? SlideShowPanelSettings.MONITOR : 1;
+			final int width = devices[ device ].getFullScreenWindow().getWidth();
+			final int height = devices[ device ].getFullScreenWindow().getHeight();
+
+			BufferedImage image = image();
+			final int image_width = image.getWidth();
+			final int image_height = image.getHeight();
+			final double scale = SlideShowPanel.getScale( width, height, image_width, image_height );
+			image_filename_ = FrameCacher.getInstance().createSmallerVersionPlease( image, scale );
+		} else {
+			image_filename_ = FrameCacher.getInstance().createSmallerVersionPlease( image(), ratio );
 		}
 	}
 
