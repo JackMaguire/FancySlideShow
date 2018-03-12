@@ -1,8 +1,5 @@
 package graph;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-
 //import java.awt.image.DataBuffer;
 
 import compile_time_settings.DebugToggles;
@@ -13,7 +10,7 @@ public class Graph implements GraphType {
 	private final NodeType[] nodes_;
 	private EdgeType[] edges_ = new EdgeType[ 0 ];
 
-	//private final ArrayList< ArrayList< Integer > > subgraph_ids_;
+	// private final ArrayList< ArrayList< Integer > > subgraph_ids_;
 	private final int[] num_nodes_in_subgraph_;
 	private final String[] subgraph_names_;
 
@@ -29,7 +26,7 @@ public class Graph implements GraphType {
 		}*/
 
 		num_nodes_in_subgraph_ = new int[ num_subgraphs ];
-		for( int i=0; i < num_subgraphs; ++i ) {
+		for( int i = 0; i < num_subgraphs; ++i ) {
 			num_nodes_in_subgraph_[ i ] = 0;
 		}
 
