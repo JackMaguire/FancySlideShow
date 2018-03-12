@@ -12,7 +12,7 @@ public class Graph implements GraphType {
 	private final NodeType[] nodes_;
 	private EdgeType[] edges_ = new EdgeType[ 0 ];
 
-	private final ArrayList< Integer >[] subgraphs_;
+	private final ArrayList< ArrayList< Integer > > subgraphs_;
 	private final String[] subgraph_names_;
 
 	public Graph( int num_nodes ) {
@@ -21,9 +21,9 @@ public class Graph implements GraphType {
 
 	public Graph( int num_nodes, int num_subgraphs ) {
 		nodes_ = new NodeType[ num_nodes ];
-		subgraphs_ = new ArrayList[ num_subgraphs ];
-		for( int i = 0; i < subgraphs_.length; ++i ) {
-			subgraphs_[ i ] = new ArrayList< Integer >();
+		subgraphs_ = new ArrayList< ArrayList< Integer > >( num_subgraphs );
+		for( int i = 0; i < subgraphs_.size(); ++i ) {
+			subgraphs_.set( i, new ArrayList< Integer >() );
 		}
 
 		subgraph_names_ = new String[ num_subgraphs ];
@@ -49,12 +49,12 @@ public class Graph implements GraphType {
 
 	@Override
 	public int numSubgraphs() {
-		return subgraphs_.length;
+		return subgraphs_.size();
 	}
 
 	@Override
 	public ArrayList< Integer > getNodesForSubgraph( int subgraph ) {
-		return subgraphs_[ subgraph ];
+		return subgraphs_.get( subgraph );
 	}
 
 	@Override
@@ -70,7 +70,7 @@ public class Graph implements GraphType {
 	public void setNode( NodeType node, int node_index, int subgraph ) {
 		node.setIndex( node_index, subgraph );
 		nodes_[ node_index ] = node;
-		subgraphs_[ subgraph ].add( node_index );
+		subgraphs_.get( subgraph ).add( node_index );
 	}
 
 	@Override
@@ -139,6 +139,6 @@ public class Graph implements GraphType {
 
 	@Override
 	public int numNodesInSubgraph( int subgraph ) {
-		return subgraphs_[ subgraph ].size();
+		return subgraphs_.get( subgraph ).size();
 	}
 }
