@@ -10,5 +10,5 @@ compilation_flags="-Xverify:none" #VisualVM
 
 mkdir DOOMED
 javac -d DOOMED/ -cp src src/applications/${application}.java
-java $compilation_flags= -cp DOOMED applications.$temp $slide_location
+java $compilation_flags -cp DOOMED applications.$temp $slide_location
 \rm -rf DOOMED
