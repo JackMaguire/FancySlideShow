@@ -15,8 +15,8 @@ public class March2018LabMeeting {
 	private static int MRS_SUBGRAPH = 2;
 
 	private final static int num_nodes_for_title_slide = 4;
-	private final static int num_nodes_for_MRS_slide = 11;
-	private final static int num_nodes_for_MCHBNet_slide = 29;
+	private final static int num_nodes_for_MRS_slide = 0;
+	private final static int num_nodes_for_MCHBNet_slide = 0;
 	private final static int num_nodes = num_nodes_for_title_slide + num_nodes_for_MRS_slide
 			+ num_nodes_for_MCHBNet_slide;
 
@@ -35,16 +35,6 @@ public class March2018LabMeeting {
 
 		setTitleSlideNodesAndEdges( my_graph, current_offset );
 		current_offset += num_nodes_for_title_slide;
-
-		setMCHBNetNodesAndEdges( my_graph, current_offset );
-		// add edge from title slide to mrs
-		my_graph.addEdge( new Edge( "", current_offset - 1, current_offset ) );
-		current_offset += num_nodes_for_MCHBNet_slide;
-		
-		setMRSNodesAndEdges( my_graph, current_offset );
-		// add edge from title slide to mrs
-		my_graph.addEdge( new Edge( "", current_offset - 1, current_offset ) );
-		current_offset += num_nodes_for_MRS_slide;
 
 		for( int i = 0; i < num_nodes - 1; ++i ) {
 			if( my_graph.getNode( i ).getDownstreamEdges().length == 0 ) {
