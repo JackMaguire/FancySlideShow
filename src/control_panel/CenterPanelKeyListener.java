@@ -21,7 +21,7 @@ public class CenterPanelKeyListener implements KeyListener {
 		final boolean was_reversed = engine_.reverse();
 		engine_.setReverse( true );
 
-		if( !was_reversed ) {
+		if( !engine_.isWaitingAtHardNode() && !was_reversed ) {
 			return;
 		}
 
@@ -37,7 +37,7 @@ public class CenterPanelKeyListener implements KeyListener {
 		final boolean was_forward = !engine_.reverse();
 		engine_.setReverse( false );
 
-		if( !was_forward ) {
+		if( !engine_.isWaitingAtHardNode() && !was_forward ) {
 			return;
 		}
 

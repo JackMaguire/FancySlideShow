@@ -11,8 +11,8 @@ public class March2018LabMeeting {
 
 	// subgraphs
 	private static int TITLE_SUBGRAPH = 0;
-	private static int MRS_SUBGRAPH = 1;
-	private static int MCHBNET_SUBGRAPH = 2;
+	private static int MCHBNET_SUBGRAPH = 1;
+	private static int MRS_SUBGRAPH = 2;
 
 	private final static int num_nodes_for_title_slide = 4;
 	private final static int num_nodes_for_MRS_slide = 11;
@@ -36,20 +36,20 @@ public class March2018LabMeeting {
 		setTitleSlideNodesAndEdges( my_graph, current_offset );
 		current_offset += num_nodes_for_title_slide;
 
+		setMCHBNetNodesAndEdges( my_graph, current_offset );
+		// add edge from title slide to mrs
+		my_graph.addEdge( new Edge( "", current_offset - 1, current_offset ) );
+		current_offset += num_nodes_for_MCHBNet_slide;
+		
 		setMRSNodesAndEdges( my_graph, current_offset );
 		// add edge from title slide to mrs
 		my_graph.addEdge( new Edge( "", current_offset - 1, current_offset ) );
 		current_offset += num_nodes_for_MRS_slide;
 
-		setMCHBNetNodesAndEdges( my_graph, current_offset );
-		// add edge from title slide to mrs
-		my_graph.addEdge( new Edge( "", current_offset - 2, current_offset ) );
-		current_offset += num_nodes_for_MCHBNet_slide;
-
 		for( int i = 0; i < num_nodes - 1; ++i ) {
 			if( my_graph.getNode( i ).getDownstreamEdges().length == 0 ) {
 				System.err.println( "Node " + i + " \"" + my_graph.getNode( i ).name() + "\" does not have a downstream edge" );
-				System.exit( 1 );
+				//System.exit( 1 );
 			}
 		}
 

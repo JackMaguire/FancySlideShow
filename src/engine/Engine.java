@@ -64,6 +64,7 @@ public class Engine implements ActionListener {
 
 	@Override
 	public void actionPerformed( ActionEvent e ) {
+
 		if( current_node_.stop() ) {
 			if( go_at_next_tick_ ) {
 				go_at_next_tick_ = false;
