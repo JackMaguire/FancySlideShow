@@ -207,6 +207,21 @@ public class March2018LabMeeting {
 		for( int i = 0; i < num_nodes_for_MCHBNet_slide; ++i ) {
 			slide_names[ i ] = "";
 		}
+		slide_names[ 0 ] = "Title";
+		slide_names[ 1 ] = "Boxes";
+		//slide_names[ 2 ] = "Boxes (2)";
+		//slide_names[ 3 ] = "Boxes (3)";
+		slide_names[ 4 ] = "Figures A-E";
+		slide_names[ 7 ] = "Back To The Boxes";
+		slide_names[ 11 ] = "EXN Title Slide";
+		slide_names[ 15 ] = "No Flags";
+		slide_names[ 17 ] = "1 Flag";
+		slide_names[ 18 ] = "2 Flags";
+		slide_names[ 19 ] = "3 Flags";
+		slide_names[ 20 ] = "4 Flags";
+		slide_names[ 24 ] = "Pt of Max Diff";
+		slide_names[ 25 ] = "MC HBNet 1";
+		slide_names[ 27 ] = "MC HBNet 2";
 		// Fill in individual values if wanted
 
 		// Nodes
