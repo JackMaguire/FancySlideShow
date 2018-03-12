@@ -53,7 +53,7 @@ public class FrameNode {
 
 		final double ratio = ( IS_PRIMARY ? PerformanceSettings.PRIMARY_NODE_CACHE_RATIO
 				: PerformanceSettings.SECONDARY_NODE_CACHE_RATIO );
-		
+
 		if( ratio == 1.0 )
 			return;
 		else if( ratio == 0.0 ) {

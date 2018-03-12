@@ -49,7 +49,7 @@ public class SlideShow implements SlideShowType {
 		// Window w = devices[ 0 ].getFullScreenWindow();
 
 		JFrame slideshow_frame = createSlideshowJFrame();
-		
+
 		if( devices.length > 1 ) {
 			devices[ SlideShowPanelSettings.MONITOR ].setFullScreenWindow( slideshow_frame );
 		} else {

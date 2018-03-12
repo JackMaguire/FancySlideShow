@@ -59,17 +59,17 @@ public class CenterPanelView extends JPanelWithKeyListener {
 			lines_[ i ] = new EdgeLine( circles_[ index0 ], circles_[ index1 ], all_edges[ i ].name() );
 		}
 
-		//this.setLayout( new BorderLayout() );
-		//JPanel grid = new JPanel( new GridLayout( 10, 1 ) );
-		//grid.add( panes_ );
-		//this.add( grid, BorderLayout.WEST );
+		// this.setLayout( new BorderLayout() );
+		// JPanel grid = new JPanel( new GridLayout( 10, 1 ) );
+		// grid.add( panes_ );
+		// this.add( grid, BorderLayout.WEST );
 		panes_.addItemListener( new SubgraphListener( this ) );
 	}
 
-	public JComboBox< String > subgraphs(){
+	public JComboBox< String > subgraphs() {
 		return panes_;
 	}
-	
+
 	public void updateCurrentSubgraph() {
 		setCurrentSubgraph( panes_.getSelectedIndex() );
 	}

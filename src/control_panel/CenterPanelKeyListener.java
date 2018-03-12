@@ -32,7 +32,7 @@ public class CenterPanelKeyListener implements KeyListener {
 			engine_.goBackOneImage();
 		}
 	}
-	
+
 	private void downButton() {
 		engine_.stopAtNextTick();
 	}

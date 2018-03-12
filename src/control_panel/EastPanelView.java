@@ -53,7 +53,7 @@ public class EastPanelView extends JPanel {
 
 		private int previous_width_ = 0;
 		private int previous_height_ = 0;
-		//private int previous_node_ = 0;
+		// private int previous_node_ = 0;
 
 		private NodeType node_;
 
@@ -83,7 +83,7 @@ public class EastPanelView extends JPanel {
 
 			previous_width_ = getWidth();
 			previous_height_ = getHeight();
-			//previous_node_ = node_.index();
+			// previous_node_ = node_.index();
 
 			super.paintComponent( g );
 			// super.paint( g );
@@ -129,19 +129,19 @@ public class EastPanelView extends JPanel {
 
 		public BottomSide( BottomSideModel model, JComboBox< String > subgraphs ) {
 			model_ = model;
-			initComponents(subgraphs);
+			initComponents( subgraphs );
 		}
 
 		public BottomSide( BottomSideModel model, JComboBox< String > subgraphs, NodeType node ) {
 			model_ = model;
-			initComponents(subgraphs);
+			initComponents( subgraphs );
 			reinit( node );
 		}
 
-		private void initComponents(JComboBox< String > subgraphs) {
+		private void initComponents( JComboBox< String > subgraphs ) {
 			setLayout( new GridLayout( 5, 2 ) );
 			add( jlabel_ );
-			//add( new JLabel( " " ) );
+			// add( new JLabel( " " ) );
 			add( subgraphs );
 
 			add( new JLabel( "Forward: " ) );

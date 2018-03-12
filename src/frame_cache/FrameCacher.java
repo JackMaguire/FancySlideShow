@@ -63,7 +63,7 @@ public class FrameCacher {
 			final String next_filename_temp = dirname + "/pic" + ( next_frame_id_++ ) + ".png";
 			return next_filename_temp;
 		}
-		
+
 		// Draw
 		final BufferedImage smalls = new BufferedImage( new_width, new_height, original.getType() );
 		final Graphics2D g2d = smalls.createGraphics();

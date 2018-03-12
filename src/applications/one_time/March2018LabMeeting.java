@@ -40,7 +40,7 @@ public class March2018LabMeeting {
 		// add edge from title slide to mrs
 		my_graph.addEdge( new Edge( "", current_offset - 1, current_offset ) );
 		current_offset += num_nodes_for_MCHBNet_slide;
-		
+
 		setMRSNodesAndEdges( my_graph, current_offset );
 		// add edge from title slide to mrs
 		my_graph.addEdge( new Edge( "", current_offset - 1, current_offset ) );
@@ -49,7 +49,7 @@ public class March2018LabMeeting {
 		for( int i = 0; i < num_nodes - 1; ++i ) {
 			if( my_graph.getNode( i ).getDownstreamEdges().length == 0 ) {
 				System.err.println( "Node " + i + " \"" + my_graph.getNode( i ).name() + "\" does not have a downstream edge" );
-				//System.exit( 1 );
+				// System.exit( 1 );
 			}
 		}
 
@@ -209,8 +209,8 @@ public class March2018LabMeeting {
 		}
 		slide_names[ 0 ] = "Title";
 		slide_names[ 1 ] = "Boxes";
-		//slide_names[ 2 ] = "Boxes (2)";
-		//slide_names[ 3 ] = "Boxes (3)";
+		// slide_names[ 2 ] = "Boxes (2)";
+		// slide_names[ 3 ] = "Boxes (3)";
 		slide_names[ 4 ] = "Figures A-E";
 		slide_names[ 7 ] = "Back To The Boxes";
 		slide_names[ 11 ] = "EXN Title Slide";
