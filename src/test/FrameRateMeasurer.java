@@ -8,13 +8,8 @@ public class FrameRateMeasurer {
 
 	private final static long[] measurements_ = new long[ num_measurements ];
 	private static int id = 0;
-	// private final static int[] counts_ = new int[ max_bin_size_ ];
 
-	public FrameRateMeasurer() {
-		/*for( int i = 0; i < counts_.length; ++i ) {
-			counts_[ i ] = 0;
-		}*/
-	}
+	public FrameRateMeasurer() {}
 
 	public static void measure() {
 		if( id < measurements_.length ) {
