@@ -23,7 +23,7 @@ public class FrameCacher {
 	private boolean dirExists( String name ) {
 		return new File( name ).exists();
 	}
-
+	
 	private FrameCacher() {
 
 		if( dirExists( dirname ) ) {
@@ -44,7 +44,10 @@ public class FrameCacher {
 		// Measure
 		final int new_width = (int) ( original.getWidth() * scale );
 		final int new_height = (int) ( original.getHeight() * scale );
-
+		return createSmallerVersionPlease( original, new_width, new_height );
+	}
+	
+	public String createSmallerVersionPlease( BufferedImage original, int new_width, int new_height ) {
 		// Draw
 		final BufferedImage smalls = new BufferedImage( new_width, new_height, original.getType() );
 		final Graphics2D g2d = smalls.createGraphics();

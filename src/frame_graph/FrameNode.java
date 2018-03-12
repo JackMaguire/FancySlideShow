@@ -3,6 +3,8 @@ package frame_graph;
 import java.awt.image.BufferedImage;
 
 import compile_time_settings.DebugToggles;
+import compile_time_settings.PerformanceSettings;
+import frame_cache.FrameCacher;
 import graph.Node;
 import graph.NodeType;
 
@@ -44,6 +46,10 @@ public class FrameNode {
 
 	public void setImageFilename( String filename ) {
 		image_filename_ = filename;
+		if( PerformanceSettings.SECONDARY_NODE_CACHE_RATIO != 1.0 ) {
+			image_filename_ = FrameCacher.getInstance().createSmallerVersionPlease( image(),
+					PerformanceSettings.SECONDARY_NODE_CACHE_RATIO );
+		}
 	}
 
 	public BufferedImage image() {
