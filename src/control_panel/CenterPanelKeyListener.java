@@ -32,6 +32,10 @@ public class CenterPanelKeyListener implements KeyListener {
 			engine_.goBackOneImage();
 		}
 	}
+	
+	private void downButton() {
+		engine_.stopAtNextTick();
+	}
 
 	private void rightButton( boolean shift ) {
 		final boolean was_forward = !engine_.reverse();
@@ -78,6 +82,9 @@ public class CenterPanelKeyListener implements KeyListener {
 				break;
 			case ( KeyEvent.VK_RIGHT ):
 				rightButton( e.isShiftDown() );
+				break;
+			case ( KeyEvent.VK_DOWN ):
+				downButton();
 				break;
 			case ( KeyEvent.VK_SPACE ):
 				spaceBar();
