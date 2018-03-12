@@ -48,7 +48,7 @@ public class March2018LabMeeting {
 
 		for( int i = 0; i < num_nodes - 1; ++i ) {
 			if( my_graph.getNode( i ).getDownstreamEdges().length == 0 ) {
-				System.err.println( "Node " + i + '\"' + my_graph.getNode( i ).name() + "\" does not have a downstream edge" );
+				System.err.println( "Node " + i + " \"" + my_graph.getNode( i ).name() + "\" does not have a downstream edge" );
 				System.exit( 1 );
 			}
 		}
