@@ -95,6 +95,14 @@ public class Engine implements ActionListener {
 	}
 
 	public void advanceOneImage() {
+	    try {
+		Thread T = new Eraser( current_node_ );
+		T.start();
+	    } catch ( Exception e ){}
+	    //if( ! current_node_.IS_PRIMARY ){
+		
+	    //}
+
 		if( current_node_.forwardNode() != null ) {
 			if( take_next_secondary_option_ && current_node_.numForwardOptions() > 1 ) {
 				take_next_secondary_option_ = false;
@@ -103,6 +111,11 @@ public class Engine implements ActionListener {
 				current_node_ = current_node_.forwardNode();
 			}
 		}
+	    if( ! current_node_.IS_PRIMARY ){
+		Thread T = new Loader( current_node_.forwardNode() );
+		T.start();		
+	    }
+
 		repaintImage();
 	}
 
@@ -161,4 +174,31 @@ public class Engine implements ActionListener {
 	public Timer getTimer() {
 		return timer_;
 	}
+
+    private static class Loader extends Thread {
+	private final FrameNode node_;
+
+	public Loader( FrameNode node ){
+	    node_ = node;
+	}
+
+	@Override
+	public void run() {
+	    node_.loadImageIntoMemory();
+	}
+    }
+
+    private static class Eraser extends Thread {
+	private final FrameNode node_;
+
+	public Eraser( FrameNode node ){
+	    node_ = node;
+	}
+
+	@Override
+	public void run() {
+	    node_.eraseImageFromMemory();
+	}
+    }
+
 }

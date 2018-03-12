@@ -22,6 +22,7 @@ public class FrameNode {
 	public final int DOWNSTREAM_PRIMARY_ID;// ==UPSTREAM_PRIMARY_ID if primary
 
 	private final NodeType corresponding_node_;
+    private BufferedImage image_ = null;
 
 	public FrameNode( boolean is_primary, int upstream_id, int downstream_id, NodeType corresponding_node ) {
 		IS_PRIMARY = is_primary;
@@ -44,11 +45,24 @@ public class FrameNode {
 
 	public void setImageFilename( String filename ) {
 		image_filename_ = filename;
+		//image_ = util.ImageFromFile.imageFromFile( image_filename_ );
 	}
 
 	public BufferedImage image() {
-		return util.ImageFromFile.imageFromFile( image_filename_ );
+	    if( image_ == null ){
+		loadImageIntoMemory();
+	    }
+	    //return util.ImageFromFile.imageFromFile( image_filename_ );
+	    return image_;
 	}
+
+    public void loadImageIntoMemory(){
+	image_ = util.ImageFromFile.imageFromFile( image_filename_ );  
+    }
+
+    public void eraseImageFromMemory(){
+	image_ = null;
+    }
 
 	public void setStop( boolean setting ) {
 		stop_ = setting;
