@@ -83,15 +83,15 @@ public class March2018LabMeeting {
 		}
 		
 		{// 0 - 1
-			String[] filenames = new String[ 339 - 249 ];
+			String[] filenames = new String[ 339 - 250 ];//250 is duplicate of 1
 			for( int i = 0; i < filenames.length; ++i ) {
-				filenames[ i ] = getFilename( dirname, 250 + i );
+				filenames[ i ] = getFilename( dirname, 251 + i );
 				++num_frames;
 			}
 			graph.addEdge( new Edge( "", 0, 1, filenames ) );
 			
 			//sanity check
-			System.out.println("num_frames for title slide: " + num_frames );
+			//System.out.println("num_frames for title slide: " + num_frames );
 		}
 	}
 	
