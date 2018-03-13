@@ -179,4 +179,17 @@ public class Engine implements ActionListener {
 	public Timer getTimer() {
 		return timer_;
 	}
+	
+	private static class RepaintThread extends Thread {
+		
+		final private Engine engine_;
+		
+		public RepaintThread( Engine e ) {
+			engine_ = e;
+		}
+		
+		public void run() {
+			engine_.repaintImage();
+		}
+	}
 }
