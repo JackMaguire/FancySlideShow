@@ -33,7 +33,7 @@ public class Engine implements ActionListener {
 
 	private final ControlPanelView control_panel_view_;
 	private int current_subgraph_ = 1;
-	
+
 	public Engine( SlideShowPanel panel, FrameGraph frame_graph, ControlPanelView control_panel_view ) {
 		slide_show_panel_ = panel;
 		frame_graph_ = frame_graph;
@@ -104,7 +104,7 @@ public class Engine implements ActionListener {
 			}
 		}
 		repaintImage();
-		
+
 		if( current_node_.IS_PRIMARY ) {
 			final int subgraph = current_node_.node().subgraph();
 			if( subgraph != current_subgraph_ ) {
@@ -125,7 +125,7 @@ public class Engine implements ActionListener {
 			}
 		}
 		repaintImage();
-		
+
 		if( current_node_.IS_PRIMARY ) {
 			final int subgraph = current_node_.node().subgraph();
 			if( subgraph != current_subgraph_ ) {
@@ -153,14 +153,8 @@ public class Engine implements ActionListener {
 	}
 
 	public void repaintImage() {
-		slide_show_panel_.setImage( current_node_.image() );
-		slide_show_panel_.repaint();
-		if( current_node_.IS_PRIMARY ) {
-			control_panel_view_.getCenterPanelView().model().setCurrentNode( current_node_.UPSTREAM_PRIMARY_ID );
-			control_panel_view_.getCenterPanelView().repaint();
-
-			control_panel_view_.getWestPanelView().updateNotesForCurrentSlide( current_node_.node().getNotes() );
-		}
+		Thread T = new RepaintThread( this );
+		T.start();
 	}
 
 	public void setCurrentNode( int index ) {
@@ -179,17 +173,28 @@ public class Engine implements ActionListener {
 	public Timer getTimer() {
 		return timer_;
 	}
-	
+
+	protected void RepaintThreadExec() {
+		slide_show_panel_.setImage( current_node_.image() );
+		slide_show_panel_.repaint();
+		if( current_node_.IS_PRIMARY ) {
+			control_panel_view_.getCenterPanelView().model().setCurrentNode( current_node_.UPSTREAM_PRIMARY_ID );
+			control_panel_view_.getCenterPanelView().repaint();
+
+			control_panel_view_.getWestPanelView().updateNotesForCurrentSlide( current_node_.node().getNotes() );
+		}
+	}
+
 	private static class RepaintThread extends Thread {
-		
+
 		final private Engine engine_;
-		
+
 		public RepaintThread( Engine e ) {
 			engine_ = e;
 		}
-		
+
 		public void run() {
-			engine_.repaintImage();
+			engine_.RepaintThreadExec();
 		}
 	}
 }
