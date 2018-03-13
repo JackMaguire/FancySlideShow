@@ -12,5 +12,5 @@ public class PerformanceSettings {
 	public final static int SEC_MAX_HEIGHT = 1080 / 2;
 
 	public final static boolean DELETE_CACHES = false;
-	public final static boolean LOAD_CACHES = false;
+	public final static boolean LOAD_CACHES = true;
 }
