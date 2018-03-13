@@ -21,23 +21,30 @@ public class FastestFileFormatForReading {
 			e.printStackTrace();
 		}
 
-		//Map< String, Double > results = new HashMap< String, Double >();
-		
+		// Map< String, Double > results = new HashMap< String, Double >();
+
 		System.out.println( "format\tms_per_instance:" );
 		System.out.println( "png\t" + ms_per_instance( pic, "PNG" ) );
 		System.out.println( "gif\t" + ms_per_instance( pic, "GIF" ) );
 		System.out.println( "jpg\t" + ms_per_instance( pic, "JPG" ) );
-		//System.out.println( "bmp\t" + ms_per_instance( pic, "BMP" ) );
-		//System.out.println( "wbmp\t" + ms_per_instance( pic, "WBMP" ) );
-		
+		// System.out.println( "bmp\t" + ms_per_instance( pic, "BMP" ) );
+		// System.out.println( "wbmp\t" + ms_per_instance( pic, "WBMP" ) );
+
+		/*On iMac:
+		 * format	ms_per_instance:
+		png	0.187
+		gif	0.09388
+		jpg	0.12324
+		 */
+
 	}
 
 	public final static double ms_per_instance( BufferedImage pic, String format ) throws IOException {
 		final int num_outerloops = 100;
 
-		final File f = new File("/tmp/FancySlideShow_FastestFileFormatForReading." + format.toLowerCase() );
+		final File f = new File( "/tmp/FancySlideShow_FastestFileFormatForReading." + format.toLowerCase() );
 		ImageIO.write( pic, format, f );
-		
+
 		long start_time = System.currentTimeMillis();
 
 		for( int i = 0; i < num_outerloops; ++i ) {
