@@ -14,6 +14,8 @@ public class FrameCacher {
 
 	private static String dirname = "/tmp/FancySlideShowSlides";
 
+	private final static String format = "jpg";
+
 	private final static FrameCacher instance_ = new FrameCacher();
 
 	private int next_frame_id_ = 0;
@@ -47,9 +49,16 @@ public class FrameCacher {
 
 	}
 
+	public String nextFilename( boolean increment ) {
+		final String filename = dirname + "/pic" + next_frame_id_ + "." + format;
+		if( increment )
+			++next_frame_id_;
+		return filename;
+	}
+
 	public String createSmallerVersionPlease( BufferedImage original, double scale ) {
 		if( PerformanceSettings.LOAD_CACHES ) {
-			final String next_filename_temp = dirname + "/pic" + ( next_frame_id_++ ) + ".png";
+			final String next_filename_temp = nextFilename( true );
 			return next_filename_temp;
 		}
 		// Measure
@@ -60,7 +69,7 @@ public class FrameCacher {
 
 	public String createSmallerVersionPlease( BufferedImage original, int new_width, int new_height ) {
 		if( PerformanceSettings.LOAD_CACHES ) {
-			final String next_filename_temp = dirname + "/pic" + ( next_frame_id_++ ) + ".png";
+			final String next_filename_temp = nextFilename( true );
 			return next_filename_temp;
 		}
 
@@ -70,10 +79,10 @@ public class FrameCacher {
 		g2d.drawImage( original, 0, 0, new_width, new_height, null );
 
 		// Save
-		final String next_filename = dirname + "/pic" + ( next_frame_id_++ ) + ".png";
+		final String next_filename = nextFilename( true );
 		final File outputfile = new File( next_filename );
 		try {
-			ImageIO.write( smalls, "png", outputfile );
+			ImageIO.write( smalls, format, outputfile );
 		}
 		catch( IOException e ) {
 			// TODO Auto-generated catch block
