@@ -14,7 +14,7 @@ public class March2018LabMeeting {
 	private static int MCHBNET_SUBGRAPH = 1;
 	private static int MRS_SUBGRAPH = 2;
 
-	private final static int num_nodes_for_title_slide = 4;
+	private final static int num_nodes_for_title_slide = 2;
 	private final static int num_nodes_for_MRS_slide = 11;
 	private final static int num_nodes_for_MCHBNet_slide = 29;
 	private final static int num_nodes = num_nodes_for_title_slide + num_nodes_for_MRS_slide
@@ -64,6 +64,38 @@ public class March2018LabMeeting {
 	}
 
 	private static void setTitleSlideNodesAndEdges( Graph graph, int offset ) {
+		
+		int node_id = offset;
+		final String dirname = "MCHBNetTitle";
+		
+		graph.setNode( new Node( "Title", false, getFilename( dirname, 1 ), "Good Luck!" ), node_id++, TITLE_SUBGRAPH );
+		graph.setNode( new Node( "Title_end", true, getFilename( dirname, 340 ), "" ), node_id++, TITLE_SUBGRAPH );
+		
+		int num_frames = 2;
+		
+		{// 0 - 0
+			String[] filenames = new String[ 249 - 1 ];
+			for( int i = 0; i < filenames.length; ++i ) {
+				filenames[ i ] = getFilename( dirname, 2 + i );
+				++num_frames;
+			}
+			graph.addEdge( new Edge( "", 0, 0, filenames ) );
+		}
+		
+		{// 0 - 1
+			String[] filenames = new String[ 339 - 250 ];//250 is duplicate of 1
+			for( int i = 0; i < filenames.length; ++i ) {
+				filenames[ i ] = getFilename( dirname, 251 + i );
+				++num_frames;
+			}
+			graph.addEdge( new Edge( "", 0, 1, filenames ) );
+			
+			//sanity check
+			//System.out.println("num_frames for title slide: " + num_frames );
+		}
+	}
+	
+	/*private static void setTitleSlideNodesAndEdges( Graph graph, int offset ) {
 
 		int node_id = offset;
 
@@ -102,7 +134,7 @@ public class March2018LabMeeting {
 			graph.addEdge( new Edge( "", 2, 3, filenames_for_2_to_3 ) );
 		}
 
-	}
+	}*/
 
 	private static void setMRSNodesAndEdges( Graph graph, int offset ) throws Exception {
 

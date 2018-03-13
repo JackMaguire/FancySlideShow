@@ -17,7 +17,7 @@ public class Engine implements ActionListener {
 	// 24 41
 	// 30 33.33
 	// 60 16.67
-	private final int delay_ = 41;
+	private final int delay_ = 35;
 
 	private final Timer timer_;
 	private final SlideShowPanel slide_show_panel_;
@@ -32,7 +32,8 @@ public class Engine implements ActionListener {
 	private boolean take_next_secondary_option_ = false;
 
 	private final ControlPanelView control_panel_view_;
-
+	private int current_subgraph_ = 1;
+	
 	public Engine( SlideShowPanel panel, FrameGraph frame_graph, ControlPanelView control_panel_view ) {
 		slide_show_panel_ = panel;
 		frame_graph_ = frame_graph;
@@ -103,6 +104,15 @@ public class Engine implements ActionListener {
 			}
 		}
 		repaintImage();
+		
+		if( current_node_.IS_PRIMARY ) {
+			final int subgraph = current_node_.node().subgraph();
+			if( subgraph != current_subgraph_ ) {
+				current_subgraph_ = subgraph;
+				control_panel_view_.getCenterPanelView().setCurrentSubgraph( subgraph );
+				control_panel_view_.repaint();
+			}
+		}
 	}
 
 	public void goBackOneImage() {
@@ -115,6 +125,15 @@ public class Engine implements ActionListener {
 			}
 		}
 		repaintImage();
+		
+		if( current_node_.IS_PRIMARY ) {
+			final int subgraph = current_node_.node().subgraph();
+			if( subgraph != current_subgraph_ ) {
+				current_subgraph_ = subgraph;
+				control_panel_view_.getCenterPanelView().setCurrentSubgraph( subgraph );
+				control_panel_view_.repaint();
+			}
+		}
 	}
 
 	public void setReverse( boolean setting ) {
@@ -159,5 +178,18 @@ public class Engine implements ActionListener {
 
 	public Timer getTimer() {
 		return timer_;
+	}
+	
+	private static class RepaintThread extends Thread {
+		
+		final private Engine engine_;
+		
+		public RepaintThread( Engine e ) {
+			engine_ = e;
+		}
+		
+		public void run() {
+			engine_.repaintImage();
+		}
 	}
 }
