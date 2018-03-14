@@ -11,7 +11,7 @@ import compile_time_settings.PerformanceSettings;
 
 public class FrameCacher {
 
-	private static String dirname = "/tmp/FancySlideShowSlides";
+	private final static String dirname = "/tmp/FancySlideShowSlides";
 
 	private final static String format = "jpg";
 
@@ -30,17 +30,12 @@ public class FrameCacher {
 	private FrameCacher() {
 
 		if( !PerformanceSettings.LOAD_CACHES ) {
-			if( dirExists( dirname ) ) {
-				int i = 0;
-				String test_name = dirname + i;
-				while ( dirExists( test_name ) ) {
-					++i;
-					test_name = dirname + i;
-				}
-				dirname = test_name;
-			}
 			File dir = new File( dirname );
-			dir.mkdir();
+			if( dirExists( dirname ) ) {
+				deleteEverythingInside( dir );
+			} else {
+				dir.mkdir();
+			}
 		}
 		if( PerformanceSettings.DELETE_CACHES ) {
 			Runtime.getRuntime().addShutdownHook( new shutdown_hook() );
@@ -90,6 +85,21 @@ public class FrameCacher {
 		return next_filename;
 	}
 
+	private static void deleteEverythingInside( File f ) {
+		if( f.isDirectory() ) {
+			for( File c : f.listFiles() )
+				delete( c );
+		}
+	}
+	
+	private static void delete( File f ) {
+		if( f.isDirectory() ) {
+			for( File c : f.listFiles() )
+				delete( c );
+		}
+		f.deleteOnExit();
+	}
+	
 	private static class shutdown_hook extends Thread {
 		public void run() {
 			delete( new File( dirname ) );
