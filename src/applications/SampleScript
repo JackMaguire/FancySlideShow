@@ -1,0 +1,44 @@
+<FrameScript>
+	<Settings>
+		<FrameCache load_caches="false" delete_caches="true">
+			<PrimaryNodeCache ratio="1.0" max_width="1920" max_height="1080"/>
+			<SecondaryNodeCache ratio="0" max_width="1920" max_height="1080"/>
+		</FrameCache>
+		
+		<SlideShowMonitor monitor="0" fps="24">
+			<Background r="0" g="0" b="0"/>
+		</SlideShowMonitor>
+		
+		<ControlPanelMonitor monitor="0" width="1440" height="880" east_width="250" west_width="250"/>
+	</Settings>
+	
+	<Graph>
+	
+		<FrameSpace name="Title" filename_prefix="/path/to/frames/TitleFrames/">
+			<Nodes>
+				titles with names starting with '_' will not be displayed in the control panel
+				<Node title="Title" filename="0001.png" hard="true" notes=""/>
+				<Node title="_Title_end" filename="0100.png" hard="true">
+					<Notes="Can"/>
+					<Notes="Have"/>
+					<Notes="Multiple Lines"/>
+				</Node>
+			</Nodes>
+			
+			<Edges>
+				<Edge title="" origin_node="Title" destination_node="_Title_end">
+					<FilenameRange first_num="2" last_num="99" filename="00@@.png" replace_char="@"/>
+				</Edge>
+				
+				<Edge title="" origin_node="Title" destination_node="Title">
+					You can append a frame to the front of a range. All elements get appended together
+					<Filename filename="0001.png"/>
+					<FilenameRange first_num="2" last_num="8" filename="00@@.png" replace_char="@"/>
+				</Edge>
+				
+				<ZoomInTransition origin_node="Title" destination_node="_Title_end"/>
+			</Edges>
+		</FrameSpace>
+	
+	</Graph>
+</FrameScript>

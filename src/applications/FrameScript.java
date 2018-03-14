@@ -22,8 +22,10 @@ public class FrameScript {
 	public final static String top_level_element_name = "FrameScript";
 
 	// Instance
-	private String script_filename_ = "";
-
+	private String full_script_filename_ = "";
+	private String graph_script_filename_ = "";
+	private String settings_script_filename_ = "";
+	
 	public static void main( String[] args ) {
 		new FrameScript( args );
 	}
@@ -41,7 +43,7 @@ public class FrameScript {
 				break;
 
 			if( args[ i ].replaceAll( "-", "" ).equalsIgnoreCase( "script" ) ) {
-				script_filename_ = args[ i + 1 ];
+				full_script_filename_ = args[ i + 1 ];
 			}
 		}
 	}
@@ -51,7 +53,7 @@ public class FrameScript {
 	}
 
 	public void parseAll() throws ParserConfigurationException, SAXException, IOException {
-		final File inputFile = new File( script_filename_ );
+		final File inputFile = new File( full_script_filename_ );
 		final DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		final DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		final Document doc = dBuilder.parse( inputFile );
