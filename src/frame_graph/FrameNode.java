@@ -56,7 +56,9 @@ public class FrameNode {
 
 		if( ratio == 1.0 )
 			return;
-		else if( ratio == 0.0 ) {
+		else if( PerformanceSettings.LOAD_CACHES ) {
+			image_filename_ = FrameCacher.getInstance().nextFilename( true );
+		} else if( ratio == 0.0 ) {
 			final int width = ( IS_PRIMARY ? PerformanceSettings.PRI_MAX_WIDTH : PerformanceSettings.SEC_MAX_WIDTH );
 			final int height = ( IS_PRIMARY ? PerformanceSettings.PRI_MAX_HEIGHT : PerformanceSettings.SEC_MAX_HEIGHT );
 
