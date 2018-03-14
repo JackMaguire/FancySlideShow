@@ -78,4 +78,8 @@ public class FrameScript {
 		
 	}
 
+	private void parseSettingsNode( Node settings_node ) {
+		
+	}
+	
 }
