@@ -39,6 +39,10 @@
 				<ZoomInTransition origin_node="Title" destination_node="_Title_end"/>
 			</Edges>
 		</FrameSpace>
+		
+		<InterFrameSpaceConnections>
+			<Edge title="" origin_frame_space="Title" origin_node="_Title_end" destination_frame_space="SomeOtherFrameSpace" destination_node="Something"/>
+		</InterFrameSpaceConnections>
 	
 	</Graph>
 </FrameScript>
