@@ -51,18 +51,29 @@ public class FrameScript {
 	}
 
 	public void parseAll() throws ParserConfigurationException, SAXException, IOException {
-		File inputFile = new File( script_filename_ );
-		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-		Document doc = dBuilder.parse( inputFile );
+		final File inputFile = new File( script_filename_ );
+		final DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		final DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		final Document doc = dBuilder.parse( inputFile );
 		doc.getDocumentElement().normalize();
 
 		if( !doc.getDocumentElement().getNodeName().equals( top_level_element_name ) ) {
 			System.out.println( "Top level element name should be " + top_level_element_name + ", not "
 					+ doc.getDocumentElement().getNodeName() );
+			System.exit( 1 );
 		}
 
-		NodeList sections = doc.getChildNodes();
+		final NodeList sections = doc.getChildNodes();
+		for( int i = 0; i < sections.getLength(); ++i ) {
+			final Node section = sections.item( i );
+			if( section.getNodeName().equalsIgnoreCase( "FrameSpace" ) ) {
+				
+			}
+		}
+	}
+	
+	private void parseFrameSpaceNode( Node frame_space_node ) {
+		
 	}
 
 }
