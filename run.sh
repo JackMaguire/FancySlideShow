@@ -1,6 +1,6 @@
 #!/bin/bash
 
-application="one_time/March2018LabMeeting"
+application="one_time/March2018LabMeeting2"
 slide_location=~/Dropbox/March2018LabMeetingSlides/
 
 temp=`echo $application | sed 's:/:.:g'`
