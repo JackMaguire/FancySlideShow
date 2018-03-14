@@ -13,7 +13,7 @@ public class FrameCacher {
 
 	private final static String dirname = "/tmp/FancySlideShowSlides";
 
-	private final static String format = "jpg";
+	private final static String format = "png";
 
 	private final static FrameCacher instance_ = new FrameCacher();
 
