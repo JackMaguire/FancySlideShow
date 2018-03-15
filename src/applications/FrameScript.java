@@ -9,6 +9,9 @@ import javax.xml.parsers.DocumentBuilder;
 import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
+import xml_parsing.ParseSettings;
+
 import org.w3c.dom.Node;
 import org.w3c.dom.Element;
 
@@ -79,7 +82,7 @@ public class FrameScript {
 	}
 
 	private void parseSettingsNode( Node settings_node ) {
-		
+		ParseSettings.parseSettingsNode( settings_node );
 	}
 	
 }

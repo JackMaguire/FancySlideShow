@@ -6,6 +6,8 @@ import compile_time_settings.SlideShowPanelSettings;
 
 public class ParseSettings {
 
+	public final static String TOP_LEVEL_NAME = "Settings";
+	
 	public static void parseSettingsNode( Node settings_node ) {
 		Node ptr = settings_node.getFirstChild();
 		Node last = settings_node.getLastChild();
