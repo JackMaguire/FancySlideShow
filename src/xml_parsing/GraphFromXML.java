@@ -57,7 +57,7 @@ public class GraphFromXML {
 
 	/*private final static int countFrameSpaces( Node graph_node ) {
 		int count = 0;
-
+	
 		final NodeList elements = graph_node.getChildNodes();
 		final int n = elements.getLength();
 		for( int i = 0; i < n; ++i ) {
@@ -66,7 +66,7 @@ public class GraphFromXML {
 				++count;
 			}
 		}
-
+	
 		return count;
 	}*/
 
