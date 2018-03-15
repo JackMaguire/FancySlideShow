@@ -72,7 +72,7 @@ public class FrameScript {
 		for( int i = 0; i < elements.getLength(); ++i ) {
 			final Node element = elements.item( i );
 			final String element_name = element.getNodeName();
-			
+
 			if( element_name.equalsIgnoreCase( ParseSettings.TOP_LEVEL_NAME ) ) {
 				ParseSettings.parseSettingsNode( element );
 			} else if( !element_name.startsWith( "#" ) ) {

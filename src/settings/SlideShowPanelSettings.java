@@ -68,7 +68,7 @@ public class SlideShowPanelSettings {
 			// System.out.println( element.getNodeName() + " " + element.getNodeValue() );
 			final String name = element.getNodeName();
 			final int value = Integer.parseInt( element.getNodeValue() );
-			
+
 			if( name.equalsIgnoreCase( "r" ) || name.equalsIgnoreCase( "red" ) ) {
 				r = value;
 			} else if( name.equalsIgnoreCase( "g" ) || name.equalsIgnoreCase( "green" ) ) {

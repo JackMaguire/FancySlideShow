@@ -7,5 +7,5 @@ public class XMLParsingException extends Exception {
 	public XMLParsingException( String S ) {
 		super( S );
 	}
-	
+
 }

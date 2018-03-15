@@ -88,7 +88,8 @@ public class FrameCacheSettings {
 					SEC_MAX_HEIGHT = height;
 			} else if( !attribute_name.startsWith( "#" ) ) {
 				System.err.println( XML_Name + ":" + xml_node.getNodeName() + " has no match for " + attribute_name );
-				throw new XMLParsingException( XML_Name + ":" + xml_node.getNodeName() + " has no match for " + attribute_name );
+				throw new XMLParsingException(
+						XML_Name + ":" + xml_node.getNodeName() + " has no match for " + attribute_name );
 			}
 		}
 	}

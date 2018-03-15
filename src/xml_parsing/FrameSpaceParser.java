@@ -169,7 +169,8 @@ public class FrameSpaceParser {
 			final String element_name = element.getNodeName();
 
 			if( ConceptualEdgeFactory.XMLNameIsEdgeType( element_name ) ) {
-				edges.add( ConceptualEdgeFactory.create( element, local_index_for_node_title_, node_offset, filename_prefix_ ) );
+				edges
+						.add( ConceptualEdgeFactory.create( element, local_index_for_node_title_, node_offset, filename_prefix_ ) );
 			}
 		}
 

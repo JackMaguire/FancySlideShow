@@ -11,7 +11,7 @@ import conceptual_graph.*;
 public class GraphFromXML {
 
 	public final static String XML_Name = "Graph";
-	
+
 	public static ConceptualGraph parse( Node graph_node ) throws Exception {
 		if( !graph_node.getNodeName().equalsIgnoreCase( XML_Name ) ) {
 			System.err.println( "Incorrect Node Passed to GraphFromXML" );
@@ -55,7 +55,7 @@ public class GraphFromXML {
 
 		return list;
 	}
-	
+
 	private final static int countFrameSpaces( Node graph_node ) {
 		int count = 0;
 
