@@ -44,8 +44,8 @@ public class Engine implements ActionListener {
 		waiting_at_hard_node_ = current_node_.stop();
 
 		delay_ = (int) ( 1000.0 / (double) SlideShowPanelSettings.FPS );
-		//System.out.println( "FPS: " + SlideShowPanelSettings.FPS );
-		
+		// System.out.println( "FPS: " + SlideShowPanelSettings.FPS );
+
 		timer_ = new Timer( delay_, this );
 	}
 
