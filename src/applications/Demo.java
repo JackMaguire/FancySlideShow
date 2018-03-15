@@ -28,19 +28,19 @@ public class Demo {
 		for( int i = 0; i < 128; ++i ) {
 			filenames_for_start_to_branch[ i ] = "src/PicsForDemo/Track1/0" + String.format( "%03d", i + 2 ) + ".png";
 		}
-		my_graph.addEdge( new Edge( "", 0, 1, filenames_for_start_to_branch ) );
+		my_graph.addEdge( new ConceptualEdge( "", 0, 1, filenames_for_start_to_branch ) );
 
 		String[] filenames_for_branch_to_end1 = new String[ 119 ];
 		for( int i = 0; i < 119; ++i ) {
 			filenames_for_branch_to_end1[ i ] = "src/PicsForDemo/Track1/0" + String.format( "%03d", i + 131 ) + ".png";
 		}
-		my_graph.addEdge( new Edge( "", 1, 2, filenames_for_branch_to_end1 ) );
+		my_graph.addEdge( new ConceptualEdge( "", 1, 2, filenames_for_branch_to_end1 ) );
 
 		String[] filenames_for_branch_to_end2 = new String[ 119 ];
 		for( int i = 0; i < 119; ++i ) {
 			filenames_for_branch_to_end2[ i ] = "src/PicsForDemo/Track2/0" + String.format( "%03d", i + 131 ) + ".png";
 		}
-		my_graph.addEdge( new Edge( "", 1, 3, filenames_for_branch_to_end2 ) );
+		my_graph.addEdge( new ConceptualEdge( "", 1, 3, filenames_for_branch_to_end2 ) );
 
 		SlideShow ss = new SlideShow( my_graph );
 		ss.run();

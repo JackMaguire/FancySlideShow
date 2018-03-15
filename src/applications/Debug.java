@@ -11,11 +11,11 @@ public class Debug {
 		for( int i = 1; i <= num_nodes; ++i ) {
 			my_graph.setNode( new Node( "" + i ), i - 1 );
 			if( i != 1 && i != 5 ) {
-				my_graph.addEdge( new Edge( "normal", i - 2, i - 1 ) );
+				my_graph.addEdge( new ConceptualEdge( "normal", i - 2, i - 1 ) );
 			}
 		}
 
-		my_graph.addEdge( new Edge( "special", 3, 9 ) );
+		my_graph.addEdge( new ConceptualEdge( "special", 3, 9 ) );
 
 		// my_graph.addEdge( new Edge( "0_1", 0, 1 ) );
 		// my_graph.addEdge( new Edge( "1_2", 1, 2 ) );

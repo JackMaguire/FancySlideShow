@@ -1,6 +1,6 @@
 package applications.one_time;
 
-import graph.Edge;
+import graph.ConceptualEdge;
 import graph.ConceptualGraph;
 import graph.Node;
 import slide_show.SlideShow;
@@ -41,12 +41,12 @@ public class March2018LabMeeting2 {
 
 		setMCHBNetNodesAndEdges( my_graph, current_offset );
 		// add edge from title slide to mrs
-		my_graph.addEdge( new Edge( "", current_offset - 1, current_offset ) );
+		my_graph.addEdge( new ConceptualEdge( "", current_offset - 1, current_offset ) );
 		current_offset += num_nodes_for_MCHBNet_slide;
 
 		setMRSNodesAndEdges( my_graph, current_offset );
 		// add edge from title slide to mrs
-		my_graph.addEdge( new Edge( "", current_offset - 1, current_offset ) );
+		my_graph.addEdge( new ConceptualEdge( "", current_offset - 1, current_offset ) );
 		current_offset += num_nodes_for_MRS_slide;
 
 		setMCHBNetMovieNodesAndEdges( my_graph, current_offset );
@@ -85,7 +85,7 @@ public class March2018LabMeeting2 {
 				filenames[ i ] = getFilename( dirname, 2 + i );
 				++num_frames;
 			}
-			graph.addEdge( new Edge( "", 0, 0, filenames ) );
+			graph.addEdge( new ConceptualEdge( "", 0, 0, filenames ) );
 		}
 
 		{// 0 - 1
@@ -94,7 +94,7 @@ public class March2018LabMeeting2 {
 				filenames[ i ] = getFilename( dirname, 251 + i );
 				++num_frames;
 			}
-			graph.addEdge( new Edge( "", 0, 1, filenames ) );
+			graph.addEdge( new ConceptualEdge( "", 0, 1, filenames ) );
 
 			// sanity check
 			// System.out.println("num_frames for title slide: " + num_frames );
@@ -178,7 +178,7 @@ public class March2018LabMeeting2 {
 			for( int i = 0; i < filenames.length; ++i ) {
 				filenames[ i ] = getFilename( dir1, 1 + i );
 			}
-			graph.addEdge( new Edge( "Wreck It", offset, offset + 1, filenames ) );
+			graph.addEdge( new ConceptualEdge( "Wreck It", offset, offset + 1, filenames ) );
 		}
 
 		{// 1 - 2
@@ -186,22 +186,22 @@ public class March2018LabMeeting2 {
 			for( int i = 0; i < filenames.length; ++i ) {
 				filenames[ i ] = getFilename( dir1, 31 + i );
 			}
-			graph.addEdge( new Edge( "", offset + 1, offset + 2, filenames ) );
+			graph.addEdge( new ConceptualEdge( "", offset + 1, offset + 2, filenames ) );
 		}
 
 		{// 2 - 3
 			// TODO Dissolve Transition
-			graph.addEdge( new Edge( "", offset + 2, offset + 3 ) );
+			graph.addEdge( new ConceptualEdge( "", offset + 2, offset + 3 ) );
 		}
 
 		{// 3 - 4
 			// TODO Dissolve Transition
-			graph.addEdge( new Edge( "", offset + 3, offset + 4 ) );
+			graph.addEdge( new ConceptualEdge( "", offset + 3, offset + 4 ) );
 		}
 
 		{// 4 - 5
 			// TODO Dissolve Transition
-			graph.addEdge( new Edge( "", offset + 4, offset + 5 ) );
+			graph.addEdge( new ConceptualEdge( "", offset + 4, offset + 5 ) );
 		}
 
 		{// 5 - 6
@@ -209,12 +209,12 @@ public class March2018LabMeeting2 {
 			for( int i = 0; i < filenames.length; ++i ) {
 				filenames[ i ] = getFilename( dir1, 60 + i );
 			}
-			graph.addEdge( new Edge( "", offset + 5, offset + 6, filenames ) );
+			graph.addEdge( new ConceptualEdge( "", offset + 5, offset + 6, filenames ) );
 		}
 
 		{// 6 - 7
 			// TODO Dissolve Transition
-			graph.addEdge( new Edge( "", offset + 6, offset + 7 ) );
+			graph.addEdge( new ConceptualEdge( "", offset + 6, offset + 7 ) );
 		}
 
 		{// 7 - 8
@@ -222,12 +222,12 @@ public class March2018LabMeeting2 {
 			for( int i = 0; i < filenames.length; ++i ) {
 				filenames[ i ] = getFilename( dir1, 102 + i );
 			}
-			graph.addEdge( new Edge( "Fork", offset + 7, offset + 8, filenames ) );
+			graph.addEdge( new ConceptualEdge( "Fork", offset + 7, offset + 8, filenames ) );
 		}
 
 		{// 8 - 9
 			// TODO Dissolve Transition
-			graph.addEdge( new Edge( "", offset + 8, offset + 9 ) );
+			graph.addEdge( new ConceptualEdge( "", offset + 8, offset + 9 ) );
 		}
 
 		{// 10 - 1
@@ -235,7 +235,7 @@ public class March2018LabMeeting2 {
 			for( int i = 0; i < filenames.length; ++i ) {
 				filenames[ i ] = getFilename( "MRS/title", 1 + i );
 			}
-			graph.addEdge( new Edge( "Wrecking Ball", offset + 10, offset + 1, filenames ) );
+			graph.addEdge( new ConceptualEdge( "Wrecking Ball", offset + 10, offset + 1, filenames ) );
 		}
 	}
 
@@ -270,7 +270,7 @@ public class March2018LabMeeting2 {
 
 		// Edges
 		for( int i = 1; i < num_nodes_for_MCHBNet_slide; ++i ) {
-			graph.addEdge( new Edge( "", offset + i - 1, offset + i ) );
+			graph.addEdge( new ConceptualEdge( "", offset + i - 1, offset + i ) );
 		}
 	}
 
@@ -287,7 +287,7 @@ public class March2018LabMeeting2 {
 			for( int i = 0; i < filenames.length; ++i ) {
 				filenames[ i ] = "/Users/jack/Desktop/BuildRotamersWithEdges/0" + String.format( "%03d", i + 1 ) + ".png";
 			}
-			graph.addEdge( new Edge( "", offset, offset + 1, filenames ) );
+			graph.addEdge( new ConceptualEdge( "", offset, offset + 1, filenames ) );
 		}
 
 	}

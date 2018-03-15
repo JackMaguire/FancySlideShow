@@ -3,7 +3,7 @@ package graph;
 import frame_graph.FrameGraph;
 import frame_graph.FrameNode;
 
-public class Edge implements EdgeType {
+public class ConceptualEdge implements EdgeType {
 
 	final String name_;
 	final int outgoing_node_index_;
@@ -12,13 +12,13 @@ public class Edge implements EdgeType {
 
 	private String[] image_filenames_ = new String[ 0 ];
 
-	public Edge( String name, int outgoing_node_index, int incoming_node_index ) {
+	public ConceptualEdge( String name, int outgoing_node_index, int incoming_node_index ) {
 		name_ = name;
 		outgoing_node_index_ = outgoing_node_index;
 		incoming_node_index_ = incoming_node_index;
 	}
 
-	public Edge( String name, int outgoing_node_index, int incoming_node_index, String[] image_filenames ) {
+	public ConceptualEdge( String name, int outgoing_node_index, int incoming_node_index, String[] image_filenames ) {
 		name_ = name;
 		outgoing_node_index_ = outgoing_node_index;
 		incoming_node_index_ = incoming_node_index;
