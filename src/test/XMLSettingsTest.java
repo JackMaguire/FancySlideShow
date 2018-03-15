@@ -10,7 +10,7 @@ import org.w3c.dom.Document;
 
 import xml_parsing.ParseSettings;
 
-public class XMLTest implements SingleTest {
+public class XMLSettingsTest implements SingleTest {
 
 	private final static String path_to_test_dir = "src/test/";
 
