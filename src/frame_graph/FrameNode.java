@@ -27,13 +27,13 @@ public class FrameNode {
 	public final int UPSTREAM_PRIMARY_ID;
 	public final int DOWNSTREAM_PRIMARY_ID;// ==UPSTREAM_PRIMARY_ID if primary
 
-	private final ConceptualNodeType corresponding_node_;
+	private final ConceptualNodeType conceptual_node_;
 
-	public FrameNode( boolean is_primary, int upstream_id, int downstream_id, ConceptualNodeType corresponding_node ) {
+	public FrameNode( boolean is_primary, int upstream_id, int downstream_id, ConceptualNodeType conceptual_node ) {
 		IS_PRIMARY = is_primary;
 		UPSTREAM_PRIMARY_ID = upstream_id;
 		DOWNSTREAM_PRIMARY_ID = downstream_id;
-		corresponding_node_ = corresponding_node;
+		conceptual_node_ = conceptual_node;
 	}
 
 	public int numForwardOptions() {
@@ -44,8 +44,8 @@ public class FrameNode {
 		return possible_reverse_nodes_.length;
 	}
 
-	public ConceptualNodeType node() {
-		return corresponding_node_;
+	public ConceptualNodeType getConceptualNode() {
+		return conceptual_node_;
 	}
 
 	public void setImageFilename( String filename ) {

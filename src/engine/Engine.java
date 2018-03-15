@@ -110,7 +110,7 @@ public class Engine implements ActionListener {
 		repaintImage();
 
 		if( current_node_.IS_PRIMARY ) {
-			final int subgraph = current_node_.node().subgraph();
+			final int subgraph = current_node_.getConceptualNode().subgraph();
 			if( subgraph != current_subgraph_ ) {
 				current_subgraph_ = subgraph;
 				control_panel_view_.getCenterPanelView().setCurrentSubgraph( subgraph );
@@ -131,7 +131,7 @@ public class Engine implements ActionListener {
 		repaintImage();
 
 		if( current_node_.IS_PRIMARY ) {
-			final int subgraph = current_node_.node().subgraph();
+			final int subgraph = current_node_.getConceptualNode().subgraph();
 			if( subgraph != current_subgraph_ ) {
 				current_subgraph_ = subgraph;
 				control_panel_view_.getCenterPanelView().setCurrentSubgraph( subgraph );
@@ -185,7 +185,7 @@ public class Engine implements ActionListener {
 			control_panel_view_.getCenterPanelView().model().setCurrentNode( current_node_.UPSTREAM_PRIMARY_ID );
 			control_panel_view_.getCenterPanelView().repaint();
 
-			control_panel_view_.getWestPanelView().updateNotesForCurrentSlide( current_node_.node().getNotes() );
+			control_panel_view_.getWestPanelView().updateNotesForCurrentSlide( current_node_.getConceptualNode().getNotes() );
 		}
 	}
 
