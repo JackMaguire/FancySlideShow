@@ -13,7 +13,7 @@ import xml_parsing.ParseSettings;
 
 public class XMLSettingsTest implements SingleTest {
 
-	private final static String path_to_test_dir = "src/test/";
+	private final static String path_to_test_dir = "src/test/xml/";
 
 	@Override
 	public boolean run() {
