@@ -82,6 +82,10 @@ public class FrameSpaceParser {
 		}
 
 		// Edges
+		ArrayList< ConceptualEdge > conceptual_edges = createEdges( edges_node, node_offset );
+		for( ConceptualEdge e : conceptual_edges ) {
+			graph.addEdge( e );
+		}
 	}
 
 	public int numNodes() {
@@ -130,7 +134,7 @@ public class FrameSpaceParser {
 					notes += "\n\n";
 				}
 				notes += value;
-					
+
 			} else if( attribute_name.equalsIgnoreCase( "hard" ) ) {
 				hard = Boolean.parseBoolean( value );
 			} else if( !attribute_name.startsWith( "#" ) ) {
@@ -152,7 +156,7 @@ public class FrameSpaceParser {
 					notes += "\n\n";
 				}
 				notes += element.getAttributes().getNamedItem( "line" );
-				//notes += "\n\n" + element.getNodeValue();
+				// notes += "\n\n" + element.getNodeValue();
 			}
 		}
 
