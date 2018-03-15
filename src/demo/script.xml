@@ -1,0 +1,35 @@
+<FrameScript>
+	<Graph>
+	
+		<FrameSpace name="Title" filename_prefix="/path/to/frames/TitleFrames/">
+			<Nodes>
+				titles with names starting with '_' will not be displayed in the control panel
+				<Node title="Title" filename="0001.png" hard="true" notes=""/>
+				<Node title="_Title_end" filename="0100.png" hard="true">
+					<Notes="Can"/>
+					<Notes="Have"/>
+					<Notes="Multiple Lines"/>
+				</Node>
+			</Nodes>
+			
+			<Edges>
+				<Edge title="" origin_node="Title" destination_node="_Title_end">
+					<FilenameRange first_num="2" last_num="99" filename="00@@.png" replace_char="@"/>
+				</Edge>
+				
+				<Edge title="" origin_node="Title" destination_node="Title">
+					You can append a frame to the front of a range. All elements get appended together
+					<Filename filename="0001.png"/>
+					<FilenameRange first_num="2" last_num="8" filename="00@@.png" replace_char="@"/>
+				</Edge>
+				
+				<ZoomInTransition origin_node="Title" destination_node="_Title_end"/>
+			</Edges>
+		</FrameSpace>
+		
+		<InterFrameSpaceConnections>
+			<Edge title="" origin_frame_space="Title" origin_node="_Title_end" destination_frame_space="SomeOtherFrameSpace" destination_node="Something"/>
+		</InterFrameSpaceConnections>
+	
+	</Graph>
+</FrameScript>
