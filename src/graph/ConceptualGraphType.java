@@ -6,11 +6,11 @@ import frame_graph.FrameGraph;
 
 public interface ConceptualGraphType {
 
-	NodeType getNode( int node_index );
+	ConceptualNodeType getNode( int node_index );
 
-	void setNode( NodeType node, int node_index, int subgraph );
+	void setNode( ConceptualNodeType node, int node_index, int subgraph );
 
-	NodeType[] getNodes();
+	ConceptualNodeType[] getNodes();
 
 	ConceptualEdgeType getEdge( int outgoing_node_index, int incoming_node_index );
 

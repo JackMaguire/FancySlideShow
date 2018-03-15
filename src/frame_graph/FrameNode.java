@@ -9,7 +9,7 @@ import compile_time_settings.FrameCacheSettings;
 import compile_time_settings.SlideShowPanelSettings;
 import frame_cache.FrameCacher;
 import graph.Node;
-import graph.NodeType;
+import graph.ConceptualNodeType;
 import slide_show.SlideShowPanel;
 
 public class FrameNode {
@@ -27,9 +27,9 @@ public class FrameNode {
 	public final int UPSTREAM_PRIMARY_ID;
 	public final int DOWNSTREAM_PRIMARY_ID;// ==UPSTREAM_PRIMARY_ID if primary
 
-	private final NodeType corresponding_node_;
+	private final ConceptualNodeType corresponding_node_;
 
-	public FrameNode( boolean is_primary, int upstream_id, int downstream_id, NodeType corresponding_node ) {
+	public FrameNode( boolean is_primary, int upstream_id, int downstream_id, ConceptualNodeType corresponding_node ) {
 		IS_PRIMARY = is_primary;
 		UPSTREAM_PRIMARY_ID = upstream_id;
 		DOWNSTREAM_PRIMARY_ID = downstream_id;
@@ -44,7 +44,7 @@ public class FrameNode {
 		return possible_reverse_nodes_.length;
 	}
 
-	public NodeType node() {
+	public ConceptualNodeType node() {
 		return corresponding_node_;
 	}
 

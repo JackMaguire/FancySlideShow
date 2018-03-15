@@ -7,7 +7,7 @@ import frame_graph.FrameGraph;
 
 public class ConceptualGraph implements ConceptualGraphType {
 
-	private final NodeType[] nodes_;
+	private final ConceptualNodeType[] nodes_;
 	private ConceptualEdgeType[] edges_ = new ConceptualEdgeType[ 0 ];
 
 	// private final ArrayList< ArrayList< Integer > > subgraph_ids_;
@@ -19,7 +19,7 @@ public class ConceptualGraph implements ConceptualGraphType {
 	}
 
 	public ConceptualGraph( int num_nodes, int num_subgraphs ) {
-		nodes_ = new NodeType[ num_nodes ];
+		nodes_ = new ConceptualNodeType[ num_nodes ];
 		/*subgraph_ids_ = new ArrayList< ArrayList< Integer > >( num_subgraphs );
 		for( int i = 0; i < subgraph_ids_.size(); ++i ) {
 			subgraph_ids_.set( i, new ArrayList< Integer >() );
@@ -61,19 +61,19 @@ public class ConceptualGraph implements ConceptualGraphType {
 		return nodes_.length;
 	}
 
-	public void setNode( NodeType node, int node_index ) {
+	public void setNode( ConceptualNodeType node, int node_index ) {
 		setNode( node, node_index, 0 );
 	}
 
 	@Override
-	public void setNode( NodeType node, int node_index, int subgraph ) {
+	public void setNode( ConceptualNodeType node, int node_index, int subgraph ) {
 		node.setIndex( node_index, subgraph );
 		nodes_[ node_index ] = node;
 		++num_nodes_in_subgraph_[ subgraph ];
 	}
 
 	@Override
-	public NodeType getNode( int node_index ) {
+	public ConceptualNodeType getNode( int node_index ) {
 		return nodes_[ node_index ];
 	}
 
@@ -95,7 +95,7 @@ public class ConceptualGraph implements ConceptualGraphType {
 		return null;
 	}
 
-	public NodeType[] getNodes() {
+	public ConceptualNodeType[] getNodes() {
 		return nodes_;
 	}
 
@@ -118,7 +118,7 @@ public class ConceptualGraph implements ConceptualGraphType {
 	public FrameGraph createFrameGraph() {
 		FrameGraph fg = new FrameGraph( nodes_ );
 
-		for( NodeType node : nodes_ ) {
+		for( ConceptualNodeType node : nodes_ ) {
 			node.applyToFrameGraph( fg );
 		}
 

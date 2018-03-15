@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 import frame_graph.FrameGraph;
 import frame_graph.FrameNode;
 
-public interface NodeType {
+public interface ConceptualNodeType {
 
 	String name();
 

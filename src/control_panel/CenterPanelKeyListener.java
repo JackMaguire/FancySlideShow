@@ -5,7 +5,7 @@ import java.awt.event.KeyListener;
 
 import compile_time_settings.DebugToggles;
 import engine.Engine;
-import graph.NodeType;
+import graph.ConceptualNodeType;
 
 public class CenterPanelKeyListener implements KeyListener {
 
@@ -63,7 +63,7 @@ public class CenterPanelKeyListener implements KeyListener {
 
 	private void enter() {
 		engine_.stopAtNextTick();
-		final NodeType selected_primary_node = model_.selectedNode();
+		final ConceptualNodeType selected_primary_node = model_.selectedNode();
 		if( selected_primary_node != null ) {
 			engine_.setCurrentNode( selected_primary_node.index() );
 		}

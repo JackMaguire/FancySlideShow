@@ -6,10 +6,10 @@ public class CenterPanelModel {
 
 	private ConceptualGraph graph_;
 
-	private NodeType current_node_;
+	private ConceptualNodeType current_node_;
 	private ConceptualEdgeType next_edge_;
 
-	private NodeType selected_node_;
+	private ConceptualNodeType selected_node_;
 	private ConceptualEdgeType selected_edge_;
 	private boolean node_was_selected_more_recently_ = true;
 
@@ -33,11 +33,11 @@ public class CenterPanelModel {
 		next_edge_ = edge;
 	}
 
-	public NodeType currentNode() {
+	public ConceptualNodeType currentNode() {
 		return current_node_;
 	}
 
-	public void setCurrentNode( NodeType node ) {
+	public void setCurrentNode( ConceptualNodeType node ) {
 		current_node_ = node;
 	}
 
@@ -45,11 +45,11 @@ public class CenterPanelModel {
 		current_node_ = graph_.getNode( index );
 	}
 
-	public NodeType selectedNode() {
+	public ConceptualNodeType selectedNode() {
 		return selected_node_;
 	}
 
-	public void setSelectedNode( NodeType node ) {
+	public void setSelectedNode( ConceptualNodeType node ) {
 		node_was_selected_more_recently_ = true;
 		selected_node_ = node;
 	}
@@ -63,7 +63,7 @@ public class CenterPanelModel {
 		selected_edge_ = edge;
 	}
 
-	public void select( NodeType node ) {
+	public void select( ConceptualNodeType node ) {
 		setSelectedNode( node );
 	}
 

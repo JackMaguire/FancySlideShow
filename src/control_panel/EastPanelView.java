@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 
 import compile_time_settings.DebugToggles;
 import control_panel.EastPanelModel.BottomSideModel;
-import graph.NodeType;
+import graph.ConceptualNodeType;
 import compile_time_settings.ControlPanelMonitorSettings;
 
 public class EastPanelView extends JPanel {
@@ -41,7 +41,7 @@ public class EastPanelView extends JPanel {
 		add( bottomside_ );
 	}
 
-	public void setSelectedNode( NodeType node ) {
+	public void setSelectedNode( ConceptualNodeType node ) {
 		topside_.setNode( node );
 		bottomside_.reinit( node );
 		repaint();
@@ -55,12 +55,12 @@ public class EastPanelView extends JPanel {
 		private int previous_height_ = 0;
 		// private int previous_node_ = 0;
 
-		private NodeType node_;
+		private ConceptualNodeType node_;
 
 		public TopSide() {
 		}
 
-		public void setNode( NodeType node ) {
+		public void setNode( ConceptualNodeType node ) {
 			node_ = node;
 		}
 
@@ -132,7 +132,7 @@ public class EastPanelView extends JPanel {
 			initComponents( subgraphs );
 		}
 
-		public BottomSide( BottomSideModel model, JComboBox< String > subgraphs, NodeType node ) {
+		public BottomSide( BottomSideModel model, JComboBox< String > subgraphs, ConceptualNodeType node ) {
 			model_ = model;
 			initComponents( subgraphs );
 			reinit( node );
@@ -167,7 +167,7 @@ public class EastPanelView extends JPanel {
 			reverse_.addItemListener( new ReverseJComboBoxListener( reverse_, this ) );
 		}
 
-		public void reinit( NodeType node ) {
+		public void reinit( ConceptualNodeType node ) {
 			model_.setNode( node );
 			jlabel_.setText( model_.getTitle() );
 

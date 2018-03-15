@@ -14,7 +14,7 @@ import compile_time_settings.DebugToggles;
 import frame_graph.FrameGraph;
 import frame_graph.FrameNode;
 
-public class Node implements NodeType {
+public class Node implements ConceptualNodeType {
 
 	final private String name_;
 	private String notes_ = "";

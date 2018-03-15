@@ -3,7 +3,7 @@ package control_panel;
 import java.awt.event.*;
 
 import control_panel.CenterPanelView.*;
-import graph.NodeType;
+import graph.ConceptualNodeType;
 import compile_time_settings.DebugToggles;
 
 public class CenterPanelController implements MouseListener {
@@ -20,7 +20,7 @@ public class CenterPanelController implements MouseListener {
 	}
 
 	private void handle_click_on_node( MouseEvent e, NodeCircle node_circle ) {
-		NodeType node = node_circle.node();
+		ConceptualNodeType node = node_circle.node();
 		if( e.getButton() == 1 ) {
 			// select node
 			model_.select( node );

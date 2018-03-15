@@ -1,11 +1,11 @@
 package transitions;
 
 import graph.ConceptualEdgeType;
-import graph.NodeType;
+import graph.ConceptualNodeType;
 
 public class ZoomInTransition {
 
-	public static ConceptualEdgeType make( NodeType start, NodeType end, int num_frames ) {
+	public static ConceptualEdgeType make( ConceptualNodeType start, ConceptualNodeType end, int num_frames ) {
 		return null;// TODO
 	}
 

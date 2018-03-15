@@ -2,7 +2,7 @@ package control_panel;
 
 import frame_graph.FrameNode;
 import graph.ConceptualGraphType;
-import graph.NodeType;
+import graph.ConceptualNodeType;
 
 public class EastPanelModel {
 
@@ -26,7 +26,7 @@ public class EastPanelModel {
 	}
 
 	protected static class BottomSideModel {
-		private NodeType node_;
+		private ConceptualNodeType node_;
 		private String[] forward_choices_ = new String[ 0 ];
 		private int[] forward_ints_ = new int[ 0 ];
 		private int for_choice_ = -1;
@@ -41,11 +41,11 @@ public class EastPanelModel {
 			graph_ = graph;
 		}
 
-		public NodeType node() {
+		public ConceptualNodeType node() {
 			return node_;
 		}
 
-		public void setNode( NodeType node ) {
+		public void setNode( ConceptualNodeType node ) {
 			node_ = node;
 
 			forward_ints_ = node.getFrameNode().upstreamIDs();

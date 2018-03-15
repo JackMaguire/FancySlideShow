@@ -44,7 +44,7 @@ public class CenterPanelView extends JPanelWithKeyListener {
 			panes_.addItem( graph.getNamesforSubgraph( i ) );
 		}
 
-		NodeType[] all_nodes = graph.getNodes();
+		ConceptualNodeType[] all_nodes = graph.getNodes();
 		circles_ = new NodeCircle[ all_nodes.length ];
 		for( int i = 0; i < all_nodes.length; ++i ) {
 			circles_[ i ] = createNodeCircle( i, graph.numNodesInSubgraph( all_nodes[ i ].subgraph() ),
@@ -198,7 +198,7 @@ public class CenterPanelView extends JPanelWithKeyListener {
 	static class NodeCircle {
 
 		// final public int ID;
-		private final NodeType node_;
+		private final ConceptualNodeType node_;
 
 		final public double dx;
 		final public double dy;
@@ -209,7 +209,7 @@ public class CenterPanelView extends JPanelWithKeyListener {
 
 		private Color color_;
 
-		public NodeCircle( NodeType node, double dx, double dy, String name ) {
+		public NodeCircle( ConceptualNodeType node, double dx, double dy, String name ) {
 			node_ = node;
 			this.dx = dx;
 			this.dy = dy;
@@ -220,7 +220,7 @@ public class CenterPanelView extends JPanelWithKeyListener {
 			return node_.index();
 		}
 
-		public NodeType node() {
+		public ConceptualNodeType node() {
 			return node_;
 		}
 
