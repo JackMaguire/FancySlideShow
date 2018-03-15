@@ -27,8 +27,8 @@ public class SlideShow implements SlideShowType {
 		graph_ = graph;
 		control_panel_model_ = new ControlPanelModel( graph_ );
 		control_panel_view_ = new ControlPanelView( control_panel_model_ );
-		slide_show_panel_ = new SlideShowPanel(
-				control_panel_model_.getCenterPanelModel().currentNode().getThumbnailImage() );
+		slide_show_panel_ = new SlideShowPanel( null );
+//				control_panel_model_.getCenterPanelModel().currentNode().getThumbnailImage() );
 	}
 
 	// Getters and setters
