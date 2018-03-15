@@ -7,7 +7,7 @@ public class Debug {
 
 	public static void main( String[] args ) {
 		final int num_nodes = 20;
-		Graph my_graph = new Graph( num_nodes );
+		ConceptualGraph my_graph = new ConceptualGraph( num_nodes );
 		for( int i = 1; i <= num_nodes; ++i ) {
 			my_graph.setNode( new Node( "" + i ), i - 1 );
 			if( i != 1 && i != 5 ) {

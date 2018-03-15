@@ -10,7 +10,7 @@ public class Demo {
 
 	public static void main( String[] args ) {
 		final int num_nodes = 4;
-		Graph my_graph = new Graph( num_nodes );
+		ConceptualGraph my_graph = new ConceptualGraph( num_nodes );
 
 		Node start_node = new Node( "start", true );
 		start_node.setNotes( "Don't forget to speak into the microphone please!" );

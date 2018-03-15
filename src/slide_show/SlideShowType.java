@@ -1,10 +1,10 @@
 package slide_show;
 
-import graph.Graph;
+import graph.ConceptualGraph;
 
 public interface SlideShowType {
 
-	void setGraph( Graph g );
+	void setGraph( ConceptualGraph g );
 
 	void run();
 

@@ -4,7 +4,7 @@ import org.w3c.dom.Node;
 
 public class GraphFromXML {
 
-	public static graph.Graph parse( Node individual_node ){
+	public static graph.ConceptualGraph parse( Node individual_node ){
 		return null;
 	}
 	

@@ -1,7 +1,7 @@
 package applications.one_time;
 
 import graph.Edge;
-import graph.Graph;
+import graph.ConceptualGraph;
 import graph.Node;
 import slide_show.SlideShow;
 
@@ -26,7 +26,7 @@ public class March2018LabMeeting {
 			path_to_top_dir_ = args[ 0 ];
 		}
 
-		Graph my_graph = new Graph( num_nodes, 3 );
+		ConceptualGraph my_graph = new ConceptualGraph( num_nodes, 3 );
 		my_graph.setSubgraphName( 0, "TITLE" );
 		my_graph.setSubgraphName( 1, "MCHBNet" );
 		my_graph.setSubgraphName( 2, "MRS" );
@@ -63,7 +63,7 @@ public class March2018LabMeeting {
 		return result;
 	}
 
-	private static void setTitleSlideNodesAndEdges( Graph graph, int offset ) {
+	private static void setTitleSlideNodesAndEdges( ConceptualGraph graph, int offset ) {
 
 		int node_id = offset;
 		final String dirname = "MCHBNetTitle";
@@ -136,7 +136,7 @@ public class March2018LabMeeting {
 	
 	}*/
 
-	private static void setMRSNodesAndEdges( Graph graph, int offset ) throws Exception {
+	private static void setMRSNodesAndEdges( ConceptualGraph graph, int offset ) throws Exception {
 
 		int node_id = offset;
 
@@ -233,7 +233,7 @@ public class March2018LabMeeting {
 		}
 	}
 
-	private final static void setMCHBNetNodesAndEdges( Graph graph, int offset ) {
+	private final static void setMCHBNetNodesAndEdges( ConceptualGraph graph, int offset ) {
 
 		String[] slide_names = new String[ num_nodes_for_MCHBNet_slide ];
 		for( int i = 0; i < num_nodes_for_MCHBNet_slide; ++i ) {

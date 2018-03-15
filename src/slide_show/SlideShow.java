@@ -16,14 +16,14 @@ import graph.*;
 public class SlideShow implements SlideShowType {
 
 	// Starts at Node 0
-	private Graph graph_;
+	private ConceptualGraph graph_;
 	// private Node current_node_;
 
 	private final ControlPanelModel control_panel_model_;
 	private final ControlPanelView control_panel_view_;
 	private final SlideShowPanel slide_show_panel_;
 
-	public SlideShow( Graph graph ) {
+	public SlideShow( ConceptualGraph graph ) {
 		graph_ = graph;
 		control_panel_model_ = new ControlPanelModel( graph_ );
 		control_panel_view_ = new ControlPanelView( control_panel_model_ );
@@ -33,11 +33,11 @@ public class SlideShow implements SlideShowType {
 	}
 
 	// Getters and setters
-	protected Graph graph() {
+	protected ConceptualGraph graph() {
 		return graph_;
 	}
 
-	public void setGraph( Graph g ) {
+	public void setGraph( ConceptualGraph g ) {
 		graph_ = g;
 	}
 

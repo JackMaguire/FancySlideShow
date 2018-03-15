@@ -6,7 +6,7 @@ public class ControlPanelModel {
 	private final CenterPanelModel center_;
 	private final EastPanelModel east_;
 
-	public ControlPanelModel( graph.Graph graph ) {
+	public ControlPanelModel( graph.ConceptualGraph graph ) {
 		center_ = new CenterPanelModel( graph );
 		west_ = new WestPanelModel();
 		east_ = new EastPanelModel( center_, graph );

@@ -4,7 +4,7 @@ import graph.*;
 
 public class CenterPanelModel {
 
-	private Graph graph_;
+	private ConceptualGraph graph_;
 
 	private NodeType current_node_;
 	private EdgeType next_edge_;
@@ -13,7 +13,7 @@ public class CenterPanelModel {
 	private EdgeType selected_edge_;
 	private boolean node_was_selected_more_recently_ = true;
 
-	public CenterPanelModel( Graph graph ) {
+	public CenterPanelModel( ConceptualGraph graph ) {
 		graph_ = graph;
 		current_node_ = graph.getNode( 0 );
 		selected_node_ = null;
@@ -21,7 +21,7 @@ public class CenterPanelModel {
 		next_edge_ = current_node_.getDownstreamEdges()[ 0 ];
 	}
 
-	public Graph getGraph() {
+	public ConceptualGraph getGraph() {
 		return graph_;
 	}
 

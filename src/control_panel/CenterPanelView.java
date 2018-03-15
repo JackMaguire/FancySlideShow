@@ -38,7 +38,7 @@ public class CenterPanelView extends JPanelWithKeyListener {
 	public CenterPanelView( CenterPanelModel model ) {
 		model_ = model;
 
-		final Graph graph = model.getGraph();
+		final ConceptualGraph graph = model.getGraph();
 		final int nsubgraphs = graph.numSubgraphs();
 		for( int i = 0; i < nsubgraphs; ++i ) {
 			panes_.addItem( graph.getNamesforSubgraph( i ) );

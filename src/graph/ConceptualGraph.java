@@ -5,7 +5,7 @@ package graph;
 import compile_time_settings.DebugToggles;
 import frame_graph.FrameGraph;
 
-public class Graph implements GraphType {
+public class ConceptualGraph implements GraphType {
 
 	private final NodeType[] nodes_;
 	private EdgeType[] edges_ = new EdgeType[ 0 ];
@@ -14,11 +14,11 @@ public class Graph implements GraphType {
 	private final int[] num_nodes_in_subgraph_;
 	private final String[] subgraph_names_;
 
-	public Graph( int num_nodes ) {
+	public ConceptualGraph( int num_nodes ) {
 		this( num_nodes, 1 );
 	}
 
-	public Graph( int num_nodes, int num_subgraphs ) {
+	public ConceptualGraph( int num_nodes, int num_subgraphs ) {
 		nodes_ = new NodeType[ num_nodes ];
 		/*subgraph_ids_ = new ArrayList< ArrayList< Integer > >( num_subgraphs );
 		for( int i = 0; i < subgraph_ids_.size(); ++i ) {
