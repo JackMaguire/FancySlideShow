@@ -68,7 +68,7 @@ public class XMLSettingsTest extends SingleTest {
 		is_valid |= diff( "SEC_MAX_HEIGHT", FrameCacheSettings.SEC_MAX_HEIGHT, 2 );
 		is_valid |= diff( "LOAD_CACHES", FrameCacheSettings.LOAD_CACHES, false );
 		is_valid |= diff( "DELETE_CACHES", FrameCacheSettings.DELETE_CACHES, true );
-		
+
 		return is_valid;
 	}
 

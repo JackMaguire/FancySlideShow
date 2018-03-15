@@ -34,8 +34,8 @@ public class SlideShowPanelSettings {
 				FPS = value;
 			} else if( attribute_name.equalsIgnoreCase( "monitor" ) ) {
 				MONITOR = value;
-			} else if( ! attribute_name.startsWith( "#" ) ) {
-				System.err.println( XML_Name + " has no match for " +  attribute_name );
+			} else if( !attribute_name.startsWith( "#" ) ) {
+				System.err.println( XML_Name + " has no match for " + attribute_name );
 				System.exit( 1 );
 			}
 		}
@@ -47,8 +47,8 @@ public class SlideShowPanelSettings {
 			final String element_name = element.getNodeName();
 			if( element_name.equalsIgnoreCase( "Background" ) ) {
 				parseColor( element );
-			} else if( ! element_name.startsWith( "#" ) ) {
-				System.err.println( XML_Name + " has no match for " +  element_name );
+			} else if( !element_name.startsWith( "#" ) ) {
+				System.err.println( XML_Name + " has no match for " + element_name );
 				System.exit( 1 );
 			}
 		}

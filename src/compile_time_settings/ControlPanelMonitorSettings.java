@@ -49,8 +49,8 @@ public class ControlPanelMonitorSettings {
 				EAST_WIDTH = value;
 			} else if( attribute_name.equalsIgnoreCase( "west_width" ) ) {
 				WEST_WIDTH = value;
-			} else if( ! attribute_name.startsWith( "#" ) ) {
-				System.err.println( XML_Name + " has no match for " +  attribute_name );
+			} else if( !attribute_name.startsWith( "#" ) ) {
+				System.err.println( XML_Name + " has no match for " + attribute_name );
 				System.exit( 1 );
 			}
 		}
@@ -60,13 +60,13 @@ public class ControlPanelMonitorSettings {
 		for( int i = 0; i < n_elements; ++i ) {
 			final Node element = element_nodes.item( i );
 			final String element_name = element.getNodeName();
-		
-			if( ! element_name.startsWith( "#" ) ) {
-				System.err.println( XML_Name + " has no match for " +  element_name );
+
+			if( !element_name.startsWith( "#" ) ) {
+				System.err.println( XML_Name + " has no match for " + element_name );
 				System.exit( 1 );
 			}
 		}
-		
+
 	}
 
 }

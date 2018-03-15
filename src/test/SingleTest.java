@@ -13,7 +13,7 @@ public abstract class SingleTest implements SingleTestInterface {
 		}
 		return true;
 	}
-	
+
 	protected boolean diff( String name, boolean value, boolean intended_value ) {
 		if( value != intended_value ) {
 			err( name + " is " + value + " instead of " + intended_value );
@@ -21,7 +21,7 @@ public abstract class SingleTest implements SingleTestInterface {
 		}
 		return true;
 	}
-	
+
 	protected boolean diff( String name, int value, int intended_value ) {
 		if( value != intended_value ) {
 			err( name + " is " + value + " instead of " + intended_value );
@@ -29,7 +29,7 @@ public abstract class SingleTest implements SingleTestInterface {
 		}
 		return true;
 	}
-	
+
 	protected boolean diff( String name, double value, double intended_value ) {
 		if( value != intended_value ) {
 			err( name + " is " + value + " instead of " + intended_value );
@@ -37,9 +37,9 @@ public abstract class SingleTest implements SingleTestInterface {
 		}
 		return true;
 	}
-	
+
 	protected boolean diff( String name, double value, double intended_value, double window ) {
-		if( Math.abs( value - intended_value) > window ) {
+		if( Math.abs( value - intended_value ) > window ) {
 			err( name + " is " + value + " instead of " + intended_value );
 			return false;
 		}
