@@ -71,16 +71,17 @@ public class FrameSpaceParser {
 
 		if( nodes_node == null ) {
 			throw new XMLParsingException( "No \'Nodes\' element in framespace: " + frame_space_name_ );
-		}
-
-		if( edges_node == null ) {
+		} else if( edges_node == null ) {
 			throw new XMLParsingException( "No \'Edge\' element in framespace: " + frame_space_name_ );
 		}
 
+		// Nodes
 		ConceptualNode[] conceptual_nodes = createNodes( nodes_node );
 		for( int i = 0; i < conceptual_nodes.length; ++i ) {
 			graph.setNode( conceptual_nodes[ i ], node_offset + i );
 		}
+
+		// Edges
 	}
 
 	public int numNodes() {
@@ -156,6 +157,24 @@ public class FrameSpaceParser {
 		local_index_for_node_title_.put( title, local_node_index );
 
 		return con_node;
+	}
+
+	private ArrayList< ConceptualEdge > createEdges( Node edges_node, ConceptualGraph graph_with_nodes_already_added,
+			int node_offset ) throws XMLParsingException {
+		ArrayList< ConceptualEdge > edges = new ArrayList< ConceptualEdge >();
+
+		final NodeList elements = edges_node.getChildNodes();
+		final int n = elements.getLength();
+		for( int i = 0; i < n; ++i ) {
+			final Node element = elements.item( i );
+			final String element_name = element.getNodeName();
+
+			if( ConceptualEdgeFactory.XMLNameIsEdgeType( element_name ) ) {
+				edges.add( ConceptualEdgeFactory.create( element, graph_with_nodes_already_added, node_offset ) );
+			}
+		}
+
+		return edges;
 	}
 
 	public final static int countNumElementsWithName( Node node, String name, boolean case_sensitive ) {
