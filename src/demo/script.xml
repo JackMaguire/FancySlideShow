@@ -1,7 +1,7 @@
 <FrameScript>
 	<Graph>
 	
-		<FrameSpace name="Main" filename_prefix="src/PicsForDemo/">
+		<FrameSpace name="Main" filename_prefix="src/demo/PicsForDemo/">
 			<Nodes>
 				titles with names starting with '_' will not be displayed in the control panel
 				<Node title="start" filename="Track1/0001.png" hard="true" notes="Good luck with your presentation, handsome!"/>

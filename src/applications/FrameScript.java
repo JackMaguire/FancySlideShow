@@ -7,10 +7,12 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.DocumentBuilder;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import xml_parsing.ParseSettings;
+import xml_parsing.Util;
 import xml_parsing.XMLParsingException;
 
 import org.w3c.dom.Node;
@@ -56,19 +58,14 @@ public class FrameScript {
 	}
 
 	public void parseAll() throws ParserConfigurationException, SAXException, IOException, XMLParsingException {
-		final File inputFile = new File( full_script_filename_ );
-		final DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-		final DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-		final Document doc = dBuilder.parse( inputFile );
-		doc.getDocumentElement().normalize();
-
-		if( !doc.getDocumentElement().getNodeName().equals( top_level_element_name ) ) {
-			System.out.println( "Top level element name should be " + top_level_element_name + ", not "
-					+ doc.getDocumentElement().getNodeName() );
-			System.exit( 1 );
+		final Node frame_script_node = Util.readFromFile( full_script_filename_ );
+		
+		if( !frame_script_node.getNodeName().equals( top_level_element_name ) ) {
+			throw new XMLParsingException(
+					"Top level element name should be " + top_level_element_name + ", not " + frame_script_node.getNodeName() );
 		}
 
-		final NodeList elements = doc.getChildNodes();
+		final NodeList elements = frame_script_node.getChildNodes();
 		for( int i = 0; i < elements.getLength(); ++i ) {
 			final Node element = elements.item( i );
 			final String element_name = element.getNodeName();

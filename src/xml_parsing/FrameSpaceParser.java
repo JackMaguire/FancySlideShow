@@ -95,7 +95,7 @@ public class FrameSpaceParser {
 	private ConceptualNode[] createNodes( Node nodes_node ) throws XMLParsingException {
 		final int num_nodes = countNumElementsWithName( nodes_node, "Node", false );
 		ConceptualNode[] nodes = new ConceptualNode[ num_nodes ];
-		// int current_node = 0;
+		int current_node = 0;
 
 		final NodeList elements = nodes_node.getChildNodes();
 		final int n = elements.getLength();
@@ -104,7 +104,8 @@ public class FrameSpaceParser {
 			final String element_name = element.getNodeName();
 
 			if( element_name.equalsIgnoreCase( "Node" ) ) {
-				nodes[ i ] = createConceptualNode( element, i );
+				nodes[ current_node ] = createConceptualNode( element, i );
+				++current_node;
 			}
 		}
 
