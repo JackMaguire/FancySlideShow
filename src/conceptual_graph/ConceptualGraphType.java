@@ -1,7 +1,5 @@
 package conceptual_graph;
 
-import java.util.ArrayList;
-
 import frame_graph.FrameGraph;
 
 public interface ConceptualGraphType {
