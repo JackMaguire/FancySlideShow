@@ -4,6 +4,8 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import xml_parsing.XMLParsingException;
+
 public class ControlPanelMonitorSettings {
 
 	public final static String XML_Name = "ControlPanel";
@@ -29,7 +31,7 @@ public class ControlPanelMonitorSettings {
 	public static int EAST_WIDTH = 250;
 	public static int WEST_WIDTH = 250;
 
-	public static void parseXMLNode( Node xml_node ) {
+	public static void parseXMLNode( Node xml_node ) throws XMLParsingException {
 
 		// Attributes
 		final NamedNodeMap attribute_nodes = xml_node.getAttributes();
@@ -51,7 +53,7 @@ public class ControlPanelMonitorSettings {
 				WEST_WIDTH = value;
 			} else if( !attribute_name.startsWith( "#" ) ) {
 				System.err.println( XML_Name + " has no match for " + attribute_name );
-				System.exit( 1 );
+				throw new XMLParsingException( XML_Name + " has no match for " + attribute_name );
 			}
 		}
 

@@ -6,6 +6,8 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import xml_parsing.XMLParsingException;
+
 public class SlideShowPanelSettings {
 
 	public final static String XML_Name = "SlideShowPanel";
@@ -19,7 +21,7 @@ public class SlideShowPanelSettings {
 
 	public static int FPS = 24;
 
-	public static void parseXMLNode( Node xml_node ) {
+	public static void parseXMLNode( Node xml_node ) throws XMLParsingException {
 
 		// Attributes
 		final NamedNodeMap attribute_nodes = xml_node.getAttributes();
@@ -36,7 +38,7 @@ public class SlideShowPanelSettings {
 				MONITOR = value;
 			} else if( !attribute_name.startsWith( "#" ) ) {
 				System.err.println( XML_Name + " has no match for " + attribute_name );
-				System.exit( 1 );
+				throw new XMLParsingException( XML_Name + " has no match for " + attribute_name );
 			}
 		}
 
@@ -49,12 +51,12 @@ public class SlideShowPanelSettings {
 				parseColor( element );
 			} else if( !element_name.startsWith( "#" ) ) {
 				System.err.println( XML_Name + " has no match for " + element_name );
-				System.exit( 1 );
+				throw new XMLParsingException( XML_Name + " has no match for " + element_name );
 			}
 		}
 	}
 
-	private static void parseColor( Node color_node ) {
+	private static void parseColor( Node color_node ) throws XMLParsingException {
 		int r = 0;
 		int g = 0;
 		int b = 0;
@@ -66,13 +68,15 @@ public class SlideShowPanelSettings {
 			// System.out.println( element.getNodeName() + " " + element.getNodeValue() );
 			final String name = element.getNodeName();
 			final int value = Integer.parseInt( element.getNodeValue() );
-
+			
 			if( name.equalsIgnoreCase( "r" ) || name.equalsIgnoreCase( "red" ) ) {
 				r = value;
 			} else if( name.equalsIgnoreCase( "g" ) || name.equalsIgnoreCase( "green" ) ) {
 				g = value;
 			} else if( name.equalsIgnoreCase( "b" ) || name.equalsIgnoreCase( "blue" ) ) {
 				b = value;
+			} else {
+				throw new XMLParsingException( XML_Name + ":Background has no match for " + name );
 			}
 		}
 

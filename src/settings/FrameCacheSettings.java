@@ -4,6 +4,8 @@ import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import xml_parsing.XMLParsingException;
+
 public class FrameCacheSettings {
 
 	public final static String XML_Name = "FrameCache";
@@ -20,7 +22,7 @@ public class FrameCacheSettings {
 	public static boolean DELETE_CACHES = false;
 	public static boolean LOAD_CACHES = false;
 
-	public static void parseXMLNode( Node xml_node ) {
+	public static void parseXMLNode( Node xml_node ) throws XMLParsingException {
 
 		// Attributes
 		final NamedNodeMap attribute_nodes = xml_node.getAttributes();
@@ -36,7 +38,7 @@ public class FrameCacheSettings {
 				DELETE_CACHES = value;
 			} else if( !attribute_name.startsWith( "#" ) ) {
 				System.err.println( XML_Name + " has no match for " + attribute_name );
-				System.exit( 1 );
+				throw new XMLParsingException( XML_Name + " has no match for " + attribute_name );
 			}
 		}
 
@@ -52,13 +54,13 @@ public class FrameCacheSettings {
 				parseElement( element, false );
 			} else if( !element_name.startsWith( "#" ) ) {
 				System.err.println( XML_Name + " has no match for " + element_name );
-				System.exit( 1 );
+				throw new XMLParsingException( XML_Name + " has no match for " + element_name );
 			}
 		}
 
 	}
 
-	private static void parseElement( Node xml_node, boolean is_primary ) {
+	private static void parseElement( Node xml_node, boolean is_primary ) throws XMLParsingException {
 		final NamedNodeMap attribute_nodes = xml_node.getAttributes();
 		final int n_attributes = attribute_nodes.getLength();
 		for( int i = 0; i < n_attributes; ++i ) {
@@ -86,7 +88,7 @@ public class FrameCacheSettings {
 					SEC_MAX_HEIGHT = height;
 			} else if( !attribute_name.startsWith( "#" ) ) {
 				System.err.println( XML_Name + ":" + xml_node.getNodeName() + " has no match for " + attribute_name );
-				System.exit( 1 );
+				throw new XMLParsingException( XML_Name + ":" + xml_node.getNodeName() + " has no match for " + attribute_name );
 			}
 		}
 	}

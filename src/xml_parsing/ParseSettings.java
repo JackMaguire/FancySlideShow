@@ -10,7 +10,7 @@ public class ParseSettings {
 
 	public final static String TOP_LEVEL_NAME = "Settings";
 
-	public static void parseSettingsNode( Node settings_node ) {
+	public static void parseSettingsNode( Node settings_node ) throws XMLParsingException {
 		Node ptr = settings_node.getFirstChild();
 		Node last = settings_node.getLastChild();
 
@@ -21,7 +21,7 @@ public class ParseSettings {
 		parseNode( last );
 	}
 
-	private static void parseNode( Node individual_node ) {
+	private static void parseNode( Node individual_node ) throws XMLParsingException {
 		// System.out.println( individual_node.getNodeName() );
 		final String name = individual_node.getNodeName();
 		if( name.equalsIgnoreCase( SlideShowPanelSettings.XML_Name ) ) {

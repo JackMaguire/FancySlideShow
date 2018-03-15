@@ -11,6 +11,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import xml_parsing.ParseSettings;
+import xml_parsing.XMLParsingException;
 
 import org.w3c.dom.Node;
 
@@ -54,7 +55,7 @@ public class FrameScript {
 
 	}
 
-	public void parseAll() throws ParserConfigurationException, SAXException, IOException {
+	public void parseAll() throws ParserConfigurationException, SAXException, IOException, XMLParsingException {
 		final File inputFile = new File( full_script_filename_ );
 		final DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		final DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();

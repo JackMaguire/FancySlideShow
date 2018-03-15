@@ -13,6 +13,7 @@ import settings.FrameCacheSettings;
 import settings.SlideShowPanelSettings;
 import test.SingleTest;
 import xml_parsing.ParseSettings;
+import xml_parsing.XMLParsingException;
 
 public class XMLSettingsTest extends SingleTest {
 
@@ -38,7 +39,14 @@ public class XMLSettingsTest extends SingleTest {
 					+ doc.getDocumentElement().getNodeName() );
 			return false;
 		}
-		ParseSettings.parseSettingsNode( doc.getDocumentElement() );
+		try {
+			ParseSettings.parseSettingsNode( doc.getDocumentElement() );
+		}
+		catch( XMLParsingException e ) {
+			System.err.println( e.getMessage() );
+			e.printStackTrace();
+			return false;
+		}
 		return validate();
 	}
 
