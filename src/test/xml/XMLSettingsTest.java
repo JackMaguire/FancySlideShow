@@ -57,7 +57,7 @@ public class XMLSettingsTest implements SingleTest {
 
 	private boolean diff( String name, int value, int intended_value ) {
 		if( value != intended_value ) {
-			p( name + " is " + value + " instread of " + intended_value );
+			p( name + " is " + value + " instead of " + intended_value );
 			return false;
 		}
 		return true;
