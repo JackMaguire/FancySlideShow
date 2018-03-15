@@ -1,13 +1,9 @@
 package frame_graph;
 
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
 import java.awt.image.BufferedImage;
 
 import compile_time_settings.DebugToggles;
 import compile_time_settings.FrameCacheSettings;
-import compile_time_settings.SlideShowPanelSettings;
-import conceptual_graph.ConceptualNode;
 import conceptual_graph.ConceptualNodeType;
 import frame_cache.FrameCacher;
 import slide_show.SlideShowPanel;

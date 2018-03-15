@@ -13,7 +13,6 @@ import org.xml.sax.SAXException;
 import xml_parsing.ParseSettings;
 
 import org.w3c.dom.Node;
-import org.w3c.dom.Element;
 
 public class FrameScript {
 
