@@ -24,7 +24,6 @@ public class Test {
 	}
 
 	private static void addTests() {
-		// tests.add( new util.ArrayUtil.extendArrayTest() );
 		tests.add( new XMLSettingsTest() );
 	}
 

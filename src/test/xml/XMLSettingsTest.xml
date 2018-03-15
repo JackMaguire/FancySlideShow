@@ -8,5 +8,5 @@
 		<Background r="1" g="0" b="255"/>
 	</SlideShowPanel>
 		
-	<ControlPanelMonitor monitor="10" width="14" height="8" east_width="2" west_width="5"/>
+	<ControlPanel monitor="10" width="14" height="8" east_width="2" west_width="5"/>
 </Settings>

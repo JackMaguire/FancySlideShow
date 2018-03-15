@@ -9,7 +9,7 @@
 			<Background r="0" g="0" b="0"/>
 		</SlideShowPanel>
 		
-		<ControlPanelMonitor monitor="0" width="1440" height="880" east_width="250" west_width="250"/>
+		<ControlPanel monitor="0" width="1440" height="880" east_width="250" west_width="250"/>
 	</Settings>
 	
 	<Graph>
