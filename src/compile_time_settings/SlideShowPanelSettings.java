@@ -26,12 +26,17 @@ public class SlideShowPanelSettings {
 		final int n_attributes = attribute_nodes.getLength();
 		for( int i = 0; i < n_attributes; ++i ) {
 			final Node attribute = attribute_nodes.item( i );
+			final String attribute_name = attribute.getNodeName();
+			final int value = Integer.parseInt( attribute.getNodeValue() );
 			// System.out.println( attribute.getNodeName() + " " + attribute.getNodeValue()
 			// );
-			if( attribute.getNodeName().equalsIgnoreCase( "fps" ) ) {
-				FPS = Integer.parseInt( attribute.getNodeValue() );
-			} else if( attribute.getNodeName().equalsIgnoreCase( "monitor" ) ) {
-				MONITOR = Integer.parseInt( attribute.getNodeValue() );
+			if( attribute_name.equalsIgnoreCase( "fps" ) ) {
+				FPS = value;
+			} else if( attribute_name.equalsIgnoreCase( "monitor" ) ) {
+				MONITOR = value;
+			} else if( ! attribute_name.startsWith( "#" ) ) {
+				System.err.println( XML_Name + " has no match for " +  attribute_name );
+				System.exit( 1 );
 			}
 		}
 
@@ -42,6 +47,9 @@ public class SlideShowPanelSettings {
 			final String element_name = element.getNodeName();
 			if( element_name.equalsIgnoreCase( "Background" ) ) {
 				parseColor( element );
+			} else if( ! element_name.startsWith( "#" ) ) {
+				System.err.println( XML_Name + " has no match for " +  element_name );
+				System.exit( 1 );
 			}
 		}
 	}

@@ -2,6 +2,7 @@ package compile_time_settings;
 
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class ControlPanelMonitorSettings {
 
@@ -48,18 +49,24 @@ public class ControlPanelMonitorSettings {
 				EAST_WIDTH = value;
 			} else if( attribute_name.equalsIgnoreCase( "west_width" ) ) {
 				WEST_WIDTH = value;
+			} else if( ! attribute_name.startsWith( "#" ) ) {
+				System.err.println( XML_Name + " has no match for " +  attribute_name );
+				System.exit( 1 );
 			}
 		}
 
-		/*
 		final NodeList element_nodes = xml_node.getChildNodes();
 		final int n_elements = element_nodes.getLength();
 		for( int i = 0; i < n_elements; ++i ) {
 			final Node element = element_nodes.item( i );
 			final String element_name = element.getNodeName();
 		
+			if( ! element_name.startsWith( "#" ) ) {
+				System.err.println( XML_Name + " has no match for " +  element_name );
+				System.exit( 1 );
+			}
 		}
-		*/
+		
 	}
 
 }
