@@ -2,7 +2,7 @@ package applications.one_time;
 
 import graph.ConceptualEdge;
 import graph.ConceptualGraph;
-import graph.Node;
+import graph.ConceptualNode;
 import slide_show.SlideShow;
 
 public class March2018LabMeeting2 {
@@ -74,8 +74,8 @@ public class March2018LabMeeting2 {
 		int node_id = offset;
 		final String dirname = "MCHBNetTitle";
 
-		graph.setNode( new Node( "Title", false, getFilename( dirname, 1 ), "Good Luck!" ), node_id++, TITLE_SUBGRAPH );
-		graph.setNode( new Node( "Title_end", true, getFilename( dirname, 340 ), "" ), node_id++, TITLE_SUBGRAPH );
+		graph.setNode( new ConceptualNode( "Title", false, getFilename( dirname, 1 ), "Good Luck!" ), node_id++, TITLE_SUBGRAPH );
+		graph.setNode( new ConceptualNode( "Title_end", true, getFilename( dirname, 340 ), "" ), node_id++, TITLE_SUBGRAPH );
 
 		int num_frames = 2;
 
@@ -149,25 +149,25 @@ public class March2018LabMeeting2 {
 		final String dir1 = "MRS";
 
 		// 0-2
-		graph.setNode( new Node( "Title", true, getFilename( dir1, 0 ), "Good Luck!" ), node_id++, MRS_SUBGRAPH );
-		graph.setNode( new Node( "Protocol", true, getFilename( dir1, 30 ), "" ), node_id++, MRS_SUBGRAPH );
-		graph.setNode( new Node( "StageProtocol", false, getFilename( dir1, 56 ), "" ), node_id++, MRS_SUBGRAPH );
+		graph.setNode( new ConceptualNode( "Title", true, getFilename( dir1, 0 ), "Good Luck!" ), node_id++, MRS_SUBGRAPH );
+		graph.setNode( new ConceptualNode( "Protocol", true, getFilename( dir1, 30 ), "" ), node_id++, MRS_SUBGRAPH );
+		graph.setNode( new ConceptualNode( "StageProtocol", false, getFilename( dir1, 56 ), "" ), node_id++, MRS_SUBGRAPH );
 
 		// 3-5
-		graph.setNode( new Node( "StageProtocol_I", false, getFilename( dir1, 57 ), "" ), node_id++, MRS_SUBGRAPH );
-		graph.setNode( new Node( "StageProtocol_II", false, getFilename( dir1, 58 ), "" ), node_id++, MRS_SUBGRAPH );
-		graph.setNode( new Node( "StageProtocol_III", true, getFilename( dir1, 59 ), "" ), node_id++, MRS_SUBGRAPH );
+		graph.setNode( new ConceptualNode( "StageProtocol_I", false, getFilename( dir1, 57 ), "" ), node_id++, MRS_SUBGRAPH );
+		graph.setNode( new ConceptualNode( "StageProtocol_II", false, getFilename( dir1, 58 ), "" ), node_id++, MRS_SUBGRAPH );
+		graph.setNode( new ConceptualNode( "StageProtocol_III", true, getFilename( dir1, 59 ), "" ), node_id++, MRS_SUBGRAPH );
 
 		// 6-9
 		// graph.setNode( new Node( "StageProtocol", false, getFilename( dir1, 60 ), ""
 		// ), node_id++, MRS_SUBGRAPH );
-		graph.setNode( new Node( "Split", true, getFilename( dir1, 100 ), "" ), node_id++, MRS_SUBGRAPH );
-		graph.setNode( new Node( "Filtered1", true, getFilename( dir1, 101 ), "" ), node_id++, MRS_SUBGRAPH );
-		graph.setNode( new Node( "Fork", true, getFilename( dir1, 130 ), "" ), node_id++, MRS_SUBGRAPH );
-		graph.setNode( new Node( "Filtered2", true, getFilename( dir1, 131 ), "" ), node_id++, MRS_SUBGRAPH );
+		graph.setNode( new ConceptualNode( "Split", true, getFilename( dir1, 100 ), "" ), node_id++, MRS_SUBGRAPH );
+		graph.setNode( new ConceptualNode( "Filtered1", true, getFilename( dir1, 101 ), "" ), node_id++, MRS_SUBGRAPH );
+		graph.setNode( new ConceptualNode( "Fork", true, getFilename( dir1, 130 ), "" ), node_id++, MRS_SUBGRAPH );
+		graph.setNode( new ConceptualNode( "Filtered2", true, getFilename( dir1, 131 ), "" ), node_id++, MRS_SUBGRAPH );
 
 		// 10
-		graph.setNode( new Node( "AltStart", true, getFilename( "MRS/title", 0 ) ), node_id++, MRS_SUBGRAPH );
+		graph.setNode( new ConceptualNode( "AltStart", true, getFilename( "MRS/title", 0 ) ), node_id++, MRS_SUBGRAPH );
 
 		if( node_id - offset != num_nodes_for_MRS_slide ) {
 			throw new Exception( "node_id - offset != num_nodes_for_MRS_slide" );
@@ -265,7 +265,7 @@ public class March2018LabMeeting2 {
 		// Nodes
 		for( int i = 0; i < num_nodes_for_MCHBNet_slide; ++i ) {
 			final String filename = path_to_top_dir_ + "/MCHBNet/Slide" + String.format( "%02d", i + 1 ) + ".png";
-			graph.setNode( new Node( slide_names[ i ], true, filename, "" ), offset + i, MCHBNET_SUBGRAPH );
+			graph.setNode( new ConceptualNode( slide_names[ i ], true, filename, "" ), offset + i, MCHBNET_SUBGRAPH );
 		}
 
 		// Edges
@@ -279,8 +279,8 @@ public class March2018LabMeeting2 {
 		final String filename1 = "/Users/jack/Desktop/BuildRotamersWithEdges/0000.png";
 		final String filename2 = "/Users/jack/Desktop/BuildRotamersWithEdges/0250.png";
 
-		graph.setNode( new Node( "start", true, filename1, "" ), offset, MCHBNet_Movie );
-		graph.setNode( new Node( "end", true, filename2, "" ), offset + 1, MCHBNet_Movie );
+		graph.setNode( new ConceptualNode( "start", true, filename1, "" ), offset, MCHBNet_Movie );
+		graph.setNode( new ConceptualNode( "end", true, filename2, "" ), offset + 1, MCHBNet_Movie );
 
 		{
 			String[] filenames = new String[ 249 ];

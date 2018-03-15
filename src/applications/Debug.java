@@ -9,7 +9,7 @@ public class Debug {
 		final int num_nodes = 20;
 		ConceptualGraph my_graph = new ConceptualGraph( num_nodes );
 		for( int i = 1; i <= num_nodes; ++i ) {
-			my_graph.setNode( new Node( "" + i ), i - 1 );
+			my_graph.setNode( new ConceptualNode( "" + i ), i - 1 );
 			if( i != 1 && i != 5 ) {
 				my_graph.addEdge( new ConceptualEdge( "normal", i - 2, i - 1 ) );
 			}

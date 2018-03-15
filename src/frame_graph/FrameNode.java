@@ -8,7 +8,7 @@ import compile_time_settings.DebugToggles;
 import compile_time_settings.FrameCacheSettings;
 import compile_time_settings.SlideShowPanelSettings;
 import frame_cache.FrameCacher;
-import graph.Node;
+import graph.ConceptualNode;
 import graph.ConceptualNodeType;
 import slide_show.SlideShowPanel;
 

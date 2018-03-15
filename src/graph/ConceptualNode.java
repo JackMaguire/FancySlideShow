@@ -14,7 +14,7 @@ import compile_time_settings.DebugToggles;
 import frame_graph.FrameGraph;
 import frame_graph.FrameNode;
 
-public class Node implements ConceptualNodeType {
+public class ConceptualNode implements ConceptualNodeType {
 
 	final private String name_;
 	private String notes_ = "";
@@ -32,23 +32,23 @@ public class Node implements ConceptualNodeType {
 
 	private FrameNode corresponding_fnode_ = null;
 
-	public Node( String name ) {
+	public ConceptualNode( String name ) {
 		name_ = name;
 		hard_ = true;
 	}
 
-	public Node( String name, boolean is_hard ) {
+	public ConceptualNode( String name, boolean is_hard ) {
 		name_ = name;
 		hard_ = is_hard;
 	}
 
-	public Node( String name, boolean is_hard, String image_filename ) {
+	public ConceptualNode( String name, boolean is_hard, String image_filename ) {
 		name_ = name;
 		hard_ = is_hard;
 		setImageFilename( image_filename );
 	}
 
-	public Node( String name, boolean is_hard, String image_filename, String notes ) {
+	public ConceptualNode( String name, boolean is_hard, String image_filename, String notes ) {
 		name_ = name;
 		hard_ = is_hard;
 		notes_ = notes;
