@@ -9,12 +9,14 @@ public class ControlPanelMonitorSettings {
 
 	public static int MONITOR = 0;
 
-	//iMac:
-	//<ControlPanel monitor="0" width="1920" height="1060" east_width="400" west_width="400"/>
-	
-	//Macbook Air:
-	//<ControlPanel monitor="1" width="1440" height="880" east_width="250" west_width="250"/>
-	
+	// iMac:
+	// <ControlPanel monitor="0" width="1920" height="1060" east_width="400"
+	// west_width="400"/>
+
+	// Macbook Air:
+	// <ControlPanel monitor="1" width="1440" height="880" east_width="250"
+	// west_width="250"/>
+
 	// iMac, 1920 x 1080
 	// public final static int CP_WIDTH = 1920; public final static int CP_HEIGHT =
 	// 1060; public final static int EAST_WIDTH = 400; public final static int
@@ -35,7 +37,7 @@ public class ControlPanelMonitorSettings {
 			final Node attribute = attribute_nodes.item( i );
 			final String attribute_name = attribute.getNodeName();
 			final int value = Integer.parseInt( attribute.getNodeValue() );
-			
+
 			if( attribute_name.equalsIgnoreCase( "monitor" ) ) {
 				MONITOR = value;
 			} else if( attribute_name.equalsIgnoreCase( "width" ) ) {

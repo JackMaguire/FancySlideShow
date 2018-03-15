@@ -13,5 +13,5 @@ public abstract class SingleTest implements SingleTestInterface {
 		}
 		return true;
 	}
-	
+
 }

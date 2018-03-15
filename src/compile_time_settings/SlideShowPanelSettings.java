@@ -26,7 +26,8 @@ public class SlideShowPanelSettings {
 		final int n_attributes = attribute_nodes.getLength();
 		for( int i = 0; i < n_attributes; ++i ) {
 			final Node attribute = attribute_nodes.item( i );
-			//System.out.println( attribute.getNodeName() + " " + attribute.getNodeValue() );
+			// System.out.println( attribute.getNodeName() + " " + attribute.getNodeValue()
+			// );
 			if( attribute.getNodeName().equalsIgnoreCase( "fps" ) ) {
 				FPS = Integer.parseInt( attribute.getNodeValue() );
 			} else if( attribute.getNodeName().equalsIgnoreCase( "monitor" ) ) {
@@ -66,7 +67,7 @@ public class SlideShowPanelSettings {
 				b = value;
 			}
 		}
-		
-		BACKGROUND = new Color( r, g, b);
+
+		BACKGROUND = new Color( r, g, b );
 	}
 }
