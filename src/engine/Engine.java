@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
+import compile_time_settings.SlideShowPanelSettings;
 import control_panel.ControlPanelView;
 import frame_graph.FrameGraph;
 import frame_graph.FrameNode;
@@ -17,7 +18,7 @@ public class Engine implements ActionListener {
 	// 24 41
 	// 30 33.33
 	// 60 16.67
-	private final int delay_ = 40;
+	private final int delay_;
 
 	private final Timer timer_;
 	private final SlideShowPanel slide_show_panel_;
@@ -42,6 +43,9 @@ public class Engine implements ActionListener {
 		// center_panel_view_.addKeyListener( new CenterPanelKeyListener( this ) );
 		waiting_at_hard_node_ = current_node_.stop();
 
+		delay_ = (int) ( 1000.0 / (double) SlideShowPanelSettings.FPS );
+		//System.out.println( "FPS: " + SlideShowPanelSettings.FPS );
+		
 		timer_ = new Timer( delay_, this );
 	}
 
