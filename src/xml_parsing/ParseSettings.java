@@ -2,6 +2,7 @@ package xml_parsing;
 
 import org.w3c.dom.Node;
 
+import compile_time_settings.ControlPanelMonitorSettings;
 import compile_time_settings.SlideShowPanelSettings;
 
 public class ParseSettings {
@@ -24,8 +25,8 @@ public class ParseSettings {
 		final String name = individual_node.getNodeName();
 		if( name.equalsIgnoreCase( SlideShowPanelSettings.XML_Name ) ) {
 			SlideShowPanelSettings.parseXMLNode( individual_node );
-		} else if( name.equalsIgnoreCase( SlideShowPanelSettings.XML_Name ) ) {
-			SlideShowPanelSettings.parseXMLNode( individual_node );
+		} else if( name.equalsIgnoreCase( ControlPanelMonitorSettings.XML_Name ) ) {
+			ControlPanelMonitorSettings.parseXMLNode( individual_node );
 		}
 	}
 
