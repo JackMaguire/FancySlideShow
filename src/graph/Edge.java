@@ -1,13 +1,5 @@
 package graph;
 
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBuffer;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
-import compile_time_settings.DebugToggles;
 import frame_graph.FrameGraph;
 import frame_graph.FrameNode;
 
