@@ -24,17 +24,17 @@ public class Util {
 		final Document doc = dBuilder.parse( inputFile );
 		doc.getDocumentElement().normalize();
 		final Element doc_element = doc.getDocumentElement();
-		
+
 		final NodeList elements = doc.getChildNodes();
 		for( int i = 0; i < elements.getLength(); ++i ) {
 			final Node element = elements.item( i );
 			final String element_name = element.getNodeName();
-			
-			if( element_name.equalsIgnoreCase( FrameScript.top_level_element_name ) ){
+
+			if( element_name.equalsIgnoreCase( FrameScript.top_level_element_name ) ) {
 				return element;
 			}
 		}
 		return null;
 	}
-	
+
 }

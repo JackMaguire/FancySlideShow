@@ -43,7 +43,7 @@ public class ConceptualEdge implements ConceptualEdgeType {
 	public int outgoingNodeIndex() {
 		return outgoing_node_index_;
 	}
-	
+
 	public void setOutgoingNodeIndex( int setting ) {
 		outgoing_node_index_ = setting;
 	}
@@ -52,7 +52,7 @@ public class ConceptualEdge implements ConceptualEdgeType {
 	public int incomingNodeIndex() {
 		return incoming_node_index_;
 	}
-	
+
 	public void setIncomingNodeIndex( int setting ) {
 		incoming_node_index_ = setting;
 	}

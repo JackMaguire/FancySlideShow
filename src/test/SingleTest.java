@@ -21,7 +21,7 @@ public abstract class SingleTest implements SingleTestInterface {
 		}
 		return true;
 	}
-	
+
 	protected boolean diff( String name, boolean value, boolean intended_value ) {
 		if( value != intended_value ) {
 			err( name + " is " + value + " instead of " + intended_value );

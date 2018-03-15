@@ -59,7 +59,7 @@ public class FrameScript {
 
 	public void parseAll() throws ParserConfigurationException, SAXException, IOException, XMLParsingException {
 		final Node frame_script_node = Util.readFromFile( full_script_filename_ );
-		
+
 		if( !frame_script_node.getNodeName().equals( top_level_element_name ) ) {
 			throw new XMLParsingException(
 					"Top level element name should be " + top_level_element_name + ", not " + frame_script_node.getNodeName() );

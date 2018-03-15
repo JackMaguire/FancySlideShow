@@ -16,14 +16,15 @@ public class FrameSpaceParser {
 	private static String frame_space_name_ = "Untitled";
 	private static String filename_prefix_ = "";
 
-	//private final ArrayList< ConceptualNode > nodes_ = new ArrayList< ConceptualNode >();
+	// private final ArrayList< ConceptualNode > nodes_ = new ArrayList<
+	// ConceptualNode >();
 	private final HashMap< String, Integer > local_index_for_node_title_ = new HashMap< String, Integer >();
 
 	private final Node frame_space_node_;
 
 	private ConceptualNode[] conceptual_nodes_ = null;
 	ArrayList< ConceptualEdge > conceptual_edges_ = null;
-	
+
 	public FrameSpaceParser( Node frame_space_node ) throws XMLParsingException {
 
 		frame_space_node_ = frame_space_node;
@@ -73,9 +74,9 @@ public class FrameSpaceParser {
 		} else if( edges_node == null ) {
 			throw new XMLParsingException( "No \'Edge\' element in framespace: " + frame_space_name_ );
 		}
-		
+
 		conceptual_nodes_ = createNodes( nodes_node );
-		conceptual_edges_ = createEdges( edges_node, 0 );//will add node_offsets in applyToGraph()
+		conceptual_edges_ = createEdges( edges_node, 0 );// will add node_offsets in applyToGraph()
 	}
 
 	public void applyToGraph( ConceptualGraph graph, int node_offset ) throws XMLParsingException {
