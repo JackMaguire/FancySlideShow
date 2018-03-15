@@ -35,6 +35,7 @@ public class XMLSettingsTest implements SingleTest {
 					+ doc.getDocumentElement().getNodeName() );
 			return false;
 		}
+		ParseSettings.parseSettingsNode( doc.getDocumentElement() );
 		return true;
 	}
 

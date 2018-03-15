@@ -20,6 +20,7 @@ public class ParseSettings {
 	}
 	
 	private static void parseNode( Node individual_node ) {
+		//System.out.println( individual_node.getNodeName() );
 		if( individual_node.getNodeName().equals( SlideShowPanelSettings.XML_Name ) ) {
 			SlideShowPanelSettings.parseXMLNode( individual_node );
 		}

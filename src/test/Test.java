@@ -14,7 +14,10 @@ public class Test {
 		int num_tests_passed = 0;
 		for( SingleTest test : tests ) {
 			if( test.run() ) {
+				System.out.println( test.name() + " passed." );
 				++num_tests_passed;
+			} else {
+				System.out.println( test.name() + " failed." );
 			}
 		}
 		System.out.println( num_tests_passed + " of " + tests.size() + " tests passed." );
