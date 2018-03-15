@@ -14,10 +14,10 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import compile_time_settings.DebugToggles;
 import conceptual_graph.ConceptualNodeType;
 import control_panel.EastPanelModel.BottomSideModel;
-import compile_time_settings.ControlPanelMonitorSettings;
+import settings.ControlPanelMonitorSettings;
+import settings.DebugToggles;
 
 public class EastPanelView extends JPanel {
 

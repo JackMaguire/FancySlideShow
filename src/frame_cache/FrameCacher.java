@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import compile_time_settings.FrameCacheSettings;
+import settings.FrameCacheSettings;
 
 public class FrameCacher {
 

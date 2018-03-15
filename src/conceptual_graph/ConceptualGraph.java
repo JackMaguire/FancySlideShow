@@ -1,9 +1,7 @@
 package conceptual_graph;
 
-//import java.awt.image.DataBuffer;
-
-import compile_time_settings.DebugToggles;
 import frame_graph.FrameGraph;
+import settings.DebugToggles;
 
 public class ConceptualGraph implements ConceptualGraphType {
 

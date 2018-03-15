@@ -2,10 +2,10 @@ package frame_graph;
 
 import java.awt.image.BufferedImage;
 
-import compile_time_settings.DebugToggles;
-import compile_time_settings.FrameCacheSettings;
 import conceptual_graph.ConceptualNodeType;
 import frame_cache.FrameCacher;
+import settings.DebugToggles;
+import settings.FrameCacheSettings;
 import slide_show.SlideShowPanel;
 
 public class FrameNode {

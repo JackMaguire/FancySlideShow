@@ -9,10 +9,10 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import compile_time_settings.ControlPanelMonitorSettings;
-import compile_time_settings.DebugToggles;
 import frame_graph.FrameGraph;
 import frame_graph.FrameNode;
+import settings.ControlPanelMonitorSettings;
+import settings.DebugToggles;
 
 public class ConceptualNode implements ConceptualNodeType {
 

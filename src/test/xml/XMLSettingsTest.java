@@ -8,9 +8,9 @@ import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.w3c.dom.Document;
 
-import compile_time_settings.ControlPanelMonitorSettings;
-import compile_time_settings.FrameCacheSettings;
-import compile_time_settings.SlideShowPanelSettings;
+import settings.ControlPanelMonitorSettings;
+import settings.FrameCacheSettings;
+import settings.SlideShowPanelSettings;
 import test.SingleTest;
 import xml_parsing.ParseSettings;
 

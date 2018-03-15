@@ -3,7 +3,7 @@ package control_panel;
 import java.awt.event.*;
 
 import control_panel.CenterPanelView.*;
-import compile_time_settings.DebugToggles;
+import settings.DebugToggles;
 import conceptual_graph.ConceptualNodeType;
 
 public class CenterPanelController implements MouseListener {

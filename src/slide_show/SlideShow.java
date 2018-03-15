@@ -4,13 +4,13 @@ import java.awt.*;
 
 import javax.swing.*;
 
-import compile_time_settings.ControlPanelMonitorSettings;
-import compile_time_settings.DebugToggles;
-import compile_time_settings.SlideShowPanelSettings;
 import conceptual_graph.*;
 import control_panel.*;
 import engine.Engine;
 import frame_graph.FrameGraph;
+import settings.ControlPanelMonitorSettings;
+import settings.DebugToggles;
+import settings.SlideShowPanelSettings;
 
 public class SlideShow implements SlideShowType {
 

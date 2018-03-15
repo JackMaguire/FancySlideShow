@@ -1,4 +1,4 @@
-package compile_time_settings;
+package settings;
 
 import java.awt.Color;
 

@@ -3,9 +3,9 @@ package control_panel;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import compile_time_settings.DebugToggles;
 import conceptual_graph.ConceptualNodeType;
 import engine.Engine;
+import settings.DebugToggles;
 
 public class CenterPanelKeyListener implements KeyListener {
 

@@ -7,8 +7,8 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JPanel;
 
-import compile_time_settings.DebugToggles;
-import compile_time_settings.SlideShowPanelSettings;
+import settings.DebugToggles;
+import settings.SlideShowPanelSettings;
 import test.FrameRateMeasurer;
 
 public class SlideShowPanel extends JPanel {
@@ -92,7 +92,7 @@ public class SlideShowPanel extends JPanel {
 			g2.setRenderingHint( RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC );
 			g2.setRenderingHint( RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY );
 		}
-		if( compile_time_settings.DebugToggles.DEBUG_SLIDE_SHOW_RENDER ) {
+		if( settings.DebugToggles.DEBUG_SLIDE_SHOW_RENDER ) {
 			System.out.println( "fast_render_: " + fast_render_ );
 		}
 		g2.drawImage( image_, side_buffersize, top_buffersize, scaled_image_width, scaled_image_height, null );

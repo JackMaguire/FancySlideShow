@@ -5,10 +5,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
-import compile_time_settings.SlideShowPanelSettings;
 import control_panel.ControlPanelView;
 import frame_graph.FrameGraph;
 import frame_graph.FrameNode;
+import settings.SlideShowPanelSettings;
 import slide_show.SlideShowPanel;
 
 public class Engine implements ActionListener {
