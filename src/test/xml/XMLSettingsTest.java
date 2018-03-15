@@ -9,6 +9,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
 
 import compile_time_settings.ControlPanelMonitorSettings;
+import compile_time_settings.FrameCacheSettings;
 import compile_time_settings.SlideShowPanelSettings;
 import test.SingleTest;
 import xml_parsing.ParseSettings;
@@ -60,6 +61,14 @@ public class XMLSettingsTest extends SingleTest {
 		is_valid |= diff( "CP EAST WIDTH", ControlPanelMonitorSettings.EAST_WIDTH, 2 );
 		is_valid |= diff( "CP WEST WIDTH", ControlPanelMonitorSettings.WEST_WIDTH, 5 );
 
+		// FrameCacheSettingsTest
+		is_valid |= diff( "PRIMARY_NODE_CACHE_RATIO", FrameCacheSettings.PRIMARY_NODE_CACHE_RATIO, 0.5 );
+		is_valid |= diff( "SECONDARY_NODE_CACHE_RATIO", FrameCacheSettings.SECONDARY_NODE_CACHE_RATIO, 0 );
+		is_valid |= diff( "SEC_MAX_WIDTH", FrameCacheSettings.SEC_MAX_WIDTH, 1 );
+		is_valid |= diff( "SEC_MAX_HEIGHT", FrameCacheSettings.SEC_MAX_HEIGHT, 2 );
+		is_valid |= diff( "LOAD_CACHES", FrameCacheSettings.LOAD_CACHES, false );
+		is_valid |= diff( "DELETE_CACHES", FrameCacheSettings.DELETE_CACHES, true );
+		
 		return is_valid;
 	}
 

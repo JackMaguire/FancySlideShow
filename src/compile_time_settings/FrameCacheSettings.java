@@ -49,7 +49,7 @@ public class FrameCacheSettings {
 			if( element_name.startsWith( "Primary" ) ) {
 				parseElement( element, true );
 			} else if( element_name.startsWith( "Secondary" ) ) {
-				parseElement( element, true );
+				parseElement( element, false );
 			} else if( !element_name.startsWith( "#" ) ) {
 				System.err.println( XML_Name + " has no match for " + element_name );
 				System.exit( 1 );

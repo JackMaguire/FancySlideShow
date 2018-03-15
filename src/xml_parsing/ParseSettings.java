@@ -3,6 +3,7 @@ package xml_parsing;
 import org.w3c.dom.Node;
 
 import compile_time_settings.ControlPanelMonitorSettings;
+import compile_time_settings.FrameCacheSettings;
 import compile_time_settings.SlideShowPanelSettings;
 
 public class ParseSettings {
@@ -27,6 +28,11 @@ public class ParseSettings {
 			SlideShowPanelSettings.parseXMLNode( individual_node );
 		} else if( name.equalsIgnoreCase( ControlPanelMonitorSettings.XML_Name ) ) {
 			ControlPanelMonitorSettings.parseXMLNode( individual_node );
+		} else if( name.equalsIgnoreCase( FrameCacheSettings.XML_Name ) ) {
+			FrameCacheSettings.parseXMLNode( individual_node );
+		} else if( !name.startsWith( "#" ) ) {
+			System.err.println( "Settings has no match for " + name );
+			System.exit( 1 );
 		}
 	}
 

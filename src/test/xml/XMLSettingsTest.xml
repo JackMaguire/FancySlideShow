@@ -1,6 +1,6 @@
 <Settings>
-	<FrameCache load_caches="false" delete_caches="false">
-		<PrimaryNodeCache ratio="0.7"/>
+	<FrameCache load_caches="false" delete_caches="true">
+		<PrimaryNodeCache ratio="0.5"/>
 		<SecondaryNodeCache ratio="0" max_width="1" max_height="2"/>
 	</FrameCache>
 		
