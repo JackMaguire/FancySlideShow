@@ -18,12 +18,12 @@ public class SlideShowPanelSettings {
 
 	public static void parseXMLNode( Node xml_node ) {
 		final NamedNodeMap nodes = xml_node.getAttributes();
-		
+
 		final int n_elements = nodes.getLength();
 		for( int i = 0; i < n_elements; ++i ) {
 			final Node element = nodes.item( i );
-			System.out.println(  element.getNodeName() );
-			//TODO pick up from here please!
+			System.out.println( element.getNodeName() );
+			// TODO pick up from here please!
 		}
 	}
 }

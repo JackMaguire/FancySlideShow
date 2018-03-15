@@ -9,7 +9,8 @@ public class FrameRateMeasurer {
 	private final static long[] measurements_ = new long[ num_measurements ];
 	private static int id = 0;
 
-	public FrameRateMeasurer() {}
+	public FrameRateMeasurer() {
+	}
 
 	public static void measure() {
 		if( id < measurements_.length ) {

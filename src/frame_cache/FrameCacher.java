@@ -91,7 +91,7 @@ public class FrameCacher {
 				delete( c );
 		}
 	}
-	
+
 	private static void delete( File f ) {
 		if( f.isDirectory() ) {
 			for( File c : f.listFiles() )
@@ -99,7 +99,7 @@ public class FrameCacher {
 		}
 		f.deleteOnExit();
 	}
-	
+
 	private static class shutdown_hook extends Thread {
 		public void run() {
 			delete( new File( dirname ) );

@@ -28,7 +28,7 @@ public class FrameScript {
 	private String full_script_filename_ = "";
 	private String graph_script_filename_ = "";
 	private String settings_script_filename_ = "";
-	
+
 	public static void main( String[] args ) {
 		new FrameScript( args );
 	}
@@ -72,17 +72,17 @@ public class FrameScript {
 		for( int i = 0; i < sections.getLength(); ++i ) {
 			final Node section = sections.item( i );
 			if( section.getNodeName().equalsIgnoreCase( "FrameSpace" ) ) {
-				
+
 			}
 		}
 	}
-	
+
 	private void parseFrameSpaceNode( Node frame_space_node ) {
-		
+
 	}
 
 	private void parseSettingsNode( Node settings_node ) {
 		ParseSettings.parseSettingsNode( settings_node );
 	}
-	
+
 }

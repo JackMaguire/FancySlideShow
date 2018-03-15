@@ -14,19 +14,19 @@ public class TimerTest {
 		timer.start();
 		Thread.sleep( 1000 );
 		timer.stop();
-		
+
 		System.out.println( "---" );
-		
+
 		final Timer timer2 = new Timer( delay, new Thing2() );
 		timer2.start();
 		Thread.sleep( 1000 );
 		timer2.stop();
 	}
-	
+
 	private final static class Thing1 implements ActionListener {
 
 		private static long previous_ = System.currentTimeMillis();
-		
+
 		public void actionPerformed( ActionEvent e ) {
 			try {
 				Thread.sleep( 200 );
@@ -38,13 +38,13 @@ public class TimerTest {
 			System.out.println( System.currentTimeMillis() - previous_ );
 			previous_ = System.currentTimeMillis();
 		}
-		
+
 	}
-	
+
 	private final static class Thing2 extends Thread implements ActionListener {
 
 		private static long previous_ = System.currentTimeMillis();
-		
+
 		public void run() {
 			try {
 				Thread.sleep( 200 );
@@ -56,13 +56,13 @@ public class TimerTest {
 			System.out.println( System.currentTimeMillis() - previous_ );
 			previous_ = System.currentTimeMillis();
 		}
-		
+
 		public void actionPerformed( ActionEvent e ) {
 			Thread T = new Thing2();
 			T.start();
-			//start();
+			// start();
 		}
-		
+
 	}
 
 }
