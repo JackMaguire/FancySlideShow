@@ -1,7 +1,7 @@
 package control_panel;
 
 import frame_graph.FrameNode;
-import graph.GraphType;
+import graph.ConceptualGraphType;
 import graph.NodeType;
 
 public class EastPanelModel {
@@ -9,9 +9,9 @@ public class EastPanelModel {
 	private final CenterPanelModel parent_model_;
 
 	private final BottomSideModel bottom_model_;
-	private final GraphType graph_;
+	private final ConceptualGraphType graph_;
 
-	public EastPanelModel( CenterPanelModel model, GraphType graph ) {
+	public EastPanelModel( CenterPanelModel model, ConceptualGraphType graph ) {
 		parent_model_ = model;
 		graph_ = graph;
 		bottom_model_ = new BottomSideModel( graph_ );
@@ -35,9 +35,9 @@ public class EastPanelModel {
 		private int[] reverse_ints_ = new int[ 0 ];
 		private int rev_choice_ = -1;
 
-		private final GraphType graph_;
+		private final ConceptualGraphType graph_;
 
-		public BottomSideModel( GraphType graph ) {
+		public BottomSideModel( ConceptualGraphType graph ) {
 			graph_ = graph;
 		}
 

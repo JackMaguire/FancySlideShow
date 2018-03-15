@@ -5,7 +5,7 @@ package graph;
 import compile_time_settings.DebugToggles;
 import frame_graph.FrameGraph;
 
-public class ConceptualGraph implements GraphType {
+public class ConceptualGraph implements ConceptualGraphType {
 
 	private final NodeType[] nodes_;
 	private EdgeType[] edges_ = new EdgeType[ 0 ];

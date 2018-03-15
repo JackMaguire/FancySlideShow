@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import frame_graph.FrameGraph;
 
-public interface GraphType {
+public interface ConceptualGraphType {
 
 	NodeType getNode( int node_index );
 
