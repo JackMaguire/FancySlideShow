@@ -5,7 +5,7 @@
 			<Nodes>
 				titles with names starting with '_' will not be displayed in the control panel
 				<Node title="start" filename="Track1/0001.png" hard="true" notes="Good luck with your presentation, handsome!"/>
-				<Node title="branch" filename="Track1/0130.png" hard="soft" notes="this is the branch point">
+				<Node title="branch" filename="Track1/0130.png" hard="false" notes="this is the branch point">
 					<Notes line="You Can Have"/>
 					<Notes line="Multiple Lines"/>
 					<Notes line="Of Notes!"/>

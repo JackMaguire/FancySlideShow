@@ -5,6 +5,7 @@ import org.w3c.dom.NodeList;
 
 import applications.FrameScript;
 import conceptual_graph.ConceptualGraph;
+import conceptual_graph.ConceptualNode;
 import conceptual_graph.ConceptualNodeType;
 import settings.FrameCacheSettings;
 import test.SingleTest;
@@ -67,19 +68,35 @@ public class DemoFrameGraphTest extends SingleTest {
 		is_valid |= diff( "num subgraphs", graph.numSubgraphs(), 1 );
 
 		// Nodes
-		final ConceptualNodeType node0 = graph.getNode( 0 );
-		is_valid |= diff( "node 0 notes", node0.getNotes(), "Good luck with your presentation, handsome!" );
+		{//adding scopes to protect myself from copy/paste errors
+			final ConceptualNodeType node0 = graph.getNode( 0 );
+			is_valid |= diff( "node 0 notes", node0.getNotes(), "Good luck with your presentation, handsome!" );
+			is_valid |= diff( "node 0 is hard", node0.is_hard(), true );
+			is_valid |= diff( "node 0 subgraph", node0.subgraph(), 0 );
+		}
 
-		final ConceptualNodeType node1 = graph.getNode( 1 );
-		is_valid |= diff( "node 1 notes", node1.getNotes(),
-				"this is the branch point\n\nYou Can Have\n\nMultiple Lines\n\nOf Notes!" );
+		{
+			final ConceptualNodeType node1 = graph.getNode( 1 );
+			is_valid |= diff( "node 1 notes", node1.getNotes(),
+					"this is the branch point\n\nYou Can Have\n\nMultiple Lines\n\nOf Notes!" );
+			is_valid |= diff( "node 1 is hard", node1.is_hard(), false );
+			is_valid |= diff( "node 1 subgraph", node1.subgraph(), 0 );
+		}
 
-		final ConceptualNodeType node2 = graph.getNode( 2 );
-		is_valid |= diff( "node 2 notes", node2.getNotes(), "" );
+		{
+			final ConceptualNodeType node2 = graph.getNode( 2 );
+			is_valid |= diff( "node 2 notes", node2.getNotes(), "" );
+			is_valid |= diff( "node 2 is hard", node2.is_hard(), true );
+			is_valid |= diff( "node 2 subgraph", node2.subgraph(), 0 );
+		}
 
-		final ConceptualNodeType node3 = graph.getNode( 3 );
-		is_valid |= diff( "node 3 notes", node3.getNotes(), "only note is out of line" );
-
+		{
+			final ConceptualNodeType node3 = graph.getNode( 3 );
+			is_valid |= diff( "node 3 notes", node3.getNotes(), "only note is out of line" );
+			is_valid |= diff( "node 3 is hard", node3.is_hard(), true );
+			is_valid |= diff( "node 3 subgraph", node3.subgraph(), 0 );
+		}
+		
 		return is_valid;
 	}
 
