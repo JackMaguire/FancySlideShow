@@ -12,7 +12,7 @@
 				</Node>
 				<Node title="end1" filename="Track1/0250.png" hard="true"/>
 				<Node title="end2" filename="Track2/0250.png" hard="true">
-					<Notes line="only note is in line"/>
+					<Notes line="only note is out of line"/>
 				</Node>
 			</Nodes>
 			

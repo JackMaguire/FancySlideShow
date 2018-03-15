@@ -131,7 +131,8 @@ public class FrameSpaceParser {
 			final Node attribute = attribute_nodes.item( i );
 			final String attribute_name = attribute.getNodeName();
 			final String value = attribute.getNodeValue();
-
+			//System.out.println( attribute_name + " " + value );
+			
 			if( attribute_name.equalsIgnoreCase( "title" ) ) {
 				title = value;
 			} else if( attribute_name.equalsIgnoreCase( "filename" ) ) {
@@ -162,7 +163,7 @@ public class FrameSpaceParser {
 				if( notes.length() != 0 ) {
 					notes += "\n\n";
 				}
-				notes += element.getAttributes().getNamedItem( "line" );
+				notes += element.getAttributes().getNamedItem( "line" ).getNodeValue();
 				// notes += "\n\n" + element.getNodeValue();
 			}
 		}
