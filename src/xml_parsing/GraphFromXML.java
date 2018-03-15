@@ -16,22 +16,33 @@ public class GraphFromXML {
 			System.err.println( "Incorrect Node Passed to GraphFromXML" );
 		}
 
-		//final int num_frame_spaces_ = countFrameSpaces( graph_node );
+		// final int num_frame_spaces_ = countFrameSpaces( graph_node );
 		final ArrayList< FrameSpaceParser > frame_spaces = extractFrameSpaces( graph_node );
-		if( frame_spaces.size() == 0 ) {
+		final int num_frame_spaces = frame_spaces.size();
+		if( num_frame_spaces == 0 ) {
 			throw new XMLParsingException( "No Frame Spaces Declared" );
 		}
-		
+
 		int total_num_nodes = 0;
-		int[] offset_for_node = new int[ frame_spaces.size() ];
+		int[] offset_for_node = new int[ num_frame_spaces ];
 		offset_for_node[ 0 ] = 0;
-		
-		return null;
+		for( int i = 0; i < num_frame_spaces; ++i ) {
+			offset_for_node[ i ] = total_num_nodes;
+			total_num_nodes += frame_spaces.get( i ).numNodes();
+		}
+
+		ConceptualGraph graph = new ConceptualGraph( total_num_nodes, num_frame_spaces );
+		for( int i = 0; i < num_frame_spaces; ++i )
+			frame_spaces.get( i ).applyToGraph( graph, offset_for_node[ i ] );
+
+		// TODO InterFrameSpace Edges
+
+		return graph;
 	}
 
-	private final static ArrayList< FrameSpaceParser > extractFrameSpaces( Node graph_node ){
+	private final static ArrayList< FrameSpaceParser > extractFrameSpaces( Node graph_node ) {
 		ArrayList< FrameSpaceParser > list = new ArrayList< FrameSpaceParser >();
-		
+
 		final NodeList elements = graph_node.getChildNodes();
 		final int n = elements.getLength();
 		for( int i = 0; i < n; ++i ) {
@@ -40,10 +51,10 @@ public class GraphFromXML {
 				list.add( new FrameSpaceParser( element ) );
 			}
 		}
-		
+
 		return list;
 	}
-	
+
 	private final static int countFrameSpaces( Node graph_node ) {
 		int count = 0;
 
