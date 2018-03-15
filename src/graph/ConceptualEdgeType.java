@@ -3,7 +3,7 @@ package graph;
 import frame_graph.FrameGraph;
 
 //Comparable methods will only be used for sorting!
-public interface EdgeType extends Comparable< EdgeType > {
+public interface ConceptualEdgeType extends Comparable< ConceptualEdgeType > {
 
 	String name();
 

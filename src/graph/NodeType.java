@@ -18,13 +18,13 @@ public interface NodeType {
 	void setIndex( int index, int subgraph );
 
 	// Graph Logic
-	EdgeType[] getUpstreamEdges();
+	ConceptualEdgeType[] getUpstreamEdges();
 
-	EdgeType[] getDownstreamEdges();
+	ConceptualEdgeType[] getDownstreamEdges();
 
-	void addUpstreamEdge( EdgeType E );
+	void addUpstreamEdge( ConceptualEdgeType E );
 
-	void addDownstreamEdge( EdgeType E );
+	void addDownstreamEdge( ConceptualEdgeType E );
 
 	void toggle_hardness();
 

@@ -24,8 +24,8 @@ public class Node implements NodeType {
 
 	private boolean hard_;
 
-	private EdgeType[] upstream_edges_ = new EdgeType[ 0 ];
-	private EdgeType[] downstream_edges_ = new EdgeType[ 0 ];
+	private ConceptualEdgeType[] upstream_edges_ = new ConceptualEdgeType[ 0 ];
+	private ConceptualEdgeType[] downstream_edges_ = new ConceptualEdgeType[ 0 ];
 
 	private String image_filename_;
 	private BufferedImage thumbnail_image_;
@@ -112,12 +112,12 @@ public class Node implements NodeType {
 	}
 
 	@Override
-	public EdgeType[] getUpstreamEdges() {
+	public ConceptualEdgeType[] getUpstreamEdges() {
 		return upstream_edges_;
 	}
 
 	@Override
-	public EdgeType[] getDownstreamEdges() {
+	public ConceptualEdgeType[] getDownstreamEdges() {
 		return downstream_edges_;
 	}
 
@@ -127,8 +127,8 @@ public class Node implements NodeType {
 	}
 
 	@Override
-	public void addUpstreamEdge( EdgeType E ) {
-		EdgeType[] upstream_edges_new = new EdgeType[ upstream_edges_.length + 1 ];
+	public void addUpstreamEdge( ConceptualEdgeType E ) {
+		ConceptualEdgeType[] upstream_edges_new = new ConceptualEdgeType[ upstream_edges_.length + 1 ];
 		for( int i = 0; i < upstream_edges_.length; ++i ) {
 			upstream_edges_new[ i ] = upstream_edges_[ i ];
 		}
@@ -138,8 +138,8 @@ public class Node implements NodeType {
 	}
 
 	@Override
-	public void addDownstreamEdge( EdgeType E ) {
-		EdgeType[] downstream_edges_new = new EdgeType[ downstream_edges_.length + 1 ];
+	public void addDownstreamEdge( ConceptualEdgeType E ) {
+		ConceptualEdgeType[] downstream_edges_new = new ConceptualEdgeType[ downstream_edges_.length + 1 ];
 		for( int i = 0; i < downstream_edges_.length; ++i ) {
 			downstream_edges_new[ i ] = downstream_edges_[ i ];
 		}

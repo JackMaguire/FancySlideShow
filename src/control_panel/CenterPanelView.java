@@ -51,7 +51,7 @@ public class CenterPanelView extends JPanelWithKeyListener {
 					all_nodes[ i ].name() );
 		}
 
-		EdgeType[] all_edges = graph.getEdges();
+		ConceptualEdgeType[] all_edges = graph.getEdges();
 		lines_ = new EdgeLine[ all_edges.length ];
 		for( int i = 0; i < all_edges.length; ++i ) {
 			int index0 = all_edges[ i ].outgoingNodeIndex();
@@ -107,7 +107,7 @@ public class CenterPanelView extends JPanelWithKeyListener {
 		}
 
 		for( int i = 0; i < lines_.length; ++i ) {
-			EdgeType[] all_edges = model_.getGraph().getEdges();
+			ConceptualEdgeType[] all_edges = model_.getGraph().getEdges();
 			/*Grrr Eclipse reformatted this
 			 * if( all_edges[ i ].index() == next_edge_index ) { lines_[ i ].setColor(
 			 * current_ ); } else if( i == selected_edge_index ) { lines_[ i ].setColor(

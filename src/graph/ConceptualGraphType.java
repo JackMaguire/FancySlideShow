@@ -12,11 +12,11 @@ public interface ConceptualGraphType {
 
 	NodeType[] getNodes();
 
-	EdgeType getEdge( int outgoing_node_index, int incoming_node_index );
+	ConceptualEdgeType getEdge( int outgoing_node_index, int incoming_node_index );
 
-	void addEdge( EdgeType edge );
+	void addEdge( ConceptualEdgeType edge );
 
-	EdgeType[] getEdges();
+	ConceptualEdgeType[] getEdges();
 
 	FrameGraph createFrameGraph();
 

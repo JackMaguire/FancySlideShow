@@ -3,7 +3,7 @@ package graph;
 import frame_graph.FrameGraph;
 import frame_graph.FrameNode;
 
-public class ConceptualEdge implements EdgeType {
+public class ConceptualEdge implements ConceptualEdgeType {
 
 	final String name_;
 	final int outgoing_node_index_;
@@ -50,7 +50,7 @@ public class ConceptualEdge implements EdgeType {
 	}
 
 	@Override
-	public int compareTo( EdgeType other ) {
+	public int compareTo( ConceptualEdgeType other ) {
 		// first compare by outgoing node, then incoming node.
 		final int first_comparison = outgoing_node_index_ - other.outgoingNodeIndex();
 		if( first_comparison == 0 ) {

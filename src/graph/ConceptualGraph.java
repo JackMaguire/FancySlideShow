@@ -8,7 +8,7 @@ import frame_graph.FrameGraph;
 public class ConceptualGraph implements ConceptualGraphType {
 
 	private final NodeType[] nodes_;
-	private EdgeType[] edges_ = new EdgeType[ 0 ];
+	private ConceptualEdgeType[] edges_ = new ConceptualEdgeType[ 0 ];
 
 	// private final ArrayList< ArrayList< Integer > > subgraph_ids_;
 	private final int[] num_nodes_in_subgraph_;
@@ -78,16 +78,16 @@ public class ConceptualGraph implements ConceptualGraphType {
 	}
 
 	@Override
-	public void addEdge( EdgeType edge ) {
+	public void addEdge( ConceptualEdgeType edge ) {
 		nodes_[ edge.incomingNodeIndex() ].addUpstreamEdge( edge );
 		nodes_[ edge.outgoingNodeIndex() ].addDownstreamEdge( edge );
 		registerEdge( edge );
 	}
 
 	@Override
-	public EdgeType getEdge( int outgoing_node_index, int incoming_node_index ) {
-		EdgeType[] edges = nodes_[ outgoing_node_index ].getDownstreamEdges();
-		for( EdgeType edge : edges ) {
+	public ConceptualEdgeType getEdge( int outgoing_node_index, int incoming_node_index ) {
+		ConceptualEdgeType[] edges = nodes_[ outgoing_node_index ].getDownstreamEdges();
+		for( ConceptualEdgeType edge : edges ) {
 			if( edge.incomingNodeIndex() == incoming_node_index ) {
 				return edge;
 			}
@@ -100,12 +100,12 @@ public class ConceptualGraph implements ConceptualGraphType {
 	}
 
 	@Override
-	public EdgeType[] getEdges() {
+	public ConceptualEdgeType[] getEdges() {
 		return edges_;
 	}
 
-	private void registerEdge( EdgeType E ) {
-		EdgeType[] edges_new = new EdgeType[ edges_.length + 1 ];
+	private void registerEdge( ConceptualEdgeType E ) {
+		ConceptualEdgeType[] edges_new = new ConceptualEdgeType[ edges_.length + 1 ];
 		for( int i = 0; i < edges_.length; ++i ) {
 			edges_new[ i ] = edges_[ i ];
 		}
@@ -122,7 +122,7 @@ public class ConceptualGraph implements ConceptualGraphType {
 			node.applyToFrameGraph( fg );
 		}
 
-		for( EdgeType edge : edges_ ) {
+		for( ConceptualEdgeType edge : edges_ ) {
 			edge.applyToFrameGraph( fg );
 		}
 

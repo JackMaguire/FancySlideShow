@@ -7,10 +7,10 @@ public class CenterPanelModel {
 	private ConceptualGraph graph_;
 
 	private NodeType current_node_;
-	private EdgeType next_edge_;
+	private ConceptualEdgeType next_edge_;
 
 	private NodeType selected_node_;
-	private EdgeType selected_edge_;
+	private ConceptualEdgeType selected_edge_;
 	private boolean node_was_selected_more_recently_ = true;
 
 	public CenterPanelModel( ConceptualGraph graph ) {
@@ -25,11 +25,11 @@ public class CenterPanelModel {
 		return graph_;
 	}
 
-	public EdgeType nextEdge() {
+	public ConceptualEdgeType nextEdge() {
 		return next_edge_;
 	}
 
-	public void setNextEdge( EdgeType edge ) {
+	public void setNextEdge( ConceptualEdgeType edge ) {
 		next_edge_ = edge;
 	}
 
@@ -54,11 +54,11 @@ public class CenterPanelModel {
 		selected_node_ = node;
 	}
 
-	public EdgeType selectedEdge() {
+	public ConceptualEdgeType selectedEdge() {
 		return selected_edge_;
 	}
 
-	public void setSelectedEdge( EdgeType edge ) {
+	public void setSelectedEdge( ConceptualEdgeType edge ) {
 		node_was_selected_more_recently_ = false;
 		selected_edge_ = edge;
 	}
@@ -67,7 +67,7 @@ public class CenterPanelModel {
 		setSelectedNode( node );
 	}
 
-	public void select( EdgeType edge ) {
+	public void select( ConceptualEdgeType edge ) {
 		setSelectedEdge( edge );
 	}
 
