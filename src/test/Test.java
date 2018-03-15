@@ -2,6 +2,7 @@ package test;
 
 import java.util.ArrayList;
 
+import test.xml.DemoFrameGraphTest;
 import test.xml.XMLSettingsTest;
 
 public class Test {
@@ -25,6 +26,7 @@ public class Test {
 
 	private static void addTests() {
 		tests.add( new XMLSettingsTest() );
+		tests.add( new DemoFrameGraphTest() );
 	}
 
 }
