@@ -1,12 +1,12 @@
 <Settings>
-	<FrameCache load_caches="false" delete_caches="true">
-		<PrimaryNodeCache ratio="1.0" max_width="1920" max_height="1080"/>
-		<SecondaryNodeCache ratio="0" max_width="1920" max_height="1080"/>
+	<FrameCache load_caches="false" delete_caches="false">
+		<PrimaryNodeCache ratio="0.7"/>
+		<SecondaryNodeCache ratio="0" max_width="1" max_height="2"/>
 	</FrameCache>
 		
 	<SlideShowPanel monitor="7" fps="1">
 		<Background r="1" g="0" b="255"/>
 	</SlideShowPanel>
 		
-	<ControlPanelMonitor monitor="0" width="1440" height="880" east_width="250" west_width="250"/>
+	<ControlPanelMonitor monitor="10" width="14" height="8" east_width="2" west_width="5"/>
 </Settings>
