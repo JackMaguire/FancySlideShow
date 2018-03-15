@@ -5,7 +5,7 @@ import java.awt.GraphicsEnvironment;
 import java.awt.image.BufferedImage;
 
 import compile_time_settings.DebugToggles;
-import compile_time_settings.PerformanceSettings;
+import compile_time_settings.FrameCacheSettings;
 import compile_time_settings.SlideShowPanelSettings;
 import frame_cache.FrameCacher;
 import graph.Node;
@@ -51,16 +51,16 @@ public class FrameNode {
 	public void setImageFilename( String filename ) {
 		image_filename_ = filename;
 
-		final double ratio = ( IS_PRIMARY ? PerformanceSettings.PRIMARY_NODE_CACHE_RATIO
-				: PerformanceSettings.SECONDARY_NODE_CACHE_RATIO );
+		final double ratio = ( IS_PRIMARY ? FrameCacheSettings.PRIMARY_NODE_CACHE_RATIO
+				: FrameCacheSettings.SECONDARY_NODE_CACHE_RATIO );
 
 		if( ratio == 1.0 )
 			return;
-		else if( PerformanceSettings.LOAD_CACHES ) {
+		else if( FrameCacheSettings.LOAD_CACHES ) {
 			image_filename_ = FrameCacher.getInstance().nextFilename( true );
 		} else if( ratio == 0.0 ) {
-			final int width = ( IS_PRIMARY ? PerformanceSettings.PRI_MAX_WIDTH : PerformanceSettings.SEC_MAX_WIDTH );
-			final int height = ( IS_PRIMARY ? PerformanceSettings.PRI_MAX_HEIGHT : PerformanceSettings.SEC_MAX_HEIGHT );
+			final int width = ( IS_PRIMARY ? FrameCacheSettings.PRI_MAX_WIDTH : FrameCacheSettings.SEC_MAX_WIDTH );
+			final int height = ( IS_PRIMARY ? FrameCacheSettings.PRI_MAX_HEIGHT : FrameCacheSettings.SEC_MAX_HEIGHT );
 
 			BufferedImage image = image();
 			final int image_width = image.getWidth();

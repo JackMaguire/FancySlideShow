@@ -3,7 +3,7 @@ package compile_time_settings;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 
-public class PerformanceSettings {
+public class FrameCacheSettings {
 
 	public final static String XML_Name = "FrameCache";
 

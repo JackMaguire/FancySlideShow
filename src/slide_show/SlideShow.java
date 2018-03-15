@@ -6,7 +6,7 @@ import javax.swing.*;
 
 import compile_time_settings.ControlPanelMonitorSettings;
 import compile_time_settings.DebugToggles;
-import compile_time_settings.PerformanceSettings;
+import compile_time_settings.FrameCacheSettings;
 import compile_time_settings.SlideShowPanelSettings;
 import control_panel.*;
 import engine.Engine;

@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import compile_time_settings.PerformanceSettings;
+import compile_time_settings.FrameCacheSettings;
 
 public class FrameCacher {
 
@@ -29,7 +29,7 @@ public class FrameCacher {
 
 	private FrameCacher() {
 
-		if( !PerformanceSettings.LOAD_CACHES ) {
+		if( !FrameCacheSettings.LOAD_CACHES ) {
 			File dir = new File( dirname );
 			if( dirExists( dirname ) ) {
 				deleteEverythingInside( dir );
@@ -37,7 +37,7 @@ public class FrameCacher {
 				dir.mkdir();
 			}
 		}
-		if( PerformanceSettings.DELETE_CACHES ) {
+		if( FrameCacheSettings.DELETE_CACHES ) {
 			Runtime.getRuntime().addShutdownHook( new shutdown_hook() );
 		}
 
@@ -51,7 +51,7 @@ public class FrameCacher {
 	}
 
 	public String createSmallerVersionPlease( BufferedImage original, double scale ) {
-		if( PerformanceSettings.LOAD_CACHES ) {
+		if( FrameCacheSettings.LOAD_CACHES ) {
 			final String next_filename_temp = nextFilename( true );
 			return next_filename_temp;
 		}
@@ -62,7 +62,7 @@ public class FrameCacher {
 	}
 
 	public String createSmallerVersionPlease( BufferedImage original, int new_width, int new_height ) {
-		if( PerformanceSettings.LOAD_CACHES ) {
+		if( FrameCacheSettings.LOAD_CACHES ) {
 			final String next_filename_temp = nextFilename( true );
 			return next_filename_temp;
 		}
