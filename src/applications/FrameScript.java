@@ -67,21 +67,22 @@ public class FrameScript {
 			System.exit( 1 );
 		}
 
-		final NodeList sections = doc.getChildNodes();
-		for( int i = 0; i < sections.getLength(); ++i ) {
-			final Node section = sections.item( i );
-			if( section.getNodeName().equalsIgnoreCase( "FrameSpace" ) ) {
-
+		final NodeList elements = doc.getChildNodes();
+		for( int i = 0; i < elements.getLength(); ++i ) {
+			final Node element = elements.item( i );
+			final String element_name = element.getNodeName();
+			
+			if( element_name.equalsIgnoreCase( ParseSettings.TOP_LEVEL_NAME ) ) {
+				ParseSettings.parseSettingsNode( element );
+			} else if( !element_name.startsWith( "#" ) ) {
+				System.err.println( "No top-level match for " + element_name );
+				System.exit( 1 );
 			}
 		}
 	}
 
 	private void parseFrameSpaceNode( Node frame_space_node ) {
 
-	}
-
-	private void parseSettingsNode( Node settings_node ) {
-		ParseSettings.parseSettingsNode( settings_node );
 	}
 
 }
