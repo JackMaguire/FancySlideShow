@@ -32,6 +32,8 @@ public interface ConceptualNodeType {
 
 	void applyToFrameGraph( FrameGraph fg );
 
+	public String getImageFilename();
+	
 	FrameNode getFrameNode();
 
 	// Image Logic
