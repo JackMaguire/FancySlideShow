@@ -40,7 +40,7 @@ public class GraphFromXML {
 		return graph;
 	}
 
-	private final static ArrayList< FrameSpaceParser > extractFrameSpaces( Node graph_node ) {
+	private final static ArrayList< FrameSpaceParser > extractFrameSpaces( Node graph_node ) throws XMLParsingException {
 		ArrayList< FrameSpaceParser > list = new ArrayList< FrameSpaceParser >();
 
 		final NodeList elements = graph_node.getChildNodes();
