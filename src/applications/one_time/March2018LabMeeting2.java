@@ -74,8 +74,10 @@ public class March2018LabMeeting2 {
 		int node_id = offset;
 		final String dirname = "MCHBNetTitle";
 
-		graph.setNode( new ConceptualNode( "Title", false, getFilename( dirname, 1 ), "Good Luck!" ), node_id++, TITLE_SUBGRAPH );
-		graph.setNode( new ConceptualNode( "Title_end", true, getFilename( dirname, 340 ), "" ), node_id++, TITLE_SUBGRAPH );
+		graph.setNode( new ConceptualNode( "Title", false, getFilename( dirname, 1 ), "Good Luck!" ), node_id++,
+				TITLE_SUBGRAPH );
+		graph.setNode( new ConceptualNode( "Title_end", true, getFilename( dirname, 340 ), "" ), node_id++,
+				TITLE_SUBGRAPH );
 
 		int num_frames = 2;
 
@@ -154,9 +156,12 @@ public class March2018LabMeeting2 {
 		graph.setNode( new ConceptualNode( "StageProtocol", false, getFilename( dir1, 56 ), "" ), node_id++, MRS_SUBGRAPH );
 
 		// 3-5
-		graph.setNode( new ConceptualNode( "StageProtocol_I", false, getFilename( dir1, 57 ), "" ), node_id++, MRS_SUBGRAPH );
-		graph.setNode( new ConceptualNode( "StageProtocol_II", false, getFilename( dir1, 58 ), "" ), node_id++, MRS_SUBGRAPH );
-		graph.setNode( new ConceptualNode( "StageProtocol_III", true, getFilename( dir1, 59 ), "" ), node_id++, MRS_SUBGRAPH );
+		graph.setNode( new ConceptualNode( "StageProtocol_I", false, getFilename( dir1, 57 ), "" ), node_id++,
+				MRS_SUBGRAPH );
+		graph.setNode( new ConceptualNode( "StageProtocol_II", false, getFilename( dir1, 58 ), "" ), node_id++,
+				MRS_SUBGRAPH );
+		graph.setNode( new ConceptualNode( "StageProtocol_III", true, getFilename( dir1, 59 ), "" ), node_id++,
+				MRS_SUBGRAPH );
 
 		// 6-9
 		// graph.setNode( new Node( "StageProtocol", false, getFilename( dir1, 60 ), ""

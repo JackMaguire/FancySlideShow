@@ -6,8 +6,8 @@ import conceptual_graph.*;
 
 public class GraphFromXML {
 
-	public static ConceptualGraph parse( Node individual_node ){
+	public static ConceptualGraph parse( Node individual_node ) {
 		return null;
 	}
-	
+
 }
