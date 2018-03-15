@@ -15,8 +15,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import compile_time_settings.DebugToggles;
+import conceptual_graph.ConceptualNodeType;
 import control_panel.EastPanelModel.BottomSideModel;
-import graph.ConceptualNodeType;
 import compile_time_settings.ControlPanelMonitorSettings;
 
 public class EastPanelView extends JPanel {

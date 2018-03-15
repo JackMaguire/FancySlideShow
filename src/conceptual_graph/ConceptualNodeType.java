@@ -1,4 +1,4 @@
-package graph;
+package conceptual_graph;
 
 import java.awt.image.BufferedImage;
 

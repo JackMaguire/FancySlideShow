@@ -1,8 +1,8 @@
 package control_panel;
 
+import conceptual_graph.ConceptualGraphType;
+import conceptual_graph.ConceptualNodeType;
 import frame_graph.FrameNode;
-import graph.ConceptualGraphType;
-import graph.ConceptualNodeType;
 
 public class EastPanelModel {
 

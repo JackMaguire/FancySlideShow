@@ -1,6 +1,6 @@
 package frame_graph;
 
-import graph.ConceptualNodeType;
+import conceptual_graph.ConceptualNodeType;
 
 public class FrameGraph {
 

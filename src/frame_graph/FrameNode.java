@@ -7,9 +7,9 @@ import java.awt.image.BufferedImage;
 import compile_time_settings.DebugToggles;
 import compile_time_settings.FrameCacheSettings;
 import compile_time_settings.SlideShowPanelSettings;
+import conceptual_graph.ConceptualNode;
+import conceptual_graph.ConceptualNodeType;
 import frame_cache.FrameCacher;
-import graph.ConceptualNode;
-import graph.ConceptualNodeType;
 import slide_show.SlideShowPanel;
 
 public class FrameNode {

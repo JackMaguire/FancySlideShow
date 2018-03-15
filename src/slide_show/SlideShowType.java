@@ -1,6 +1,6 @@
 package slide_show;
 
-import graph.ConceptualGraph;
+import conceptual_graph.ConceptualGraph;
 
 public interface SlideShowType {
 

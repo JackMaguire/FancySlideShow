@@ -2,7 +2,7 @@ package xml_parsing;
 
 import org.w3c.dom.Node;
 
-import graph.*;
+import conceptual_graph.*;
 
 public class GraphFromXML {
 

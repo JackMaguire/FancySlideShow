@@ -10,7 +10,7 @@ import java.awt.event.ItemListener;
 import javax.swing.JComboBox;
 
 import compile_time_settings.DebugToggles;
-import graph.*;
+import conceptual_graph.*;
 
 public class CenterPanelView extends JPanelWithKeyListener {
 

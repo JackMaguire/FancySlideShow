@@ -8,10 +8,10 @@ import compile_time_settings.ControlPanelMonitorSettings;
 import compile_time_settings.DebugToggles;
 import compile_time_settings.FrameCacheSettings;
 import compile_time_settings.SlideShowPanelSettings;
+import conceptual_graph.*;
 import control_panel.*;
 import engine.Engine;
 import frame_graph.FrameGraph;
-import graph.*;
 
 public class SlideShow implements SlideShowType {
 

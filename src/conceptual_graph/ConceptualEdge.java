@@ -1,4 +1,4 @@
-package graph;
+package conceptual_graph;
 
 import frame_graph.FrameGraph;
 import frame_graph.FrameNode;

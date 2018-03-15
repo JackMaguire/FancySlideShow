@@ -4,7 +4,7 @@ import slide_show.*;
 
 import java.io.File;
 
-import graph.*;
+import conceptual_graph.*;
 
 public class Demo {
 

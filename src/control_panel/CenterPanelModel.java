@@ -1,6 +1,6 @@
 package control_panel;
 
-import graph.*;
+import conceptual_graph.*;
 
 public class CenterPanelModel {
 

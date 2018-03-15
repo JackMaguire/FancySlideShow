@@ -1,7 +1,7 @@
 package transitions;
 
-import graph.ConceptualEdgeType;
-import graph.ConceptualNodeType;
+import conceptual_graph.ConceptualEdgeType;
+import conceptual_graph.ConceptualNodeType;
 
 public class ZoomInTransition {
 

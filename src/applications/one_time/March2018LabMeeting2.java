@@ -1,8 +1,8 @@
 package applications.one_time;
 
-import graph.ConceptualEdge;
-import graph.ConceptualGraph;
-import graph.ConceptualNode;
+import conceptual_graph.ConceptualEdge;
+import conceptual_graph.ConceptualGraph;
+import conceptual_graph.ConceptualNode;
 import slide_show.SlideShow;
 
 public class March2018LabMeeting2 {

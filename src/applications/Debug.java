@@ -1,7 +1,7 @@
 package applications;
 
+import conceptual_graph.*;
 import slide_show.*;
-import graph.*;
 
 public class Debug {
 

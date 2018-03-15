@@ -6,7 +6,7 @@ import java.awt.GridLayout;
 import javax.swing.JTextArea;
 
 import compile_time_settings.ControlPanelMonitorSettings;
-import graph.ConceptualNodeType;
+import conceptual_graph.ConceptualNodeType;
 
 public class WestPanelView extends JPanelWithKeyListener {
 
