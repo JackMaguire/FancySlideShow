@@ -4,8 +4,8 @@
 		<SecondaryNodeCache ratio="0" max_width="1920" max_height="1080"/>
 	</FrameCache>
 		
-	<SlideShowPanel monitor="0" fps="24">
-		<Background r="0" g="0" b="0"/>
+	<SlideShowPanel monitor="7" fps="1">
+		<Background r="1" g="0" b="255"/>
 	</SlideShowPanel>
 		
 	<ControlPanelMonitor monitor="0" width="1440" height="880" east_width="250" west_width="250"/>

@@ -1,13 +1,14 @@
 package test.xml;
 
+import java.awt.Color;
 import java.io.File;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
 
+import compile_time_settings.SlideShowPanelSettings;
 import test.SingleTest;
 import xml_parsing.ParseSettings;
 
@@ -36,11 +37,30 @@ public class XMLSettingsTest implements SingleTest {
 			return false;
 		}
 		ParseSettings.parseSettingsNode( doc.getDocumentElement() );
-		return true;
+		return validate();
+	}
+
+	private boolean validate() {
+		boolean is_valid = true;
+
+		Color bg = SlideShowPanelSettings.BACKGROUND;
+		is_valid |= diff( "BACKGROUND.getRed()", bg.getRed(), 1 );
+		is_valid |= diff( "BACKGROUND.getGreen()", bg.getGreen(), 0 );
+		is_valid |= diff( "BACKGROUND.getBlue()", bg.getBlue(), 255 );
+
+		return is_valid;
 	}
 
 	private void p( String s ) {
-		System.out.println( "test.XMLTest: " + s );
+		System.err.println( "test.XMLTest: " + s );
+	}
+
+	private boolean diff( String name, int value, int intended_value ) {
+		if( value != intended_value ) {
+			p( name + " is " + value + " instread of " + intended_value );
+			return false;
+		}
+		return true;
 	}
 
 	@Override

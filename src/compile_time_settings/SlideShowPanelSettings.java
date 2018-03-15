@@ -4,6 +4,7 @@ import java.awt.Color;
 
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class SlideShowPanelSettings {
 
@@ -17,25 +18,55 @@ public class SlideShowPanelSettings {
 	// public final static int SCALE_PIC = true;
 
 	public static int FPS = 24;
-	
-	public static void parseXMLNode( Node xml_node ) {
-		
-		//Attributes
-		final NamedNodeMap nodes = xml_node.getAttributes();
 
-		final int n_elements = nodes.getLength();
+	public static void parseXMLNode( Node xml_node ) {
+
+		// Attributes
+		final NamedNodeMap attribute_nodes = xml_node.getAttributes();
+		final int n_attributes = attribute_nodes.getLength();
+		for( int i = 0; i < n_attributes; ++i ) {
+			final Node attribute = attribute_nodes.item( i );
+			//System.out.println( attribute.getNodeName() + " " + attribute.getNodeValue() );
+			if( attribute.getNodeName().equalsIgnoreCase( "fps" ) ) {
+				FPS = Integer.parseInt( attribute.getNodeValue() );
+			} else if( attribute.getNodeName().equalsIgnoreCase( "monitor" ) ) {
+				MONITOR = Integer.parseInt( attribute.getNodeValue() );
+			}
+		}
+
+		final NodeList element_nodes = xml_node.getChildNodes();
+		final int n_elements = element_nodes.getLength();
 		for( int i = 0; i < n_elements; ++i ) {
-			final Node element = nodes.item( i );
-			System.out.println( element.getNodeName() + " " + element.getNodeValue() );
-			if( element.getNodeName().equalsIgnoreCase( "fps" ) ) {
-				FPS = Integer.parseInt( element.getNodeValue() );
-			} else if( element.getNodeName().equalsIgnoreCase( "monitor" ) ) {
-				MONITOR = Integer.parseInt( element.getNodeValue() );
+			final Node element = element_nodes.item( i );
+			final String element_name = element.getNodeName();
+			if( element_name.equalsIgnoreCase( "Background" ) ) {
+				parseColor( element );
 			}
 		}
 	}
-	
+
 	private static void parseColor( Node color_node ) {
-		// TODO pick up from here please!
+		int r = 0;
+		int g = 0;
+		int b = 0;
+
+		final NamedNodeMap nodes = color_node.getAttributes();
+		final int n_elements = nodes.getLength();
+		for( int i = 0; i < n_elements; ++i ) {
+			final Node element = nodes.item( i );
+			// System.out.println( element.getNodeName() + " " + element.getNodeValue() );
+			final String name = element.getNodeName();
+			final int value = Integer.parseInt( element.getNodeValue() );
+
+			if( name.equalsIgnoreCase( "r" ) || name.equalsIgnoreCase( "red" ) ) {
+				r = value;
+			} else if( name.equalsIgnoreCase( "g" ) || name.equalsIgnoreCase( "green" ) ) {
+				g = value;
+			} else if( name.equalsIgnoreCase( "b" ) || name.equalsIgnoreCase( "blue" ) ) {
+				b = value;
+			}
+		}
+		
+		BACKGROUND = new Color( r, g, b);
 	}
 }
