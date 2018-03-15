@@ -50,17 +50,6 @@ public class ConceptualEdge implements ConceptualEdgeType {
 	}
 
 	@Override
-	public int compareTo( ConceptualEdgeType other ) {
-		// first compare by outgoing node, then incoming node.
-		final int first_comparison = outgoing_node_index_ - other.outgoingNodeIndex();
-		if( first_comparison == 0 ) {
-			return incoming_node_index_ - other.incomingNodeIndex();
-		} else {
-			return first_comparison;
-		}
-	}
-
-	@Override
 	public int index() {
 		return index_;
 	}
