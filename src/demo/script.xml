@@ -1,35 +1,39 @@
 <FrameScript>
 	<Graph>
 	
-		<FrameSpace name="Title" filename_prefix="/path/to/frames/TitleFrames/">
+		<FrameSpace name="Main" filename_prefix="src/PicsForDemo/">
 			<Nodes>
 				titles with names starting with '_' will not be displayed in the control panel
-				<Node title="Title" filename="0001.png" hard="true" notes=""/>
-				<Node title="_Title_end" filename="0100.png" hard="true">
-					<Notes="Can"/>
-					<Notes="Have"/>
-					<Notes="Multiple Lines"/>
+				<Node title="start" filename="Track1/0001.png" hard="true" notes="Good luck with your presentation, handsome!"/>
+				<Node title="branch" filename="Track1/0130.png" hard="soft" notes="this is the branch point">
+					<Notes line="You Can Have"/>
+					<Notes line="Multiple Lines"/>
+					<Notes line="Of Notes!"/>
+				</Node>
+				<Node title="end1" filename="Track1/0250.png" hard="true"/>
+				<Node title="end2" filename="Track2/0250.png" hard="true">
+					<Notes line="only note is in line"/>
 				</Node>
 			</Nodes>
 			
 			<Edges>
-				<Edge title="" origin_node="Title" destination_node="_Title_end">
-					<FilenameRange first_num="2" last_num="99" filename="00@@.png" replace_char="@"/>
+				<Edge title="" origin_node="start" destination_node="branch">
+					<FilenameRange first_num="2" last_num="129" filename="Track1/0@@@.png" replace_char="@"/>
 				</Edge>
 				
-				<Edge title="" origin_node="Title" destination_node="Title">
-					You can append a frame to the front of a range. All elements get appended together
-					<Filename filename="0001.png"/>
-					<FilenameRange first_num="2" last_num="8" filename="00@@.png" replace_char="@"/>
+				<Edge title="" origin_node="branch" destination_node="end1">
+					You can append a frame to the front of a range (even though it does not make much sense here). All elements get appended together
+					<Filename filename="Track1/0131.png"/>
+					<FilenameRange first_num="132" last_num="249" filename="Track1/0@@@.png" replace_char="@"/>
+				</Edge>
+								
+				<Edge title="alternate" origin_node="branch" destination_node="end2">
+					<FilenameRange first_num="131" last_num="249" filename="Track2/0@@@.png" replace_char="@"/>
 				</Edge>
 				
-				<ZoomInTransition origin_node="Title" destination_node="_Title_end"/>
+				ZoomInTransition origin_node="Title" destination_node="_Title_end"
 			</Edges>
 		</FrameSpace>
-		
-		<InterFrameSpaceConnections>
-			<Edge title="" origin_frame_space="Title" origin_node="_Title_end" destination_frame_space="SomeOtherFrameSpace" destination_node="Something"/>
-		</InterFrameSpaceConnections>
 	
 	</Graph>
 </FrameScript>

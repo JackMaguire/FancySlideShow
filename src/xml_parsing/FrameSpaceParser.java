@@ -126,7 +126,11 @@ public class FrameSpaceParser {
 			} else if( attribute_name.equalsIgnoreCase( "filename" ) ) {
 				filename = filename_prefix_ + value;
 			} else if( attribute_name.equalsIgnoreCase( "notes" ) ) {
-				notes = value;
+				if( notes.length() != 0 ) {
+					notes += "\n\n";
+				}
+				notes += value;
+					
 			} else if( attribute_name.equalsIgnoreCase( "hard" ) ) {
 				hard = Boolean.parseBoolean( value );
 			} else if( !attribute_name.startsWith( "#" ) ) {
@@ -144,7 +148,11 @@ public class FrameSpaceParser {
 		for( int i = 0; i < n; ++i ) {
 			final Node element = elements.item( i );
 			if( element.getNodeName().equalsIgnoreCase( "Notes" ) ) {
-				notes += "\n" + element.getNodeValue();
+				if( notes.length() != 0 ) {
+					notes += "\n\n";
+				}
+				notes += element.getAttributes().getNamedItem( "line" );
+				//notes += "\n\n" + element.getNodeValue();
 			}
 		}
 
