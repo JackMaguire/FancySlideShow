@@ -10,7 +10,6 @@ import org.w3c.dom.Document;
 
 import compile_time_settings.SlideShowPanelSettings;
 import test.SingleTest;
-import test.SingleTestInterface;
 import xml_parsing.ParseSettings;
 
 public class XMLSettingsTest extends SingleTest {
@@ -48,7 +47,10 @@ public class XMLSettingsTest extends SingleTest {
 		is_valid |= diff( "BACKGROUND.getRed()", bg.getRed(), 1 );
 		is_valid |= diff( "BACKGROUND.getGreen()", bg.getGreen(), 0 );
 		is_valid |= diff( "BACKGROUND.getBlue()", bg.getBlue(), 255 );
-
+		
+		is_valid |= diff( "FPS", SlideShowPanelSettings.FPS, 1 );
+		is_valid |= diff( "MONITOR", SlideShowPanelSettings.MONITOR, 7 );
+		
 		return is_valid;
 	}
 
