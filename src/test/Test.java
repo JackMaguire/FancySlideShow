@@ -2,6 +2,8 @@ package test;
 
 import java.util.ArrayList;
 
+import test.xml.XMLSettingsTest;
+
 public class Test {
 
 	public static ArrayList< SingleTest > tests = new ArrayList< SingleTest >();

@@ -1,4 +1,4 @@
-package test;
+package test.xml;
 
 import java.io.File;
 
@@ -8,6 +8,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
 
+import test.SingleTest;
 import xml_parsing.ParseSettings;
 
 public class XMLSettingsTest implements SingleTest {
