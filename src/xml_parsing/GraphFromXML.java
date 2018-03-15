@@ -24,16 +24,16 @@ public class GraphFromXML {
 		}
 
 		int total_num_nodes = 0;
-		int[] offset_for_node = new int[ num_frame_spaces ];
-		offset_for_node[ 0 ] = 0;
+		int[] offset_for_frame_space = new int[ num_frame_spaces ];
+
 		for( int i = 0; i < num_frame_spaces; ++i ) {
-			offset_for_node[ i ] = total_num_nodes;
+			offset_for_frame_space[ i ] = total_num_nodes;
 			total_num_nodes += frame_spaces.get( i ).numNodes();
 		}
 
 		ConceptualGraph graph = new ConceptualGraph( total_num_nodes, num_frame_spaces );
 		for( int i = 0; i < num_frame_spaces; ++i )
-			frame_spaces.get( i ).applyToGraph( graph, offset_for_node[ i ] );
+			frame_spaces.get( i ).applyToGraph( graph, offset_for_frame_space[ i ] );
 
 		// TODO InterFrameSpace Edges
 

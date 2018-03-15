@@ -109,7 +109,7 @@ public class FrameSpaceParser {
 			final String element_name = element.getNodeName();
 
 			if( element_name.equalsIgnoreCase( "Node" ) ) {
-				nodes[ current_node ] = createConceptualNode( element, i );
+				nodes[ current_node ] = createConceptualNode( element, current_node );
 				++current_node;
 			}
 		}

@@ -117,12 +117,12 @@ public class ConceptualEdgeFactory {
 			final String attribute_name = attribute.getNodeName();
 			final String value = attribute.getNodeValue();
 
-			if( attribute_name.equalsIgnoreCase( "title" ) ) {
+			if( attribute_name.equalsIgnoreCase( "filename" ) ) {
 				frame_filenames.add( filename_prefix + value );
 				return;
 			} else if( !attribute_name.startsWith( "#" ) ) {
-				System.err.println( "Edge has no match for " + attribute_name );
-				throw new XMLParsingException( "Edge has no match for " + attribute_name );
+				System.err.println( "Filename has no match for " + attribute_name );
+				throw new XMLParsingException( "Filename has no match for " + attribute_name );
 			}
 		}
 
@@ -145,9 +145,9 @@ public class ConceptualEdgeFactory {
 			final String attribute_name = attribute.getNodeName();
 			final String value = attribute.getNodeValue();
 
-			if( attribute_name.equalsIgnoreCase( "begin" ) ) {
+			if( attribute_name.equalsIgnoreCase( "first_num" ) ) {
 				begin = Integer.parseInt( value );
-			} else if( attribute_name.equalsIgnoreCase( "end" ) ) {
+			} else if( attribute_name.equalsIgnoreCase( "last_num" ) ) {
 				end = Integer.parseInt( value );
 			} else if( attribute_name.equalsIgnoreCase( "filename" ) ) {
 				base_filename = value;
