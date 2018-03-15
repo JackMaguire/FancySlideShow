@@ -6,8 +6,8 @@ import frame_graph.FrameNode;
 public class ConceptualEdge implements ConceptualEdgeType {
 
 	final String name_;
-	final int outgoing_node_index_;
-	final int incoming_node_index_;
+	int outgoing_node_index_;
+	int incoming_node_index_;
 	int index_ = 0;
 
 	private String[] image_filenames_ = new String[ 0 ];
@@ -43,10 +43,18 @@ public class ConceptualEdge implements ConceptualEdgeType {
 	public int outgoingNodeIndex() {
 		return outgoing_node_index_;
 	}
+	
+	public void setOutgoingNodeIndex( int setting ) {
+		outgoing_node_index_ = setting;
+	}
 
 	@Override
 	public int incomingNodeIndex() {
 		return incoming_node_index_;
+	}
+	
+	public void setIncomingNodeIndex( int setting ) {
+		incoming_node_index_ = setting;
 	}
 
 	@Override

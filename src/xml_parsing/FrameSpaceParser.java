@@ -16,11 +16,14 @@ public class FrameSpaceParser {
 	private static String frame_space_name_ = "Untitled";
 	private static String filename_prefix_ = "";
 
-	private final ArrayList< ConceptualNode > nodes_ = new ArrayList< ConceptualNode >();
+	//private final ArrayList< ConceptualNode > nodes_ = new ArrayList< ConceptualNode >();
 	private final HashMap< String, Integer > local_index_for_node_title_ = new HashMap< String, Integer >();
 
 	private final Node frame_space_node_;
 
+	private ConceptualNode[] conceptual_nodes_ = null;
+	ArrayList< ConceptualEdge > conceptual_edges_ = null;
+	
 	public FrameSpaceParser( Node frame_space_node ) throws XMLParsingException {
 
 		frame_space_node_ = frame_space_node;
@@ -42,10 +45,6 @@ public class FrameSpaceParser {
 				throw new XMLParsingException( XML_Name + " has no match for " + attribute_name );
 			}
 		}
-
-	}
-
-	public void applyToGraph( ConceptualGraph graph, int node_offset ) throws XMLParsingException {
 
 		final NodeList elements = frame_space_node_.getChildNodes();
 		final int n = elements.getLength();
@@ -74,22 +73,28 @@ public class FrameSpaceParser {
 		} else if( edges_node == null ) {
 			throw new XMLParsingException( "No \'Edge\' element in framespace: " + frame_space_name_ );
 		}
+		
+		conceptual_nodes_ = createNodes( nodes_node );
+		conceptual_edges_ = createEdges( edges_node, 0 );//will add node_offsets in applyToGraph()
+	}
+
+	public void applyToGraph( ConceptualGraph graph, int node_offset ) throws XMLParsingException {
 
 		// Nodes
-		ConceptualNode[] conceptual_nodes = createNodes( nodes_node );
-		for( int i = 0; i < conceptual_nodes.length; ++i ) {
-			graph.setNode( conceptual_nodes[ i ], node_offset + i );
+		for( int i = 0; i < conceptual_nodes_.length; ++i ) {
+			graph.setNode( conceptual_nodes_[ i ], node_offset + i );
 		}
 
 		// Edges
-		ArrayList< ConceptualEdge > conceptual_edges = createEdges( edges_node, node_offset );
-		for( ConceptualEdge e : conceptual_edges ) {
+		for( ConceptualEdge e : conceptual_edges_ ) {
+			e.setIncomingNodeIndex( e.incomingNodeIndex() + node_offset );
+			e.setOutgoingNodeIndex( e.outgoingNodeIndex() + node_offset );
 			graph.addEdge( e );
 		}
 	}
 
 	public int numNodes() {
-		return nodes_.size();
+		return conceptual_nodes_.length;
 	}
 
 	private ConceptualNode[] createNodes( Node nodes_node ) throws XMLParsingException {
