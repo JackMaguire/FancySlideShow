@@ -159,8 +159,7 @@ public class FrameSpaceParser {
 		return con_node;
 	}
 
-	private ArrayList< ConceptualEdge > createEdges( Node edges_node, ConceptualGraph graph_with_nodes_already_added,
-			int node_offset ) throws XMLParsingException {
+	private ArrayList< ConceptualEdge > createEdges( Node edges_node, int node_offset ) throws XMLParsingException {
 		ArrayList< ConceptualEdge > edges = new ArrayList< ConceptualEdge >();
 
 		final NodeList elements = edges_node.getChildNodes();
@@ -170,7 +169,7 @@ public class FrameSpaceParser {
 			final String element_name = element.getNodeName();
 
 			if( ConceptualEdgeFactory.XMLNameIsEdgeType( element_name ) ) {
-				edges.add( ConceptualEdgeFactory.create( element, graph_with_nodes_already_added, node_offset ) );
+				edges.add( ConceptualEdgeFactory.create( element, local_index_for_node_title_, node_offset, filename_prefix_ ) );
 			}
 		}
 
