@@ -6,13 +6,13 @@ import test.xml.XMLSettingsTest;
 
 public class Test {
 
-	public static ArrayList< SingleTest > tests = new ArrayList< SingleTest >();
+	public static ArrayList< SingleTestInterface > tests = new ArrayList< SingleTestInterface >();
 
 	public static void main( String[] args ) {
 		addTests();
 
 		int num_tests_passed = 0;
-		for( SingleTest test : tests ) {
+		for( SingleTestInterface test : tests ) {
 			if( test.run() ) {
 				System.out.println( test.name() + " passed." );
 				++num_tests_passed;

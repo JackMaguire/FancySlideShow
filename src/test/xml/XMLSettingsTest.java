@@ -10,9 +10,10 @@ import org.w3c.dom.Document;
 
 import compile_time_settings.SlideShowPanelSettings;
 import test.SingleTest;
+import test.SingleTestInterface;
 import xml_parsing.ParseSettings;
 
-public class XMLSettingsTest implements SingleTest {
+public class XMLSettingsTest extends SingleTest {
 
 	private final static String path_to_test_dir = "src/test/xml/";
 
@@ -32,7 +33,7 @@ public class XMLSettingsTest implements SingleTest {
 		doc.getDocumentElement().normalize();
 
 		if( !doc.getDocumentElement().getNodeName().equals( ParseSettings.TOP_LEVEL_NAME ) ) {
-			p( "Top level element name should be " + ParseSettings.TOP_LEVEL_NAME + ", not "
+			err( "Top level element name should be " + ParseSettings.TOP_LEVEL_NAME + ", not "
 					+ doc.getDocumentElement().getNodeName() );
 			return false;
 		}
@@ -49,18 +50,6 @@ public class XMLSettingsTest implements SingleTest {
 		is_valid |= diff( "BACKGROUND.getBlue()", bg.getBlue(), 255 );
 
 		return is_valid;
-	}
-
-	private void p( String s ) {
-		System.err.println( "test.XMLTest: " + s );
-	}
-
-	private boolean diff( String name, int value, int intended_value ) {
-		if( value != intended_value ) {
-			p( name + " is " + value + " instead of " + intended_value );
-			return false;
-		}
-		return true;
 	}
 
 	@Override
