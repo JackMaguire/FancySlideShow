@@ -2,7 +2,6 @@ package xml_parsing;
 
 import java.util.ArrayList;
 
-import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -56,7 +55,7 @@ public class GraphFromXML {
 		return list;
 	}
 
-	private final static int countFrameSpaces( Node graph_node ) {
+	/*private final static int countFrameSpaces( Node graph_node ) {
 		int count = 0;
 
 		final NodeList elements = graph_node.getChildNodes();
@@ -69,6 +68,6 @@ public class GraphFromXML {
 		}
 
 		return count;
-	}
+	}*/
 
 }

@@ -8,7 +8,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import conceptual_graph.ConceptualEdge;
-import conceptual_graph.ConceptualGraph;
 
 public class ConceptualEdgeFactory {
 
