@@ -10,5 +10,5 @@ compilation_flags=""
 
 mkdir DOOMED
 javac -d DOOMED/ -cp src src/applications/${application}.java
-java $compilation_flags -cp DOOMED applications.$temp -script $script
+java $compilation_flags -cp DOOMED applications.$temp $script settings/Default.xml settings/iMac.xml
 \rm -rf DOOMED

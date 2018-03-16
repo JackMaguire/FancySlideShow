@@ -46,16 +46,8 @@ public class FrameScript {
 	public void parseArgs( String[] args )
 			throws IOException, ParserConfigurationException, SAXException, XMLParsingException {
 		for( int i = 0; i < args.length; ++i ) {
-			// options with 0 args
-
-			// options with 1 arg
-			if( i == args.length - 1 )
-				break;
-
-			if( args[ i ].replaceAll( "-", "" ).equalsIgnoreCase( "script" ) ) {
-				final String script_name = args[ i + 1 ];
-				parse( script_name );
-			}
+			final String script_name = args[ i ];
+			parse( script_name );
 		}
 	}
 
