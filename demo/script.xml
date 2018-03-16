@@ -38,5 +38,22 @@
 			</Edges>
 		</FrameSpace>
 	
+			<FrameSpace name="Main" filename_prefix="demo/PicsForDemo/">
+			<Nodes>
+				titles with names starting with '_' will not be displayed in the control panel
+				<Node title="1"     filename="Slides/1.png"     hard="true"/>
+				<Node title="2"     filename="Slides/2.png"     hard="true"/>
+				<Node title="3"     filename="Slides/3.png"     hard="true"/>
+				<Node title="4"     filename="Slides/4.png"     hard="true"/>
+				<Node title="4_alt" filename="Slides/4_alt.png" hard="true"/>
+				<Node title="5"     filename="Slides/5.png"     hard="true"/>
+			</Nodes>
+			
+			<Edges>
+				<Edge title="" origin_node="title" destination_node="start"/>
+				
+			</Edges>
+		</FrameSpace>
+	
 	</Graph>
 </FrameScript>
