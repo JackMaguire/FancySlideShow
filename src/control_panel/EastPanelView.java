@@ -22,7 +22,9 @@ import settings.DebugToggles;
 public class EastPanelView extends JPanel {
 
 	private static final long serialVersionUID = 331403087034827832L;
-	private final TopSide topside_;
+	private final FrameViewer current_node_ = new FrameViewer();
+	private final FrameViewer next_node_ = new FrameViewer();
+	private final FrameViewer selected_node_ = new FrameViewer();
 	private final BottomSide bottomside_;
 
 	private final EastPanelModel model_;
@@ -32,22 +34,28 @@ public class EastPanelView extends JPanel {
 		this.setPreferredSize( new Dimension( ControlPanelMonitorSettings.EAST_WIDTH, 100 ) );
 
 		model_ = model;
-		topside_ = new TopSide();
 
 		bottomside_ = new BottomSide( model_.bottomModel(), cpv.subgraphs() );
 
-		this.setLayout( new GridLayout( 2, 1 ) );
-		add( topside_ );
+		this.setLayout( new GridLayout( 4, 1 ) );
+		add( current_node_ );
+		add( next_node_ );
+		add( selected_node_ );
 		add( bottomside_ );
 	}
 
+	public void setCurrentNode( ConceptualNodeType node ) {
+		current_node_.setNode( node );
+		//ConceptualNodeType next_node = node.get
+	}
+	
 	public void setSelectedNode( ConceptualNodeType node ) {
-		topside_.setNode( node );
+		selected_node_.setNode( node );
 		bottomside_.reinit( node );
 		repaint();
 	}
 
-	public static class TopSide extends JPanelWithKeyListener {
+	public static class FrameViewer extends JPanelWithKeyListener {
 
 		private static final long serialVersionUID = 7212467413352884098L;
 
@@ -57,7 +65,7 @@ public class EastPanelView extends JPanel {
 
 		private ConceptualNodeType node_;
 
-		public TopSide() {
+		public FrameViewer() {
 		}
 
 		public void setNode( ConceptualNodeType node ) {

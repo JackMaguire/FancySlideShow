@@ -16,6 +16,7 @@ public class ControlPanelUpdater {
 
 	void setCurrentNode( ConceptualNodeType node ) {
 		control_panel_model_.getCenterPanelModel().setCurrentNode( node );
+		control_panel_view_.getEastPanelView().setCurrentNode( node );
 	}
 
 }
