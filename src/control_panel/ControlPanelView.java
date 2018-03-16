@@ -2,6 +2,8 @@ package control_panel;
 
 import java.awt.*;
 
+import conceptual_graph.ConceptualGraphType;
+
 public class ControlPanelView extends JPanelWithKeyListener {
 
 	private static final long serialVersionUID = 8381231028726842942L;
@@ -29,7 +31,7 @@ public class ControlPanelView extends JPanelWithKeyListener {
 
 		// add( south_view_, BorderLayout.SOUTH );
 
-		east_view_ = new EastPanelView( model_.getEastPanelModel(), center_view_ );
+		east_view_ = new EastPanelView( model_.getEastPanelModel(), center_view_, model.getGraph() );
 		add( east_view_, BorderLayout.EAST );
 
 		west_view_ = new WestPanelView( model_.getCenterPanelModel().currentNode() );

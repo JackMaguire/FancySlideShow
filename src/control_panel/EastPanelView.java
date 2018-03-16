@@ -14,7 +14,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import conceptual_graph.ConceptualNodeType;
+import conceptual_graph.*;
 import control_panel.EastPanelModel.BottomSideModel;
 import settings.ControlPanelMonitorSettings;
 import settings.DebugToggles;
@@ -28,13 +28,16 @@ public class EastPanelView extends JPanel {
 	private final BottomSide bottomside_;
 
 	private final EastPanelModel model_;
+	private final ConceptualGraphType graph_;
 
-	public EastPanelView( EastPanelModel model, CenterPanelView cpv ) {
+	public EastPanelView( EastPanelModel model, CenterPanelView cpv, ConceptualGraphType graph ) {
 		this.setMinimumSize( new Dimension( ControlPanelMonitorSettings.EAST_WIDTH, 100 ) );
 		this.setPreferredSize( new Dimension( ControlPanelMonitorSettings.EAST_WIDTH, 100 ) );
 
 		model_ = model;
+		graph_ = graph;
 
+		setCurrentNode( graph.getNode( 0 ) );
 		bottomside_ = new BottomSide( model_.bottomModel(), cpv.subgraphs() );
 
 		this.setLayout( new GridLayout( 4, 1 ) );
@@ -46,9 +49,13 @@ public class EastPanelView extends JPanel {
 
 	public void setCurrentNode( ConceptualNodeType node ) {
 		current_node_.setNode( node );
-		//ConceptualNodeType next_node = node.get
+		if( node.getDownstreamEdges().length > 0 ) {
+			final int next_node = node.getDownstreamEdges()[ 0 ].incomingNodeIndex();
+			next_node_.setNode( graph_.getNode( next_node ) );
+		}
+		// ConceptualNodeType next_node = node.get
 	}
-	
+
 	public void setSelectedNode( ConceptualNodeType node ) {
 		selected_node_.setNode( node );
 		bottomside_.reinit( node );
