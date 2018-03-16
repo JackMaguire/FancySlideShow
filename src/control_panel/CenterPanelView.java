@@ -90,11 +90,12 @@ public class CenterPanelView extends JPanelWithKeyListener {
 			selected_node_index = model_.selectedNode().index();
 		}
 
+		/*
 		final int next_edge_index = model_.nextEdge().index();
 		int selected_edge_index = -1;
 		if( model_.selectedEdge() != null ) {
 			selected_edge_index = model_.selectedEdge().index();
-		}
+		}*/
 
 		for( int i = 0; i < circles_.length; ++i ) {
 			if( i == current_node_index ) {
