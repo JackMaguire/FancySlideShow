@@ -68,45 +68,56 @@ public class DemoFrameGraphTest extends SingleTest {
 		is_valid |= equals_int( "num subgraphs", graph.numSubgraphs(), 1 );
 
 		// Nodes
-		{// adding scopes to protect myself from copy/paste errors
+		// adding scopes to protect myself from copy/paste errors
+		{//0
 			final ConceptualNodeType node0 = graph.getNode( 0 );
 			is_valid |= equals_string( "node 0 notes", node0.getNotes(), "Good luck with your presentation, handsome!" );
 			is_valid |= equals_bool( "node 0 is hard", node0.is_hard(), true );
 			is_valid |= equals_int( "node 0 subgraph", node0.subgraph(), 0 );
-			is_valid |= equals_string( "node 0 filename", node0.getImageFilename(), "demo/PicsForDemo/Track1/0001.png" );
+			is_valid |= equals_string( "node 0 filename", node0.getImageFilename(), "demo/PicsForDemo/Slides/Title.png" );
 			is_valid |= equals_int( "num node 0 upstream edges", node0.getDownstreamEdges().length, 1 );
 			is_valid |= equals_int( "num node 0 upstream edges", node0.getUpstreamEdges().length, 0 );
 		}
-
-		{
+		
+		{//1
 			final ConceptualNodeType node1 = graph.getNode( 1 );
-			is_valid |= equals_string( "node 1 notes", node1.getNotes(),
-					"this is the branch point\n\nYou Can Have\n\nMultiple Lines\n\nOf Notes!" );
-			is_valid |= equals_bool( "node 1 is hard", node1.is_hard(), false );
+			is_valid |= equals_string( "node 1 notes", node1.getNotes(), "" );
+			is_valid |= equals_bool( "node 1 is hard", node1.is_hard(), true );
 			is_valid |= equals_int( "node 1 subgraph", node1.subgraph(), 0 );
-			is_valid |= equals_string( "node 1 filename", node1.getImageFilename(), "demo/PicsForDemo/Track1/0130.png" );
-			is_valid |= equals_int( "num node 1 upstream edges", node1.getDownstreamEdges().length, 2 );
+			is_valid |= equals_string( "node 1 filename", node1.getImageFilename(), "demo/PicsForDemo/Track1/0001.png" );
+			is_valid |= equals_int( "num node 1 upstream edges", node1.getDownstreamEdges().length, 1 );
 			is_valid |= equals_int( "num node 1 upstream edges", node1.getUpstreamEdges().length, 1 );
 		}
 
-		{
+		{//2
 			final ConceptualNodeType node2 = graph.getNode( 2 );
-			is_valid |= equals_string( "node 2 notes", node2.getNotes(), "" );
-			is_valid |= equals_bool( "node 2 is hard", node2.is_hard(), true );
+			is_valid |= equals_string( "node 2 notes", node2.getNotes(),
+					"this is the branch point\n\nYou Can Have\n\nMultiple Lines\n\nOf Notes!" );
+			is_valid |= equals_bool( "node 2 is hard", node2.is_hard(), false );
 			is_valid |= equals_int( "node 2 subgraph", node2.subgraph(), 0 );
-			is_valid |= equals_string( "node 2 filename", node2.getImageFilename(), "demo/PicsForDemo/Track1/0250.png" );
-			is_valid |= equals_int( "num node 2 upstream edges", node2.getDownstreamEdges().length, 0 );
+			is_valid |= equals_string( "node 2 filename", node2.getImageFilename(), "demo/PicsForDemo/Track1/0130.png" );
+			is_valid |= equals_int( "num node 2 upstream edges", node2.getDownstreamEdges().length, 2 );
 			is_valid |= equals_int( "num node 2 upstream edges", node2.getUpstreamEdges().length, 1 );
 		}
 
-		{
+		{//3
 			final ConceptualNodeType node3 = graph.getNode( 3 );
-			is_valid |= equals_string( "node 3 notes", node3.getNotes(), "only note is out of line" );
+			is_valid |= equals_string( "node 3 notes", node3.getNotes(), "" );
 			is_valid |= equals_bool( "node 3 is hard", node3.is_hard(), true );
 			is_valid |= equals_int( "node 3 subgraph", node3.subgraph(), 0 );
-			is_valid |= equals_string( "node 3 filename", node3.getImageFilename(), "demo/PicsForDemo/Track2/0250.png" );
+			is_valid |= equals_string( "node 3 filename", node3.getImageFilename(), "demo/PicsForDemo/Track1/0250.png" );
 			is_valid |= equals_int( "num node 3 upstream edges", node3.getDownstreamEdges().length, 0 );
 			is_valid |= equals_int( "num node 3 upstream edges", node3.getUpstreamEdges().length, 1 );
+		}
+
+		{//4
+			final ConceptualNodeType node4 = graph.getNode( 4 );
+			is_valid |= equals_string( "node 4 notes", node4.getNotes(), "only note is out of line" );
+			is_valid |= equals_bool( "node 4 is hard", node4.is_hard(), true );
+			is_valid |= equals_int( "node 4 subgraph", node4.subgraph(), 0 );
+			is_valid |= equals_string( "node 4 filename", node4.getImageFilename(), "demo/PicsForDemo/Track2/0250.png" );
+			is_valid |= equals_int( "num node 4 upstream edges", node4.getDownstreamEdges().length, 0 );
+			is_valid |= equals_int( "num node 4 upstream edges", node4.getUpstreamEdges().length, 1 );
 		}
 
 		if( !is_valid ) {
@@ -134,8 +145,28 @@ public class DemoFrameGraphTest extends SingleTest {
 				}
 			}
 		}
-
+		
 		{// 1-2
+			final ConceptualEdgeType edge_0_to_1 = graph.getNode( 0 ).getDownstreamEdges()[ 0 ];
+			is_valid |= equals_object( "edge_0_to_1 vs reverse_edge_1_to_0", edge_0_to_1,
+					graph.getNode( 1 ).getUpstreamEdges()[ 0 ] );
+			
+			is_valid |= equals_int( "edge 0-1 incoming node index", edge_0_to_1.incomingNodeIndex(), 1 );
+			is_valid |= equals_int( "edge 0-1 outgoing node index", edge_0_to_1.outgoingNodeIndex(), 0 );
+
+			final String[] filenames = edge_0_to_1.getImageFilenames();
+			is_valid |= equals_int( "num edge 0-1 filenames", filenames.length, 128 );
+			for( int i = 0; i < filenames.length; ++i ) {
+				final boolean is_good = equals_string( "edge 0-1 filename #" + i, filenames[ i ],
+						"demo/PicsForDemo/Track1/0" + String.format( "%03d", i + 2 ) + ".png" );
+				if( !is_good ) {
+					is_valid = false;
+					break;// break loop so that we do not end up with hundreds of error messages
+				}
+			}
+		}
+
+		{// 2-3
 			final ConceptualEdgeType edge_1_to_2 = graph.getNode( 1 ).getDownstreamEdges()[ 0 ];
 			is_valid |= equals_object( "edge_1_to_2 vs reverse_edge_2_to_1", edge_1_to_2,
 					graph.getNode( 2 ).getUpstreamEdges()[ 0 ] );
@@ -155,7 +186,7 @@ public class DemoFrameGraphTest extends SingleTest {
 			}
 		}
 		
-		{// 1-3
+		{// 2-4
 			final ConceptualEdgeType edge_1_to_3 = graph.getNode( 1 ).getDownstreamEdges()[ 1 ];
 			is_valid |= equals_object( "edge_1_to_3 vs reverse_edge_3_to_1", edge_1_to_3,
 					graph.getNode( 3 ).getUpstreamEdges()[ 0 ] );

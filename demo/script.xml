@@ -4,7 +4,8 @@
 		<FrameSpace name="Main" filename_prefix="demo/PicsForDemo/">
 			<Nodes>
 				titles with names starting with '_' will not be displayed in the control panel
-				<Node title="start" filename="Track1/0001.png" hard="true" notes="Good luck with your presentation, handsome!"/>
+				<Node title="title" filename="Slides/Title.png" hard="true" notes="Good luck with your presentation, handsome!"/>
+				<Node title="start" filename="Track1/0001.png" hard="true" notes=""/>
 				<Node title="branch" filename="Track1/0130.png" hard="false" notes="this is the branch point">
 					<Notes line="You Can Have"/>
 					<Notes line="Multiple Lines"/>
@@ -17,6 +18,8 @@
 			</Nodes>
 			
 			<Edges>
+				<Edge title="" origin_node="title" destination_node="start"/>
+
 				<Edge title="" origin_node="start" destination_node="branch">
 					<FilenameRange first_num="2" last_num="129" filename="Track1/0@@@.png" replace_char="@"/>
 				</Edge>
