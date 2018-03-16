@@ -1,7 +1,6 @@
 package control_panel;
 
 import conceptual_graph.ConceptualNodeType;
-import engine.Engine;
 
 //The goal of this class is to manage the information flow to the individual components of the control panel when a state is changed
 

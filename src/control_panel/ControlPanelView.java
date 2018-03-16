@@ -2,8 +2,6 @@ package control_panel;
 
 import java.awt.*;
 
-import conceptual_graph.ConceptualGraphType;
-
 public class ControlPanelView extends JPanelWithKeyListener {
 
 	private static final long serialVersionUID = 8381231028726842942L;
