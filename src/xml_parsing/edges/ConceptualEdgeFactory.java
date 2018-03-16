@@ -1,4 +1,4 @@
-package xml_parsing;
+package xml_parsing.edges;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,6 +8,8 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import conceptual_graph.ConceptualEdge;
+import xml_parsing.FrameSpaceParser;
+import xml_parsing.XMLParsingException;
 
 public class ConceptualEdgeFactory {
 
