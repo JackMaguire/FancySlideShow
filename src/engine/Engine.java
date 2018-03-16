@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.Timer;
 
+import control_panel.ControlPanelUpdater;
 import control_panel.ControlPanelView;
 import frame_graph.FrameGraph;
 import frame_graph.FrameNode;
@@ -32,14 +33,15 @@ public class Engine implements ActionListener {
 	private boolean go_at_next_tick_ = false;
 	private boolean take_next_secondary_option_ = false;
 
-	private final ControlPanelView control_panel_view_;
 	private int current_subgraph_ = 1;
 
-	public Engine( SlideShowPanel panel, FrameGraph frame_graph, ControlPanelView control_panel_view ) {
+	private final ControlPanelUpdater cp_updater_;
+
+	public Engine( SlideShowPanel panel, FrameGraph frame_graph, ControlPanelUpdater cp_updater ) {
 		slide_show_panel_ = panel;
 		frame_graph_ = frame_graph;
 		current_node_ = frame_graph_.getPrimaryNode( 0 );
-		control_panel_view_ = control_panel_view;
+		cp_updater_ = cp_updater;
 		// center_panel_view_.addKeyListener( new CenterPanelKeyListener( this ) );
 		waiting_at_hard_node_ = current_node_.stop();
 
@@ -113,8 +115,7 @@ public class Engine implements ActionListener {
 			final int subgraph = current_node_.getConceptualNode().subgraph();
 			if( subgraph != current_subgraph_ ) {
 				current_subgraph_ = subgraph;
-				control_panel_view_.getCenterPanelView().setCurrentSubgraph( subgraph );
-				control_panel_view_.repaint();
+				cp_updater_.setCurrentSubgraph( subgraph );
 			}
 		}
 	}
@@ -134,8 +135,7 @@ public class Engine implements ActionListener {
 			final int subgraph = current_node_.getConceptualNode().subgraph();
 			if( subgraph != current_subgraph_ ) {
 				current_subgraph_ = subgraph;
-				control_panel_view_.getCenterPanelView().setCurrentSubgraph( subgraph );
-				control_panel_view_.repaint();
+				cp_updater_.setCurrentSubgraph( subgraph );
 			}
 		}
 	}
@@ -182,10 +182,7 @@ public class Engine implements ActionListener {
 		slide_show_panel_.setImage( current_node_.image() );
 		slide_show_panel_.repaint();
 		if( current_node_.IS_PRIMARY ) {
-			control_panel_view_.getCenterPanelView().model().setCurrentNode( current_node_.UPSTREAM_PRIMARY_ID );
-			control_panel_view_.getCenterPanelView().repaint();
-
-			control_panel_view_.getWestPanelView().updateNotesForCurrentSlide( current_node_.getConceptualNode().getNotes() );
+			cp_updater_.setCurrentNode( current_node_.getConceptualNode() );
 		}
 	}
 

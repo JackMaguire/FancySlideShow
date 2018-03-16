@@ -14,9 +14,16 @@ public class ControlPanelUpdater {
 		control_panel_view_ = view;
 	}
 
-	void setCurrentNode( ConceptualNodeType node ) {
+	public void setCurrentNode( ConceptualNodeType node ) {
 		control_panel_model_.getCenterPanelModel().setCurrentNode( node );
 		control_panel_view_.getEastPanelView().setCurrentNode( node );
+		control_panel_view_.getWestPanelView().updateNotesForCurrentSlide( node.getNotes() );
+		//repaint?
+	}
+	
+	public void setCurrentSubgraph( int subgraph ) {
+		control_panel_view_.getCenterPanelView().setCurrentSubgraph( subgraph );
+		//repaint?
 	}
 
 }
