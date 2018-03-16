@@ -68,11 +68,12 @@ public class DemoFrameGraphTest extends SingleTest {
 		is_valid |= diff( "num subgraphs", graph.numSubgraphs(), 1 );
 
 		// Nodes
-		{//adding scopes to protect myself from copy/paste errors
+		{// adding scopes to protect myself from copy/paste errors
 			final ConceptualNodeType node0 = graph.getNode( 0 );
 			is_valid |= diff( "node 0 notes", node0.getNotes(), "Good luck with your presentation, handsome!" );
 			is_valid |= diff( "node 0 is hard", node0.is_hard(), true );
 			is_valid |= diff( "node 0 subgraph", node0.subgraph(), 0 );
+			is_valid |= diff( "node 0 filename", node0.getImageFilename(), "src/demo/PicsForDemo/Track1/0001.png" );
 		}
 
 		{
@@ -81,6 +82,7 @@ public class DemoFrameGraphTest extends SingleTest {
 					"this is the branch point\n\nYou Can Have\n\nMultiple Lines\n\nOf Notes!" );
 			is_valid |= diff( "node 1 is hard", node1.is_hard(), false );
 			is_valid |= diff( "node 1 subgraph", node1.subgraph(), 0 );
+			is_valid |= diff( "node 1 filename", node1.getImageFilename(), "src/demo/PicsForDemo/Track1/0130.png" );
 		}
 
 		{
@@ -88,6 +90,7 @@ public class DemoFrameGraphTest extends SingleTest {
 			is_valid |= diff( "node 2 notes", node2.getNotes(), "" );
 			is_valid |= diff( "node 2 is hard", node2.is_hard(), true );
 			is_valid |= diff( "node 2 subgraph", node2.subgraph(), 0 );
+			is_valid |= diff( "node 2 filename", node2.getImageFilename(), "src/demo/PicsForDemo/Track1/0250.png" );
 		}
 
 		{
@@ -95,8 +98,9 @@ public class DemoFrameGraphTest extends SingleTest {
 			is_valid |= diff( "node 3 notes", node3.getNotes(), "only note is out of line" );
 			is_valid |= diff( "node 3 is hard", node3.is_hard(), true );
 			is_valid |= diff( "node 3 subgraph", node3.subgraph(), 0 );
+			is_valid |= diff( "node 3 filename", node3.getImageFilename(), "src/demo/PicsForDemo/Track2/0250.png" );
 		}
-		
+
 		return is_valid;
 	}
 
