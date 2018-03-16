@@ -2,7 +2,6 @@ package conceptual_graph;
 
 import frame_graph.FrameGraph;
 
-//Comparable methods will only be used for sorting!
 public interface ConceptualEdgeType {
 
 	String name();
@@ -19,4 +18,6 @@ public interface ConceptualEdgeType {
 
 	void applyToFrameGraph( FrameGraph fg );
 
+	String[] getImageFilenames();
+	
 }

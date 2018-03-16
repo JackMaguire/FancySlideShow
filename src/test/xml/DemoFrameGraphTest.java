@@ -120,6 +120,9 @@ public class DemoFrameGraphTest extends SingleTest {
 			final ConceptualEdgeType edge_0_to_1 = graph.getNode( 0 ).getDownstreamEdges()[ 0 ];
 			is_valid |= equals_object( "edge_0_to_1 vs reverse_edge_1_to_0", edge_0_to_1,
 					graph.getNode( 1 ).getUpstreamEdges()[ 0 ] );
+			is_valid |= equals_int( "edge 0-1 incoming node index", edge_0_to_1.incomingNodeIndex(), 1 );
+			is_valid |= equals_int( "edge 0-1 outgoing node index", edge_0_to_1.outgoingNodeIndex(), 0 );
+			
 		}
 
 		return is_valid;

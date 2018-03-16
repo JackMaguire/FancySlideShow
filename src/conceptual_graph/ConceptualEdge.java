@@ -25,6 +25,10 @@ public class ConceptualEdge implements ConceptualEdgeType {
 		image_filenames_ = image_filenames;
 	}
 
+	public String[] getImageFilenames() {
+		return image_filenames_;
+	}
+	
 	public void setImageFilenames( String[] image_filenames ) {
 		image_filenames_ = image_filenames;
 	}
