@@ -122,7 +122,17 @@ public class DemoFrameGraphTest extends SingleTest {
 					graph.getNode( 1 ).getUpstreamEdges()[ 0 ] );
 			is_valid |= equals_int( "edge 0-1 incoming node index", edge_0_to_1.incomingNodeIndex(), 1 );
 			is_valid |= equals_int( "edge 0-1 outgoing node index", edge_0_to_1.outgoingNodeIndex(), 0 );
-			
+
+			final String[] filenames = edge_0_to_1.getImageFilenames();
+			is_valid |= equals_int( "num edge 0-1 filenames", filenames.length, 128 );
+			for( int i = 0; i < filenames.length; ++i ) {
+				final boolean is_good = equals_string( "edge 0-1 filename #" + i, filenames[ i ],
+						"src/demo/PicsForDemo/Track1/0" + String.format( "%03d", i + 2 ) + ".png" );
+				if( !is_good ) {
+					is_valid = false;
+					break;// break loop so that we do not end up with hundreds of error messages
+				}
+			}
 		}
 
 		return is_valid;
