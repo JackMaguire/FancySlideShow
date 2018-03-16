@@ -63,13 +63,26 @@ public class DemoFrameGraphTest extends SingleTest {
 		boolean is_valid = true;
 
 		// Graph
-		is_valid |= equals_int( "num nodes", graph.numNodes(), 5 );
+		is_valid |= equals_int( "num nodes", graph.numNodes(), 11 );
+		is_valid |= equals_int( "num subgraphs", graph.numSubgraphs(), 2 );
+		if( !is_valid ) {
+			// can not continue with bad info
+			return false;
+		}
+
+		is_valid |= equals_string( "frame_space 0 name", graph.getNamesforSubgraph( 0 ), "Main" );
+		is_valid |= equals_string( "frame_space 1 name", graph.getNamesforSubgraph( 1 ), "Second" );
+
 		is_valid |= equals_int( "num nodes in subgraph 0", graph.numNodesInSubgraph( 0 ), 5 );
-		is_valid |= equals_int( "num subgraphs", graph.numSubgraphs(), 1 );
+		is_valid |= equals_int( "num nodes in subgraph 1", graph.numNodesInSubgraph( 1 ), 6 );
+		if( !is_valid ) {
+			// can not continue with bad info
+			return false;
+		}
 
 		// Nodes
 		// adding scopes to protect myself from copy/paste errors
-		{//0
+		{// 0
 			final ConceptualNodeType node0 = graph.getNode( 0 );
 			is_valid |= equals_string( "node 0 notes", node0.getNotes(), "Good luck with your presentation, handsome!" );
 			is_valid |= equals_bool( "node 0 is hard", node0.is_hard(), true );
@@ -78,8 +91,8 @@ public class DemoFrameGraphTest extends SingleTest {
 			is_valid |= equals_int( "num node 0 upstream edges", node0.getDownstreamEdges().length, 1 );
 			is_valid |= equals_int( "num node 0 upstream edges", node0.getUpstreamEdges().length, 0 );
 		}
-		
-		{//1
+
+		{// 1
 			final ConceptualNodeType node1 = graph.getNode( 1 );
 			is_valid |= equals_string( "node 1 notes", node1.getNotes(), "" );
 			is_valid |= equals_bool( "node 1 is hard", node1.is_hard(), true );
@@ -89,7 +102,7 @@ public class DemoFrameGraphTest extends SingleTest {
 			is_valid |= equals_int( "num node 1 upstream edges", node1.getUpstreamEdges().length, 1 );
 		}
 
-		{//2
+		{// 2
 			final ConceptualNodeType node2 = graph.getNode( 2 );
 			is_valid |= equals_string( "node 2 notes", node2.getNotes(),
 					"this is the branch point\n\nYou Can Have\n\nMultiple Lines\n\nOf Notes!" );
@@ -100,7 +113,7 @@ public class DemoFrameGraphTest extends SingleTest {
 			is_valid |= equals_int( "num node 2 upstream edges", node2.getUpstreamEdges().length, 1 );
 		}
 
-		{//3
+		{// 3
 			final ConceptualNodeType node3 = graph.getNode( 3 );
 			is_valid |= equals_string( "node 3 notes", node3.getNotes(), "" );
 			is_valid |= equals_bool( "node 3 is hard", node3.is_hard(), true );
@@ -110,7 +123,7 @@ public class DemoFrameGraphTest extends SingleTest {
 			is_valid |= equals_int( "num node 3 upstream edges", node3.getUpstreamEdges().length, 1 );
 		}
 
-		{//4
+		{// 4
 			final ConceptualNodeType node4 = graph.getNode( 4 );
 			is_valid |= equals_string( "node 4 notes", node4.getNotes(), "only note is out of line" );
 			is_valid |= equals_bool( "node 4 is hard", node4.is_hard(), true );
@@ -130,19 +143,19 @@ public class DemoFrameGraphTest extends SingleTest {
 			final ConceptualEdgeType edge_0_to_1 = graph.getNode( 0 ).getDownstreamEdges()[ 0 ];
 			is_valid |= equals_object( "edge_0_to_1 vs reverse_edge_1_to_0", edge_0_to_1,
 					graph.getNode( 1 ).getUpstreamEdges()[ 0 ] );
-			
+
 			is_valid |= equals_int( "edge 0-1 incoming node index", edge_0_to_1.incomingNodeIndex(), 1 );
 			is_valid |= equals_int( "edge 0-1 outgoing node index", edge_0_to_1.outgoingNodeIndex(), 0 );
 
 			final String[] filenames = edge_0_to_1.getImageFilenames();
 			is_valid |= equals_int( "num edge 0-1 filenames", filenames.length, 0 );
 		}
-		
+
 		{// 1-2
 			final ConceptualEdgeType edge_1_to_2 = graph.getNode( 1 ).getDownstreamEdges()[ 0 ];
 			is_valid |= equals_object( "edge_1_to_2 vs reverse_edge_2_to_1", edge_1_to_2,
 					graph.getNode( 2 ).getUpstreamEdges()[ 0 ] );
-			
+
 			is_valid |= equals_int( "edge 1-2 incoming node index", edge_1_to_2.incomingNodeIndex(), 2 );
 			is_valid |= equals_int( "edge 1-2 outgoing node index", edge_1_to_2.outgoingNodeIndex(), 1 );
 
@@ -162,7 +175,7 @@ public class DemoFrameGraphTest extends SingleTest {
 			final ConceptualEdgeType edge_2_to_3 = graph.getNode( 2 ).getDownstreamEdges()[ 0 ];
 			is_valid |= equals_object( "edge_2_to_3 vs reverse_edge_3_to_2", edge_2_to_3,
 					graph.getNode( 3 ).getUpstreamEdges()[ 0 ] );
-			
+
 			is_valid |= equals_int( "edge 2-3 incoming node index", edge_2_to_3.incomingNodeIndex(), 3 );
 			is_valid |= equals_int( "edge 2-3 outgoing node index", edge_2_to_3.outgoingNodeIndex(), 2 );
 
@@ -177,16 +190,16 @@ public class DemoFrameGraphTest extends SingleTest {
 				}
 			}
 		}
-		
+
 		{// 2-4
 			final ConceptualEdgeType edge_2_to_4 = graph.getNode( 2 ).getDownstreamEdges()[ 1 ];
 			is_valid |= equals_object( "edge_2_to_4 vs reverse_edge_4_to_2", edge_2_to_4,
 					graph.getNode( 4 ).getUpstreamEdges()[ 0 ] );
-			
+
 			is_valid |= equals_int( "edge 2-4 incoming node index", edge_2_to_4.incomingNodeIndex(), 4 );
 			is_valid |= equals_int( "edge 2-4 outgoing node index", edge_2_to_4.outgoingNodeIndex(), 2 );
 			is_valid |= equals_string( "edge 2-4 name", edge_2_to_4.name(), "alternate" );
-			
+
 			final String[] filenames = edge_2_to_4.getImageFilenames();
 			is_valid |= equals_int( "num edge 2-4 filenames", filenames.length, 249 - 130 );
 			for( int i = 0; i < filenames.length; ++i ) {
@@ -198,7 +211,7 @@ public class DemoFrameGraphTest extends SingleTest {
 				}
 			}
 		}
-		
+
 		return is_valid;
 	}
 

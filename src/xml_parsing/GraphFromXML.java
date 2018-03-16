@@ -43,12 +43,14 @@ public class GraphFromXML {
 	private final static ArrayList< FrameSpaceParser > extractFrameSpaces( Node graph_node ) throws XMLParsingException {
 		ArrayList< FrameSpaceParser > list = new ArrayList< FrameSpaceParser >();
 
+		int frame_space_num = 0;
+		
 		final NodeList elements = graph_node.getChildNodes();
 		final int n = elements.getLength();
 		for( int i = 0; i < n; ++i ) {
 			final Node element = elements.item( i );
 			if( element.getNodeName().equalsIgnoreCase( FrameSpaceParser.XML_Name ) ) {
-				list.add( new FrameSpaceParser( element ) );
+				list.add( new FrameSpaceParser( element, frame_space_num++ ) );
 			}
 		}
 

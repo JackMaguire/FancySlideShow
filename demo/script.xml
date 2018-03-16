@@ -38,15 +38,14 @@
 			</Edges>
 		</FrameSpace>
 	
-		<FrameSpace name="Main" filename_prefix="demo/PicsForDemo/">
+		<FrameSpace name="Second" filename_prefix="demo/PicsForDemo/Slides/">
 			<Nodes>
-				titles with names starting with '_' will not be displayed in the control panel
-				<Node title="1"     filename="Slides/1.png"     hard="true"/>
-				<Node title="2"     filename="Slides/2.png"     hard="true"/>
-				<Node title="3"     filename="Slides/3.png"     hard="true"/>
-				<Node title="4"     filename="Slides/4.png"     hard="true"/>
-				<Node title="4_alt" filename="Slides/4_alt.png" hard="true"/>
-				<Node title="5"     filename="Slides/5.png"     hard="true"/>
+				<Node title="1"     filename="1.png"     hard="true"/>
+				<Node title="2"     filename="2.png"     hard="true"/>
+				<Node title="3"     filename="3.png"     hard="true"/>
+				<Node title="4"     filename="4.png"     hard="true"/>
+				<Node title="4_alt" filename="4_alt.png" hard="true"/>
+				<Node title="5"     filename="5.png"     hard="true"/>
 			</Nodes>
 			
 			<Edges>

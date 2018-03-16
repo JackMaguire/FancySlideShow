@@ -16,6 +16,8 @@ public class FrameSpaceParser {
 	private static String frame_space_name_ = "Untitled";
 	private static String filename_prefix_ = "";
 
+	private final int frame_space_id_;
+	
 	// private final ArrayList< ConceptualNode > nodes_ = new ArrayList<
 	// ConceptualNode >();
 	private final HashMap< String, Integer > local_index_for_node_title_ = new HashMap< String, Integer >();
@@ -25,10 +27,11 @@ public class FrameSpaceParser {
 	private ConceptualNode[] conceptual_nodes_ = null;
 	ArrayList< ConceptualEdge > conceptual_edges_ = null;
 
-	public FrameSpaceParser( Node frame_space_node ) throws XMLParsingException {
+	public FrameSpaceParser( Node frame_space_node, int frame_space_id ) throws XMLParsingException {
 
 		frame_space_node_ = frame_space_node;
-
+		frame_space_id_ = frame_space_id;
+		
 		// Attributes
 		final NamedNodeMap attribute_nodes = frame_space_node.getAttributes();
 		final int n_attributes = attribute_nodes.getLength();
@@ -81,9 +84,11 @@ public class FrameSpaceParser {
 
 	public void applyToGraph( ConceptualGraph graph, int node_offset ) throws XMLParsingException {
 
+		graph.setSubgraphName( frame_space_id_, frame_space_name_ );
+		
 		// Nodes
 		for( int i = 0; i < conceptual_nodes_.length; ++i ) {
-			graph.setNode( conceptual_nodes_[ i ], node_offset + i );
+			graph.setNode( conceptual_nodes_[ i ], node_offset + i, frame_space_id_ );
 		}
 
 		// Edges
