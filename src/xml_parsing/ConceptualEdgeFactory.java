@@ -21,6 +21,10 @@ public class ConceptualEdgeFactory {
 		return false;
 	}
 
+	public static ConceptualEdge create( Node edge_node, ArrayList< FrameSpaceParser > parsed_frame_spaces ) throws XMLParsingException {
+		return null;
+	}
+	
 	public static ConceptualEdge create( Node edge_node, HashMap< String, Integer > local_index_for_node_title,
 			int node_offset, String filename_prefix ) throws XMLParsingException {
 		final String node_name = edge_node.getNodeName();
