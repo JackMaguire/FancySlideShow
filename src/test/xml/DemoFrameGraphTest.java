@@ -116,10 +116,11 @@ public class DemoFrameGraphTest extends SingleTest {
 		}
 
 		// Edges
-		{
+		{// 0-1
 			final ConceptualEdgeType edge_0_to_1 = graph.getNode( 0 ).getDownstreamEdges()[ 0 ];
 			is_valid |= equals_object( "edge_0_to_1 vs reverse_edge_1_to_0", edge_0_to_1,
 					graph.getNode( 1 ).getUpstreamEdges()[ 0 ] );
+			
 			is_valid |= equals_int( "edge 0-1 incoming node index", edge_0_to_1.incomingNodeIndex(), 1 );
 			is_valid |= equals_int( "edge 0-1 outgoing node index", edge_0_to_1.outgoingNodeIndex(), 0 );
 
@@ -135,6 +136,26 @@ public class DemoFrameGraphTest extends SingleTest {
 			}
 		}
 
+		{// 1-2
+			final ConceptualEdgeType edge_1_to_2 = graph.getNode( 1 ).getDownstreamEdges()[ 0 ];
+			is_valid |= equals_object( "edge_1_to_2 vs reverse_edge_2_to_1", edge_1_to_2,
+					graph.getNode( 2 ).getUpstreamEdges()[ 0 ] );
+			
+			is_valid |= equals_int( "edge 1-2 incoming node index", edge_1_to_2.incomingNodeIndex(), 2 );
+			is_valid |= equals_int( "edge 1-2 outgoing node index", edge_1_to_2.outgoingNodeIndex(), 1 );
+
+			final String[] filenames = edge_1_to_2.getImageFilenames();
+			is_valid |= equals_int( "num edge 1-2 filenames", filenames.length, 249 - 130 );
+			for( int i = 0; i < filenames.length; ++i ) {
+				final boolean is_good = equals_string( "edge 1-2 filename #" + i, filenames[ i ],
+						"src/demo/PicsForDemo/Track1/0" + String.format( "%03d", i + 131 ) + ".png" );
+				if( !is_good ) {
+					is_valid = false;
+					break;// break loop so that we do not end up with hundreds of error messages
+				}
+			}
+		}
+		
 		return is_valid;
 	}
 
