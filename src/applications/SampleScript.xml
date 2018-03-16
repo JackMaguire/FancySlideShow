@@ -14,35 +14,70 @@
 	
 	<Graph>
 	
-		<FrameSpace name="Title" filename_prefix="/path/to/frames/TitleFrames/">
+		<FrameSpace name="Main" filename_prefix="demo/PicsForDemo/">
 			<Nodes>
 				titles with names starting with '_' will not be displayed in the control panel
-				<Node title="Title" filename="0001.png" hard="true" notes=""/>
-				<Node title="_Title_end" filename="0100.png" hard="true">
-					<Notes="Can"/>
-					<Notes="Have"/>
-					<Notes="Multiple Lines"/>
+				<Node title="title" filename="Slides/Title.png" hard="true" notes="Good luck with your presentation, handsome!"/>
+				<Node title="start" filename="Track1/0001.png" hard="true" notes=""/>
+				<Node title="branch" filename="Track1/0130.png" hard="false" notes="this is the branch point">
+					<Notes line="You Can Have"/>
+					<Notes line="Multiple Lines"/>
+					<Notes line="Of Notes!"/>
+				</Node>
+				<Node title="end1" filename="Track1/0250.png" hard="true"/>
+				<Node title="end2" filename="Track2/0250.png" hard="true">
+					<Notes line="only note is out of line"/>
 				</Node>
 			</Nodes>
 			
 			<Edges>
-				<Edge title="" origin_node="Title" destination_node="_Title_end">
-					<FilenameRange first_num="2" last_num="99" filename="00@@.png" replace_char="@"/>
+				<Edge title="" origin_node="title" destination_node="start"/>
+
+				<Edge title="" origin_node="start" destination_node="branch">
+					<FilenameRange first_num="2" last_num="129" filename="Track1/0@@@.png" replace_char="@"/>
 				</Edge>
 				
-				<Edge title="" origin_node="Title" destination_node="Title">
-					You can append a frame to the front of a range. All elements get appended together
-					<Filename filename="0001.png"/>
-					<FilenameRange first_num="2" last_num="8" filename="00@@.png" replace_char="@"/>
+				<Edge title="" origin_node="branch" destination_node="end1">
+					You can append a frame to the front of a range (even though it does not make much sense here). All elements get appended together
+					<Filename filename="Track1/0131.png"/>
+					<FilenameRange first_num="132" last_num="249" filename="Track1/0@@@.png" replace_char="@"/>
+				</Edge>
+								
+				<Edge title="alternate" origin_node="branch" destination_node="end2">
+					<FilenameRange first_num="131" last_num="249" filename="Track2/0@@@.png" replace_char="@"/>
 				</Edge>
 				
-				<ZoomInTransition origin_node="Title" destination_node="_Title_end"/>
+				ZoomInTransition origin_node="Title" destination_node="_Title_end"
 			</Edges>
 		</FrameSpace>
-		
-		<InterFrameSpaceConnections>
-			<Edge title="" origin_frame_space="Title" origin_node="_Title_end" destination_frame_space="SomeOtherFrameSpace" destination_node="Something"/>
-		</InterFrameSpaceConnections>
+	
+		<FrameSpace name="Second" filename_prefix="demo/PicsForDemo/Slides/">
+			<Nodes>
+				<Node title="1"     filename="1.png"     hard="true"/>
+				<Node title="2"     filename="2.png"     hard="true"/>
+				<Node title="3"     filename="3.png"     hard="true"/>
+				<Node title="4"     filename="4.png"     hard="true"/>
+				<Node title="4_alt" filename="4_alt.png" hard="true"/>
+				<Node title="5"     filename="5.png"     hard="true"/>
+			</Nodes>
+			
+			<Edges>
+				<Edge title="" origin_node="1" destination_node="2"/>
+				<Edge title="" origin_node="2" destination_node="3"/>
+				<Edge title="" origin_node="3" destination_node="4"/>
+				<Edge title="" origin_node="3" destination_node="4_alt"/>
+				<Edge title="" origin_node="4" destination_node="5"/>
+				<Edge title="" origin_node="4_alt" destination_node="5"/>
+			</Edges>
+		</FrameSpace>
+	
+		<GlobalEdges>
+			<Edge title="" origin_frame_space="Main" origin_node="end1" destination_frame_space="Second" destination_node="1"/>
+			<Edge title="" origin_frame_space="Main" origin_node="end2" destination_frame_space="Second" destination_node="1">
+				Not sure if this makes sense as a transition. Just wanted to show that transitions between framespaces are an option
+				<Filename filename="demo/PicsForDemo/Slides/5.png"/>
+			</Edge>
+		</GlobalEdges>
 	
 	</Graph>
 </FrameScript>
