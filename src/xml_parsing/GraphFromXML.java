@@ -36,10 +36,12 @@ public class GraphFromXML {
 		for( int i = 0; i < num_frame_spaces; ++i )
 			frame_spaces.get( i ).applyToGraph( graph, offset_for_frame_space[ i ] );
 
-		// TODO InterFrameSpace Edges
+		// Global Edges
 		final ArrayList< ConceptualEdgeType > global_edges = extractInterFrameSpaceEdges( graph_node, frame_spaces,
 				offset_for_frame_space );
-		// TODO
+		for( ConceptualEdgeType e : global_edges ) {
+			graph.addEdge( e );
+		}
 
 		return graph;
 	}
