@@ -1,17 +1,16 @@
 package applications;
 
-import java.io.File;
 import java.io.IOException;
 
-import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.DocumentBuilder;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import conceptual_graph.ConceptualGraph;
+import slide_show.SlideShow;
+import xml_parsing.GraphFromXML;
 import xml_parsing.ParseSettings;
+import xml_parsing.TopLevelElementNames;
 import xml_parsing.Util;
 import xml_parsing.XMLParsingException;
 
@@ -27,19 +26,25 @@ public class FrameScript {
 	public final static String top_level_element_name = "FrameScript";
 
 	// Instance
-	private String full_script_filename_ = "";
-	private String graph_script_filename_ = "";
-	private String settings_script_filename_ = "";
+	private Node graph_node_;
 
-	public static void main( String[] args ) {
+	public static void main( String[] args ) throws Exception {
 		new FrameScript( args );
 	}
 
-	public FrameScript( String[] args ) {
+	public FrameScript( String[] args ) throws Exception {
 		parseArgs( args );
+		if( graph_node_ == null ) {
+			System.err.println( "No <Graph> element provided" );
+		}
+		
+		ConceptualGraph graph = GraphFromXML.parse( graph_node_ );
+		SlideShow ss = new SlideShow( graph );
+		ss.run();
 	}
 
-	public void parseArgs( String[] args ) {
+	public void parseArgs( String[] args )
+			throws IOException, ParserConfigurationException, SAXException, XMLParsingException {
 		for( int i = 0; i < args.length; ++i ) {
 			// options with 0 args
 
@@ -48,39 +53,33 @@ public class FrameScript {
 				break;
 
 			if( args[ i ].replaceAll( "-", "" ).equalsIgnoreCase( "script" ) ) {
-				full_script_filename_ = args[ i + 1 ];
+				final String script_name = args[ i + 1 ];
+				parse( script_name );
 			}
 		}
 	}
 
-	public void createSchema() {
-
+	public void parse( String script_name )
+			throws IOException, ParserConfigurationException, SAXException, XMLParsingException {
+		System.out.println( "Parsing " + script_name );
+		final Node node = Util.readFromFile( script_name );
+		parse( node );
 	}
 
-	public void parseAll() throws ParserConfigurationException, SAXException, IOException, XMLParsingException {
-		final Node frame_script_node = Util.readFromFile( full_script_filename_ );
-
-		if( !frame_script_node.getNodeName().equals( top_level_element_name ) ) {
-			throw new XMLParsingException(
-					"Top level element name should be " + top_level_element_name + ", not " + frame_script_node.getNodeName() );
-		}
-
-		final NodeList elements = frame_script_node.getChildNodes();
-		for( int i = 0; i < elements.getLength(); ++i ) {
-			final Node element = elements.item( i );
-			final String element_name = element.getNodeName();
-
-			if( element_name.equalsIgnoreCase( ParseSettings.TOP_LEVEL_NAME ) ) {
-				ParseSettings.parseSettingsNode( element );
-			} else if( !element_name.startsWith( "#" ) ) {
-				System.err.println( "No top-level match for " + element_name );
-				System.exit( 1 );
+	public void parse( Node node ) throws XMLParsingException {
+		final String name = node.getNodeName();
+		if( name.equals( TopLevelElementNames.TOP_LEVEL_FRAME_SCRIPT ) ) {
+			final NodeList elements = node.getChildNodes();
+			final int num_elements = elements.getLength();
+			for( int i = 0; i < num_elements; ++i ) {
+				final Node element = elements.item( i );
+				parse( element );
 			}
+		} else if( name.equals( TopLevelElementNames.TOP_LEVEL_SETTINGS ) ) {
+			ParseSettings.parseSettingsNode( node );
+		} else if( name.equals( TopLevelElementNames.TOP_LEVEL_GRAPH ) ) {
+			graph_node_ = node;
 		}
-	}
-
-	private void parseFrameSpaceNode( Node frame_space_node ) {
-
 	}
 
 }
