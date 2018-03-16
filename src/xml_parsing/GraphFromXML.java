@@ -44,12 +44,17 @@ public class GraphFromXML {
 		ArrayList< FrameSpaceParser > list = new ArrayList< FrameSpaceParser >();
 
 		int frame_space_num = 0;
-		
+
 		final NodeList elements = graph_node.getChildNodes();
 		final int n = elements.getLength();
 		for( int i = 0; i < n; ++i ) {
 			final Node element = elements.item( i );
-			if( element.getNodeName().equalsIgnoreCase( FrameSpaceParser.XML_Name ) ) {
+			final String element_name = element.getNodeName();
+			if( element_name.startsWith( "#" ) )
+				continue;
+			
+			//System.out.println( element.getAttributes().toString() );
+			if( element_name.equalsIgnoreCase( FrameSpaceParser.XML_Name ) ) {
 				list.add( new FrameSpaceParser( element, frame_space_num++ ) );
 			}
 		}

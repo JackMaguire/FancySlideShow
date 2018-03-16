@@ -13,8 +13,8 @@ public class FrameSpaceParser {
 
 	public final static String XML_Name = "FrameSpace";
 
-	private static String frame_space_name_ = "Untitled";
-	private static String filename_prefix_ = "";
+	private String frame_space_name_ = "Untitled";
+	private String filename_prefix_ = "";
 
 	private final int frame_space_id_;
 	
@@ -39,7 +39,7 @@ public class FrameSpaceParser {
 			final Node attribute = attribute_nodes.item( i );
 			final String attribute_name = attribute.getNodeName();
 			final String value = attribute.getNodeValue();
-
+			
 			if( attribute_name.equalsIgnoreCase( "name" ) ) {
 				frame_space_name_ = value;
 			} else if( attribute_name.equalsIgnoreCase( "filename_prefix" ) ) {
@@ -49,7 +49,7 @@ public class FrameSpaceParser {
 				throw new XMLParsingException( XML_Name + " has no match for " + attribute_name );
 			}
 		}
-
+		
 		final NodeList elements = frame_space_node_.getChildNodes();
 		final int n = elements.getLength();
 		Node nodes_node = null;
@@ -85,7 +85,7 @@ public class FrameSpaceParser {
 	public void applyToGraph( ConceptualGraph graph, int node_offset ) throws XMLParsingException {
 
 		graph.setSubgraphName( frame_space_id_, frame_space_name_ );
-		
+		//System.out.println( frame_space_id_ + " " + frame_space_name_ + " " + filename_prefix_ );
 		// Nodes
 		for( int i = 0; i < conceptual_nodes_.length; ++i ) {
 			graph.setNode( conceptual_nodes_[ i ], node_offset + i, frame_space_id_ );
