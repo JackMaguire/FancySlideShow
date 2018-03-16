@@ -80,6 +80,13 @@ public class DemoFrameGraphTest extends SingleTest {
 			return false;
 		}
 
+		is_valid &= validateFrameSpace1( graph );
+		
+		return is_valid;
+	}
+	
+	private boolean validateFrameSpace1( ConceptualGraph graph ) {
+		boolean is_valid = true;
 		// Nodes
 		// adding scopes to protect myself from copy/paste errors
 		{// 0
