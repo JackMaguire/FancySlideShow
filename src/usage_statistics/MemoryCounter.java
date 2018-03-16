@@ -5,8 +5,6 @@ import java.util.*;
 public class MemoryCounter {
 
 	private final static MemoryCounter instance_ = new MemoryCounter();
-
-	// private long bytes_for_buffered_images_;
 	private final Map< String, Long > bytes_for_token_ = new HashMap< String, Long >();
 
 	public MemoryCounter() {
