@@ -243,23 +243,60 @@ public class DemoFrameGraphTest extends SingleTest {
 			is_valid &= equals_int( "num downstream edges", node.getDownstreamEdges().length, 1 );
 			is_valid &= equals_int( "num upstream edges", node.getUpstreamEdges().length, 2 );
 		}
-
-		if( !is_valid ) {
-			// We can not test the edges if the nodes are problematic
-			return false;
+		
+		{// offset + 1
+			final String name = nodeName( 1, offset );
+			final ConceptualNodeType node = graph.getNode( offset + 1 );
+			is_valid &= equals_string( name + " notes", node.getNotes(), "" );
+			is_valid &= equals_bool( name + " is hard", node.is_hard(), true );
+			is_valid &= equals_int( name + " subgraph", node.subgraph(), 1 );
+			is_valid &= equals_string( name + " filename", node.getImageFilename(), "demo/PicsForDemo/Slides/2.png" );
+			is_valid &= equals_int( "num downstream edges", node.getDownstreamEdges().length, 1 );
+			is_valid &= equals_int( "num upstream edges", node.getUpstreamEdges().length, 1 );
 		}
-
-		// Edges
-		{// 0-1
-			final ConceptualEdgeType edge_0_to_1 = graph.getNode( 0 ).getDownstreamEdges()[ 0 ];
-			is_valid &= equals_object( "edge_0_to_1 vs reverse_edge_1_to_0", edge_0_to_1,
-					graph.getNode( 1 ).getUpstreamEdges()[ 0 ] );
-
-			is_valid &= equals_int( "edge 0-1 incoming node index", edge_0_to_1.incomingNodeIndex(), 1 );
-			is_valid &= equals_int( "edge 0-1 outgoing node index", edge_0_to_1.outgoingNodeIndex(), 0 );
-
-			final String[] filenames = edge_0_to_1.getImageFilenames();
-			is_valid &= equals_int( "num edge 0-1 filenames", filenames.length, 0 );
+		
+		{// offset + 2
+			final String name = nodeName( 2, offset );
+			final ConceptualNodeType node = graph.getNode( offset + 2 );
+			is_valid &= equals_string( name + " notes", node.getNotes(), "" );
+			is_valid &= equals_bool( name + " is hard", node.is_hard(), true );
+			is_valid &= equals_int( name + " subgraph", node.subgraph(), 1 );
+			is_valid &= equals_string( name + " filename", node.getImageFilename(), "demo/PicsForDemo/Slides/3.png" );
+			is_valid &= equals_int( "num downstream edges", node.getDownstreamEdges().length, 2 );
+			is_valid &= equals_int( "num upstream edges", node.getUpstreamEdges().length, 1 );
+		}
+		
+		{// offset + 3
+			final String name = nodeName( 3, offset );
+			final ConceptualNodeType node = graph.getNode( offset + 3 );
+			is_valid &= equals_string( name + " notes", node.getNotes(), "" );
+			is_valid &= equals_bool( name + " is hard", node.is_hard(), true );
+			is_valid &= equals_int( name + " subgraph", node.subgraph(), 1 );
+			is_valid &= equals_string( name + " filename", node.getImageFilename(), "demo/PicsForDemo/Slides/4.png" );
+			is_valid &= equals_int( "num downstream edges", node.getDownstreamEdges().length, 1 );
+			is_valid &= equals_int( "num upstream edges", node.getUpstreamEdges().length, 1 );
+		}
+		
+		{// offset + 4
+			final String name = nodeName( 4, offset );
+			final ConceptualNodeType node = graph.getNode( offset + 4 );
+			is_valid &= equals_string( name + " notes", node.getNotes(), "" );
+			is_valid &= equals_bool( name + " is hard", node.is_hard(), true );
+			is_valid &= equals_int( name + " subgraph", node.subgraph(), 1 );
+			is_valid &= equals_string( name + " filename", node.getImageFilename(), "demo/PicsForDemo/Slides/4_alt.png" );
+			is_valid &= equals_int( "num downstream edges", node.getDownstreamEdges().length, 1 );
+			is_valid &= equals_int( "num upstream edges", node.getUpstreamEdges().length, 1 );
+		}
+		
+		{// offset + 5
+			final String name = nodeName( 5, offset );
+			final ConceptualNodeType node = graph.getNode( offset + 5 );
+			is_valid &= equals_string( name + " notes", node.getNotes(), "" );
+			is_valid &= equals_bool( name + " is hard", node.is_hard(), true );
+			is_valid &= equals_int( name + " subgraph", node.subgraph(), 1 );
+			is_valid &= equals_string( name + " filename", node.getImageFilename(), "demo/PicsForDemo/Slides/5.png" );
+			is_valid &= equals_int( "num downstream edges", node.getDownstreamEdges().length, 0 );
+			is_valid &= equals_int( "num upstream edges", node.getUpstreamEdges().length, 2 );
 		}
 
 		return is_valid;
