@@ -44,10 +44,16 @@ public class CenterPanelView extends JPanelWithKeyListener {
 			panes_.addItem( graph.getNamesforSubgraph( i ) );
 		}
 
+		final int[] nodes_added_per_subgraph = new int[ nsubgraphs ];
+		for( int i = 0; i < nsubgraphs; ++i ) {
+			nodes_added_per_subgraph[ i ] = 0;
+		}
+
 		ConceptualNodeType[] all_nodes = graph.getNodes();
 		circles_ = new NodeCircle[ all_nodes.length ];
 		for( int i = 0; i < all_nodes.length; ++i ) {
-			circles_[ i ] = createNodeCircle( i, graph.numNodesInSubgraph( all_nodes[ i ].subgraph() ),
+			final int subgraph = all_nodes[ i ].subgraph();
+			circles_[ i ] = createNodeCircle( nodes_added_per_subgraph[ subgraph ]++, graph.numNodesInSubgraph( subgraph ),
 					all_nodes[ i ].name() );
 		}
 
