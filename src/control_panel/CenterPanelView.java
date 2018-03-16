@@ -53,7 +53,7 @@ public class CenterPanelView extends JPanelWithKeyListener {
 		circles_ = new NodeCircle[ all_nodes.length ];
 		for( int i = 0; i < all_nodes.length; ++i ) {
 			final int subgraph = all_nodes[ i ].subgraph();
-			circles_[ i ] = createNodeCircle( nodes_added_per_subgraph[ subgraph ]++, graph.numNodesInSubgraph( subgraph ),
+			circles_[ i ] = createNodeCircle( i, nodes_added_per_subgraph[ subgraph ]++, graph.numNodesInSubgraph( subgraph ),
 					all_nodes[ i ].name() );
 		}
 
@@ -129,9 +129,9 @@ public class CenterPanelView extends JPanelWithKeyListener {
 		}
 	}
 
-	private NodeCircle createNodeCircle( int index, int num_points, String name ) {
+	private NodeCircle createNodeCircle( int index, int index_within_subgraph, int num_points, String name ) {
 		// TODO change this to -= pi/2
-		double radians = Math.PI * 2 * index / ( (double) num_points ) - ( Math.PI / 2.0 );// uses radians
+		double radians = Math.PI * 2 * index_within_subgraph / ( (double) num_points ) - ( Math.PI / 2.0 );// uses radians
 		double dx = Math.cos( radians );
 		double dy = Math.sin( radians );
 		return new NodeCircle( model_.getGraph().getNode( index ), dx, dy, name );
