@@ -77,7 +77,16 @@ public class GraphFromXML {
 			final String element_name = element.getNodeName();
 
 			if( element_name.equalsIgnoreCase( ConceptualEdgeFactory.global_edge_xml_name ) ) {
-				edges.add( ConceptualEdgeFactory.create( element, parsed_frame_spaces, offset_for_frame_space ) );
+				//Look for edge subelements
+				final NodeList subelements = element.getChildNodes();
+				final int n_subelements = subelements.getLength();
+				for( int j = 0; j < n_subelements; ++j ) {
+					final Node subelement = subelements.item( j );
+					final String subelement_name = subelement.getNodeName();
+					if( ConceptualEdgeFactory.XMLNameIsEdgeType( subelement_name ) ) {
+						edges.add( ConceptualEdgeFactory.create( subelement, parsed_frame_spaces, offset_for_frame_space ) );
+					}
+				}
 			}
 		}
 

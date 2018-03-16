@@ -32,7 +32,7 @@ public class DefaultEdgeCreator {
 
 			if( attribute_name.equalsIgnoreCase( "title" ) ) {
 				title = value;
-			} else if( attribute_name.equalsIgnoreCase( "origin_node_frame_space" ) ) {
+			} else if( attribute_name.equalsIgnoreCase( "origin_frame_space" ) ) {
 				origin_frame_space = value;
 			} else if( attribute_name.equalsIgnoreCase( "origin_node" ) ) {
 				origin_node = value;

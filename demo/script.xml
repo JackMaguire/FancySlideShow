@@ -59,8 +59,8 @@
 		</FrameSpace>
 	
 		<GlobalEdges>
-			<Edge title="" origin_frame_space="Main" origin_node="end1" destination_from_space="Second" destination_node="1"/>
-			<Edge title="" origin_frame_space="Main" origin_node="end2" destination_from_space="Second" destination_node="1">
+			<Edge title="" origin_frame_space="Main" origin_node="end1" destination_frame_space="Second" destination_node="1"/>
+			<Edge title="" origin_frame_space="Main" origin_node="end2" destination_frame_space="Second" destination_node="1">
 				Not sure if this makes sense as a transition. Just wanted to show that transitions between framespaces are an option
 				<Filename filename="demo/PicsForDemo/Slides/5.png"/>
 			</Edge>

@@ -119,7 +119,7 @@ public class DemoFrameGraphTest extends SingleTest {
 			is_valid &= equals_bool( "node 3 is hard", node3.is_hard(), true );
 			is_valid &= equals_int( "node 3 subgraph", node3.subgraph(), 0 );
 			is_valid &= equals_string( "node 3 filename", node3.getImageFilename(), "demo/PicsForDemo/Track1/0250.png" );
-			is_valid &= equals_int( "num node 3 upstream edges", node3.getDownstreamEdges().length, 0 );
+			is_valid &= equals_int( "num node 3 upstream edges", node3.getDownstreamEdges().length, 1 );
 			is_valid &= equals_int( "num node 3 upstream edges", node3.getUpstreamEdges().length, 1 );
 		}
 
@@ -129,7 +129,7 @@ public class DemoFrameGraphTest extends SingleTest {
 			is_valid &= equals_bool( "node 4 is hard", node4.is_hard(), true );
 			is_valid &= equals_int( "node 4 subgraph", node4.subgraph(), 0 );
 			is_valid &= equals_string( "node 4 filename", node4.getImageFilename(), "demo/PicsForDemo/Track2/0250.png" );
-			is_valid &= equals_int( "num node 4 upstream edges", node4.getDownstreamEdges().length, 0 );
+			is_valid &= equals_int( "num node 4 upstream edges", node4.getDownstreamEdges().length, 1 );
 			is_valid &= equals_int( "num node 4 upstream edges", node4.getUpstreamEdges().length, 1 );
 		}
 
