@@ -13,10 +13,55 @@ import xml_parsing.XMLParsingException;
 
 public class DefaultEdgeCreator {
 
-	public static ConceptualEdge makeGlobalEdge( Node edge_node, ArrayList< FrameSpaceParser > parsed_frame_spaces ) throws XMLParsingException {
+	public static ConceptualEdge makeGlobalEdge( Node edge_node, ArrayList< FrameSpaceParser > parsed_frame_spaces )
+			throws XMLParsingException {
+
+		String title = "";
+		String origin_frame_space = "";
+		String origin_node = "";
+		String destination_frame_space = "";
+		String destination_node = "";
+
+		// Attributes
+		final NamedNodeMap attribute_nodes = edge_node.getAttributes();
+		final int n_attributes = attribute_nodes.getLength();
+		for( int i = 0; i < n_attributes; ++i ) {
+			final Node attribute = attribute_nodes.item( i );
+			final String attribute_name = attribute.getNodeName();
+			final String value = attribute.getNodeValue();
+
+			if( attribute_name.equalsIgnoreCase( "title" ) ) {
+				title = value;
+			} else if( attribute_name.equalsIgnoreCase( "origin_node_frame_space" ) ) {
+				origin_frame_space = value;
+			} else if( attribute_name.equalsIgnoreCase( "origin_node" ) ) {
+				origin_node = value;
+			} else if( attribute_name.equalsIgnoreCase( "destination_frame_space" ) ) {
+				destination_frame_space = value;
+			} else if( attribute_name.equalsIgnoreCase( "destination_node" ) ) {
+				destination_node = value;
+			} else if( !attribute_name.startsWith( "#" ) ) {
+				System.err.println( "Edge has no match for " + attribute_name );
+				throw new XMLParsingException( "Edge has no match for " + attribute_name );
+			}
+		}
+
+		if( origin_frame_space.length() == 0 ) {
+			throw new XMLParsingException( "Global edges require origin_frame_space attribute." );
+		}
+		if( origin_node.length() == 0 ) {
+			throw new XMLParsingException( "Global edges require origin_node attribute." );
+		}
+		if( destination_frame_space.length() == 0 ) {
+			throw new XMLParsingException( "Global edges require destination_frame_space attribute." );
+		}
+		if( destination_node.length() == 0 ) {
+			throw new XMLParsingException( "Global edges require destination_node attribute." );
+		}
+
 		return null;
 	}
-	
+
 	public static ConceptualEdge makeEdge( Node edge_node, HashMap< String, Integer > local_index_for_node_title,
 			int node_offset, String filename_prefix ) throws XMLParsingException {
 
@@ -177,5 +222,5 @@ public class DefaultEdgeCreator {
 		}
 
 	}
-	
+
 }
