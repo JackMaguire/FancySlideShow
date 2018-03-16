@@ -13,6 +13,8 @@ import xml_parsing.XMLParsingException;
 
 public class ConceptualEdgeFactory {
 
+	public final static String global_edge_xml_name = "GlobalEdges";
+	
 	private final static String[] xml_names_ = new String[] { "Edge", "ZoomInTransition" };
 
 	public static boolean XMLNameIsEdgeType( String name ) {

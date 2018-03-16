@@ -6,6 +6,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import conceptual_graph.*;
+import xml_parsing.edges.ConceptualEdgeFactory;
 
 public class GraphFromXML {
 
@@ -31,11 +32,14 @@ public class GraphFromXML {
 			total_num_nodes += frame_spaces.get( i ).numNodes();
 		}
 
-		ConceptualGraph graph = new ConceptualGraph( total_num_nodes, num_frame_spaces );
+		final ConceptualGraph graph = new ConceptualGraph( total_num_nodes, num_frame_spaces );
 		for( int i = 0; i < num_frame_spaces; ++i )
 			frame_spaces.get( i ).applyToGraph( graph, offset_for_frame_space[ i ] );
 
 		// TODO InterFrameSpace Edges
+		final ArrayList< ConceptualEdgeType > global_edges = extractInterFrameSpaceEdges( graph_node, frame_spaces,
+				offset_for_frame_space );
+		// TODO
 
 		return graph;
 	}
@@ -60,8 +64,8 @@ public class GraphFromXML {
 	}
 
 	private final static ArrayList< ConceptualEdgeType > extractInterFrameSpaceEdges( Node graph_node,
-			ArrayList< FrameSpaceParser > parsed_frame_spaces ) throws XMLParsingException {
-		
+			ArrayList< FrameSpaceParser > parsed_frame_spaces, int[] offset_for_frame_space ) throws XMLParsingException {
+
 		ArrayList< ConceptualEdgeType > edges = new ArrayList< ConceptualEdgeType >();
 
 		final NodeList elements = graph_node.getChildNodes();
@@ -70,8 +74,8 @@ public class GraphFromXML {
 			final Node element = elements.item( i );
 			final String element_name = element.getNodeName();
 
-			if( element_name.equalsIgnoreCase( FrameSpaceParser.XML_Name ) ) {
-				// edges.add( );
+			if( element_name.equalsIgnoreCase( ConceptualEdgeFactory.global_edge_xml_name ) ) {
+				edges.add( ConceptualEdgeFactory.create( element, parsed_frame_spaces, offset_for_frame_space ) );
 			}
 		}
 
