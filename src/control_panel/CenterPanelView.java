@@ -83,11 +83,12 @@ public class CenterPanelView extends JPanelWithKeyListener {
 	public void setCurrentSubgraph( int subgraph ) {
 		if( subgraph != current_subgraph_ ) {
 			current_subgraph_ = subgraph;
+			panes_.setSelectedIndex( subgraph );
 			repaint();
 			// revalidate();
 		}
 	}
-
+	
 	public void recolorAllObjects() {
 		final int current_node_index = model_.currentNode().index();
 
