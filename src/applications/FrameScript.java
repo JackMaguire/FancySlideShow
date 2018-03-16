@@ -1,5 +1,6 @@
 package applications;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -43,18 +44,25 @@ public class FrameScript {
 		ss.run();
 	}
 
-	public void parseArgs( String[] args )
-			throws IOException, ParserConfigurationException, SAXException, XMLParsingException {
+	public void parseArgs( String[] args ) throws Exception {
 		for( int i = 0; i < args.length; ++i ) {
 			final String script_name = args[ i ];
 			parse( script_name );
 		}
 	}
 
-	public void parse( String script_name )
-			throws IOException, ParserConfigurationException, SAXException, XMLParsingException {
+	public void parse( String script_name ) throws Exception {
 		System.out.println( "Parsing " + script_name );
 		final Node node = Util.readFromFile( script_name );
+		if( node == null ) {
+			File f = new File( script_name );
+			if( !f.exists() ) {
+				throw new Exception( "No file named" + script_name );
+			} else {
+				throw new Exception( script_name + " exists but we can not parse it" );
+			}
+
+		}
 		parse( node );
 	}
 
