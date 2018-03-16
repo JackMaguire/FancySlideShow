@@ -13,8 +13,8 @@ import xml_parsing.XMLParsingException;
 
 public class DefaultEdgeCreator {
 
-	public static ConceptualEdge makeGlobalEdge( Node edge_node, ArrayList< FrameSpaceParser > parsed_frame_spaces )
-			throws XMLParsingException {
+	public static ConceptualEdge makeGlobalEdge( Node edge_node, ArrayList< FrameSpaceParser > parsed_frame_spaces,
+			int[] offset_for_frame_space ) throws XMLParsingException {
 
 		String title = "";
 		String origin_frame_space = "";
@@ -59,7 +59,48 @@ public class DefaultEdgeCreator {
 			throw new XMLParsingException( "Global edges require destination_node attribute." );
 		}
 
-		return null;
+		FrameSpaceParser origin_parser = null;
+		FrameSpaceParser destination_parser = null;
+
+		for( FrameSpaceParser fsp : parsed_frame_spaces ) {
+			if( fsp.getFrameSpaceName().equals( origin_frame_space ) ) {
+				origin_parser = fsp;
+			}
+			if( fsp.getFrameSpaceName().equals( destination_frame_space ) ) {
+				destination_parser = fsp;
+			}
+		}
+
+		final int start = offset_for_frame_space[ origin_parser.getFrameSpaceID() ]
+				+ origin_parser.localIndexForNodeTitle( origin_node );
+		final int end = offset_for_frame_space[ destination_parser.getFrameSpaceID() ]
+				+ destination_parser.localIndexForNodeTitle( destination_node );
+
+		//Frames!
+		final ArrayList< String > frame_filenames = new ArrayList< String >();
+
+		// Elements
+		final NodeList elements = edge_node.getChildNodes();
+		final int n = elements.getLength();
+		for( int i = 0; i < n; ++i ) {
+			final Node element = elements.item( i );
+			final String element_name = element.getNodeName();
+
+			if( element_name.equalsIgnoreCase( "Filename" ) ) {
+				appendFilename( element, frame_filenames, "" );
+			} else if( element_name.equalsIgnoreCase( "FilenameRange" ) ) {
+				appendFilenameRange( element, frame_filenames, "" );
+			} else if( !element_name.startsWith( "#" ) ) {
+				throw new XMLParsingException( "Edge has no match for " + element_name );
+			}
+		}
+
+		String[] filenames = new String[ frame_filenames.size() ];
+		for( int i = 0; i < filenames.length; ++i ) {
+			filenames[ i ] = frame_filenames.get( i );
+		}
+
+		return new ConceptualEdge( title, start, end, filenames );
 	}
 
 	public static ConceptualEdge makeEdge( Node edge_node, HashMap< String, Integer > local_index_for_node_title,

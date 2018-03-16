@@ -27,7 +27,7 @@ public class FrameSpaceParser {
 
 	private ConceptualNode[] conceptual_nodes_ = null;
 	ArrayList< ConceptualEdge > conceptual_edges_ = null;
-
+	
 	public FrameSpaceParser( Node frame_space_node, int frame_space_id ) throws XMLParsingException {
 
 		frame_space_node_ = frame_space_node;
@@ -83,6 +83,18 @@ public class FrameSpaceParser {
 		conceptual_edges_ = createEdges( edges_node, 0 );// will add node_offsets in applyToGraph()
 	}
 
+	public String getFrameSpaceName() {
+		return frame_space_name_;
+	}
+	
+	public int localIndexForNodeTitle( String title ) {
+		return local_index_for_node_title_.get( title );
+	}
+	
+	public int getFrameSpaceID() {
+		return frame_space_id_;
+	}
+	
 	public void applyToGraph( ConceptualGraph graph, int node_offset ) throws XMLParsingException {
 
 		graph.setSubgraphName( frame_space_id_, frame_space_name_ );
