@@ -1,6 +1,7 @@
 package control_panel;
 
 import conceptual_graph.ConceptualNodeType;
+import engine.Engine;
 
 //The goal of this class is to manage the information flow to the individual components of the control panel when a state is changed
 
@@ -18,12 +19,29 @@ public class ControlPanelUpdater {
 		control_panel_model_.getCenterPanelModel().setCurrentNode( node );
 		control_panel_view_.getEastPanelView().setCurrentNode( node );
 		control_panel_view_.getWestPanelView().updateNotesForCurrentSlide( node.getNotes() );
-		//repaint?
+		
+		Thread T = new RepaintThread( control_panel_view_ );
+		T.start();
 	}
 	
 	public void setCurrentSubgraph( int subgraph ) {
 		control_panel_view_.getCenterPanelView().setCurrentSubgraph( subgraph );
-		//repaint?
+		
+		Thread T = new RepaintThread( control_panel_view_ );
+		T.start();
 	}
 
+	private static class RepaintThread extends Thread {
+
+		final private ControlPanelView control_panel_view_;
+
+		public RepaintThread( ControlPanelView view ) {
+			control_panel_view_ = view;
+		}
+
+		public void run() {
+			control_panel_view_.repaint();
+		}
+	}
+	
 }
