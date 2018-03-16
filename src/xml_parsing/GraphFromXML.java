@@ -77,7 +77,7 @@ public class GraphFromXML {
 			final String element_name = element.getNodeName();
 
 			if( element_name.equalsIgnoreCase( ConceptualEdgeFactory.global_edge_xml_name ) ) {
-				//Look for edge subelements
+				// Look for edge subelements
 				final NodeList subelements = element.getChildNodes();
 				final int n_subelements = subelements.getLength();
 				for( int j = 0; j < n_subelements; ++j ) {
