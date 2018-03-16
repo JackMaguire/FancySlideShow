@@ -185,7 +185,8 @@ public class DemoFrameGraphTest extends SingleTest {
 			
 			is_valid |= equals_int( "edge 2-4 incoming node index", edge_2_to_4.incomingNodeIndex(), 4 );
 			is_valid |= equals_int( "edge 2-4 outgoing node index", edge_2_to_4.outgoingNodeIndex(), 2 );
-
+			is_valid |= equals_string( "edge 2-4 name", edge_2_to_4.name(), "alternate" );
+			
 			final String[] filenames = edge_2_to_4.getImageFilenames();
 			is_valid |= equals_int( "num edge 2-4 filenames", filenames.length, 249 - 130 );
 			for( int i = 0; i < filenames.length; ++i ) {

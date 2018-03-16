@@ -38,7 +38,7 @@
 			</Edges>
 		</FrameSpace>
 	
-			<FrameSpace name="Main" filename_prefix="demo/PicsForDemo/">
+		<FrameSpace name="Main" filename_prefix="demo/PicsForDemo/">
 			<Nodes>
 				titles with names starting with '_' will not be displayed in the control panel
 				<Node title="1"     filename="Slides/1.png"     hard="true"/>
@@ -50,8 +50,12 @@
 			</Nodes>
 			
 			<Edges>
-				<Edge title="" origin_node="title" destination_node="start"/>
-				
+				<Edge title="" origin_node="1" destination_node="2"/>
+				<Edge title="" origin_node="2" destination_node="3"/>
+				<Edge title="" origin_node="3" destination_node="4"/>
+				<Edge title="" origin_node="3" destination_node="4_alt"/>
+				<Edge title="" origin_node="4" destination_node="5"/>
+				<Edge title="" origin_node="4_alt" destination_node="5"/>
 			</Edges>
 		</FrameSpace>
 	
