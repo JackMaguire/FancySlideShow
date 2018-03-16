@@ -37,7 +37,7 @@ public class FrameScript {
 		if( graph_node_ == null ) {
 			System.err.println( "No <Graph> element provided" );
 		}
-		
+
 		ConceptualGraph graph = GraphFromXML.parse( graph_node_ );
 		SlideShow ss = new SlideShow( graph );
 		ss.run();
