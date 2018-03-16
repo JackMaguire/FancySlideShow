@@ -156,6 +156,26 @@ public class DemoFrameGraphTest extends SingleTest {
 			}
 		}
 		
+		{// 1-3
+			final ConceptualEdgeType edge_1_to_3 = graph.getNode( 1 ).getDownstreamEdges()[ 1 ];
+			is_valid |= equals_object( "edge_1_to_3 vs reverse_edge_3_to_1", edge_1_to_3,
+					graph.getNode( 3 ).getUpstreamEdges()[ 0 ] );
+			
+			is_valid |= equals_int( "edge 1-3 incoming node index", edge_1_to_3.incomingNodeIndex(), 3 );
+			is_valid |= equals_int( "edge 1-3 outgoing node index", edge_1_to_3.outgoingNodeIndex(), 1 );
+
+			final String[] filenames = edge_1_to_3.getImageFilenames();
+			is_valid |= equals_int( "num edge 1-3 filenames", filenames.length, 249 - 130 );
+			for( int i = 0; i < filenames.length; ++i ) {
+				final boolean is_good = equals_string( "edge 1-3 filename #" + i, filenames[ i ],
+						"src/demo/PicsForDemo/Track2/0" + String.format( "%03d", i + 131 ) + ".png" );
+				if( !is_good ) {
+					is_valid = false;
+					break;// break loop so that we do not end up with hundreds of error messages
+				}
+			}
+		}
+		
 		return is_valid;
 	}
 
