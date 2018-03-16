@@ -76,7 +76,7 @@ public class DefaultEdgeCreator {
 		final int end = offset_for_frame_space[ destination_parser.getFrameSpaceID() ]
 				+ destination_parser.localIndexForNodeTitle( destination_node );
 
-		//Frames!
+		// Frames!
 		final ArrayList< String > frame_filenames = new ArrayList< String >();
 
 		// Elements
