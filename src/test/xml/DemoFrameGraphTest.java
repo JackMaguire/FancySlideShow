@@ -82,7 +82,7 @@ public class DemoFrameGraphTest extends SingleTest {
 
 		is_valid &= validateFrameSpace1( graph );
 		is_valid &= validateFrameSpace2( graph );
-		
+
 		return is_valid;
 	}
 
@@ -243,7 +243,7 @@ public class DemoFrameGraphTest extends SingleTest {
 			is_valid &= equals_int( "num downstream edges", node.getDownstreamEdges().length, 1 );
 			is_valid &= equals_int( "num upstream edges", node.getUpstreamEdges().length, 2 );
 		}
-		
+
 		{// offset + 1
 			final String name = nodeName( 1, offset );
 			final ConceptualNodeType node = graph.getNode( offset + 1 );
@@ -254,7 +254,7 @@ public class DemoFrameGraphTest extends SingleTest {
 			is_valid &= equals_int( "num downstream edges", node.getDownstreamEdges().length, 1 );
 			is_valid &= equals_int( "num upstream edges", node.getUpstreamEdges().length, 1 );
 		}
-		
+
 		{// offset + 2
 			final String name = nodeName( 2, offset );
 			final ConceptualNodeType node = graph.getNode( offset + 2 );
@@ -265,7 +265,7 @@ public class DemoFrameGraphTest extends SingleTest {
 			is_valid &= equals_int( "num downstream edges", node.getDownstreamEdges().length, 2 );
 			is_valid &= equals_int( "num upstream edges", node.getUpstreamEdges().length, 1 );
 		}
-		
+
 		{// offset + 3
 			final String name = nodeName( 3, offset );
 			final ConceptualNodeType node = graph.getNode( offset + 3 );
@@ -276,7 +276,7 @@ public class DemoFrameGraphTest extends SingleTest {
 			is_valid &= equals_int( "num downstream edges", node.getDownstreamEdges().length, 1 );
 			is_valid &= equals_int( "num upstream edges", node.getUpstreamEdges().length, 1 );
 		}
-		
+
 		{// offset + 4
 			final String name = nodeName( 4, offset );
 			final ConceptualNodeType node = graph.getNode( offset + 4 );
@@ -287,7 +287,7 @@ public class DemoFrameGraphTest extends SingleTest {
 			is_valid &= equals_int( "num downstream edges", node.getDownstreamEdges().length, 1 );
 			is_valid &= equals_int( "num upstream edges", node.getUpstreamEdges().length, 1 );
 		}
-		
+
 		{// offset + 5
 			final String name = nodeName( 5, offset );
 			final ConceptualNodeType node = graph.getNode( offset + 5 );
