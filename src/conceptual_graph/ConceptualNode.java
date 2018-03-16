@@ -75,7 +75,7 @@ public class ConceptualNode implements ConceptualNodeType {
 	public String getImageFilename() {
 		return image_filename_;
 	}
-	
+
 	public void setImageFilename( String filename ) {
 		image_filename_ = filename;
 

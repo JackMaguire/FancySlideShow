@@ -52,8 +52,8 @@ public class GraphFromXML {
 			final String element_name = element.getNodeName();
 			if( element_name.startsWith( "#" ) )
 				continue;
-			
-			//System.out.println( element.getAttributes().toString() );
+
+			// System.out.println( element.getAttributes().toString() );
 			if( element_name.equalsIgnoreCase( FrameSpaceParser.XML_Name ) ) {
 				list.add( new FrameSpaceParser( element, frame_space_num++ ) );
 			}

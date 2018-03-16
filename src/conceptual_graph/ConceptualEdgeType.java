@@ -19,5 +19,5 @@ public interface ConceptualEdgeType {
 	void applyToFrameGraph( FrameGraph fg );
 
 	String[] getImageFilenames();
-	
+
 }

@@ -17,7 +17,7 @@ public class FrameSpaceParser {
 	private String filename_prefix_ = "";
 
 	private final int frame_space_id_;
-	
+
 	// private final ArrayList< ConceptualNode > nodes_ = new ArrayList<
 	// ConceptualNode >();
 	private final HashMap< String, Integer > local_index_for_node_title_ = new HashMap< String, Integer >();
@@ -31,7 +31,7 @@ public class FrameSpaceParser {
 
 		frame_space_node_ = frame_space_node;
 		frame_space_id_ = frame_space_id;
-		
+
 		// Attributes
 		final NamedNodeMap attribute_nodes = frame_space_node.getAttributes();
 		final int n_attributes = attribute_nodes.getLength();
@@ -39,7 +39,7 @@ public class FrameSpaceParser {
 			final Node attribute = attribute_nodes.item( i );
 			final String attribute_name = attribute.getNodeName();
 			final String value = attribute.getNodeValue();
-			
+
 			if( attribute_name.equalsIgnoreCase( "name" ) ) {
 				frame_space_name_ = value;
 			} else if( attribute_name.equalsIgnoreCase( "filename_prefix" ) ) {
@@ -49,7 +49,7 @@ public class FrameSpaceParser {
 				throw new XMLParsingException( XML_Name + " has no match for " + attribute_name );
 			}
 		}
-		
+
 		final NodeList elements = frame_space_node_.getChildNodes();
 		final int n = elements.getLength();
 		Node nodes_node = null;
@@ -85,7 +85,8 @@ public class FrameSpaceParser {
 	public void applyToGraph( ConceptualGraph graph, int node_offset ) throws XMLParsingException {
 
 		graph.setSubgraphName( frame_space_id_, frame_space_name_ );
-		//System.out.println( frame_space_id_ + " " + frame_space_name_ + " " + filename_prefix_ );
+		// System.out.println( frame_space_id_ + " " + frame_space_name_ + " " +
+		// filename_prefix_ );
 		// Nodes
 		for( int i = 0; i < conceptual_nodes_.length; ++i ) {
 			graph.setNode( conceptual_nodes_[ i ], node_offset + i, frame_space_id_ );
@@ -136,8 +137,8 @@ public class FrameSpaceParser {
 			final Node attribute = attribute_nodes.item( i );
 			final String attribute_name = attribute.getNodeName();
 			final String value = attribute.getNodeValue();
-			//System.out.println( attribute_name + " " + value );
-			
+			// System.out.println( attribute_name + " " + value );
+
 			if( attribute_name.equalsIgnoreCase( "title" ) ) {
 				title = value;
 			} else if( attribute_name.equalsIgnoreCase( "filename" ) ) {
