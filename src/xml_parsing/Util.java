@@ -23,7 +23,6 @@ public class Util {
 		final DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		final Document doc = dBuilder.parse( inputFile );
 		doc.getDocumentElement().normalize();
-		final Element doc_element = doc.getDocumentElement();
 
 		final NodeList elements = doc.getChildNodes();
 		for( int i = 0; i < elements.getLength(); ++i ) {
