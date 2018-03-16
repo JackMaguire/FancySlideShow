@@ -9,7 +9,7 @@ public class ControlPanelModel {
 	private final EastPanelModel east_;
 
 	private final ConceptualGraph graph_;
-	
+
 	public ControlPanelModel( ConceptualGraph graph ) {
 		graph_ = graph;
 		center_ = new CenterPanelModel( graph );
@@ -32,5 +32,5 @@ public class ControlPanelModel {
 	public ConceptualGraph getGraph() {
 		return graph_;
 	}
-	
+
 }

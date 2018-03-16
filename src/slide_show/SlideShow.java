@@ -61,7 +61,7 @@ public class SlideShow implements SlideShowType {
 		FrameGraph frame_graph = graph_.createFrameGraph();
 
 		ControlPanelUpdater cp_updater = new ControlPanelUpdater( control_panel_model_, control_panel_view_ );
-		
+
 		Engine engine = new Engine( slide_show_panel_, frame_graph, cp_updater );
 		engine.start();
 

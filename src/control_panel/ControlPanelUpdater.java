@@ -19,14 +19,14 @@ public class ControlPanelUpdater {
 		control_panel_model_.getCenterPanelModel().setCurrentNode( node );
 		control_panel_view_.getEastPanelView().setCurrentNode( node );
 		control_panel_view_.getWestPanelView().updateNotesForCurrentSlide( node.getNotes() );
-		
+
 		Thread T = new RepaintThread( control_panel_view_ );
 		T.start();
 	}
-	
+
 	public void setCurrentSubgraph( int subgraph ) {
 		control_panel_view_.getCenterPanelView().setCurrentSubgraph( subgraph );
-		
+
 		Thread T = new RepaintThread( control_panel_view_ );
 		T.start();
 	}
@@ -43,5 +43,5 @@ public class ControlPanelUpdater {
 			control_panel_view_.repaint();
 		}
 	}
-	
+
 }

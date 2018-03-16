@@ -88,7 +88,7 @@ public class CenterPanelView extends JPanelWithKeyListener {
 			// revalidate();
 		}
 	}
-	
+
 	public void recolorAllObjects() {
 		final int current_node_index = model_.currentNode().index();
 
