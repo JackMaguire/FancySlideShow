@@ -199,7 +199,7 @@ FrameGraph and updating the SlideShowPanel.
 If already paused, the space bar resumes
 the slide show by starting the timer again.
 
-### Left Mouse Button ###
+### Left Mouse Button (on the ConceptualGraph) ###
 
 ### Right Mouse Button ###
 
