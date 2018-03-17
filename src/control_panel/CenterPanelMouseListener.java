@@ -6,14 +6,14 @@ import control_panel.CenterPanelView.*;
 import settings.DebugToggles;
 import conceptual_graph.ConceptualNodeType;
 
-public class CenterPanelController implements MouseListener {
+public class CenterPanelMouseListener implements MouseListener {
 
 	final private CenterPanelModel model_;
 	final private CenterPanelView view_;
 
 	final private ControlPanelView parent_view_;
 
-	public CenterPanelController( ControlPanelView parent_view, CenterPanelModel model, CenterPanelView view ) {
+	public CenterPanelMouseListener( ControlPanelView parent_view, CenterPanelModel model, CenterPanelView view ) {
 		parent_view_ = parent_view;
 		model_ = model;
 		view_ = view;

@@ -14,7 +14,7 @@ public class ControlPanelView extends JPanelWithKeyListener {
 	private final EastPanelView east_view_;
 
 	private final CenterPanelView center_view_;
-	private final CenterPanelController center_controller_;
+	private final CenterPanelMouseListener center_controller_;
 
 	public ControlPanelView( ControlPanelModel model ) {
 		model_ = model;
@@ -24,7 +24,7 @@ public class ControlPanelView extends JPanelWithKeyListener {
 		center_view_ = new CenterPanelView( model_.getCenterPanelModel() );
 		add( center_view_, BorderLayout.CENTER );
 
-		center_controller_ = new CenterPanelController( this, model_.getCenterPanelModel(), center_view_ );
+		center_controller_ = new CenterPanelMouseListener( this, model_.getCenterPanelModel(), center_view_ );
 		center_view_.addMouseListener( center_controller_ );
 
 		// add( south_view_, BorderLayout.SOUTH );
