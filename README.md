@@ -28,4 +28,10 @@ ss.run();
 
 ## Conceptual Graph ##
 
-TODO
+![ConGraph](documentation/ConceptualGraph.png)
+
+## Conceptual Graph ##
+
+![FrameGraph](documentation/FrameGraph.png)
+
+![Graphs](documentation/Graphs.png)
