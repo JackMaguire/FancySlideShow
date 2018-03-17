@@ -2,6 +2,8 @@
 Play slides with more dynamic behavior and interactivity
 
 [Controls](#controls) 
+- [Controls](#controls) 
+- [Controls](#controls) 
 
 # Classes #
 
