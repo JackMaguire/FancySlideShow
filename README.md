@@ -91,4 +91,55 @@ but the general format will stay the same.
 
 ![ControlPanel](documentation/ControlPanel.png)
 
-### (1) ###
+### (1) Current Slide ###
+
+.
+
+### (2) Preview of Next Slide ###
+
+.
+
+### (3) Selected Slide ###
+
+.
+
+### (4) ###
+
+.
+
+### (5) ###
+
+.
+
+### (6) ###
+
+.
+
+### (7) ###
+
+.
+
+### (8) ###
+
+.
+
+### (9) ###
+
+.
+
+### (10) ###
+
+.
+
+### (11) ###
+
+.
+
+### (12) ###
+
+.
+
+
+### (13) ###
+
+.
