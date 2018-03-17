@@ -191,6 +191,14 @@ they will be displayed here.
 
 ### Space Bar ###
 
+Pauses the slide show by stopping the timer.
+Every element is still active,
+but the engine will stop traversing the
+FrameGraph and updating the SlideShowPanel.
+
+If already paused, the space bar resumes
+the slide show by starting the timer again.
+
 ### Left Mouse Button ###
 
 ### Right Mouse Button ###
