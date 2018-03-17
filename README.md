@@ -211,11 +211,10 @@ Toggles the hardness of a ConceptualNode.
 
 Okay this one is tricky due to a few conditionals,
 but I assure you that the behavior is reasonable.
+In general, the left arrow key means "go backwards".
+The details of this depend on the state of the engine.
 
-If paused, go to the previous slide.
-Otherwise,
-
-If that did not make sense,
+It's hard to explain in English,
 maybe the code can help make it clear:
 
 ```c++
@@ -229,9 +228,16 @@ private void leftButton( boolean shift ) {
     }
 
     if( engine_.getTimer().isRunning() ) {
-	//
+	//If we are waiting at a hard node, override the hardness
+        if( engine_.isWaitingAtHardNode() ) {
+            engine_.goAtNextTick();
+        }
+
+	//If shift is selected, do not proceed to the active FrameNode
+	//Instead, take the highest-ranking non-active FrameNode
         engine_.takeNextSecondaryOption( shift );
     } else {
+        //If the timer is stopped, just go back to the previous FrameNode.
         engine_.goBackOneImage();
     }
 }
@@ -239,4 +245,4 @@ private void leftButton( boolean shift ) {
 
 ### Right Arrow Key ###
 
-The exact symmetric opposite of the left mouse button
+The exact symmetric opposite of the left arrow key
