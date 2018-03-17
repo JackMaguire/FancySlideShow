@@ -19,6 +19,13 @@ takes in an XML script and parses it into a `ConceptualGraph`
 Thanks to this, you do not need to write a new application
 every time you want to make a new presentation.
 
+A typical main method would look something like:
+```c++
+ConceptualGraph graph = myGraphCreationProcess();//create this graph however you want
+SlideShow ss = new SlideShow( graph );
+ss.run();
+```
+
 ## Conceptual Graph ##
 
 TODO
