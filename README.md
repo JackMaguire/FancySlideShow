@@ -201,8 +201,15 @@ the slide show by starting the timer again.
 
 ### Left Mouse Button (on the ConceptualGraph) ###
 
-### Right Mouse Button ###
+Selects a ConceptualNode.
+
+### Right Mouse Button (on the ConceptualGraph) ###
+
+Toggles the hardness of a ConceptualNode.
 
 ### Left Arrow Key ###
+
+If paused, go to the next slide.
+Otherwise,
 
 ### Right Arrow Key ###
