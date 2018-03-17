@@ -1,6 +1,8 @@
 # FancySlideShow
 Play slides with more dynamic behavior and interactivity
 
+[Controls](#controls) 
+
 # Classes #
 
 ![ClassRelationships](documentation/ClassRelationships.png)
@@ -187,6 +189,7 @@ Each slide has the ability to hold notes.
 If the current slide has notes in it,
 they will be displayed here.
 
+<a name="controls"/>
 ## Controls ##
 
 ### Space Bar ###
