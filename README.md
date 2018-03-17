@@ -207,7 +207,7 @@ Selects a ConceptualNode.
 
 Toggles the hardness of a ConceptualNode.
 
-### Left Arrow Key ###
+### Left Arrow Key + Shift (optional) ###
 
 Okay this one is tricky due to a few conditionals,
 but I assure you that the behavior is reasonable.
@@ -243,6 +243,6 @@ private void leftButton( boolean shift ) {
 }
 ```
 
-### Right Arrow Key ###
+### Right Arrow Key + Shift (optional) ###
 
 The exact symmetric opposite of the left arrow key
