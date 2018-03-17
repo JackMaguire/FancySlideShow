@@ -99,7 +99,7 @@ Shows a miniature version of the current slide.
 
 If it exists, this shows a miniature version of the next slide.
 If the current slide has multiple downstream slides,
-the first one (and, thus, highest-ranking) is shown.
+only the active one is shown.
 
 ### (3) Selected Slide ###
 
@@ -114,11 +114,13 @@ the user can use this menu to toggle between them.
 
 ### (5) Next Slide Menu ###
 
-.
+This menu lets you scroll over the selected slide's downstream edges and select the active one
+(i.e., decide the one that will actually be shown after the selected node).
 
 ### (6) Previous Slide Menu ###
 
-.
+Similar to (5), this menu lets you scroll over the
+selected slide's upstream edges and select the active one.
 
 ### (7) Garbage Collection ###
 
