@@ -30,6 +30,17 @@ ss.run();
 
 ![ConGraph](documentation/ConceptualGraph.png)
 
+This graph is meant to be the user-facing representation of the slide show.
+Each node in the graph represents a slide and each edge represents a connection from one slide to another.
+
+### Conceptual Node ###
+
+TODO
+
+### Conceptual Edge ###
+
+TODO
+
 ## Frame Graph ##
 
 ![FrameGraph](documentation/FrameGraph.png)
