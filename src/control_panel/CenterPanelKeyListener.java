@@ -26,7 +26,9 @@ public class CenterPanelKeyListener implements KeyListener {
 		}
 
 		if( engine_.getTimer().isRunning() ) {
-			engine_.goAtNextTick();
+			if( engine_.isWaitingAtHardNode() ) {
+				engine_.goAtNextTick();
+			}
 			engine_.takeNextSecondaryOption( shift );
 		} else {
 			engine_.goBackOneImage();
@@ -46,7 +48,9 @@ public class CenterPanelKeyListener implements KeyListener {
 		}
 
 		if( engine_.getTimer().isRunning() ) {
-			engine_.goAtNextTick();
+			if( engine_.isWaitingAtHardNode() ) {
+				engine_.goAtNextTick();
+			}
 			engine_.takeNextSecondaryOption( shift );
 		} else {
 			engine_.advanceOneImage();
