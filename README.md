@@ -209,7 +209,33 @@ Toggles the hardness of a ConceptualNode.
 
 ### Left Arrow Key ###
 
+Okay this one is tricky due to a few conditionals,
+but I assure you that the behavior is reasonable.
+
 If paused, go to the next slide.
 Otherwise,
 
+If that did not make sense,
+maybe the code can help make it clear:
+
+```c++
+private void leftButton( boolean shift ) {
+    final boolean was_reversed = engine_.reverse();
+    engine_.setReverse( true );
+
+    if( !engine_.isWaitingAtHardNode() && !was_reversed ) {
+        return;
+    }
+
+    if( engine_.getTimer().isRunning() ) {
+	engine_.goAtNextTick();
+        engine_.takeNextSecondaryOption( shift );
+    } else {
+        engine_.goBackOneImage();
+    }
+}
+```
+
 ### Right Arrow Key ###
+
+The exact symmetric opposite of the left mouse button
