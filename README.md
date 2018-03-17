@@ -124,19 +124,30 @@ selected slide's upstream edges and select the active one.
 
 ### (7) Garbage Collection ###
 
-.
+(This is a development feature that will almost certainly be removed)
+
+Java performs garbage collection when this button is pushed.
 
 ### (8) Calc Mem Usage ###
 
-.
+(This is a development feature that will almost certainly be removed)
+
+Java measures the amount of memory it is using
+when this button is pushed. The result will be
+displayed to the right of the button.
 
 ### (9) Clear Focus ###
 
-.
+(This is a development feature that will almost certainly be removed)
+
+This is not as useful as it used to be.
+There used to be some bugs where you could not
+click on the control panel because the computer's
+focus would be stuck on one of the dropdown menus.
+If that happens to you, just push this button and
+the focus will go back to its neutral state.
 
 ### (10) Title of Selected Slide ###
-
-.
 
 ### (11) Conceptual Graph of Selected FrameSpace ###
 
