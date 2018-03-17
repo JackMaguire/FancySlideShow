@@ -30,7 +30,7 @@ ss.run();
 
 ![ConGraph](documentation/ConceptualGraph.png)
 
-## Conceptual Graph ##
+## Frame Graph ##
 
 ![FrameGraph](documentation/FrameGraph.png)
 
