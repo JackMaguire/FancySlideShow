@@ -147,6 +147,9 @@ focus would be stuck on one of the dropdown menus.
 If that happens to you, just push this button and
 the focus will go back to its neutral state.
 
+Now that I think about it,
+this still might be required after you type in (12).
+
 ### (10) Title of Selected Slide ###
 
 ### (11) Conceptual Graph of Selected FrameSpace ###
@@ -155,9 +158,14 @@ the focus will go back to its neutral state.
 
 ### (12) Runtime Notes ###
 
-.
+This is a text field for you to take notes in.
+At the end of the presentation,
+these notes will be printed to the console so that you do not lose them.
 
+A possible future feature is for these notes to be emailed to you.
 
 ### (13) Notes for Current Slide ###
 
-.
+Each slide has the ability to hold notes.
+If the current slide has notes in it,
+they will be displayed here.
