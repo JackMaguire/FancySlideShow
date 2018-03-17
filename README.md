@@ -3,12 +3,12 @@ Play slides with more dynamic behavior and interactivity
 
 ![ClassRelationships](documentation/ClassRelationships.png)
 
-#Classes
+# Classes #
 
-##Application
+## Application ##
 
 TODO
 
-##Conceptual Graph
+## Conceptual Graph ##
 
 TODO
