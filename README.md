@@ -212,7 +212,7 @@ Toggles the hardness of a ConceptualNode.
 Okay this one is tricky due to a few conditionals,
 but I assure you that the behavior is reasonable.
 
-If paused, go to the next slide.
+If paused, go to the previous slide.
 Otherwise,
 
 If that did not make sense,
@@ -224,11 +224,12 @@ private void leftButton( boolean shift ) {
     engine_.setReverse( true );
 
     if( !engine_.isWaitingAtHardNode() && !was_reversed ) {
+        //If we were running forward, then all we want to do is turn on reverse
         return;
     }
 
     if( engine_.getTimer().isRunning() ) {
-	engine_.goAtNextTick();
+	//
         engine_.takeNextSecondaryOption( shift );
     } else {
         engine_.goBackOneImage();
