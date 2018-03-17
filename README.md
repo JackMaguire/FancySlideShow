@@ -190,6 +190,7 @@ If the current slide has notes in it,
 they will be displayed here.
 
 <a name="controls"/>
+
 ## Controls ##
 
 ### Space Bar ###
