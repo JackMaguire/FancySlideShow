@@ -45,4 +45,9 @@ TODO
 
 ![FrameGraph](documentation/FrameGraph.png)
 
+The Frame Graph is the machine-facing representation of the slide show.
+This graph contains a node for every frame in the entire presentation (slides and transitions).
+Every node is either primary (shown in blue) or secondary (shown in gray).
+Primary nodes map to ConceptualNodes and secondary nodes map to frames in ConceptualEdges, as shown here:
+
 ![Graphs](documentation/Graphs.png)
