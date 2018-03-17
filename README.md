@@ -79,3 +79,10 @@ TODO
 ## Control Panel Updater ##
 
 TODO
+
+
+# Usage #
+
+## Control Panel ##
+
+![ControlPanel](documentation/ControlPanel.png)
