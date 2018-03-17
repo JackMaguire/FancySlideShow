@@ -85,4 +85,10 @@ TODO
 
 ## Control Panel ##
 
+This is the section that is most likely to be out of date by the time you read this.
+The control panel is being tinkered with a lot,
+but the general format will stay the same.
+
 ![ControlPanel](documentation/ControlPanel.png)
+
+### (1) ###
