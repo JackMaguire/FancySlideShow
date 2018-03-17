@@ -1,9 +1,14 @@
 # FancySlideShow
 Play slides with more dynamic behavior and interactivity
 
-[Controls](#controls) 
+## Table of Contents ##
+
+[Classes](#classes) 
+[Usage](#usage) 
+- [Control Panel](#control_panel) 
 - [Controls](#controls) 
-- [Controls](#controls) 
+
+<a name="classes"/>
 
 # Classes #
 
@@ -84,8 +89,11 @@ TODO
 
 TODO
 
+<a name="usage"/>
 
 # Usage #
+
+<a name="control_panel"/>
 
 ## Control Panel ##
 
