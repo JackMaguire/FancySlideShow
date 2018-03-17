@@ -93,19 +93,24 @@ but the general format will stay the same.
 
 ### (1) Current Slide ###
 
-.
+Shows a miniature version of the current slide.
 
 ### (2) Preview of Next Slide ###
 
-.
+If it exists, this shows a miniature version of the next slide.
+If the current slide has multiple downstream slides,
+the first one (and, thus, highest-ranking) is shown.
 
 ### (3) Selected Slide ###
 
-.
+Shows a miniature version of the current slide.
 
 ### (4) FrameSpace Menu ###
 
-.
+It can be messy to have the graph of the entire presentation shown at once,
+so the user can break it up into FrameSpaces.
+(11) will only show one FrameSpace at a time and
+the user can use this menu to toggle between them.
 
 ### (5) Next Slide Menu ###
 
