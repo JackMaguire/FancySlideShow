@@ -103,43 +103,43 @@ but the general format will stay the same.
 
 .
 
-### (4) ###
+### (4) FrameSpace Menu ###
 
 .
 
-### (5) ###
+### (5) Next Slide Menu ###
 
 .
 
-### (6) ###
+### (6) Previous Slide Menu ###
 
 .
 
-### (7) ###
+### (7) Garbage Collection ###
 
 .
 
-### (8) ###
+### (8) Calc Mem Usage ###
 
 .
 
-### (9) ###
+### (9) Clear Focus ###
 
 .
 
-### (10) ###
+### (10) Title of Selected Slide ###
 
 .
 
-### (11) ###
+### (11) Conceptual Graph of Selected FrameSpace ###
 
 .
 
-### (12) ###
+### (12) Runtime Notes ###
 
 .
 
 
-### (13) ###
+### (13) Notes for Current Slide ###
 
 .
