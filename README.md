@@ -186,3 +186,15 @@ A possible future feature is for these notes to be emailed to you.
 Each slide has the ability to hold notes.
 If the current slide has notes in it,
 they will be displayed here.
+
+## Controls ##
+
+### Space Bar ###
+
+### Left Mouse Button ###
+
+### Right Mouse Button ###
+
+### Left Arrow Key ###
+
+### Right Arrow Key ###
