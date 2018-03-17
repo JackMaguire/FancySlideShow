@@ -154,7 +154,24 @@ this still might be required after you type in (12).
 
 ### (11) Conceptual Graph of Selected FrameSpace ###
 
-.
+A stunningly beautiful illustration of the
+FrameSpace selected by (4).
+
+The first slide is at the 12:00 position
+and each successive slide (ConceptualNode) in the FrameSpace
+is laid out in a clockwise pattern with lines
+representing ConceptualEdges.
+ConceptualEdges that span two different FrameSpaces
+are not shown at this time; I am currently 
+debating how I want to portray them.
+
+If provided, names are shown for each
+ConceptualNode and ConceptualEdges.
+Soft ConceptualNodes are shown as circles
+and hard ones are shown as squares.
+
+This graph is interactive,
+and the controls are listed below.
 
 ### (12) Runtime Notes ###
 
