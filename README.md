@@ -112,7 +112,7 @@ but the general format will stay the same.
 
 ![ControlPanel](documentation/ControlPanel.png)
 
-### (1) Current Slide ###
+#### (1) Current Slide ####
 
 Shows a miniature version of the current slide.
 
