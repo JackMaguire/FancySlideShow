@@ -3,11 +3,19 @@ Play slides with more dynamic behavior and interactivity
 
 ## Table of Contents ##
 
+[Overview](#overview) 
+
 [Classes](#classes) 
 
 [Usage](#usage) 
 - [Control Panel](#control_panel) 
 - [Controls](#controls) 
+
+<a name="overview"/>
+
+## Overview ##
+
+TODO
 
 <a name="classes"/>
 
