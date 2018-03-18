@@ -11,6 +11,10 @@ Play slides with more dynamic behavior and interactivity
 - [Control Panel](#control_panel) 
 - [Controls](#controls) 
 
+[FrameScripts](#fs)
+- [XML Interface](#xml) 
+- [Running FrameScripts](#running) 
+
 <a name="overview"/>
 
 # Overview #
@@ -271,3 +275,21 @@ private void leftButton( boolean shift ) {
 #### Right Arrow Key + Shift (optional) ####
 
 The exact symmetric opposite of the left arrow key
+
+<a name="fs"/>
+
+# FrameScripts #
+
+<a name="xml"/>
+
+## XML Interface ##
+
+<a name="running"/>
+
+## Running FrameScripts ##
+
+From the top-level directory of this repo:
+
+```sh
+run/frame_scripts.sh <xml files>
+```
