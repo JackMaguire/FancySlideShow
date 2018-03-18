@@ -23,7 +23,7 @@ TODO
 
 ![ClassRelationships](documentation/ClassRelationships.png)
 
-## Application ##
+### Application ###
 
 This is where `main()` lives.
 `main()` is responsible for generating a `ConceptualGraph`
@@ -44,22 +44,22 @@ SlideShow ss = new SlideShow( graph );
 ss.run();
 ```
 
-## Conceptual Graph ##
+### Conceptual Graph ###
 
 ![ConGraph](documentation/ConceptualGraph.png)
 
 This graph is meant to be the user-facing representation of the slide show.
 Each node in the graph represents a slide and each edge represents a connection from one slide to another.
 
-### Conceptual Node ###
+#### Conceptual Node ####
 
 TODO
 
-### Conceptual Edge ###
+#### Conceptual Edge ####
 
 TODO
 
-## Frame Graph ##
+### Frame Graph ###
 
 ![FrameGraph](documentation/FrameGraph.png)
 
@@ -70,31 +70,31 @@ Primary nodes map to ConceptualNodes and secondary nodes map to frames in Concep
 
 ![Graphs](documentation/Graphs.png)
 
-### Conceptual Node ###
+#### Frame Node ####
 
 TODO
 
-### Conceptual Edge ###
+#### Frame Edge ####
 
 TODO
 
-## SlideShow ##
+### SlideShow ###
 
 TODO
 
-## SlideShowPanel ##
+### SlideShowPanel ###
 
 TODO
 
-## Engine ##
+### Engine ###
 
 TODO
 
-## Control Panel ##
+### Control Panel ###
 
 TODO
 
-## Control Panel Updater ##
+### Control Panel Updater ###
 
 TODO
 
@@ -116,40 +116,40 @@ but the general format will stay the same.
 
 Shows a miniature version of the current slide.
 
-### (2) Preview of Next Slide ###
+#### (2) Preview of Next Slide ####
 
 If it exists, this shows a miniature version of the next slide.
 If the current slide has multiple downstream slides,
 only the active one is shown.
 
-### (3) Selected Slide ###
+#### (3) Selected Slide ####
 
 Shows a miniature version of the current slide.
 
-### (4) FrameSpace Menu ###
+#### (4) FrameSpace Menu ####
 
 It can be messy to have the graph of the entire presentation shown at once,
 so the user can break it up into FrameSpaces.
 (11) will only show one FrameSpace at a time and
 the user can use this menu to toggle between them.
 
-### (5) Next Slide Menu ###
+#### (5) Next Slide Menu ####
 
 This menu lets you scroll over the selected slide's downstream edges and select the active one
 (i.e., decide the one that will actually be shown after the selected node).
 
-### (6) Previous Slide Menu ###
+#### (6) Previous Slide Menu ####
 
 Similar to (5), this menu lets you scroll over the
 selected slide's upstream edges and select the active one.
 
-### (7) Garbage Collection ###
+#### (7) Garbage Collection ####
 
 (This is a development feature that will almost certainly be removed)
 
 Java performs garbage collection when this button is pushed.
 
-### (8) Calc Mem Usage ###
+#### (8) Calc Mem Usage ####
 
 (This is a development feature that will almost certainly be removed)
 
@@ -157,7 +157,7 @@ Java measures the amount of memory it is using
 when this button is pushed. The result will be
 displayed to the right of the button.
 
-### (9) Clear Focus ###
+#### (9) Clear Focus ####
 
 (This is a development feature that will almost certainly be removed)
 
@@ -171,9 +171,9 @@ the focus will go back to its neutral state.
 Now that I think about it,
 this still might be required after you type in (12).
 
-### (10) Title of Selected Slide ###
+#### (10) Title of Selected Slide ####
 
-### (11) Conceptual Graph of Selected FrameSpace ###
+#### (11) Conceptual Graph of Selected FrameSpace ####
 
 A stunningly beautiful illustration of the
 FrameSpace selected by (4).
@@ -194,7 +194,7 @@ and hard ones are shown as squares.
 This graph is interactive,
 and the controls are listed below.
 
-### (12) Runtime Notes ###
+#### (12) Runtime Notes ####
 
 This is a text field for you to take notes in.
 At the end of the presentation,
@@ -202,7 +202,7 @@ these notes will be printed to the console so that you do not lose them.
 
 A possible future feature is for these notes to be emailed to you.
 
-### (13) Notes for Current Slide ###
+#### (13) Notes for Current Slide ####
 
 Each slide has the ability to hold notes.
 If the current slide has notes in it,
@@ -212,7 +212,7 @@ they will be displayed here.
 
 ## Controls ##
 
-### Space Bar ###
+#### Space Bar ####
 
 Pauses the slide show by stopping the timer.
 Every element is still active,
@@ -222,15 +222,15 @@ FrameGraph and updating the SlideShowPanel.
 If already paused, the space bar resumes
 the slide show by starting the timer again.
 
-### Left Mouse Button (on the ConceptualGraph) ###
+#### Left Mouse Button (on the ConceptualGraph) ####
 
 Selects a ConceptualNode.
 
-### Right Mouse Button (on the ConceptualGraph) ###
+#### Right Mouse Button (on the ConceptualGraph) ####
 
 Toggles the hardness of a ConceptualNode.
 
-### Left Arrow Key + Shift (optional) ###
+#### Left Arrow Key + Shift (optional) ####
 
 Okay this one is tricky due to a few conditionals,
 but I assure you that the behavior is reasonable.
@@ -266,6 +266,6 @@ private void leftButton( boolean shift ) {
 }
 ```
 
-### Right Arrow Key + Shift (optional) ###
+#### Right Arrow Key + Shift (optional) ####
 
 The exact symmetric opposite of the left arrow key
