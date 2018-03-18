@@ -29,6 +29,8 @@ This is where `main()` lives.
 `main()` is responsible for generating a `ConceptualGraph`
 and giving it to a `SlideShow`.
 `SlideShow.run()` takes care of the rest.
+The primary application is called FrameScripts,
+and is described [below](TODO).
 
 Some applications are tailor-made for specific slide shows.
 This got tedious, so I made the FrameScript application that
