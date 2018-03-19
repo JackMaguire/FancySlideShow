@@ -372,9 +372,36 @@ In general, this key means "go forward".
 
 ## XML Interface ##
 
-TODO
+At the moment, there are two primary XML sections:
+`<Settings>` and `<Graph>`.
 
 <a name="running"/>
+
+### Skeleton ###
+
+```xml
+<FrameScript>
+	<Graph>
+		<FrameSpace name="Skeleton">
+			<Nodes>
+				<Node title="TODO" filename="TODO"/>
+				<Node title="TODO2" filename="TODO"/>
+			</Nodes>
+			<Edges>
+				<Edge title="_TODO" origin_node="TODO" destination_node="TODO2"/>
+			</Edges>
+		</FrameSpace>
+
+		<GlobalEdges>
+			<Edge title="_global" origin_frame_space="space1" origin_node="node1"
+			      destination_frame_space="space2" destination_node="node2"/>
+		</GlobalEdges>
+	</Graph>
+
+	<Settings>
+	</Settings>
+</FrameScript>
+```
 
 ## Running FrameScripts ##
 
@@ -389,7 +416,7 @@ they will all be parsed in the order in which you provide them.
 If you have multiple scripts that change the same setting,
 the setting will match the last script that changed it.
 
-You technically can provide multiple `<FrameScript>` blocks
+You technically can provide multiple `<Graph>` blocks
 but only the final one will be parsed.
 A possible future feature is the ability to import
 `<FrameSpace>` blocks from several different scripts.
