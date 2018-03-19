@@ -71,7 +71,12 @@ Each node in the graph represents a slide and each edge represents a connection 
 
 #### Conceptual Node ####
 
-TODO
+The Conceptual Graph has one Conceptual Node for every slide.
+Every Conceptual Node has:
+
+-list
+-test
+
 
 #### Conceptual Edge ####
 
