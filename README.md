@@ -398,6 +398,13 @@ or
 </Node>
 ```
 
+| Option   | Type    | Mandatory | Usage |
+| -------- | ------- | --------- | ----- |
+| title    | String  | Yes       | Name given to node so that it can be referenced by edges later on. If the name does not start with an underscore "_" then it will appear as a label in the control panel for this node |
+| filename | String  | Yes       | TODO |
+| hard     | boolean | No (true is default) | TODO |
+| notes    | String  | No        | TODO |
+
 ##### Edges #####
 
 TODO
