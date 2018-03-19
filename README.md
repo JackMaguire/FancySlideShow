@@ -295,6 +295,8 @@ these notes will be printed to the console so that you do not lose them.
 
 A possible future feature is for these notes to be emailed to you.
 
+<a name="notes_for_current_slide"/>
+
 #### (13) Notes for Current Slide ####
 
 Each slide has the ability to hold notes.
@@ -383,7 +385,7 @@ TODO
 
 TODO
 
-##### Nodes #####
+#### Nodes ####
 
 TODO
 
@@ -398,14 +400,14 @@ or
 </Node>
 ```
 
-| Option   | Type    | Mandatory | Usage |
-| -------- | ------- | --------- | ----- |
-| title    | String  | Yes       | Name given to node so that it can be referenced by edges later on. If the name does not start with an underscore "_" then it will appear as a label in the control panel for this node |
-| filename | String  | Yes       | TODO |
-| hard     | boolean | No (true is default) | TODO |
-| notes    | String  | No        | TODO |
+| Option   | Type    | Mandatory              | Usage |
+| -------- | ------- | ---------------------- | ----- |
+| title    | String  | Yes                    | Name given to node so that it can be referenced by edges later on. If the name does not start with an underscore then it will appear as a label in the control panel for this node ("_my_node" will not be unlabeled, for example). |
+| filename | String  | Yes                    | Gives the path to the picture for this slide. |
+| hard     | boolean | No (default is "true") | Sets [hardness](#def_conceptual_node) of this node. |
+| notes    | String  | No                     | You can leave notes for yourself. [These will appear in the control panel when you present this slide.](#notes_for_current_slide) |
 
-##### Edges #####
+#### Edges ####
 
 TODO
 
