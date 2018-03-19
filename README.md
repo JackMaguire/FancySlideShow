@@ -79,14 +79,17 @@ while soft nodes are not stopped at for longer than a single frame.
 
 Every Conceptual Node has:
 
-|  Type  | Description |
-| ------ | ----------- |
-| String | Slide Name  |
-| String | Slide Notes |
-| Int    | Index       |
-| Int    | FrameSpace (a.k.a. Subgraph) |
-| Bool   | Stores if the slide is currently "hard" |
-
+|       Type       | Description |
+| ---------------- | ----------- |
+| String           | Slide Name  |
+| String           | Slide Notes |
+| Int              | Index       |
+| Int              | FrameSpace (a.k.a. Subgraph) |
+| Bool             | Stores if the slide is currently "hard" |
+| ConceptualEdge[] | Stores downstream edges |
+| ConceptualEdge[] | Stores upstream edges |
+| String           | Filename for slide's image |
+| BufferedImage    | Scaled-down version of image for this slide (for control panel) |
 
 #### Conceptual Edge ####
 
