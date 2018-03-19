@@ -72,6 +72,11 @@ Each node in the graph represents a slide and each edge represents a connection 
 #### Conceptual Node ####
 
 The Conceptual Graph has one Conceptual Node for every slide.
+
+At any point, a Conceptual Node can be "hard" or "soft".
+Hard Conceptual Nodes pause the engine when they are reached,
+while soft nodes are not stopped at for longer than a single frame.
+
 Every Conceptual Node has:
 
 |  Type  | Description |
@@ -79,7 +84,7 @@ Every Conceptual Node has:
 | String | Slide Name  |
 | String | Slide Notes |
 | Int    | Index       |
-| Int    | FrameSpace (A.K.A. Subgraph) |
+| Int    | FrameSpace (a.k.a. Subgraph) |
 | Bool   | Stores if the slide is currently "hard" |
 
 
