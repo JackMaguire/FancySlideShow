@@ -375,9 +375,9 @@ In general, this key means "go forward".
 At the moment, there are two primary XML sections:
 `<Settings>` and `<Graph>`.
 
-<a name="running"/>
+<a name="full_skeleton"/>
 
-### Skeleton ###
+### Full Skeleton ###
 
 ```xml
 <FrameScript>
@@ -399,9 +399,21 @@ At the moment, there are two primary XML sections:
 	</Graph>
 
 	<Settings>
+		<FrameCache load_caches="false" delete_caches="false">
+			<PrimaryNodeCache ratio="1.0" max_width="1920" max_height="1080"/>
+    			<SecondaryNodeCache ratio="1.0" max_width="1920" max_height="1080"/>
+		</FrameCache>
+
+  		<SlideShowPanel monitor="1" fps="24">
+    			<Background r="0" g="0" b="0"/>
+  		</SlideShowPanel>
+
+		<ControlPanel monitor="0" width="1440" height="880" east_width="250" west_width="250"/>
 	</Settings>
 </FrameScript>
 ```
+
+<a name="running"/>
 
 ## Running FrameScripts ##
 
