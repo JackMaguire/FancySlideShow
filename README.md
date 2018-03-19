@@ -373,7 +373,35 @@ In general, this key means "go forward".
 ## XML Interface ##
 
 At the moment, there are two primary XML sections:
-`<Settings>` and `<Graph>`.
+`<Graph>` and `<Settings>`.
+
+### Graph ###
+
+TODO
+
+#### FrameSpace ####
+
+TODO
+
+#### GlobalEdges ####
+
+TODO
+
+### Settings ###
+
+TODO
+
+#### ControlPanel ####
+
+TODO
+
+#### SlideShowPanel ####
+
+TODO
+
+#### FrameCache ####
+
+TODO
 
 <a name="full_skeleton"/>
 
