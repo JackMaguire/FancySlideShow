@@ -104,7 +104,15 @@ Every Conceptual Node has:
 
 #### Conceptual Edge ####
 
-TODO
+Every Conceptual Node has:
+
+|       Type       | Description |
+| ---------------- | ----------- |
+| String           | Name for control panel display  |
+| Integer          | Index of incoming node |
+| Integer          | Index of outgoing node |
+| Integer          | Edge Index (not sure if this is used, might get rid of it) |
+| String[]         | filenames for transition frames, if any |
 
 <a name="def_frame_graph"/>
 
