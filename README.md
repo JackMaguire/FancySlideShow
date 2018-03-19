@@ -82,7 +82,7 @@ while soft nodes are not stopped at for longer than a single frame.
 
 The order that edges are added is very [important](TODO).
 The ordering here matches the order that is defined in the XML
-and will be preserved when the [Frame Graph](def_frame_graph)
+and will be preserved when the [Frame Graph](#def_frame_graph)
 is created.
 
 Every Conceptual Node has:
