@@ -162,8 +162,7 @@ TODO
 ### Engine ###
 
 The engine traverses the [Frame Graph](#def_frame_graph)
-and updates the (Slide Show Panel)[#def_slide_show_panel).
-
+and updates the [Slide Show Panel](#def_slide_show_panel).
 The engine has a built-in timer and procedes to the next
 FrameNode at every tick of the timer
 (unless it is waiting at a hard primary node).
