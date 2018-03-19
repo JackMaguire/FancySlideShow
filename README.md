@@ -378,13 +378,21 @@ At the moment, there are two primary XML sections:
 `<Graph>` and `<Settings>`.
 
 - [`<Graph>`](#xml_graph)
+
 ..- [`<FrameSpace>`](#xml_frame_space)
+
 ...- [`<Nodes>`](#xml_nodes)
+
 ...- [`<Edges>`](#xml_edges)
+
 ..- [`<GlobalEdges>`](#xml_global_edges)
+
 - [`<Settings>`](#xml_settings)
+
 ..- [`<ControlPanel>`](#xml_control_panel)
+
 ..- [`<SlideShowPanel>`](#xml_slide_show_panel)
+
 ..- [`<FrameCache>`](#xml_frame_cache)
 
 
