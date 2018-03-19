@@ -171,7 +171,13 @@ FrameNode at every tick of the timer
 
 ### Control Panel ###
 
-TODO
+This is the display that shows up on the second monitor
+(only the presenter will want to see this).
+It is full of bells and whistles that allows the
+presenter to control the presentation and
+read/take notes about the material.
+
+A deeper look into the control panel can be found [here](#control_panel).
 
 <a name="def_control_panel_updater"/>
 
