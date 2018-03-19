@@ -407,6 +407,11 @@ or
 | hard     | boolean | No (default is "true") | Sets [hardness](#def_conceptual_node) of this node. |
 | notes    | String  | No                     | You can leave notes for yourself. [These will appear in the control panel when you present this slide.](#notes_for_current_slide) |
 
+Notes can span multiple lines, as shown in the second example above.
+The two examples are not identical,
+the first will display "Good luck!"
+and the second will show "Good\n\nluck!"
+
 #### Edges ####
 
 TODO
