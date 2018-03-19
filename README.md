@@ -387,7 +387,12 @@ TODO
 
 #### Nodes ####
 
-TODO
+This is the section where you define
+[Conceptual Nodes](#def_conceptual_node)
+for the graph. `<FrameSpace>` can contain
+one `<Nodes>` section, which will contain
+a `<Node>` tag for every ConceptualNode
+as shown below.
 
 ```xml
 <Node title="name_of_node" filename="Track1/0250.png" hard="true" notes="Good luck!"/>
