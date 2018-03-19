@@ -381,9 +381,9 @@ At the moment, there are two primary XML sections:
 
   - [`<FrameSpace>`](#xml_frame_space)
 
-   - [`<Nodes>`](#xml_nodes)
+    - [`<Nodes>`](#xml_nodes)
 
-   - [`<Edges>`](#xml_edges)
+    - [`<Edges>`](#xml_edges)
 
   - [`<GlobalEdges>`](#xml_global_edges)
 
