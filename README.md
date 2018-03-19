@@ -104,7 +104,12 @@ Every Conceptual Node has:
 
 #### Conceptual Edge ####
 
-Every Conceptual Node has:
+A Conceptual Edge defines a directed link between two Conceptual Nodes.
+If you provide an edge with images, these images will be displayed as
+a transition between those two nodes.
+When moving backwards, the transition will also be played backwards.
+
+Every Conceptual Edge has:
 
 |       Type       | Description                                                |
 | ---------------- | ---------------------------------------------------------- |
@@ -132,6 +137,13 @@ Primary nodes map to ConceptualNodes and secondary nodes map to frames in Concep
 #### Frame Node ####
 
 TODO
+
+Every Frame Node has:
+
+|       Type       | Description                                                |
+| ---------------- | ---------------------------------------------------------- |
+| TODO             | TODO                             |
+
 
 <a name="def_slide_show"/>
 
