@@ -19,7 +19,19 @@ Play slides with more dynamic behavior and interactivity
 
 # Overview #
 
-TODO
+This program allows you to arrange a collection of pictures into a presentation.
+The advantage of this program over other PowerPoint-like software is that
+you can have non-linear flow between slides.
+This also provides a seamless interface between movies and slides.
+
+For example, say I have an animation comprised of 1000 rendered pictures and
+I want frames 1, 250, and 1000 to be slides.
+This program can let you define these slides
+then use frames 2-249 as a transition between the first two slides
+and frames 251-999 as a transition between the final two slides.
+This prevents the awkward slide-to-movie-to-slide artifacts that PowerPoint gives.
+
+See the demo directory for a simple example.
 
 <a name="classes"/>
 
@@ -284,6 +296,8 @@ In general, this key means "go forward".
 <a name="xml"/>
 
 ## XML Interface ##
+
+TODO
 
 <a name="running"/>
 
