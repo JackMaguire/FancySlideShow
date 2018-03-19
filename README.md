@@ -149,13 +149,14 @@ Every Frame Node has:
 
 ### Slide Show ###
 
-TODO
+This class constructs many of the lower-level classes and starts the engine.
+It's primary function is `run()`, which usually occurs at the end of a main method.
 
 <a name="def_slide_show_panel"/>
 
 ### Slide Show Panel ###
 
-TODO
+This is the view that you want to show the audience.
 
 <a name="def_engine"/>
 
