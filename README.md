@@ -177,7 +177,12 @@ TODO
 
 ### Control Panel Updater ###
 
-TODO
+On occasion, the engine will need to send information to the control panel.
+The control panel is complicated and ever-changing,
+so this can be a complicated flow of information.
+To make things easier, I created this updater class that
+is called by the engine and knows which parts of the control
+panel needs the information being provided.
 
 <a name="usage"/>
 
