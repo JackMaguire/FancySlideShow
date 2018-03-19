@@ -377,13 +377,30 @@ In general, this key means "go forward".
 At the moment, there are two primary XML sections:
 `<Graph>` and `<Settings>`.
 
+- [`<Graph>`](#xml_graph)
+..- [`<FrameSpace>`](#xml_frame_space)
+...- [`<Nodes>`](#xml_nodes)
+...- [`<Edges>`](#xml_edges)
+..- [`<GlobalEdges>`](#xml_global_edges)
+- [`<Settings>`](#xml_settings)
+..- [`<ControlPanel>`](#xml_control_panel)
+..- [`<SlideShowPanel>`](#xml_slide_show_panel)
+..- [`<FrameCache>`](#xml_frame_cache)
+
+
+<a name="xml_graph"/>
+
 ### Graph ###
 
 TODO
 
+<a name="xml_frame_space"/>
+
 #### FrameSpace ####
 
 TODO
+
+<a name="xml_nodes"/>
 
 #### Nodes ####
 
@@ -425,25 +442,37 @@ Good
 luck!
 ```
 
+<a name="xml_edges"/>
+
 #### Edges ####
 
 TODO
+
+<a name="xml_global_edges"/>
 
 #### GlobalEdges ####
 
 TODO
 
+<a name="xml_settings"/>
+
 ### Settings ###
 
 TODO
+
+<a name="xml_control_panel"/>
 
 #### ControlPanel ####
 
 TODO
 
+<a name="xml_slide_show_panel"/>
+
 #### SlideShowPanel ####
 
 TODO
+
+<a name="xml_frame_cache"/>
 
 #### FrameCache ####
 
