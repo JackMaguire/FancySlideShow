@@ -387,6 +387,17 @@ TODO
 
 TODO
 
+```xml
+<Node title="name_of_node" filename="Track1/0250.png" hard="true" notes="Good luck!"/>
+```
+or
+```xml
+<Node title="name_of_node" filename="Track1/0250.png" hard="true">
+      <Notes line="Good"/>
+      <Notes line="Luck!"/>
+</Node>
+```
+
 ##### Edges #####
 
 TODO
