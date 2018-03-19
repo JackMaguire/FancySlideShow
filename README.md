@@ -409,8 +409,13 @@ or
 
 Notes can span multiple lines, as shown in the second example above.
 The two examples are not identical,
-the first will display "Good luck!"
-and the second will show "Good\n\nluck!"
+the first will display `Good luck!`
+and the second will show
+```
+Good
+
+luck!
+```
 
 #### Edges ####
 
