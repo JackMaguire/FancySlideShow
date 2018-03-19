@@ -76,10 +76,14 @@ Each node in the graph represents a slide and each edge represents a connection 
 #### Conceptual Node ####
 
 The Conceptual Graph has one Conceptual Node for every slide.
-
 At any point, a Conceptual Node can be "hard" or "soft".
 Hard Conceptual Nodes pause the engine when they are reached,
 while soft nodes are not stopped at for longer than a single frame.
+
+The order that edges are added is very [important](TODO).
+The ordering here matches the order that is defined in the XML
+and will be preserved when the [Frame Graph](def_frame_graph)
+is created.
 
 Every Conceptual Node has:
 
@@ -87,9 +91,9 @@ Every Conceptual Node has:
 | ---------------- | ----------- |
 | String           | Slide Name  |
 | String           | Slide Notes |
-| Int              | Index       |
-| Int              | FrameSpace (a.k.a. Subgraph) |
-| Bool             | Stores if the slide is currently "hard" |
+| Integer          | Index       |
+| Integer          | FrameSpace (a.k.a. Subgraph) |
+| Boolean          | Stores if the slide is currently "hard" |
 | ConceptualEdge[] | Stores downstream edges |
 | ConceptualEdge[] | Stores upstream edges |
 | String           | Filename for slide's image |
