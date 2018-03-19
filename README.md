@@ -46,7 +46,7 @@ This is where `main()` lives.
 and giving it to a `SlideShow`.
 `SlideShow.run()` takes care of the rest.
 The primary application is called FrameScripts,
-and is described [below](TODO).
+and is described [below](#fs).
 
 Some applications are tailor-made for specific slide shows.
 This got tedious, so I made the FrameScript application that
@@ -383,3 +383,13 @@ From the top-level directory of this repo:
 ```sh
 run/frame_scripts.sh <xml files>
 ```
+
+You can provide as many xml files as you wish;
+they will all be parsed in the order in which you provide them.
+If you have multiple scripts that change the same setting,
+the setting will match the last script that changed it.
+
+You technically can provide multiple `<FrameScript>` blocks
+but only the final one will be parsed.
+A possible future feature is the ability to import
+`<FrameSpace>` blocks from several different scripts.
