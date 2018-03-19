@@ -274,7 +274,8 @@ private void leftButton( boolean shift ) {
 
 #### Right Arrow Key + Shift (optional) ####
 
-The exact symmetric opposite of the left arrow key
+The exact symmetric opposite of the left arrow key.
+In general, this key means "go forward".
 
 <a name="fs"/>
 
