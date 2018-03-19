@@ -78,6 +78,9 @@ Every Conceptual Node has:
 | ------ | ----------- |
 | String | Slide Name  |
 | String | Slide Notes |
+| Int    | Index       |
+| Int    | FrameSpace (A.K.A. Subgraph) |
+| Bool   | Stores if the slide is currently "hard" |
 
 
 #### Conceptual Edge ####
