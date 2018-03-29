@@ -107,24 +107,24 @@ public class EastPanelView extends JPanel {
 
 			// int panelWidth = this.getWidth();
 			// int panelHeight = this.getHeight();
-			final int imageWidth = image.getWidth();
-			final int imageHeight = image.getHeight();
-			final double scale = getScale( previous_width_, previous_height_, imageWidth, imageHeight );
+			final int image_width = image.getWidth();
+			final int image_height = image.getHeight();
+			final double scale = getScale( previous_width_, previous_height_, image_width, image_height );
 			// final double scale = 1;
 
 			// g2.drawImage( image, 0, 0, (int) ( imageWidth * scale ), (int) ( imageHeight
 			// * scale ), null );
-			g2.drawImage( image, 0, 0, imageWidth, imageHeight, null );
+			g2.drawImage( image, 0, 0, image_width, image_height, null );
 
 			if( DebugToggles.DEBUG_CONTROL_PANEL_VIEW ) {
 				System.out.println( "---North East---" );
 				System.out.println( "panel width: " + previous_width_ );
 				System.out.println( "panel height: " + previous_height_ );
-				System.out.println( "image width: " + imageWidth );
-				System.out.println( "image height: " + imageHeight );
+				System.out.println( "image width: " + image_width );
+				System.out.println( "image height: " + image_height );
 				System.out.println( "scale: " + scale );
-				System.out.println( "scaled image width: " + (int) ( imageWidth * scale ) );
-				System.out.println( "scaled image height: " + (int) ( imageHeight * scale ) );
+				System.out.println( "scaled image width: " + (int) ( image_width * scale ) );
+				System.out.println( "scaled image height: " + (int) ( image_height * scale ) );
 				System.out.println( "---North East---" );
 			}
 		}
