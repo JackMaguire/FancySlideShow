@@ -4,8 +4,10 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JComboBox;
 
@@ -14,9 +16,15 @@ import settings.DebugToggles;
 
 public class CenterPanelView extends JPanelWithKeyListener {
 
+	private enum ViewType {
+		GRAPH, CURRENT, NEXT, SELECTED, COMPOSITE
+	}
+
 	private static final long serialVersionUID = -3387525849502002817L;
 
 	private final CenterPanelModel model_;
+
+	private ViewType current_view_type_ = ViewType.GRAPH;
 
 	private EdgeLine[] lines_;
 	private NodeCircle[] circles_;
@@ -140,10 +148,59 @@ public class CenterPanelView extends JPanelWithKeyListener {
 
 	@Override
 	protected void paintComponent( Graphics g ) {
-		recolorAllObjects();
-
 		super.paintComponent( g );
 		Graphics2D g2D = (Graphics2D) g;
+
+		switch ( current_view_type_ ) {
+			case GRAPH:
+				paintGraph( g2D );
+				break;
+			case CURRENT:
+				paintImage( g2D, model_.currentNode().getThumbnailImage() );
+				break;
+			case NEXT:
+				final ConceptualEdgeType[] edges = model_.currentNode().getDownstreamEdges();
+				if( edges.length == 0 ) {
+					paintBlack( g2D );
+				}
+
+				final ConceptualNodeType next_node = model_.getGraph().getNode( edges[ 0 ].incomingNodeIndex() );
+				paintImage( g2D, next_node.getThumbnailImage() );
+			default:
+				paintGraph( g2D );
+				break;
+		}
+	}
+
+	private void paintBlack( Graphics2D g2D ) {
+
+	}
+
+	private void paintImage( Graphics2D g2D, BufferedImage image ) {
+		final int panel_width = this.getWidth();
+		final int panel_height = this.getHeight();
+
+		// BufferedImage image = model_.currentNode().getThumbnailImage();
+
+		final int image_width = image.getWidth();
+		final int image_height = image.getHeight();
+
+		final double scale = util.ImageScale.getScale( panel_width, panel_height, image_width, image_height );
+		final int scaled_image_width = (int) ( image_width * scale );
+		final int scaled_image_height = (int) ( image_height * scale );
+
+		final int side_buffersize = ( panel_width - scaled_image_width ) / 2;
+		final int top_buffersize = ( panel_height - scaled_image_height ) / 2;
+
+		g2D.setRenderingHint( RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC );
+		g2D.setRenderingHint( RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY );
+		g2D.drawImage( image, side_buffersize, top_buffersize, scaled_image_width, scaled_image_height, null );
+		// g2D.drawImage( image, 0, 0, image_width, image_height, null );
+	}
+
+	private void paintGraph( Graphics2D g2D ) {
+		recolorAllObjects();
+
 		g2D.setStroke( new BasicStroke( 8F ) ); // set stroke width
 
 		final int width = this.getWidth();
