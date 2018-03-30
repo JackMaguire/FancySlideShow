@@ -29,7 +29,7 @@ public class Engine implements ActionListener {
 	private boolean reverse_ = false;
 	private boolean waiting_at_hard_node_;
 
-    private boolean go_at_next_tick_ = false;//if true, overrides the hardness of hard nodes
+	private boolean go_at_next_tick_ = false;// if true, overrides the hardness of hard nodes
 	private boolean take_next_secondary_option_ = false;
 
 	private int current_subgraph_ = 1;
