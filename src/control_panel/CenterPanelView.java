@@ -16,7 +16,7 @@ import settings.DebugToggles;
 
 public class CenterPanelView extends JPanelWithKeyListener {
 
-	private enum ViewType {
+	public enum ViewType {
 		GRAPH, CURRENT, NEXT, SELECTED, COMPOSITE
 	}
 
@@ -97,6 +97,11 @@ public class CenterPanelView extends JPanelWithKeyListener {
 		}
 	}
 
+	public void setViewType( ViewType setting ) {
+		current_view_type_ = setting;
+		repaint();
+	}
+	
 	public void recolorAllObjects() {
 		final int current_node_index = model_.currentNode().index();
 
