@@ -166,6 +166,9 @@ public class CenterPanelView extends JPanelWithKeyListener {
 
 				final ConceptualNodeType next_node = model_.getGraph().getNode( edges[ 0 ].incomingNodeIndex() );
 				paintImage( g2D, next_node.getThumbnailImage() );
+			case SELECTED:
+				paintImage( g2D, model_.selectedNode().getThumbnailImage() );
+				break;
 			default:
 				paintGraph( g2D );
 				break;
@@ -173,7 +176,10 @@ public class CenterPanelView extends JPanelWithKeyListener {
 	}
 
 	private void paintBlack( Graphics2D g2D ) {
-
+		final int panel_width = this.getWidth();
+		final int panel_height = this.getHeight();
+		g2D.setColor( Color.BLACK );
+		g2D.fillRect( 0, 0, panel_width, panel_height );
 	}
 
 	private void paintImage( Graphics2D g2D, BufferedImage image ) {
