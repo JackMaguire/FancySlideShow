@@ -163,11 +163,18 @@ public class CenterPanelView extends JPanelWithKeyListener {
 				if( edges.length == 0 ) {
 					paintBlack( g2D );
 				}
-
 				final ConceptualNodeType next_node = model_.getGraph().getNode( edges[ 0 ].incomingNodeIndex() );
 				paintImage( g2D, next_node.getThumbnailImage() );
 			case SELECTED:
 				paintImage( g2D, model_.selectedNode().getThumbnailImage() );
+				break;
+			case COMPOSITE:
+				final ConceptualEdgeType[] edges2 = model_.currentNode().getDownstreamEdges();
+				if( edges2.length == 0 ) {
+					paintImagesOverUnder( g2D, model_.currentNode().getThumbnailImage(), null );
+				}
+				final ConceptualNodeType next_node2 = model_.getGraph().getNode( edges2[ 0 ].incomingNodeIndex() );
+				paintImagesOverUnder( g2D, model_.currentNode().getThumbnailImage(), next_node2.getThumbnailImage() );
 				break;
 			default:
 				paintGraph( g2D );
@@ -203,36 +210,52 @@ public class CenterPanelView extends JPanelWithKeyListener {
 	}
 
 	private void paintImagesOverUnder( Graphics2D g2D, BufferedImage over, BufferedImage under ) {
-		final int sub_panel_width = this.getWidth() / 2;
+		final int sub_panel_width = this.getWidth();
 		final int sub_panel_height = this.getHeight() / 2;
-
-		final int over_image_width = over.getWidth();
-		final int over_image_height = over.getHeight();
-
-		final int under_image_width = under.getWidth();
-		final int under_image_height = under.getHeight();
-
-		final double over_scale = util.ImageScale.getScale( sub_panel_width, sub_panel_height, over_image_width,
-				over_image_height );
-		final double under_scale = util.ImageScale.getScale( sub_panel_width, sub_panel_height, under_image_width,
-				under_image_height );
-
-		final int over_scaled_image_width = (int) ( over_image_width * over_scale );
-		final int over_scaled_image_height = (int) ( over_image_height * over_scale );
-		final int over_side_buffersize = ( sub_panel_width - over_scaled_image_width ) / 2;
-		final int over_top_buffersize = ( sub_panel_height - over_scaled_image_height ) / 2;
-
-		final int under_scaled_image_width = (int) ( under_image_width * under_scale );
-		final int under_scaled_image_height = (int) ( under_image_height * under_scale );
-		final int under_side_buffersize = ( sub_panel_width - under_scaled_image_width ) / 2;
-		final int under_top_buffersize = ( sub_panel_height - under_scaled_image_height ) / 2;
 
 		g2D.setRenderingHint( RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC );
 		g2D.setRenderingHint( RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY );
-		g2D.drawImage( over, over_side_buffersize, over_top_buffersize, over_scaled_image_width, over_scaled_image_height,
-				null );
-		g2D.drawImage( under, under_side_buffersize, sub_panel_height + under_top_buffersize, under_scaled_image_width,
-				under_scaled_image_height, null );
+
+		if( over != null ) {
+			final int over_image_width = over.getWidth();
+			final int over_image_height = over.getHeight();
+
+			final double over_scale = util.ImageScale.getScale( sub_panel_width, sub_panel_height, over_image_width,
+					over_image_height );
+
+			final int over_scaled_image_width = (int) ( over_image_width * over_scale );
+			final int over_scaled_image_height = (int) ( over_image_height * over_scale );
+
+			final int over_side_buffersize = ( sub_panel_width - over_scaled_image_width ) / 2;
+			final int over_top_buffersize = ( sub_panel_height - over_scaled_image_height ) / 2;
+
+			g2D.drawImage( over, over_side_buffersize, over_top_buffersize, over_scaled_image_width, over_scaled_image_height,
+					null );
+		} else {
+			g2D.setColor( Color.BLACK );
+			g2D.fillRect( 0, 0, sub_panel_width, sub_panel_height );
+		}
+
+		if( under != null ) {
+
+			final int under_image_width = ( under == null ? 1 : under.getWidth() );
+			final int under_image_height = ( under == null ? 1 : under.getHeight() );
+
+			final double under_scale = util.ImageScale.getScale( sub_panel_width, sub_panel_height, under_image_width,
+					under_image_height );
+
+			final int under_scaled_image_width = (int) ( under_image_width * under_scale );
+			final int under_scaled_image_height = (int) ( under_image_height * under_scale );
+			final int under_side_buffersize = ( sub_panel_width - under_scaled_image_width ) / 2;
+			final int under_top_buffersize = ( sub_panel_height - under_scaled_image_height ) / 2;
+
+			g2D.drawImage( under, under_side_buffersize, sub_panel_height + under_top_buffersize, under_scaled_image_width,
+					under_scaled_image_height, null );
+
+		} else {
+			g2D.setColor( Color.BLACK );
+			g2D.fillRect( 0, sub_panel_height, sub_panel_width, sub_panel_height );
+		}
 	}
 
 	private void paintGraph( Graphics2D g2D ) {
