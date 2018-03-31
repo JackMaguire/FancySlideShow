@@ -34,7 +34,11 @@ public class CenterPanelKeyListener implements KeyListener {
 			}
 			engine_.takeNextSecondaryOption( shift );
 		} else {
-			engine_.goBackOneImage();
+			if( shift ) {
+				engine_.goBackNFrames( 5, true );
+			} else {
+				engine_.goBackOneImage();
+			}
 		}
 	}
 
@@ -58,9 +62,9 @@ public class CenterPanelKeyListener implements KeyListener {
 		} else {
 			if( shift ) {
 				//advance 5 frames or until you hit a hard node, whichever comes first
-				engine_.advance( 5, true );
+				engine_.advanceNFrames( 5, true );
 			} else {
-				engine_.advanceOneImage();
+				engine_.advanceOneFrame();
 			}
 		}
 	}

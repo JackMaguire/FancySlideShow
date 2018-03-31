@@ -95,11 +95,11 @@ public class Engine implements ActionListener {
 		if( reverse_ ) {
 			goBackOneImage();
 		} else {
-			advanceOneImage();
+			advanceOneFrame();
 		}
 	}
 
-	public void advanceOneImage() {
+	public void advanceOneFrame() {
 		if( current_node_.forwardNode() != null ) {
 			if( take_next_secondary_option_ && current_node_.numForwardOptions() > 1 ) {
 				take_next_secondary_option_ = false;
@@ -118,9 +118,9 @@ public class Engine implements ActionListener {
 			}
 		}
 	}
-	
-	public void advance( int num_frames, boolean stop_at_soft_primary_node ) {
-		for( int i=0; i < num_frames; ++i ) {
+
+	public void advanceNFrames( int num_frames, boolean stop_at_soft_primary_node ) {
+		for( int i = 0; i < num_frames; ++i ) {
 			if( current_node_.forwardNode() != null ) {
 				if( take_next_secondary_option_ && current_node_.numForwardOptions() > 1 ) {
 					take_next_secondary_option_ = false;
@@ -129,12 +129,12 @@ public class Engine implements ActionListener {
 					current_node_ = current_node_.forwardNode();
 				}
 			}
-			
-			if( current_node_.IS_PRIMARY && current_node_.stop() ) {
+
+			if( current_node_.IS_PRIMARY && ( current_node_.stop() || stop_at_soft_primary_node ) ) {
 				break;
 			}
 		}
-		
+
 		repaintImage();
 
 		if( current_node_.IS_PRIMARY ) {
@@ -153,6 +153,32 @@ public class Engine implements ActionListener {
 				current_node_ = current_node_.getSecondaryReverseNode();
 			} else {
 				current_node_ = current_node_.reverseNode();
+			}
+		}
+		repaintImage();
+
+		if( current_node_.IS_PRIMARY ) {
+			final int subgraph = current_node_.getConceptualNode().subgraph();
+			if( subgraph != current_subgraph_ ) {
+				current_subgraph_ = subgraph;
+				cp_updater_.setCurrentSubgraph( subgraph );
+			}
+		}
+	}
+
+	public void goBackNFrames( int num_frames, boolean stop_at_soft_primary_node ) {
+		for( int i = 0; i < num_frames; ++i ) {
+			if( current_node_.reverseNode() != null ) {
+				if( take_next_secondary_option_ && current_node_.numReverseOptions() > 1 ) {
+					take_next_secondary_option_ = false;
+					current_node_ = current_node_.getSecondaryReverseNode();
+				} else {
+					current_node_ = current_node_.reverseNode();
+				}
+			}
+
+			if( current_node_.IS_PRIMARY && ( current_node_.stop() || stop_at_soft_primary_node ) ) {
+				break;
 			}
 		}
 		repaintImage();
