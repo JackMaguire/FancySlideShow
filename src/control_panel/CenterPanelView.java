@@ -247,8 +247,8 @@ public class CenterPanelView extends JPanelWithKeyListener {
 
 		if( under != null ) {
 
-			final int under_image_width = ( under == null ? 1 : under.getWidth() );
-			final int under_image_height = ( under == null ? 1 : under.getHeight() );
+			final int under_image_width = under.getWidth();
+			final int under_image_height = under.getHeight();
 
 			final double under_scale = util.ImageScale.getScale( sub_panel_width, sub_panel_height, under_image_width,
 					under_image_height );
