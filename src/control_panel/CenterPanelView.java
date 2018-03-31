@@ -180,9 +180,13 @@ public class CenterPanelView extends JPanelWithKeyListener {
 				final ConceptualEdgeType[] edges2 = model_.currentNode().getDownstreamEdges();
 				if( edges2.length == 0 ) {
 					paintImagesOverUnder( g2D, model_.currentNode().getThumbnailImage(), null );
-				} else {
+				} else if( edges2.length == 1 ){
 					final ConceptualNodeType next_node2 = model_.getGraph().getNode( edges2[ 0 ].incomingNodeIndex() );
 					paintImagesOverUnder( g2D, model_.currentNode().getThumbnailImage(), next_node2.getThumbnailImage() );
+				} else {
+					final ConceptualNodeType next_node_active = model_.getGraph().getNode( edges2[ 0 ].incomingNodeIndex() );
+					final ConceptualNodeType next_node_passive = model_.getGraph().getNode( edges2[ 1 ].incomingNodeIndex() );
+					paintImagesOverLeftRight( g2D, model_.currentNode().getThumbnailImage(), next_node_active.getThumbnailImage(), next_node_passive.getThumbnailImage() );
 				}
 				break;
 			default:
