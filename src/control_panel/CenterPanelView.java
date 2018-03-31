@@ -157,9 +157,6 @@ public class CenterPanelView extends JPanelWithKeyListener {
 		Graphics2D g2D = (Graphics2D) g;
 
 		switch ( current_view_type_ ) {
-			case GRAPH:
-				paintGraph( g2D );
-				break;
 			case CURRENT:
 				paintImage( g2D, model_.currentNode().getThumbnailImage() );
 				break;
@@ -201,6 +198,7 @@ public class CenterPanelView extends JPanelWithKeyListener {
 					paintImagesOverLeftRight( g2D, current_image, next_image_active, next_image_option );
 				}
 				break;
+			case GRAPH:
 			default:
 				paintGraph( g2D );
 				break;
