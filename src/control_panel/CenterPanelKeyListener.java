@@ -37,7 +37,7 @@ public class CenterPanelKeyListener implements KeyListener {
 			if( shift ) {
 				engine_.goBackNFrames( 5, true );
 			} else {
-				engine_.goBackOneImage();
+				engine_.goBackOneFrame();
 			}
 		}
 	}

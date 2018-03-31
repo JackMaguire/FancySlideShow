@@ -93,7 +93,7 @@ public class Engine implements ActionListener {
 
 		waiting_at_hard_node_ = false;
 		if( reverse_ ) {
-			goBackOneImage();
+			goBackOneFrame();
 		} else {
 			advanceOneFrame();
 		}
@@ -146,7 +146,7 @@ public class Engine implements ActionListener {
 		}
 	}
 
-	public void goBackOneImage() {
+	public void goBackOneFrame() {
 		if( current_node_.reverseNode() != null ) {
 			if( take_next_secondary_option_ && current_node_.numReverseOptions() > 1 ) {
 				take_next_secondary_option_ = false;
