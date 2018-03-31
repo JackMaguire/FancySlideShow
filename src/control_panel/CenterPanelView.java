@@ -101,7 +101,7 @@ public class CenterPanelView extends JPanelWithKeyListener {
 		current_view_type_ = setting;
 		repaint();
 	}
-	
+
 	public void recolorAllObjects() {
 		final int current_node_index = model_.currentNode().index();
 
@@ -167,19 +167,23 @@ public class CenterPanelView extends JPanelWithKeyListener {
 				final ConceptualEdgeType[] edges = model_.currentNode().getDownstreamEdges();
 				if( edges.length == 0 ) {
 					paintBlack( g2D );
+				} else {
+					final ConceptualNodeType next_node = model_.getGraph().getNode( edges[ 0 ].incomingNodeIndex() );
+					paintImage( g2D, next_node.getThumbnailImage() );
 				}
-				final ConceptualNodeType next_node = model_.getGraph().getNode( edges[ 0 ].incomingNodeIndex() );
-				paintImage( g2D, next_node.getThumbnailImage() );
 			case SELECTED:
-				paintImage( g2D, model_.selectedNode().getThumbnailImage() );
+				if( model_.selectedNode() != null ) {
+					paintImage( g2D, model_.selectedNode().getThumbnailImage() );
+				}
 				break;
 			case COMPOSITE:
 				final ConceptualEdgeType[] edges2 = model_.currentNode().getDownstreamEdges();
 				if( edges2.length == 0 ) {
 					paintImagesOverUnder( g2D, model_.currentNode().getThumbnailImage(), null );
+				} else {
+					final ConceptualNodeType next_node2 = model_.getGraph().getNode( edges2[ 0 ].incomingNodeIndex() );
+					paintImagesOverUnder( g2D, model_.currentNode().getThumbnailImage(), next_node2.getThumbnailImage() );
 				}
-				final ConceptualNodeType next_node2 = model_.getGraph().getNode( edges2[ 0 ].incomingNodeIndex() );
-				paintImagesOverUnder( g2D, model_.currentNode().getThumbnailImage(), next_node2.getThumbnailImage() );
 				break;
 			default:
 				paintGraph( g2D );
