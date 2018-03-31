@@ -177,16 +177,28 @@ public class CenterPanelView extends JPanelWithKeyListener {
 				}
 				break;
 			case COMPOSITE:
+				final BufferedImage current_image = model_.currentNode().getThumbnailImage();
 				final ConceptualEdgeType[] edges2 = model_.currentNode().getDownstreamEdges();
+				final ConceptualGraph conceptual_graph = model_.getGraph();
+				
 				if( edges2.length == 0 ) {
-					paintImagesOverUnder( g2D, model_.currentNode().getThumbnailImage(), null );
+					paintImagesOverUnder( g2D, current_image, null );
+					
 				} else if( edges2.length == 1 ){
-					final ConceptualNodeType next_node2 = model_.getGraph().getNode( edges2[ 0 ].incomingNodeIndex() );
-					paintImagesOverUnder( g2D, model_.currentNode().getThumbnailImage(), next_node2.getThumbnailImage() );
+					final int next_index = edges2[ 0 ].incomingNodeIndex();
+					final ConceptualNodeType next_node2 = conceptual_graph.getNode( next_index );
+					paintImagesOverUnder( g2D, current_image, next_node2.getThumbnailImage() );
+					
 				} else {
-					final ConceptualNodeType next_node_active = model_.getGraph().getNode( edges2[ 0 ].incomingNodeIndex() );
-					final ConceptualNodeType next_node_passive = model_.getGraph().getNode( edges2[ 1 ].incomingNodeIndex() );
-					paintImagesOverLeftRight( g2D, model_.currentNode().getThumbnailImage(), next_node_active.getThumbnailImage(), next_node_passive.getThumbnailImage() );
+					final int next_index_active = edges2[ 0 ].incomingNodeIndex();
+					final ConceptualNodeType next_node_active = conceptual_graph.getNode( next_index_active );
+					final BufferedImage next_image_active = next_node_active.getThumbnailImage();
+					
+					final int next_index_option = edges2[ 1 ].incomingNodeIndex();
+					final ConceptualNodeType next_node_option = conceptual_graph.getNode( next_index_option );
+					final BufferedImage next_image_option = next_node_option.getThumbnailImage();
+					
+					paintImagesOverLeftRight( g2D, current_image, next_image_active, next_image_option );
 				}
 				break;
 			default:
