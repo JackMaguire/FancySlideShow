@@ -10,7 +10,7 @@ public class Demo {
 	final private static String filename_prefix_ = "demo/PicsForDemo/";
 
 	public static void main( String[] args ) {
-		
+
 		final int num_nodes = 4;
 		ConceptualGraph my_graph = new ConceptualGraph( num_nodes );
 

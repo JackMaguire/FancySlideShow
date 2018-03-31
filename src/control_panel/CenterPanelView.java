@@ -180,24 +180,24 @@ public class CenterPanelView extends JPanelWithKeyListener {
 				final BufferedImage current_image = model_.currentNode().getThumbnailImage();
 				final ConceptualEdgeType[] edges2 = model_.currentNode().getDownstreamEdges();
 				final ConceptualGraph conceptual_graph = model_.getGraph();
-				
+
 				if( edges2.length == 0 ) {
 					paintImagesOverUnder( g2D, current_image, null );
-					
-				} else if( edges2.length == 1 ){
+
+				} else if( edges2.length == 1 ) {
 					final int next_index = edges2[ 0 ].incomingNodeIndex();
 					final ConceptualNodeType next_node2 = conceptual_graph.getNode( next_index );
 					paintImagesOverUnder( g2D, current_image, next_node2.getThumbnailImage() );
-					
+
 				} else {
 					final int next_index_active = edges2[ 0 ].incomingNodeIndex();
 					final ConceptualNodeType next_node_active = conceptual_graph.getNode( next_index_active );
 					final BufferedImage next_image_active = next_node_active.getThumbnailImage();
-					
+
 					final int next_index_option = edges2[ 1 ].incomingNodeIndex();
 					final ConceptualNodeType next_node_option = conceptual_graph.getNode( next_index_option );
 					final BufferedImage next_image_option = next_node_option.getThumbnailImage();
-					
+
 					paintImagesOverLeftRight( g2D, current_image, next_image_active, next_image_option );
 				}
 				break;
@@ -245,8 +245,7 @@ public class CenterPanelView extends JPanelWithKeyListener {
 			final int image_width = over.getWidth();
 			final int image_height = over.getHeight();
 
-			final double scale = util.ImageScale.getScale( sub_panel_width, sub_panel_height, image_width,
-					image_height );
+			final double scale = util.ImageScale.getScale( sub_panel_width, sub_panel_height, image_width, image_height );
 
 			final int scaled_image_width = (int) ( image_width * scale );
 			final int scaled_image_height = (int) ( image_height * scale );
@@ -254,8 +253,7 @@ public class CenterPanelView extends JPanelWithKeyListener {
 			final int side_buffersize = ( sub_panel_width - scaled_image_width ) / 2;
 			final int top_buffersize = ( sub_panel_height - scaled_image_height ) / 2;
 
-			g2D.drawImage( over, side_buffersize, top_buffersize, scaled_image_width, scaled_image_height,
-					null );
+			g2D.drawImage( over, side_buffersize, top_buffersize, scaled_image_width, scaled_image_height, null );
 		} else {
 			g2D.setColor( Color.BLACK );
 			g2D.fillRect( 0, 0, sub_panel_width, sub_panel_height );
@@ -274,8 +272,8 @@ public class CenterPanelView extends JPanelWithKeyListener {
 			final int side_buffersize = ( sub_panel_width - scaled_image_width ) / 2;
 			final int top_buffersize = ( sub_panel_height - scaled_image_height ) / 2;
 
-			g2D.drawImage( under, side_buffersize, sub_panel_height + top_buffersize, scaled_image_width,
-					scaled_image_height, null );
+			g2D.drawImage( under, side_buffersize, sub_panel_height + top_buffersize, scaled_image_width, scaled_image_height,
+					null );
 
 		} else {
 			g2D.setColor( Color.BLACK );
@@ -309,7 +307,7 @@ public class CenterPanelView extends JPanelWithKeyListener {
 			g2D.fillRect( 0, 0, sub_panel_width, sub_panel_height );
 		}
 
-		//Bottom two panels have to share the bottom row
+		// Bottom two panels have to share the bottom row
 		sub_panel_width /= 2;
 
 		if( left != null ) {
@@ -325,8 +323,8 @@ public class CenterPanelView extends JPanelWithKeyListener {
 			final int side_buffersize = ( sub_panel_width - scaled_image_width ) / 2;
 			final int top_buffersize = ( sub_panel_height - scaled_image_height ) / 2;
 
-			g2D.drawImage( left, side_buffersize, sub_panel_height + top_buffersize, scaled_image_width,
-					scaled_image_height, null );
+			g2D.drawImage( left, side_buffersize, sub_panel_height + top_buffersize, scaled_image_width, scaled_image_height,
+					null );
 
 		} else {
 			g2D.setColor( Color.BLACK );
