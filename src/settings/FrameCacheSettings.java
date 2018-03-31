@@ -11,11 +11,11 @@ public class FrameCacheSettings {
 	public final static String XML_Name = "FrameCache";
 
 	// Frame Caching
-	public static double PRIMARY_NODE_CACHE_RATIO = 0;// 0 means use following:
+	public static double PRIMARY_NODE_CACHE_RATIO = 1;// 0 means use following:
 	public static int PRI_MAX_WIDTH = 1024;
 	public static int PRI_MAX_HEIGHT = 768;
 
-	public static double SECONDARY_NODE_CACHE_RATIO = 0;// 0 means use following:
+	public static double SECONDARY_NODE_CACHE_RATIO = 1;// 0 means use following:
 	public static int SEC_MAX_WIDTH = 1024;
 	public static int SEC_MAX_HEIGHT = 768;
 
