@@ -162,11 +162,11 @@ public class CenterPanelView extends JPanelWithKeyListener {
 				break;
 			case NEXT:
 				final ConceptualEdgeType[] edges = model_.currentNode().getDownstreamEdges();
-				if( edges.length == 0 ) {
-					paintBlack( g2D );
-				} else {
+				if( edges.length != 0 ) {
 					final ConceptualNodeType next_node = model_.getGraph().getNode( edges[ 0 ].incomingNodeIndex() );
 					paintImage( g2D, next_node.getThumbnailImage() );
+				} else {
+					// paintBlack( g2D );
 				}
 			case SELECTED:
 				if( model_.selectedNode() != null ) {
@@ -203,6 +203,9 @@ public class CenterPanelView extends JPanelWithKeyListener {
 				paintGraph( g2D );
 				break;
 		}
+
+		g2D.setColor( Color.BLACK );
+		g2D.drawString( current_view_type_.name(), 0, 25 );
 	}
 
 	private void paintBlack( Graphics2D g2D ) {
