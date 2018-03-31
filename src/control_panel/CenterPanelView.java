@@ -275,42 +275,42 @@ public class CenterPanelView extends JPanelWithKeyListener {
 		g2D.setRenderingHint( RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY );
 
 		if( over != null ) {
-			final int over_image_width = over.getWidth();
-			final int over_image_height = over.getHeight();
+			final int image_width = over.getWidth();
+			final int image_height = over.getHeight();
 
-			final double over_scale = util.ImageScale.getScale( sub_panel_width, sub_panel_height, over_image_width,
-					over_image_height );
+			final double over_scale = util.ImageScale.getScale( sub_panel_width, sub_panel_height, image_width,
+					image_height );
 
-			final int over_scaled_image_width = (int) ( over_image_width * over_scale );
-			final int over_scaled_image_height = (int) ( over_image_height * over_scale );
+			final int scaled_image_width = (int) ( image_width * over_scale );
+			final int scaled_image_height = (int) ( image_height * over_scale );
 
-			final int over_side_buffersize = ( sub_panel_width - over_scaled_image_width ) / 2;
-			final int over_top_buffersize = ( sub_panel_height - over_scaled_image_height ) / 2;
+			final int side_buffersize = ( sub_panel_width - scaled_image_width ) / 2;
+			final int top_buffersize = ( sub_panel_height - scaled_image_height ) / 2;
 
-			g2D.drawImage( over, over_side_buffersize, over_top_buffersize, over_scaled_image_width, over_scaled_image_height,
-					null );
+			g2D.drawImage( over, side_buffersize, top_buffersize, scaled_image_width, scaled_image_height, null );
 		} else {
 			g2D.setColor( Color.BLACK );
 			g2D.fillRect( 0, 0, sub_panel_width, sub_panel_height );
 		}
 
+		//Bottom two panels have to share the bottom row
 		sub_panel_width /= 2;
 
 		if( left != null ) {
 
-			final int under_image_width = ( left == null ? 1 : left.getWidth() );
-			final int under_image_height = ( left == null ? 1 : left.getHeight() );
+			final int image_width = left.getWidth();
+			final int image_height = left.getHeight();
 
-			final double under_scale = util.ImageScale.getScale( sub_panel_width, sub_panel_height, under_image_width,
-					under_image_height );
+			final double under_scale = util.ImageScale.getScale( sub_panel_width, sub_panel_height, image_width,
+					image_height );
 
-			final int under_scaled_image_width = (int) ( under_image_width * under_scale );
-			final int under_scaled_image_height = (int) ( under_image_height * under_scale );
-			final int under_side_buffersize = ( sub_panel_width - under_scaled_image_width ) / 2;
-			final int under_top_buffersize = ( sub_panel_height - under_scaled_image_height ) / 2;
+			final int scaled_image_width = (int) ( image_width * under_scale );
+			final int scaled_image_height = (int) ( image_height * under_scale );
+			final int side_buffersize = ( sub_panel_width - scaled_image_width ) / 2;
+			final int top_buffersize = ( sub_panel_height - scaled_image_height ) / 2;
 
-			g2D.drawImage( left, under_side_buffersize, sub_panel_height + under_top_buffersize, under_scaled_image_width,
-					under_scaled_image_height, null );
+			g2D.drawImage( left, side_buffersize, sub_panel_height + top_buffersize, scaled_image_width,
+					scaled_image_height, null );
 
 		} else {
 			g2D.setColor( Color.BLACK );
