@@ -56,7 +56,12 @@ public class CenterPanelKeyListener implements KeyListener {
 			}
 			engine_.takeNextSecondaryOption( shift );
 		} else {
-			engine_.advanceOneImage();
+			if( shift ) {
+				//advance 5 frames or until you hit a hard node, whichever comes first
+				engine_.advance( 5, true );
+			} else {
+				engine_.advanceOneImage();
+			}
 		}
 	}
 
